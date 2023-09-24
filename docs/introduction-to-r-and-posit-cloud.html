@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Introduction to R and posit Cloud | Univariate and Multivariate Statistics</title>
+  <meta name="description" content="This is the coursebook for Univariate and Multivairate Statistics" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Introduction to R and posit Cloud | Univariate and Multivariate Statistics" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is the coursebook for Univariate and Multivairate Statistics" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Introduction to R and posit Cloud | Univariate and Multivariate Statistics" />
+  
+  <meta name="twitter:description" content="This is the coursebook for Univariate and Multivairate Statistics" />
+  
+
+<meta name="author" content="Dr Ellen Bell" />
+
+
+<meta name="date" content="2023-08-01" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="directories-and-data-frames---week-4a---workshop-1.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Univariate and Multivariate Statistics</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome to the Statistics Coursebook</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#learning-objectives"><i class="fa fa-check"></i><b>1.1</b> Learning Objectives</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#teaching-layout"><i class="fa fa-check"></i><b>1.2</b> Teaching Layout</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#how-to-use-this-workbook"><i class="fa fa-check"></i><b>1.3</b> How to use this workbook</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introduction-to-r-and-posit-cloud.html"><a href="introduction-to-r-and-posit-cloud.html"><i class="fa fa-check"></i><b>2</b> Introduction to R and posit Cloud</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introduction-to-r-and-posit-cloud.html"><a href="introduction-to-r-and-posit-cloud.html#what-is-r-and-posit-cloud"><i class="fa fa-check"></i><b>2.1</b> What is R and posit Cloud?</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="introduction-to-r-and-posit-cloud.html"><a href="introduction-to-r-and-posit-cloud.html#task-1-create-your-own-posit-cloud-account"><i class="fa fa-check"></i><b>2.1.1</b> Task 1; Create your own posit Cloud account</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="introduction-to-r-and-posit-cloud.html"><a href="introduction-to-r-and-posit-cloud.html#a-warning-on-managing-your-work-flow"><i class="fa fa-check"></i><b>2.2</b> A warning on managing your work flow</a></li>
+<li class="chapter" data-level="2.3" data-path="introduction-to-r-and-posit-cloud.html"><a href="introduction-to-r-and-posit-cloud.html#creating-your-first-posit-cloud-project"><i class="fa fa-check"></i><b>2.3</b> Creating your first posit Cloud Project</a></li>
+<li class="chapter" data-level="2.4" data-path="introduction-to-r-and-posit-cloud.html"><a href="introduction-to-r-and-posit-cloud.html#maximising-the-efficiency-of-your-workspace"><i class="fa fa-check"></i><b>2.4</b> Maximising the efficiency of your workspace</a></li>
+<li class="chapter" data-level="2.5" data-path="introduction-to-r-and-posit-cloud.html"><a href="introduction-to-r-and-posit-cloud.html#entering-commands-directly-into-the-consol"><i class="fa fa-check"></i><b>2.5</b> Entering commands directly into the consol</a></li>
+<li class="chapter" data-level="2.6" data-path="introduction-to-r-and-posit-cloud.html"><a href="introduction-to-r-and-posit-cloud.html#sending-commands-down-to-the-console-from-an-r-script"><i class="fa fa-check"></i><b>2.6</b> Sending commands down to the console from an R script</a></li>
+<li class="chapter" data-level="2.7" data-path="introduction-to-r-and-posit-cloud.html"><a href="introduction-to-r-and-posit-cloud.html#a-note-on-comments"><i class="fa fa-check"></i><b>2.7</b> A note on comments</a></li>
+<li class="chapter" data-level="2.8" data-path="introduction-to-r-and-posit-cloud.html"><a href="introduction-to-r-and-posit-cloud.html#creating-objects"><i class="fa fa-check"></i><b>2.8</b> Creating objects</a></li>
+<li class="chapter" data-level="2.9" data-path="introduction-to-r-and-posit-cloud.html"><a href="introduction-to-r-and-posit-cloud.html#what-are-functions-and-packages"><i class="fa fa-check"></i><b>2.9</b> What are functions and packages?</a>
+<ul>
+<li class="chapter" data-level="2.9.1" data-path="introduction-to-r-and-posit-cloud.html"><a href="introduction-to-r-and-posit-cloud.html#using-functions"><i class="fa fa-check"></i><b>2.9.1</b> Using functions</a></li>
+</ul></li>
+<li class="chapter" data-level="2.10" data-path="introduction-to-r-and-posit-cloud.html"><a href="introduction-to-r-and-posit-cloud.html#installing-packages"><i class="fa fa-check"></i><b>2.10</b> Installing packages</a></li>
+<li class="chapter" data-level="2.11" data-path="introduction-to-r-and-posit-cloud.html"><a href="introduction-to-r-and-posit-cloud.html#what-do-i-do-if-i-get-an-error-message"><i class="fa fa-check"></i><b>2.11</b> What do I do if I get an error message?</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="directories-and-data-frames---week-4a---workshop-1.html"><a href="directories-and-data-frames---week-4a---workshop-1.html"><i class="fa fa-check"></i><b>3</b> Directories and data frames - Week 4A - Workshop 1</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="directories-and-data-frames---week-4a---workshop-1.html"><a href="directories-and-data-frames---week-4a---workshop-1.html#data-entry"><i class="fa fa-check"></i><b>3.1</b> Data Entry</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="directories-and-data-frames---week-4a---workshop-1.html"><a href="directories-and-data-frames---week-4a---workshop-1.html#a-note-on-naming"><i class="fa fa-check"></i><b>3.1.1</b> A note on naming</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="directories-and-data-frames---week-4a---workshop-1.html"><a href="directories-and-data-frames---week-4a---workshop-1.html#setting-up-your-r-workspace"><i class="fa fa-check"></i><b>3.2</b> Setting up your R workspace</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="directories-and-data-frames---week-4a---workshop-1.html"><a href="directories-and-data-frames---week-4a---workshop-1.html#a-note-on-directories-and-their-structure"><i class="fa fa-check"></i><b>3.2.1</b> A note on directories and their structure</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="directories-and-data-frames---week-4a---workshop-1.html"><a href="directories-and-data-frames---week-4a---workshop-1.html#setting-up-your-script"><i class="fa fa-check"></i><b>3.3</b> Setting up your script</a></li>
+<li class="chapter" data-level="3.4" data-path="directories-and-data-frames---week-4a---workshop-1.html"><a href="directories-and-data-frames---week-4a---workshop-1.html#importing-data"><i class="fa fa-check"></i><b>3.4</b> Importing data</a></li>
+<li class="chapter" data-level="3.5" data-path="directories-and-data-frames---week-4a---workshop-1.html"><a href="directories-and-data-frames---week-4a---workshop-1.html#creating-tibbles"><i class="fa fa-check"></i><b>3.5</b> Creating tibbles</a></li>
+<li class="chapter" data-level="3.6" data-path="directories-and-data-frames---week-4a---workshop-1.html"><a href="directories-and-data-frames---week-4a---workshop-1.html#before-you-leave"><i class="fa fa-check"></i><b>3.6</b> Before you leave!</a></li>
+<li class="chapter" data-level="3.7" data-path="directories-and-data-frames---week-4a---workshop-1.html"><a href="directories-and-data-frames---week-4a---workshop-1.html#references"><i class="fa fa-check"></i><b>3.7</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="cross.html"><a href="cross.html"><i class="fa fa-check"></i><b>4</b> Cross-references</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="cross.html"><a href="cross.html#chapters-and-sub-chapters"><i class="fa fa-check"></i><b>4.1</b> Chapters and sub-chapters</a></li>
+<li class="chapter" data-level="4.2" data-path="cross.html"><a href="cross.html#captioned-figures-and-tables"><i class="fa fa-check"></i><b>4.2</b> Captioned figures and tables</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="parts.html"><a href="parts.html"><i class="fa fa-check"></i><b>5</b> Parts</a></li>
+<li class="chapter" data-level="6" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html"><i class="fa fa-check"></i><b>6</b> Footnotes and citations</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html#footnotes"><i class="fa fa-check"></i><b>6.1</b> Footnotes</a></li>
+<li class="chapter" data-level="6.2" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html#citations"><i class="fa fa-check"></i><b>6.2</b> Citations</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="blocks.html"><a href="blocks.html"><i class="fa fa-check"></i><b>7</b> Blocks</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="blocks.html"><a href="blocks.html#equations"><i class="fa fa-check"></i><b>7.1</b> Equations</a></li>
+<li class="chapter" data-level="7.2" data-path="blocks.html"><a href="blocks.html#theorems-and-proofs"><i class="fa fa-check"></i><b>7.2</b> Theorems and proofs</a></li>
+<li class="chapter" data-level="7.3" data-path="blocks.html"><a href="blocks.html#callout-blocks"><i class="fa fa-check"></i><b>7.3</b> Callout blocks</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="sharing-your-book.html"><a href="sharing-your-book.html"><i class="fa fa-check"></i><b>8</b> Sharing your book</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="sharing-your-book.html"><a href="sharing-your-book.html#publishing"><i class="fa fa-check"></i><b>8.1</b> Publishing</a></li>
+<li class="chapter" data-level="8.2" data-path="sharing-your-book.html"><a href="sharing-your-book.html#pages"><i class="fa fa-check"></i><b>8.2</b> 404 pages</a></li>
+<li class="chapter" data-level="8.3" data-path="sharing-your-book.html"><a href="sharing-your-book.html#metadata-for-sharing"><i class="fa fa-check"></i><b>8.3</b> Metadata for sharing</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Univariate and Multivariate Statistics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="introduction-to-r-and-posit-cloud" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Introduction to R and posit Cloud<a href="introduction-to-r-and-posit-cloud.html#introduction-to-r-and-posit-cloud" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>If you are already familiar with R this chapter will be a very swift refresher, you should still work through it to make sure you are correctly set up on Posit cloud.</p>
+<div id="what-is-r-and-posit-cloud" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> What is R and posit Cloud?<a href="introduction-to-r-and-posit-cloud.html#what-is-r-and-posit-cloud" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>So hopefully you have read through Chapter 1, where R and the posit Cloud interface were introduced in this module. But what really is R and what is the difference between R and posit Cloud?</p>
+<p>Essentially R is a programming language that is commonly used in statistical computing, data handling, data visualisation and data analysis. Posit Cloud is a cloud based interface for a piece of software called RStudio (we wont be using the non cloud based RStudio here, so we wont explore this software further). Posit Cloud uses the R programming language but has a nice user friendly interface and is a great tool for learning how to conduct analysis in R.</p>
+<p>We are using the posit cloud rather then RStudio because it means that no one has to worry about installing extra software on their own computers and everyone will be working with the same software versions. You will all need to create your own free accounts on posit Cloud, but first have a look at the short video below introducing you to the interface.</p>
+<div style="position:relative;height:0;padding-bottom:40%">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/3l02OgYYb0I" title="Intro to posit Cloud" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+</div>
+<p>
+<div id="task-1-create-your-own-posit-cloud-account" class="section level3 hasAnchor" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> Task 1; Create your own posit Cloud account<a href="introduction-to-r-and-posit-cloud.html#task-1-create-your-own-posit-cloud-account" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Now that you’ve watched the video, create your own Free posit Cloud account <a href="https://login.rstudio.cloud/login?redirect=%2Foauth%2Fauthorize%3Fredirect_uri%3Dhttps%253A%252F%252Frstudio.cloud%252Flogin%26client_id%3Drstudio-cloud%26response_type%3Dcode%26show_auth%3D0%26show_login%3D1">here</a>.</p>
+</div>
+</div>
+<div id="a-warning-on-managing-your-work-flow" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> A warning on managing your work flow<a href="introduction-to-r-and-posit-cloud.html#a-warning-on-managing-your-work-flow" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Your free posit Cloud account comes with some restrictions which you should be aware of. These are;</p>
+<ul>
+<li>You may have up to 50 projects in total</li>
+<li>You are limited to 25 project hours per month</li>
+<li>You have up to 1GB of RAM and 1 CPU per project</li>
+</ul>
+<p>For the purposes of our work here these restrictions should not be a problem. But I strongly suggest you don’t leave your coursework to the last minute. If you try and pack in a whole semester or years worth or material into a single month, you will brush up against those 25 project hours. There are some options of last resort should this happen, you could install RStudio on your desktop for example but things will get complicated. Lets avoid that where we can!There are some ways you can increase the efficiency of your workspace which are documented below in section 2.4.</p>
+</div>
+<div id="creating-your-first-posit-cloud-project" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Creating your first posit Cloud Project<a href="introduction-to-r-and-posit-cloud.html#creating-your-first-posit-cloud-project" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Once you have created an posit Cloud account you should be presented with this window</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-1"></span>
+<img src="figures/screenshot_rstudiocloud_1.jpg" alt="Screen for when you first login to posit Cloud" width="90%" />
+<p class="caption">
+Figure 2.1: Your workspace in posit Cloud
+</p>
+</div>
+<p>Under <strong>Spaces</strong> go to <strong>Your Workspace</strong> and under <strong>Projects</strong> create a <strong>New Project &gt; New R studio Project</strong>.</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-2"></span>
+<img src="figures/screenshot_rstudiocloud_2.png" alt="Screen for creating a new project" width="90%" />
+<p class="caption">
+Figure 2.2: Creating a new project in posit Cloud
+</p>
+</div>
+<p>Lets name this project <code>testing_R</code>, notice that I have no spaces in my project name. Instead of a space I have used an underscore, there are a number of good habits you should try and adopt when project or file naming and not including spaces is one of them, we will go over this in more depth in lectures and later chapters. You can rename your project by clicking on <strong>Untitled Project</strong> at the top of the window, and typing in your new project name.</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-3"></span>
+<img src="figures/screenshot_rstudiocloud_3.jpg" alt="Screen for renaming your project" width="90%" />
+<p class="caption">
+Figure 2.3: Renaming your project
+</p>
+</div>
+<p>You will see that your new project has three panels with tabs showing the Console, Environment and Files for your project.</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-4"></span>
+<img src="figures/screenshot_rstudiocloud_4.jpg" alt="Screen for your r studio workspace" width="90%" />
+<p class="caption">
+Figure 2.4: The three basic panels of an R Studio workspace
+</p>
+</div>
+</div>
+<div id="maximising-the-efficiency-of-your-workspace" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Maximising the efficiency of your workspace<a href="introduction-to-r-and-posit-cloud.html#maximising-the-efficiency-of-your-workspace" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We know we have limited project hours on our free posit Cloud accounts to reduce your resource usage. In your project, go to settings (the cogwheel sign), Resources, and drag all of the sliders down to the minimum setting, apply the changes, this will mean the project has to restart. This will mean that running the project for 1 hour will consume 0.5 project hours. We wont be doing anything particularly computationally intensive so there is no need for RAM of CPUs to be higher.</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-5"></span>
+<img src="figures/screenshot_rstudiocloud_5.png" alt="Making your project more efficient" width="90%" />
+<p class="caption">
+Figure 2.5: How to make your project more efficient
+</p>
+</div>
+</div>
+<div id="entering-commands-directly-into-the-consol" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Entering commands directly into the consol<a href="introduction-to-r-and-posit-cloud.html#entering-commands-directly-into-the-consol" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Lets start by playing with some commands in the console. Type or copy and paste the simple calculation (or command) shown below, into the console. Your text should appear next to the <code>&gt;</code> symbol. Press <code>Enter</code> on your keyboard, this will instruct R to run the command.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="introduction-to-r-and-posit-cloud.html#cb1-1" tabindex="-1"></a><span class="dv">5</span> <span class="sc">+</span> <span class="dv">9</span></span></code></pre></div>
+<p>The two final lines of your output should look like this:</p>
+<pre><code>&gt; 5 + 9
+[1] 14</code></pre>
+<p>So… your initial command <code>5 + 9</code> is shown after the <code>&gt;</code>, symbol and the resulting output from R is shown after <code>[1]</code>. Don’t worry too much about the syntax of <code>&gt;</code> and <code>[1]</code> here. You can think of <code>&gt;</code> as meaning that R is ready to receive a command and <code>[1]</code> as R telling you that the answer to the first part of your question is here (in this case <code>14</code>).</p>
+<p>Try out some other commands… What happens when you input the following?</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="introduction-to-r-and-posit-cloud.html#cb3-1" tabindex="-1"></a><span class="dv">362</span> <span class="sc">*</span> <span class="dv">12</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="introduction-to-r-and-posit-cloud.html#cb4-1" tabindex="-1"></a><span class="dv">55</span> <span class="sc">/</span> <span class="dv">5</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="introduction-to-r-and-posit-cloud.html#cb5-1" tabindex="-1"></a>(<span class="dv">40</span> <span class="sc">/</span> <span class="dv">990</span>) <span class="sc">*</span> <span class="dv">100</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="introduction-to-r-and-posit-cloud.html#cb6-1" tabindex="-1"></a><span class="dv">4</span><span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
+<p>See if you can work out what 30% of 735 is using the R console</p>
+</div>
+<div id="sending-commands-down-to-the-console-from-an-r-script" class="section level2 hasAnchor" number="2.6">
+<h2><span class="header-section-number">2.6</span> Sending commands down to the console from an R script<a href="introduction-to-r-and-posit-cloud.html#sending-commands-down-to-the-console-from-an-r-script" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>I have already mentioned the <strong>reproducibility</strong> factor as an advantage of using posit Cloud. This is because you can record and run all of your commands from an R script within posit Cloud. This means that you have a written record of your analysis workflow, what you did to your data at which stage, and you can do all of this without altering the original data files! This is super important because it means that if you revisit your work in a few weeks/months/years you can see exactly what you did AND if someone else needs to rerun any of your analysis or use your workflow on some other data, they can!</p>
+<p>So lets go about setting up your new script. You currently have three panels in posit Cloud. If you go to <strong>file &gt; New File &gt; R Script</strong> a new panel will open.</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-11"></span>
+<img src="figures/screenshot_rstudiocloud_6.png" alt="creating a new r script" width="90%" />
+<p class="caption">
+Figure 2.6: How to create a new R script
+</p>
+</div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-12"></span>
+<img src="figures/screenshot_rstudiocloud_7.jpg" alt="Screen for your r studio workspace" width="90%" />
+<p class="caption">
+Figure 2.7: The four panels of an R Studio workspace
+</p>
+</div>
+<p>This new panel is essentially a text file where you can write your commands into a script and then send them down to the console when you want to run them. Lets have a play. Copy the below into your new R script.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="introduction-to-r-and-posit-cloud.html#cb7-1" tabindex="-1"></a><span class="dv">362</span> <span class="sc">*</span> <span class="dv">12</span></span>
+<span id="cb7-2"><a href="introduction-to-r-and-posit-cloud.html#cb7-2" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="introduction-to-r-and-posit-cloud.html#cb7-3" tabindex="-1"></a><span class="dv">55</span> <span class="sc">/</span> <span class="dv">5</span></span>
+<span id="cb7-4"><a href="introduction-to-r-and-posit-cloud.html#cb7-4" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="introduction-to-r-and-posit-cloud.html#cb7-5" tabindex="-1"></a>(<span class="dv">40</span> <span class="sc">/</span> <span class="dv">990</span>) <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb7-6"><a href="introduction-to-r-and-posit-cloud.html#cb7-6" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="introduction-to-r-and-posit-cloud.html#cb7-7" tabindex="-1"></a><span class="dv">4</span><span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
+<p>These are all commands you have run before but now if you save your script you will have a text based document with your progress saved. It doesn’t make a huge amount of sense to do this now because these are just a un-associated set of calculations and we are just playing with the interface, but you could if you wanted to.</p>
+<p>Ok, so now we are ready to execute our commands. You can do this with each calculation individually, line by line, or you can run the whole script.</p>
+<p>To run your script line by line, place your cursor on the line you wish to run and you can either;</p>
+<ul>
+<li>Click on the <strong>Run</strong> button on the top right of the script panel</li>
+<li>Press <strong>ctrl + Enter</strong> (or <strong>Command + Enter</strong> on mac)</li>
+</ul>
+<p>Or if you wish to run the entire script you can either;</p>
+<ul>
+<li>Manually highlight the script and click the <strong>Run</strong> button or press <strong>ctrl + Enter</strong> (or <strong>Command + Enter</strong> on mac)</li>
+<li>Press <strong>ctrl + A</strong> (or <strong>Command + A</strong> on mac) and then click the run button or press <strong>ctrl + Enter</strong> (or <strong>Command + Enter</strong> on mac)</li>
+</ul>
+</div>
+<div id="a-note-on-comments" class="section level2 hasAnchor" number="2.7">
+<h2><span class="header-section-number">2.7</span> A note on comments<a href="introduction-to-r-and-posit-cloud.html#a-note-on-comments" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>When you are writing a script you can leave notes for yourself. This can be extremely useful if you need reminding on what a particular piece of script is doing. This is a good learning tool while you are still learning how to use R, but its also a good habit to get into for later. As you progress with R you will inevitably start constructing quite intricate scripts, leaving good notes on what each part of the script is doing is very useful for you and for anyone else who may later come to use your script. You can leave notes or comments in scripts if you precede them with <code>#</code>. If R sees <code>#</code> it will ignore all text on that line that comes after it. For example, copy and paste the following into your script and try running it line by line.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="introduction-to-r-and-posit-cloud.html#cb8-1" tabindex="-1"></a><span class="co"># Four squared can be calculated with the following command</span></span>
+<span id="cb8-2"><a href="introduction-to-r-and-posit-cloud.html#cb8-2" tabindex="-1"></a><span class="dv">4</span><span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
+<p>In this case I have reminded myself how to calculate 4 squared, everything after the <code>#</code> will be ignored by R when you try to run the line.</p>
+</div>
+<div id="creating-objects" class="section level2 hasAnchor" number="2.8">
+<h2><span class="header-section-number">2.8</span> Creating objects<a href="introduction-to-r-and-posit-cloud.html#creating-objects" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>As we saw in Chapter 2, R can be used to perform calculations. However, we can use R to perform tasks that are much more complex. In order to do this we are going to have to learn about objects.</p>
+<p>Log in to your posit Cloud account and go into your <code>testing_R</code> project. Create a new R script and save it under the name <code>objects</code>. You should see it appear as <code>object.R</code> under the <strong>Files</strong> tab in the bottom right panel. Run the following command using your script.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="introduction-to-r-and-posit-cloud.html#cb9-1" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="dv">50</span></span></code></pre></div>
+<p>What you have essentially done here, is told R to create an object called <code>A</code> and to store the number <code>50</code> inside it using the syntax <code>&lt;-</code>. After running the command you should see your object <code>A</code> and <code>50</code> pop up under <strong>Environment</strong> and <strong>Values</strong> in the top right hand panel, so you can see that <code>50</code> has been stored in <code>A</code>.</p>
+<p>Lets create some more objects</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="introduction-to-r-and-posit-cloud.html#cb10-1" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="dv">6</span></span></code></pre></div>
+<p>Now see what happens if you run the following command</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="introduction-to-r-and-posit-cloud.html#cb11-1" tabindex="-1"></a>A <span class="sc">*</span> b</span></code></pre></div>
+<p>Oh dear… we have an error…</p>
+<pre><code>&gt; A * b
+Error: object &#39;b&#39; not found</code></pre>
+<p>This is because R has absolutely no flexibility with typos. It is looking for an object called <code>b</code> when there is no object called <code>b</code> in your environment. There is an object called <code>B</code>, but to R, <code>B</code> and <code>b</code> are completely different things. Try running this instead.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="introduction-to-r-and-posit-cloud.html#cb13-1" tabindex="-1"></a>A <span class="sc">*</span> B</span></code></pre></div>
+<p>Hopefully you should now have an output that looks like this</p>
+<pre><code>&gt; A * B
+[1] 300</code></pre>
+<p>This is a very simple example. But lets try to demonstrate why saving values within objects may be useful. Lets say you are interested in looking at the number of students who get freshers flu in Week 1 of teaching at UEA. You have a class size of 200 students and 15 of them report that they have contracted freshers flu. Use the following script to calculate the percentage of students with freshers flu.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="introduction-to-r-and-posit-cloud.html#cb15-1" tabindex="-1"></a><span class="co"># Create two objects, one for your total class and one for those that have flu</span></span>
+<span id="cb15-2"><a href="introduction-to-r-and-posit-cloud.html#cb15-2" tabindex="-1"></a><span class="co"># Notice that neither of my object names contain spaces</span></span>
+<span id="cb15-3"><a href="introduction-to-r-and-posit-cloud.html#cb15-3" tabindex="-1"></a><span class="co"># If you need a space always use an underscore or full stop</span></span>
+<span id="cb15-4"><a href="introduction-to-r-and-posit-cloud.html#cb15-4" tabindex="-1"></a>total_class <span class="ot">&lt;-</span> <span class="dv">200</span></span>
+<span id="cb15-5"><a href="introduction-to-r-and-posit-cloud.html#cb15-5" tabindex="-1"></a>with_flu <span class="ot">&lt;-</span> <span class="dv">15</span></span>
+<span id="cb15-6"><a href="introduction-to-r-and-posit-cloud.html#cb15-6" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="introduction-to-r-and-posit-cloud.html#cb15-7" tabindex="-1"></a><span class="co"># Calculate the percentage of students with flu in week 1</span></span>
+<span id="cb15-8"><a href="introduction-to-r-and-posit-cloud.html#cb15-8" tabindex="-1"></a>percentage_with_flu <span class="ot">&lt;-</span> (with_flu<span class="sc">/</span>total_class)<span class="sc">*</span><span class="dv">100</span></span></code></pre></div>
+<p>If you look in your Environment in the top right panel you should see the percentage of students with flu calculated and stored under <code>percentage_with_flu</code>. You can use the following command to see it printed in the console.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="introduction-to-r-and-posit-cloud.html#cb16-1" tabindex="-1"></a><span class="fu">print</span>(percentage_with_flu)</span></code></pre></div>
+<p>Some students have been late in reporting their symptoms. A week later you hear that <code>7</code> more students also had freshers flu in Week 1. If you had been typing into the console and not using objects you would have to type this script out all over again. But you don’t need to. You just need to change your entry for <code>with_flu</code> from <code>15</code> to <code>22</code>. Do that now and re-run the script. By editing the <code>15</code>, R will overwrite the object <code>with_flu</code> to represent the new value of <code>22</code>. If you run the last line of code then the percentage of students with flu will also update.</p>
+<p>This may seem like a very simple example, and it is, but we are still building up your knowledge of R so you will have to take my word for it that objects will be very helpful to you as we progress :). You will also see, that objects can contain a range of different types of data. We will cover some of these in lectures, but for now lets leave objects and have a think about functions and packages.</p>
+</div>
+<div id="what-are-functions-and-packages" class="section level2 hasAnchor" number="2.9">
+<h2><span class="header-section-number">2.9</span> What are functions and packages?<a href="introduction-to-r-and-posit-cloud.html#what-are-functions-and-packages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>If you have the coding skills it is possible to do pretty much whatever you like with your data in R. However, why reinvent the wheel trying to write your own complex scripts, when a lot of very clever coders have already written lots of functional bits of code, known as <strong>functions</strong>, for general use. Functions can be thought of as a piece of code that is designed to perform a set task. R comes with lots of functions already built in, but there are also lots of additional functions that are stored in <strong>packages</strong>.</p>
+<p>Packages are containers that can hold sets of functions or data and as the course progresses you will use a range of packages that contain useful functions and data. For example the data visualisation package (which you will become very familiar with later on) <code>ggplot2</code> contains ranges of functions which allow you to define how your plot or graph will look, for example <code>geom_bar</code> is a function within the <code>ggplot2</code> package that contains the instructions required to build a bar chart.</p>
+<div id="using-functions" class="section level3 hasAnchor" number="2.9.1">
+<h3><span class="header-section-number">2.9.1</span> Using functions<a href="introduction-to-r-and-posit-cloud.html#using-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We actually have already had some exposure to functions. You used the print function earlier when you asked R to print out the value contained within the <code>percentage_with_flu</code> object. But lets have a go at using another function.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="introduction-to-r-and-posit-cloud.html#cb17-1" tabindex="-1"></a><span class="co"># First of all we need some data</span></span>
+<span id="cb17-2"><a href="introduction-to-r-and-posit-cloud.html#cb17-2" tabindex="-1"></a><span class="co"># Notice the syntax, by using c() I have told R to prepare for a list of values</span></span>
+<span id="cb17-3"><a href="introduction-to-r-and-posit-cloud.html#cb17-3" tabindex="-1"></a><span class="co"># Each value is separated by a comma</span></span>
+<span id="cb17-4"><a href="introduction-to-r-and-posit-cloud.html#cb17-4" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">8</span>,<span class="dv">10</span>,<span class="dv">12</span>,<span class="dv">14</span>,<span class="dv">16</span>,<span class="dv">18</span>,<span class="dv">20</span>)</span>
+<span id="cb17-5"><a href="introduction-to-r-and-posit-cloud.html#cb17-5" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="introduction-to-r-and-posit-cloud.html#cb17-6" tabindex="-1"></a><span class="co"># Now I want to know what the total value of data is if I add all the values stored within it together</span></span>
+<span id="cb17-7"><a href="introduction-to-r-and-posit-cloud.html#cb17-7" tabindex="-1"></a>total <span class="ot">&lt;-</span> <span class="fu">sum</span>(data)</span></code></pre></div>
+<p>In the above piece of code we have created some data, as a list of values, and stored them under the object name data. We have then used the function <code>sum()</code>. We have essentially told R that we wish it to perform the function <code>sum()</code> on everything contained within the object <code>data</code> and store it in another object called <code>total</code>. You can see the value within <code>total</code> in your environment, can you work out how to get R to print the value of <code>total</code> out?</p>
+<p>If you ever need help working out how to use a function you can use another function <code>help()</code>. Try inputing the code below into your console.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="introduction-to-r-and-posit-cloud.html#cb18-1" tabindex="-1"></a><span class="fu">help</span>(sum)</span></code></pre></div>
+<p>This should bring up a help file in your bottom right hand panel that describes and explains the use of the function <code>sum()</code>.</p>
+</div>
+</div>
+<div id="installing-packages" class="section level2 hasAnchor" number="2.10">
+<h2><span class="header-section-number">2.10</span> Installing packages<a href="introduction-to-r-and-posit-cloud.html#installing-packages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The <code>sum</code> function is part of the base R package that comes with any R installation. However there are lots of other useful functions that are held in additional packages. In order to use these functions, you must have the necessary packages installed in your work space. I already mentioned that we would be using a package called <code>ggplot2</code>, lets try installing and loading it in your work space.</p>
+<p>With any package you wish to use in posit Cloud you will need to go through a two step process, first of all you need to <strong>install</strong> the package using the <code>install.packages()</code> function (see below for usage and then you will need to <strong>load</strong> it using the <code>library()</code> function. We only need to install and load a package once per posit Cloud project but I would generally keep the commands for installing and loading packages at the top of the script I’m working on.</p>
+<p>Try copying and running the following lines in your script;</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="introduction-to-r-and-posit-cloud.html#cb19-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>) <span class="co"># Install the ggplot package</span></span>
+<span id="cb19-2"><a href="introduction-to-r-and-posit-cloud.html#cb19-2" tabindex="-1"></a><span class="fu">library</span>(ggplot2) <span class="co"># Load the ggplot package</span></span></code></pre></div>
+<p>Now we can try to make a simple plot using some functions from the <code>ggplot2</code> package and using an example data set called <code>iris</code> that is stored in the base R <code>datasets</code> package.</p>
+<p>Copy the following command into your script and run it</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="introduction-to-r-and-posit-cloud.html#cb20-1" tabindex="-1"></a><span class="co"># First load the base R datasets in your workspace</span></span>
+<span id="cb20-2"><a href="introduction-to-r-and-posit-cloud.html#cb20-2" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;datasets&quot;</span>)</span>
+<span id="cb20-3"><a href="introduction-to-r-and-posit-cloud.html#cb20-3" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="introduction-to-r-and-posit-cloud.html#cb20-4" tabindex="-1"></a><span class="co"># Then call the ggplot function and tell it that the data set you wish to use is called iris</span></span>
+<span id="cb20-5"><a href="introduction-to-r-and-posit-cloud.html#cb20-5" tabindex="-1"></a><span class="co"># We then need to tell ggplot how to map our variables</span></span>
+<span id="cb20-6"><a href="introduction-to-r-and-posit-cloud.html#cb20-6" tabindex="-1"></a><span class="co"># The aes function is an aesthetic tool that allows us to define variables for the x and y axes</span></span>
+<span id="cb20-7"><a href="introduction-to-r-and-posit-cloud.html#cb20-7" tabindex="-1"></a><span class="co"># We then use the geom_point function to instruct R to built a scatter plot</span></span>
+<span id="cb20-8"><a href="introduction-to-r-and-posit-cloud.html#cb20-8" tabindex="-1"></a><span class="co"># A second use of the aes function tells R to color points by species</span></span>
+<span id="cb20-9"><a href="introduction-to-r-and-posit-cloud.html#cb20-9" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> iris,<span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Sepal.Width)) <span class="sc">+</span> </span>
+<span id="cb20-10"><a href="introduction-to-r-and-posit-cloud.html#cb20-10" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour=</span>Species)) </span></code></pre></div>
+<p>Those sharped eyed among you may have noticed that the short script defining our plot goes over two lines and contains a <code>+</code> and an indentation on the second line. The <code>+</code> and indentation is essentially allowing you to pipe one line of code into the next. This allows you to add more detailed instructions on how you would like your graph to be built and linking together multiple functions. Don’t worry if this is a lot to take in at this stage, as we progress with <code>ggplot2</code> we will revisit this in more detail.</p>
+</div>
+<div id="what-do-i-do-if-i-get-an-error-message" class="section level2 hasAnchor" number="2.11">
+<h2><span class="header-section-number">2.11</span> What do I do if I get an error message?<a href="introduction-to-r-and-posit-cloud.html#what-do-i-do-if-i-get-an-error-message" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Error messages are almost guaranteed when working regularly with R, they are super common, don’t panic when you eventually run into one. In fact you may remember that we already encountered one earlier in this chapter, that particular error was caused by a typo. Generally the most common causes of error messages are;</p>
+<ul>
+<li>A typo (you can reduce risk of this by consistently labeling your files and objects)</li>
+<li>A mistake in syntax (missing or un-closed; <code>()</code>, <code>""</code>, or missing <code>,</code>)</li>
+<li>Missing dependencies (maybe you didnt install or load a package correctly, or maybe if your running a longer script, you are trying to call an object that you haven’t created yet)</li>
+</ul>
+<p>This is by no means an exhaustive list but when I run into errors its normally because of one of the above. The trick is don’t panic and read the error message carefully, it often tells you what is wrong. Then look over your script slowly to troubleshoot. And if you are genuinely stuck and the error doesn’t make sense, run it through Google, I can almost guarantee you wont have been the first person to have that error message.</p>
+<p>Well done everyone. I hope you have enjoyed this weeks session. Next week is our first workshop and we will start to use some of these new found skills in tandem and start to look at using them on some new data.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="directories-and-data-frames---week-4a---workshop-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/01-intro_to_R.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["7026A.pdf", "7026A.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

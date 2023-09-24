@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 8 Plot Beautification!!! | Univariate Statistics</title>
+  <meta name="description" content="This is the coursebook for Univariate and Multivairate Statistics" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 8 Plot Beautification!!! | Univariate Statistics" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is the coursebook for Univariate and Multivairate Statistics" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 8 Plot Beautification!!! | Univariate Statistics" />
+  
+  <meta name="twitter:description" content="This is the coursebook for Univariate and Multivairate Statistics" />
+  
+
+<meta name="author" content="Dr Ellen Bell" />
+
+
+<meta name="date" content="2023-09-24" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="workshop-5---issues-with-probability-and-parametric-analysis.html"/>
+<link rel="next" href="bio-7026a-univariate-statistics-summative-assignment.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Univariate and Multivariate Statistics</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome to the Statistics Coursebook</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#learning-objectives"><i class="fa fa-check"></i><b>1.1</b> Learning Objectives</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#teaching-layout"><i class="fa fa-check"></i><b>1.2</b> Teaching Layout</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#how-to-use-this-workbook"><i class="fa fa-check"></i><b>1.3</b> How to use this workbook</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#why-are-we-learning-r"><i class="fa fa-check"></i><b>1.4</b> Why are we learning R</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#intro-to-posit"><i class="fa fa-check"></i><b>1.5</b> Introduction to posit Cloud</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="index.html"><a href="index.html#task-1-create-your-own-posit-cloud-account"><i class="fa fa-check"></i><b>1.5.1</b> Task 1; Create your own posit Cloud account</a></li>
+<li class="chapter" data-level="1.5.2" data-path="index.html"><a href="index.html#creating-your-first-posit-cloud-project"><i class="fa fa-check"></i><b>1.5.2</b> Creating your first posit Cloud Project</a></li>
+<li class="chapter" data-level="1.5.3" data-path="index.html"><a href="index.html#a-warning-on-managing-your-work-flow"><i class="fa fa-check"></i><b>1.5.3</b> A warning on managing your work flow</a></li>
+<li class="chapter" data-level="1.5.4" data-path="index.html"><a href="index.html#efficiency"><i class="fa fa-check"></i><b>1.5.4</b> Maximising the efficiency of your workspace</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#before-you-leave"><i class="fa fa-check"></i><b>1.6</b> Before you leave!</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="c2.html"><a href="c2.html"><i class="fa fa-check"></i><b>2</b> Some fundamentals to effective use of R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="c2.html"><a href="c2.html#entering-commands-directly-into-the-console"><i class="fa fa-check"></i><b>2.1</b> Entering commands directly into the console</a></li>
+<li class="chapter" data-level="2.2" data-path="c2.html"><a href="c2.html#using-an-r-script"><i class="fa fa-check"></i><b>2.2</b> Using an R script</a></li>
+<li class="chapter" data-level="2.3" data-path="c2.html"><a href="c2.html#creating-objects"><i class="fa fa-check"></i><b>2.3</b> Creating objects</a></li>
+<li class="chapter" data-level="2.4" data-path="c2.html"><a href="c2.html#what-are-functions-and-packages"><i class="fa fa-check"></i><b>2.4</b> What are functions and packages?</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="c2.html"><a href="c2.html#using-functions"><i class="fa fa-check"></i><b>2.4.1</b> Using functions</a></li>
+<li class="chapter" data-level="2.4.2" data-path="c2.html"><a href="c2.html#installing-packages"><i class="fa fa-check"></i><b>2.4.2</b> Installing packages</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="c2.html"><a href="c2.html#analysis-hygiene"><i class="fa fa-check"></i><b>2.5</b> Analysis hygiene</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="c2.html"><a href="c2.html#whats-in-a-name"><i class="fa fa-check"></i><b>2.5.1</b> What’s in a name?</a></li>
+<li class="chapter" data-level="2.5.2" data-path="c2.html"><a href="c2.html#directories-and-their-structure"><i class="fa fa-check"></i><b>2.5.2</b> Directories and their structure</a></li>
+<li class="chapter" data-level="2.5.3" data-path="c2.html"><a href="c2.html#workspace-setup"><i class="fa fa-check"></i><b>2.5.3</b> Workspace set up</a></li>
+<li class="chapter" data-level="2.5.4" data-path="c2.html"><a href="c2.html#script-setup"><i class="fa fa-check"></i><b>2.5.4</b> Script set up</a></li>
+<li class="chapter" data-level="2.5.5" data-path="c2.html"><a href="c2.html#comment-on-your-work"><i class="fa fa-check"></i><b>2.5.5</b> Comment on your work</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="c2.html"><a href="c2.html#what-do-i-do-if-i-get-an-error-message"><i class="fa fa-check"></i><b>2.6</b> What do I do if I get an error message?</a></li>
+<li class="chapter" data-level="2.7" data-path="c2.html"><a href="c2.html#before-you-leave-1"><i class="fa fa-check"></i><b>2.7</b> Before you leave!</a></li>
+<li class="chapter" data-level="2.8" data-path="c2.html"><a href="c2.html#references"><i class="fa fa-check"></i><b>2.8</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="workshop-1---explorartory-data-analysis.html"><a href="workshop-1---explorartory-data-analysis.html"><i class="fa fa-check"></i><b>3</b> Workshop 1 - Explorartory Data Analysis</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="workshop-1---explorartory-data-analysis.html"><a href="workshop-1---explorartory-data-analysis.html#introduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.2" data-path="workshop-1---explorartory-data-analysis.html"><a href="workshop-1---explorartory-data-analysis.html#practical-1---exploring-distributions-in-r"><i class="fa fa-check"></i><b>3.2</b> Practical 1 - Exploring distributions in R</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="workshop-1---explorartory-data-analysis.html"><a href="workshop-1---explorartory-data-analysis.html#task-1-setting-up-our-workspace-and-script"><i class="fa fa-check"></i><b>3.2.1</b> Task 1: Setting up our workspace and script</a></li>
+<li class="chapter" data-level="3.2.2" data-path="workshop-1---explorartory-data-analysis.html"><a href="workshop-1---explorartory-data-analysis.html#task-2-importing-the-data"><i class="fa fa-check"></i><b>3.2.2</b> Task 2: Importing the data</a></li>
+<li class="chapter" data-level="3.2.3" data-path="workshop-1---explorartory-data-analysis.html"><a href="workshop-1---explorartory-data-analysis.html#checking-the-data"><i class="fa fa-check"></i><b>3.2.3</b> Task 3: Checking the data</a></li>
+<li class="chapter" data-level="3.2.4" data-path="workshop-1---explorartory-data-analysis.html"><a href="workshop-1---explorartory-data-analysis.html#histogram"><i class="fa fa-check"></i><b>3.2.4</b> Task 4: When in doubt - make a histogram</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="workshop-1---explorartory-data-analysis.html"><a href="workshop-1---explorartory-data-analysis.html#descriptive-statistics-in-r"><i class="fa fa-check"></i><b>3.3</b> Descriptive statistics in R</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="workshop-1---explorartory-data-analysis.html"><a href="workshop-1---explorartory-data-analysis.html#descriptive-statistics"><i class="fa fa-check"></i><b>3.3.1</b> Task 5: Descriptive statistics</a></li>
+<li class="chapter" data-level="3.3.2" data-path="workshop-1---explorartory-data-analysis.html"><a href="workshop-1---explorartory-data-analysis.html#task-6-finding-the-range-and-the-mode"><i class="fa fa-check"></i><b>3.3.2</b> Task 6: Finding the range and the mode</a></li>
+<li class="chapter" data-level="3.3.3" data-path="workshop-1---explorartory-data-analysis.html"><a href="workshop-1---explorartory-data-analysis.html#task-7-interpretation"><i class="fa fa-check"></i><b>3.3.3</b> Task 7: Interpretation</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="workshop-1---explorartory-data-analysis.html"><a href="workshop-1---explorartory-data-analysis.html#conclusion"><i class="fa fa-check"></i><b>3.4</b> Conclusion</a></li>
+<li class="chapter" data-level="3.5" data-path="workshop-1---explorartory-data-analysis.html"><a href="workshop-1---explorartory-data-analysis.html#before-you-leave-2"><i class="fa fa-check"></i><b>3.5</b> Before you leave!</a></li>
+<li class="chapter" data-level="3.6" data-path="workshop-1---explorartory-data-analysis.html"><a href="workshop-1---explorartory-data-analysis.html#references-1"><i class="fa fa-check"></i><b>3.6</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html"><i class="fa fa-check"></i><b>4</b> Workshop 2 - Sampling Distributions and Testing for Differences</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#introduction-1"><i class="fa fa-check"></i><b>4.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#sampling"><i class="fa fa-check"></i>Sampling</a></li>
+<li class="chapter" data-level="" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#sampling-error"><i class="fa fa-check"></i>Sampling error</a></li>
+<li class="chapter" data-level="" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#probability"><i class="fa fa-check"></i>Probability</a></li>
+<li class="chapter" data-level="" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#variance"><i class="fa fa-check"></i>Variance</a></li>
+<li class="chapter" data-level="" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#standard-deviation"><i class="fa fa-check"></i>Standard Deviation</a></li>
+<li class="chapter" data-level="" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#standard-error-of-the-mean"><i class="fa fa-check"></i>Standard Error of the Mean</a></li>
+<li class="chapter" data-level="" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#confidence-intervals"><i class="fa fa-check"></i>Confidence Intervals</a></li>
+<li class="chapter" data-level="" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#t-tests"><i class="fa fa-check"></i>T-tests</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#some-key-terms-for-todays-practical"><i class="fa fa-check"></i><b>4.2</b> Some key terms for todays practical</a></li>
+<li class="chapter" data-level="4.3" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#practical-2---sampling-and-testing-for-differences"><i class="fa fa-check"></i><b>4.3</b> Practical 2 - Sampling and Testing for Differences</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#the-data"><i class="fa fa-check"></i><b>4.3.1</b> The Data</a></li>
+<li class="chapter" data-level="4.3.2" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#task-1---setting-up-your-workspace"><i class="fa fa-check"></i><b>4.3.2</b> Task 1 - Setting up your workspace</a></li>
+<li class="chapter" data-level="4.3.3" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#task-2---checking-the-data"><i class="fa fa-check"></i><b>4.3.3</b> Task 2 - Checking the data</a></li>
+<li class="chapter" data-level="4.3.4" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#task-3---making-some-basic-plots"><i class="fa fa-check"></i><b>4.3.4</b> Task 3 - Making some basic plots</a></li>
+<li class="chapter" data-level="4.3.5" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#task-4---produce-some-descriptive-statistics"><i class="fa fa-check"></i><b>4.3.5</b> Task 4 - Produce some descriptive statistics</a></li>
+<li class="chapter" data-level="4.3.6" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#task-5---answering-question-1"><i class="fa fa-check"></i><b>4.3.6</b> Task 5 - Answering Question 1</a></li>
+<li class="chapter" data-level="4.3.7" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#levene-test"><i class="fa fa-check"></i><b>4.3.7</b> Task 6 - Answering Question 2</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#conclusion-1"><i class="fa fa-check"></i><b>4.4</b> Conclusion</a></li>
+<li class="chapter" data-level="4.5" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#before-you-leave-3"><i class="fa fa-check"></i><b>4.5</b> Before you leave!</a></li>
+<li class="chapter" data-level="4.6" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#references-2"><i class="fa fa-check"></i><b>4.6</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="differences.html"><a href="differences.html"><i class="fa fa-check"></i><b>5</b> Workshop 3 - Introduction to Design and Analysis of Experiments</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="differences.html"><a href="differences.html#introduction-2"><i class="fa fa-check"></i><b>5.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="" data-path="differences.html"><a href="differences.html#experimental-design"><i class="fa fa-check"></i>Experimental Design</a></li>
+<li class="chapter" data-level="" data-path="differences.html"><a href="differences.html#analysis-of-variance"><i class="fa fa-check"></i>Analysis of Variance</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="differences.html"><a href="differences.html#practical-3---introduction-to-analysis-of-variance"><i class="fa fa-check"></i><b>5.2</b> Practical 3 - Introduction to Analysis of Variance</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="differences.html"><a href="differences.html#aims"><i class="fa fa-check"></i><b>5.2.1</b> Aims</a></li>
+<li class="chapter" data-level="5.2.2" data-path="differences.html"><a href="differences.html#the-data-1"><i class="fa fa-check"></i><b>5.2.2</b> The Data</a></li>
+<li class="chapter" data-level="5.2.3" data-path="differences.html"><a href="differences.html#task-1---setting-up-your-workspace-1"><i class="fa fa-check"></i><b>5.2.3</b> Task 1 - Setting up your workspace</a></li>
+<li class="chapter" data-level="5.2.4" data-path="differences.html"><a href="differences.html#c5t2"><i class="fa fa-check"></i><b>5.2.4</b> Task 2 - Checking the data</a></li>
+<li class="chapter" data-level="5.2.5" data-path="differences.html"><a href="differences.html#c5t3"><i class="fa fa-check"></i><b>5.2.5</b> Task 3 - Making some basic plots</a></li>
+<li class="chapter" data-level="5.2.6" data-path="differences.html"><a href="differences.html#c5t4"><i class="fa fa-check"></i><b>5.2.6</b> Task 4 - Produce some descriptive statistics</a></li>
+<li class="chapter" data-level="5.2.7" data-path="differences.html"><a href="differences.html#task-5---experiment-1---one-way-anova"><i class="fa fa-check"></i><b>5.2.7</b> Task 5 - Experiment 1 - One-way ANOVA</a></li>
+<li class="chapter" data-level="5.2.8" data-path="differences.html"><a href="differences.html#first-boxplot"><i class="fa fa-check"></i><b>5.2.8</b> Task 6 - Experiment 2 - Two-way ANOVA</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="differences.html"><a href="differences.html#conclusion-2"><i class="fa fa-check"></i><b>5.3</b> Conclusion</a></li>
+<li class="chapter" data-level="5.4" data-path="differences.html"><a href="differences.html#before-you-leave-4"><i class="fa fa-check"></i><b>5.4</b> Before you leave!</a></li>
+<li class="chapter" data-level="5.5" data-path="differences.html"><a href="differences.html#references-3"><i class="fa fa-check"></i><b>5.5</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html"><i class="fa fa-check"></i><b>6</b> Workshop 4 - Testing for and Measuring Relationships</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#introduction-3"><i class="fa fa-check"></i><b>6.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#direction-of-associations"><i class="fa fa-check"></i>Direction of associations</a></li>
+<li class="chapter" data-level="" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#fitting-the-regression"><i class="fa fa-check"></i>Fitting the regression</a></li>
+<li class="chapter" data-level="" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#assumptions"><i class="fa fa-check"></i>Assumptions</a></li>
+<li class="chapter" data-level="" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#correlation"><i class="fa fa-check"></i>Correlation</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#practical-4---regression-correlation-introduction"><i class="fa fa-check"></i><b>6.2</b> Practical 4 - Regression &amp; Correlation Introduction</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#the-data-2"><i class="fa fa-check"></i><b>6.2.1</b> The Data</a></li>
+<li class="chapter" data-level="6.2.2" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#manual-data-entry"><i class="fa fa-check"></i><b>6.2.2</b> Task 1 - Setting up your workspace</a></li>
+<li class="chapter" data-level="6.2.3" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#c6t2"><i class="fa fa-check"></i><b>6.2.3</b> Task 2 - Making some basic plots</a></li>
+<li class="chapter" data-level="6.2.4" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#c6t3"><i class="fa fa-check"></i><b>6.2.4</b> Task 3 - Regression analysis</a></li>
+<li class="chapter" data-level="" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#task-4---correlation-analysis"><i class="fa fa-check"></i>Task 4 - correlation analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#conclusion-3"><i class="fa fa-check"></i><b>6.3</b> Conclusion</a></li>
+<li class="chapter" data-level="6.4" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#before-you-leave-5"><i class="fa fa-check"></i><b>6.4</b> Before you leave!</a></li>
+<li class="chapter" data-level="6.5" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#references-4"><i class="fa fa-check"></i><b>6.5</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html"><i class="fa fa-check"></i><b>7</b> Workshop 5 - Issues with Probability and Parametric Analysis</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#introduction-4"><i class="fa fa-check"></i><b>7.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#non-normal-data-homogeneity-of-variance"><i class="fa fa-check"></i>Non-normal data &amp; homogeneity of variance</a></li>
+<li class="chapter" data-level="" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#transformations"><i class="fa fa-check"></i>Transformations</a></li>
+<li class="chapter" data-level="" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#non-parametric-methods"><i class="fa fa-check"></i>Non-parametric methods</a></li>
+<li class="chapter" data-level="" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#non-parametric-tests-for-differences"><i class="fa fa-check"></i>Non-parametric tests for differences</a></li>
+<li class="chapter" data-level="" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#non-parametric-tests-for-association"><i class="fa fa-check"></i>Non-parametric tests for association</a></li>
+<li class="chapter" data-level="" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#pitfalls-of-non-parametric-tests"><i class="fa fa-check"></i>Pitfalls of non-parametric tests</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#practical-5---transformations-non-parametric-tests---an-introduction"><i class="fa fa-check"></i><b>7.2</b> Practical 5 - Transformations &amp; Non-parametric Tests - An Introduction</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#task-1---setting-up-your-workspace-2"><i class="fa fa-check"></i><b>7.2.1</b> Task 1 - Setting up your workspace</a></li>
+<li class="chapter" data-level="7.2.2" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#c7t2"><i class="fa fa-check"></i><b>7.2.2</b> Task 2 - Explore the data</a></li>
+<li class="chapter" data-level="7.2.3" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#task-3---data-transformations"><i class="fa fa-check"></i><b>7.2.3</b> Task 3 - Data transformations</a></li>
+<li class="chapter" data-level="7.2.4" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#task-4---non-parametric-analysis-of-the-differences"><i class="fa fa-check"></i><b>7.2.4</b> Task 4 - Non-parametric analysis of the differences</a></li>
+<li class="chapter" data-level="7.2.5" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#task-5---non-parametric-test-for-associations"><i class="fa fa-check"></i><b>7.2.5</b> Task 5 - Non-parametric test for associations</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#conclusion-4"><i class="fa fa-check"></i><b>7.3</b> Conclusion</a></li>
+<li class="chapter" data-level="7.4" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#before-you-leave-6"><i class="fa fa-check"></i><b>7.4</b> Before you leave!</a></li>
+<li class="chapter" data-level="7.5" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#references-5"><i class="fa fa-check"></i><b>7.5</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="plot-beautification.html"><a href="plot-beautification.html"><i class="fa fa-check"></i><b>8</b> Plot Beautification!!!</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="plot-beautification.html"><a href="plot-beautification.html#deconstructing-ggplot"><i class="fa fa-check"></i><b>8.1</b> Deconstructing ggplot</a></li>
+<li class="chapter" data-level="8.2" data-path="plot-beautification.html"><a href="plot-beautification.html#labels"><i class="fa fa-check"></i><b>8.2</b> Labels</a></li>
+<li class="chapter" data-level="8.3" data-path="plot-beautification.html"><a href="plot-beautification.html#colours"><i class="fa fa-check"></i><b>8.3</b> Switching up colours</a></li>
+<li class="chapter" data-level="8.4" data-path="plot-beautification.html"><a href="plot-beautification.html#spacing"><i class="fa fa-check"></i><b>8.4</b> Spacing</a></li>
+<li class="chapter" data-level="8.5" data-path="plot-beautification.html"><a href="plot-beautification.html#themes"><i class="fa fa-check"></i><b>8.5</b> Themes</a></li>
+<li class="chapter" data-level="8.6" data-path="plot-beautification.html"><a href="plot-beautification.html#beautifying-scatter-plots"><i class="fa fa-check"></i><b>8.6</b> Beautifying scatter plots</a></li>
+<li class="chapter" data-level="8.7" data-path="plot-beautification.html"><a href="plot-beautification.html#explorting-your-plot-to-pdf"><i class="fa fa-check"></i><b>8.7</b> Explorting your plot to pdf</a></li>
+<li class="chapter" data-level="8.8" data-path="plot-beautification.html"><a href="plot-beautification.html#before-you-leave-7"><i class="fa fa-check"></i><b>8.8</b> Before you leave!</a></li>
+<li class="chapter" data-level="8.9" data-path="plot-beautification.html"><a href="plot-beautification.html#references-6"><i class="fa fa-check"></i><b>8.9</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="bio-7026a-univariate-statistics-summative-assignment.html"><a href="bio-7026a-univariate-statistics-summative-assignment.html"><i class="fa fa-check"></i><b>9</b> BIO-7026A: Univariate Statistics Summative Assignment</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="bio-7026a-univariate-statistics-summative-assignment.html"><a href="bio-7026a-univariate-statistics-summative-assignment.html#the-exercise"><i class="fa fa-check"></i><b>9.1</b> The exercise</a></li>
+<li class="chapter" data-level="9.2" data-path="bio-7026a-univariate-statistics-summative-assignment.html"><a href="bio-7026a-univariate-statistics-summative-assignment.html#the-problem"><i class="fa fa-check"></i><b>9.2</b> The Problem</a></li>
+<li class="chapter" data-level="9.3" data-path="bio-7026a-univariate-statistics-summative-assignment.html"><a href="bio-7026a-univariate-statistics-summative-assignment.html#the-data-3"><i class="fa fa-check"></i><b>9.3</b> The Data</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Univariate Statistics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="plot-beautification" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">Chapter 8</span> Plot Beautification!!!<a href="plot-beautification.html#plot-beautification" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>So far, in this workbook, we have used a number of different plots to explore our data. They have served their job well and given you a good overview of what the data look like. Which is absolutely fine, while you are tinkering and exploring with your data sets. However, that wont fly when it comes to sharing your analysis outputs; be that in a summative coursework piece, a presentation (verbal or poster) or a professional publication. Thankfully, <code>ggplot()</code> has some fantastic features for making plots look absolutely stunning, and we can quickly make a draft plot look absolutely fabulous very quickly.</p>
+<p>This is a crash course in plot beautification using <code>ggplot()</code>. It is by no means an exhaustive list of all the aesthetic parameters you can edit, but it will give you a good grounding.</p>
+<div id="deconstructing-ggplot" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> Deconstructing ggplot<a href="plot-beautification.html#deconstructing-ggplot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Hopefully you have been saving the code from former workshops in a sensible place in our posit Cloud classroom. Back in Chapter <a href="differences.html#first-boxplot">5.2.8</a> we made a boxplot comparing the pecking rates between male and female chickens. Initially, we will work with this same plot.</p>
+<p>Log into posit Cloud and join the class workspace. Clean-up your enironment with the following command;</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="plot-beautification.html#cb75-1" tabindex="-1"></a><span class="co"># Clean up your environment</span></span>
+<span id="cb75-2"><a href="plot-beautification.html#cb75-2" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span></code></pre></div>
+<p>Now load your script from Practical 3, Chapter <a href="differences.html#differences">5</a>, install and load the <code>tidyverse</code> package and create a <code>chickens</code> object containing the <code>pecking_rates.csv</code>.</p>
+<p>To get an idea of how ggplot works we are going to go back over some code you have already run. Try running the following, what happens?</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="plot-beautification.html#cb76-1" tabindex="-1"></a><span class="co"># Making a box plot and saving it in an object</span></span>
+<span id="cb76-2"><a href="plot-beautification.html#cb76-2" tabindex="-1"></a><span class="co"># Call the ggplot function and direct it to your data, define your x axis and y axis and colour your plots by sex</span></span>
+<span id="cb76-3"><a href="plot-beautification.html#cb76-3" tabindex="-1"></a>pecking_rates_box <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> chickens,<span class="at">aesdata =</span> chickens, <span class="fu">aes</span>(<span class="at">x =</span> light, <span class="at">y =</span> pecking_rates, <span class="at">fill =</span> sex)) </span>
+<span id="cb76-4"><a href="plot-beautification.html#cb76-4" tabindex="-1"></a><span class="fu">print</span>(pecking_rates_box) <span class="co"># Print the object your plot is stored in to view it</span></span></code></pre></div>
+<p>So you have given ggplot your data set and specified the axes. But you haven’t told it how you would like the data to be visualised. So you should see something like this…</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-80"></span>
+<img src="figures/pecking_rates_1.png" alt="Basic ggplot output" width="90%" />
+<p class="caption">
+Figure 8.1: The most basic output from ggplot
+</p>
+</div>
+<p>Now modify the script so that it looks like this…</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="plot-beautification.html#cb77-1" tabindex="-1"></a><span class="co"># Making a box plot and saving it in an object</span></span>
+<span id="cb77-2"><a href="plot-beautification.html#cb77-2" tabindex="-1"></a><span class="co"># Call the ggplot function and direct it to your data, define your x axis and y axis and colour your plots by sex</span></span>
+<span id="cb77-3"><a href="plot-beautification.html#cb77-3" tabindex="-1"></a>pecking_rates_box <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> chickens,<span class="at">aesdata =</span> chickens, <span class="fu">aes</span>(<span class="at">x =</span> light, <span class="at">y =</span> pecking_rates, <span class="at">fill =</span> sex)) <span class="sc">+</span></span>
+<span id="cb77-4"><a href="plot-beautification.html#cb77-4" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="co"># Tell ggplot that you want it to build a box plot</span></span>
+<span id="cb77-5"><a href="plot-beautification.html#cb77-5" tabindex="-1"></a><span class="fu">print</span>(pecking_rates_box) <span class="co"># Print the object your plot is stored in to view it</span></span></code></pre></div>
+<p>Note the <code>+</code>, this is essentially another way of piping information from one function into the next. You could also have added <code>fill = sex</code> to an <code>aes()</code> function within the <code>geom_boxplot()</code> function.</p>
+<p>Your figure should look like this…</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-82"></span>
+<img src="figures/pecking_rates_2.png" alt="Basic ggplot boxplot" width="90%" />
+<p class="caption">
+Figure 8.2: A basic ggplot box plot output
+</p>
+</div>
+<p>Have a look at this figure, is there anything you would change, to make it more visually appealing or clear?</p>
+<p>Here are some things I would change:</p>
+<ul>
+<li>Labels</li>
+<li>Colour scheme</li>
+<li>Spacing</li>
+<li>Theme</li>
+</ul>
+<p>We will look into how to edit these elements now.</p>
+</div>
+<div id="labels" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> Labels<a href="plot-beautification.html#labels" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Clear accurate labeling is essential in the sciences, be it when your in the lab labeling up your samples or creating data visualisations.</p>
+<p>In our current plot both our x and y axis could do with some relabeling, just because we dont use capitals when coding doesn’t mean we don’t follow the normal rules of English grammar when presenting data. Try adjusting your code so that it looks like the following;</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="plot-beautification.html#cb78-1" tabindex="-1"></a><span class="co"># Making a box plot and saving it in an object</span></span>
+<span id="cb78-2"><a href="plot-beautification.html#cb78-2" tabindex="-1"></a><span class="co"># Call the ggplot function and direct it to your data, define your x axis and y axis and colour your plots by sex</span></span>
+<span id="cb78-3"><a href="plot-beautification.html#cb78-3" tabindex="-1"></a>pecking_rates_box <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> chickens,<span class="at">aesdata =</span> chickens, <span class="fu">aes</span>(<span class="at">x =</span> light, <span class="at">y =</span> pecking_rates, <span class="at">fill =</span> sex)) <span class="sc">+</span></span>
+<span id="cb78-4"><a href="plot-beautification.html#cb78-4" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="co"># Tell ggplot that you want it to build a box plot</span></span>
+<span id="cb78-5"><a href="plot-beautification.html#cb78-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Light Colour&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Number of Pecks (per 15 minutes) </span><span class="sc">\n</span><span class="st">&quot;</span>) <span class="co"># Adjust your x and y axis labels</span></span>
+<span id="cb78-6"><a href="plot-beautification.html#cb78-6" tabindex="-1"></a><span class="fu">print</span>(pecking_rates_box) <span class="co"># Print the object your plot is stored in to view it</span></span></code></pre></div>
+<p>Note the <code>\n</code> on your y axis label. This simply adds a new line to the label and spaces it nicely away from the y axis.</p>
+<p>This looks a bit better but our key is still not very well labeled. Adjust your <code>labs</code> function so that it reads <code>labs(x = "Light Colour", y = "Number of Pecks (per 15 minutes) \n", fill = "Sex")</code>. This will change the label for your key.</p>
+<p>Our labels still aren’t quite right, I don’t like the abbreviations on the x axis and our key could still use some work as there are no units given for the treatment temperatures. Try these changes;</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="plot-beautification.html#cb79-1" tabindex="-1"></a><span class="co"># Making a box plot and saving it in an object</span></span>
+<span id="cb79-2"><a href="plot-beautification.html#cb79-2" tabindex="-1"></a><span class="co"># Call the ggplot function and direct it to your data, define your x axis and y axis and colour your plots by sex</span></span>
+<span id="cb79-3"><a href="plot-beautification.html#cb79-3" tabindex="-1"></a>pecking_rates_box <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> chickens,<span class="at">aesdata =</span> chickens, <span class="fu">aes</span>(<span class="at">x =</span> light, <span class="at">y =</span> pecking_rates, <span class="at">fill =</span> sex)) <span class="sc">+</span></span>
+<span id="cb79-4"><a href="plot-beautification.html#cb79-4" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="co"># Tell ggplot that you want it to build a box plot</span></span>
+<span id="cb79-5"><a href="plot-beautification.html#cb79-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Light Colour&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Number of Pecks (per 15 minutes) </span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;Sex&quot;</span>) <span class="sc">+</span> <span class="co"># Adjust your x and y axis labels as well as your key heading</span></span>
+<span id="cb79-6"><a href="plot-beautification.html#cb79-6" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Red&quot;</span>,<span class="st">&quot;White&quot;</span>)) <span class="sc">+</span> <span class="co"># Rename the categories on the x axis </span></span>
+<span id="cb79-7"><a href="plot-beautification.html#cb79-7" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Female&quot;</span>, <span class="st">&quot;Male&quot;</span>)) <span class="co"># Rename your key labels</span></span>
+<span id="cb79-8"><a href="plot-beautification.html#cb79-8" tabindex="-1"></a><span class="fu">print</span>(pecking_rates_box) <span class="co"># Print the object your plot is stored in to view it</span></span></code></pre></div>
+<p>Note that the <code>scale x discrete</code> and <code>scale_fill_manual</code> functions simply rename things in the same order as you present them, make sure you label your categories accurately or this can make a big mess later on.</p>
+<p>If you try to remake your plot at this stage you will get the following error:</p>
+<pre><code>Error in `palette()`:
+! Insufficient values in manual scale. 2 needed but only 0 provided.
+Run `rlang::last_trace()` to see where the error occurred.</code></pre>
+<p>This is because <code>scale_fill_manual</code> is also expecting some instructions on how to colour your boxplot. You will need to complete Chapter <a href="plot-beautification.html#colours">8.3</a> before you can successfully remake your boxplot.</p>
+</div>
+<div id="colours" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> Switching up colours<a href="plot-beautification.html#colours" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The colours of your boxes are the default colours given by <code>ggplot()</code>. We can modify these to make our plot look a bit more pleasing. Try editing the <code>scale_fill_manual</code> function to this <code>scale_fill_manual(labels = c("Female", "Male"), values = c("cornflowerblue", "coral"))</code>. Run it and see what happens to your plot.</p>
+<p>What do you think of your new plot now? Do you think the changes to labels and colours are an improvement?</p>
+<p>R has lots of <a href="https://www.datanovia.com/en/blog/awesome-list-of-657-r-color-names/">colours</a>, take a look at the linked reference lists and have a play with changing up some of your colours.</p>
+<p>Colour can be a really useful tool to employ when making your plots visually appealing, however make sure you are mindful that some colour pallets can be difficult for some people to interpret. There are however, some really good <a href="https://www.tableau.com/en-gb/about/blog/examining-data-viz-rules-dont-use-red-green-together#:~:text=Use%20a%20colour%2Dblind%2Dfriendly%20palette%20when%20appropriate&amp;text=For%20example%2C%20blue%2Forange%20is,blue%20to%20someone%20with%20CVD">tips</a> out there for making sure your figures are accessible to everyone.</p>
+</div>
+<div id="spacing" class="section level2 hasAnchor" number="8.4">
+<h2><span class="header-section-number">8.4</span> Spacing<a href="plot-beautification.html#spacing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Lets have a look at spacing. This is a box plot so we the main spacing option you are likely to want to play with is the width of your boxes. Here we can simply add an argument to the <code>geom_boxplot()</code> function. Edit this function so that it reads <code>geom_boxplot(width = 0.9)</code>. The width argument can be anything between 0.00 or 1.00. It changes the width of the boxes and this changes the spacing between them as well. Have a play with some values and see what happens.</p>
+<p>We will come back to spacing when we look at our scatter plots later.</p>
+</div>
+<div id="themes" class="section level2 hasAnchor" number="8.5">
+<h2><span class="header-section-number">8.5</span> Themes<a href="plot-beautification.html#themes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Another aspect of aesthetics that we can look at is themes. We have a reasonably attractive graph now, but its still got a grey background and the grid lines are unnecessary. To remove the grey background and implement the classic black on white aesthetic we can simply add a function that defines a pre-made theme. Adjust your script so that it includes the function <code>theme_bw()</code>, I suggest you add this as a new line, don’t forget to pipe between your functions with a <code>+</code>. Run this chunk and print your new plot. How is that looking now?</p>
+<p>Two things still jump out at me when looking at this plot. The grid lines are completely unnecessary and detract from the overall aesthetic and the text sizes could be larger. To make these edits we can simply add additional instructions to adjust the theme further. So although most of the work has been done by applying a the <code>theme_bw</code> we still need make some adjustments.</p>
+<p>Add the following function to your growing ggplot chunk (don’t forget to pipe <code>+</code> between functions);</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="plot-beautification.html#cb81-1" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">panel.border =</span> <span class="fu">element_rect</span>(<span class="at">color=</span><span class="st">&quot;black&quot;</span>), <span class="co"># Specifies that the plot boarder is coloured black</span></span>
+<span id="cb81-2"><a href="plot-beautification.html#cb81-2" tabindex="-1"></a>        <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(), <span class="co"># Removes minor grid lines </span></span>
+<span id="cb81-3"><a href="plot-beautification.html#cb81-3" tabindex="-1"></a>        <span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>()) <span class="co"># Removes major grid lines </span></span></code></pre></div>
+<p>Now we just need to adjust the text size. We can do this within the <code>theme</code> function as well adjust your theme so that it reads like this;</p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="plot-beautification.html#cb82-1" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">panel.border =</span> <span class="fu">element_rect</span>(<span class="at">color=</span><span class="st">&quot;black&quot;</span>), <span class="co"># Specifies that the plot boarder is coloured black</span></span>
+<span id="cb82-2"><a href="plot-beautification.html#cb82-2" tabindex="-1"></a>        <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(), <span class="co"># Removes minor grid lines </span></span>
+<span id="cb82-3"><a href="plot-beautification.html#cb82-3" tabindex="-1"></a>        <span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>(), <span class="co"># Removes major grid lines </span></span>
+<span id="cb82-4"><a href="plot-beautification.html#cb82-4" tabindex="-1"></a>        <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">15</span>), <span class="co"># Changes the size of text on both axis </span></span>
+<span id="cb82-5"><a href="plot-beautification.html#cb82-5" tabindex="-1"></a>        <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">20</span>), <span class="co"># Changes size of your axis labels </span></span>
+<span id="cb82-6"><a href="plot-beautification.html#cb82-6" tabindex="-1"></a>        <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">15</span>), <span class="co"># Changes the size of text within your legend</span></span>
+<span id="cb82-7"><a href="plot-beautification.html#cb82-7" tabindex="-1"></a>        <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">20</span>)) <span class="co"># Changes the size of the legend title</span></span></code></pre></div>
+<p>Have a play with the different text sizes until you think they are optimal. You may need to press the zoom button in the viewer panel to get a clearer idea of the scaling.</p>
+<p>Hopefully you now have a nice clean, clear and aesthetically pleasing plot and have some awareness of the commands and functions used to make it.</p>
+</div>
+<div id="beautifying-scatter-plots" class="section level2 hasAnchor" number="8.6">
+<h2><span class="header-section-number">8.6</span> Beautifying scatter plots<a href="plot-beautification.html#beautifying-scatter-plots" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In Chapter <a href="workshop-4---testing-for-and-measuring-relationships.html#c6t2">6.2.3</a> and <a href="workshop-4---testing-for-and-measuring-relationships.html#c6t3">6.2.4</a> we made a very simple scatter plot for radiation exposure against cancer mortality (deaths per 100,000 person-years, 1959-1964) across nine counties in the US. Reopen your script from this workshop, recreate the accompanying data frame and rebuilt your <code>geom_point()</code> plot.</p>
+<p>Use you previous chunks of code and knowledge of R to edit the labels and themes of this plot. Print it again and take a look.</p>
+<p>Now there are some additional elements in this plot that could be adjusted. These include;</p>
+<ul>
+<li>Point shape - The shape of the individual points on the plot, as with colours there are lots of options numbered 0 - 25, descriptions of each one are listed here</li>
+<li>Point size - The size of each point</li>
+<li>Point colour - The colour of your points</li>
+<li>Line type (solid, dashed, etc) - Again thre are several options here, the notation and descriptions of which can be found here</li>
+<li>Line colour</li>
+<li>Line size - the weight of the line</li>
+<li>Line fill - Note that here this refers to the colour of the shaded area marking the standard error</li>
+</ul>
+<p>So lets play with some of these. Try adding and adjusting the following arguments within <code>geom_point()</code></p>
+<ul>
+<li><code>shape = 1</code> - have a look at other point shapes you could use and play with this setting</li>
+<li><code>size = 2</code> - again try playing with some point sizes</li>
+<li><code>colour = "blue"</code> - or any other colour you fancy trying.</li>
+</ul>
+<p>Once you are happy with your points we can take a look at your regression line. Try adding and adjusting the following arguments within <code>geom_smooth()</code></p>
+<ul>
+<li><code>colour = "cornflowerblue"</code></li>
+<li><code>fill = "lightblue"</code></li>
+<li><code>size = 1</code></li>
+<li><code>linetype = "dashed"</code></li>
+</ul>
+<p>As before please do experiment and play with the settings described by each of these arguments.</p>
+</div>
+<div id="explorting-your-plot-to-pdf" class="section level2 hasAnchor" number="8.7">
+<h2><span class="header-section-number">8.7</span> Explorting your plot to pdf<a href="plot-beautification.html#explorting-your-plot-to-pdf" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Once you are happy with your new and beautiful plots make sure you save it to to the figures folder using a function called <code>ggsave()</code>. This will allow you to export your plots as <code>.pdf</code> files which you can then download and put in your reports/publications.</p>
+<p>You will need to have your plots saved as an object (using the <code>&lt;-</code> syntax) before this will work. You can call these objects whatever makes most sense to you. Try running the code below for each of your beautified plots;</p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="plot-beautification.html#cb83-1" tabindex="-1"></a><span class="co"># Saving outputs</span></span>
+<span id="cb83-2"><a href="plot-beautification.html#cb83-2" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;figures/pecking_rates_boxplot.pdf&quot;</span>, <span class="co"># Give R a path to save to and a file name</span></span>
+<span id="cb83-3"><a href="plot-beautification.html#cb83-3" tabindex="-1"></a>       <span class="at">plot =</span> pecking_rates_box,<span class="co"># Tell R what to save - in this case your object</span></span>
+<span id="cb83-4"><a href="plot-beautification.html#cb83-4" tabindex="-1"></a>       <span class="at">width =</span> <span class="dv">15</span>, <span class="co"># Set .pdf width</span></span>
+<span id="cb83-5"><a href="plot-beautification.html#cb83-5" tabindex="-1"></a>       <span class="at">height =</span> <span class="dv">10</span>, <span class="co"># Set .pdf height</span></span>
+<span id="cb83-6"><a href="plot-beautification.html#cb83-6" tabindex="-1"></a>       <span class="at">units =</span> <span class="st">&quot;cm&quot;</span>, <span class="co"># Specify units for .pdf width and height</span></span>
+<span id="cb83-7"><a href="plot-beautification.html#cb83-7" tabindex="-1"></a>       <span class="at">device =</span> <span class="st">&quot;pdf&quot;</span>) <span class="co"># Tell R what file type to create, in this case a pdf</span></span>
+<span id="cb83-8"><a href="plot-beautification.html#cb83-8" tabindex="-1"></a><span class="co"># Note, use trial and error to select a good width and height for your figure</span></span></code></pre></div>
+<p>Note that if you remove the <code>device =</code> line <code>ggsave</code> will automatically create a <code>.png</code> file. You can also use <code>width = , height = , units = "cm"</code> arguments to specify the size of your figure in cm. You will need to adjust these by trial and error until the proportional sizing of your plot to axis and legend labels is pleasing. This chunk will save your plot to the <code>figures</code> folder. From here you can download your figures by checking the box besides the file, clicking <code>More</code> and then <code>Export...</code> and <code>Download</code>.</p>
+</div>
+<div id="before-you-leave-7" class="section level2 hasAnchor" number="8.8">
+<h2><span class="header-section-number">8.8</span> Before you leave!<a href="plot-beautification.html#before-you-leave-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Make sure you save your script and download it if you would like to keep a local copy.</p>
+<p>Please log out of posit Cloud!</p>
+</div>
+<div id="references-6" class="section level2 hasAnchor" number="8.9">
+<h2><span class="header-section-number">8.9</span> References<a href="plot-beautification.html#references-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019. “Welcome to the tidyverse.” Journal of Open Source Software 4 (43): 1686. <a href="https://doi.org/10.21105/joss.01686" class="uri">https://doi.org/10.21105/joss.01686</a>. <br />
+Wickham, Hadley, Winston Chang, Lionel Henry, Thomas Lin Pedersen, Kohske Takahashi, Claus Wilke, Kara Woo, Hiroaki Yutani, and Dewey Dunnington. 2021. Ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics. <a href="https://CRAN.R-project.org/package=ggplot2" class="uri">https://CRAN.R-project.org/package=ggplot2</a>.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="workshop-5---issues-with-probability-and-parametric-analysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="bio-7026a-univariate-statistics-summative-assignment.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/07-pretty_plots.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["7026A.pdf", "7026A.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

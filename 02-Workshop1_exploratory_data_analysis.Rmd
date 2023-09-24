@@ -1,0 +1,275 @@
+# Workshop 1 - Explorartory Data Analysis 
+
+Welcome to the first of the practical sessions in this module. These sessions will all begin with an introduction summarising the theory covered in lectures and then the introduction of a practical session and accompanying data set. Hopefully you have all already read over Chapters \@ref(c1) and \@ref(c2), if not do that now before moving on to the rest of this chapter. 
+
+## Introduction
+Statistics are necessary because of the inherent variability between biological objects. For example, people vary in height, plants within a field vary in weight, the lottery numbers are not the same from one week to the next etc. This variation is termed natural variation. A second source of variation is errors that we make in making measurements, termed measurement error e.g. inaccuracies in weighing, taking length measurements.
+
+This variation is important because we cannot be sure whether differences between different groups are due to biological differences or merely the result of chance variations.
+
+On a day-to-day basis there are three important applications for statistical analyses;
+
+1) Statistical analysis revolves around hypotheses. A hypothesis is a tentative proposition which is subject to verification through subsequent investigation. A properly stated hypothesis generates predictions that are then tested by data collection and statistical analyses.
+
+2) Often we have some data, but no idea of whether patterns exist in the data: e.g. long-term numbers of birds or crop yields. Exploring the data by looking for trends, comparing with weather data etc. will enable us to generate hypotheses to test.
+
+3) Knowledge of statistical analysis is necessary in designing experiments that are robust. In particular to avoid confounding effects, and to control for randomly or systematically varying factors, e.g. environmental clines in field experiments.
+
+The basic measurements or observations we take constitute our data. These may take a number of forms. There are many forms of data but broadly data can be broken down into four major categories. 
+These are:
+
+1) __Continuous data__ These data are quantitative/numeric but not fixed and have an infinite number of possible values. These include familiar measurements of such as; weight, height, length etc.
+
+2) __Discrete data__ These data are also quantitative/numeric but contain values that fall under integers or whole numbers and cant be broken down into decimals or fractions. For example; shoe size, number of students in a class or days in the week are all discrete data. 
+
+3) __Nominal data__ These data are qualitative/categorical and are generally used as labels but have no order associated with them. For example; hair colour, marital status and nationality are all nominal data types.
+
+4) __Ordinal data__ These are also qualitative/categorical data, but they are subtly different to nominal data in that they can be ordered along a scale. Examples of ordinal data include; letter grades in an exam (A, B, C, D etc), ranking in a competition (first, second, third, etc) or satisfaction scores on a survey (extremely satisfied, satisfied, neutral, unsatisfied or extremely unsatisfied).
+
+It is important to realise which form of data we are dealing with as this can critically affect the type of statistical analyses we can perform.
+Before we can start any statistical analysis, we can usefully say a great deal about our data through some simple statistical measures and through graphical exploration. One of the first things you should do is to draw a histogram of the frequency distribution of your data. That is you group the observations into intervals (e.g. 0-1cm, 1-2cm, 2-3cm etc.) and then count up how many observations lie in each interval. 
+There are two things to look out for:
+
+1) What is the __shape__ of the data? Often your data will follow a ‘bell’-shaped normal distribution. The term ‘normal’ is a technical term, rather than indicating what the data should look like.
+
+2) Are there any __extreme values__ in the data? Do any of the values you have measured look suspiciously high or low?
+
+Commonly, for example, you may find that the data you have are skewed. The normal distribution is symmetrical however, often this may not be the case. The distribution may be, instead, ‘L’- shaped (called positive skew) or ‘J’-shaped (negative skew). It is essential to determine if this is the case prior to any further analysis.
+
+We have to find some way to describe or summarise our data. There are two basic kinds of measure that we commonly employ. These are termed ‘measures of central tendency’ and ‘measures of spread’.
+
+Measures of central tendency effectively determine the location of the distribution of data, e.g. where the peak is in the normal distribution. There are 3 common measures of central tendency:
+
+1) __Mean__ or average of the data. This is an intuitively obvious measure; the average of a sample is simply the sum of all the observations divided by the number of samples.
+
+2) __Median__ of the distribution: this is defined as the value of the observation which lies midway in the dataset (i.e. 50% of the values are lower than this value and 50% are higher). Non- parametric statistics often use the median rather than the mean. However its worth noteing that the median is also less sensitive to extreme values.
+
+3) __Mode__ of the distribution: This metric is quoted less often and is defined as the interval class containing the largest number of individuals. 
+
+Measures of dispersion measure the amount of variation in the data around the mean value. Whilst the mean, median and mode describe where the data are located, measures of dispersion describe the spread and the shape of the data around these values. 
+
+We may compare the spread of distributions in a number of ways:
+
+1) __Range__ This is simply the maximum value minus the minimum value. The range is not a very good estimate of spread because it is strongly influenced by extreme (high or low) values.
+
+2) __Standard Deviation__ or the Variance of the data. These two measures are related (variance is the square of standard deviation). The standard deviation is more usually quoted. We will talk in detail about these in the next few weeks. For now remember that bigger standard deviations imply more spread in the data.
+
+3) __Skewness__ It is also possible to measure the degree to which distributions are skewed (i.e. ‘L’- or ‘J’-shaped). One simple way to do this is to look at the relative order of the mode, median and mean, or indeed just the order of the mean and the median. There is also a statistic (called the skewness coefficient) that measures the skewness of data relative to a normal distribution.
+
+This practical is intended to serve as an introduction to the rest of the course. The aims here are to:
+
+1) Start using some basic functions in R
+
+2) To introduce simple methods for exploring and describing data, preliminary to more detailed statistical analysis.
+
+## Practical 1 - Exploring distributions in R
+
+In terms of statistical analysis, the basic message to take home from today’s session is that all forms of data analysis, no matter how complex, should begin with a graphical visual inspection. There are a number of reasons for this, including checking whether the data you have collected are consistent (i.e. are there any extreme values and if so, are these correct), checking the spread of the data (i.e. is the frequency distribution of measured values skewed one way or the other), and checking whether, on inspection, you can see possible differences in the average values for different groups of data or treatments (i.e. that may later be tested by statistical analysis). Checks like this are therefore important for ensuring the validity of assumptions made in later analyses (e.g. concerning the spread of data), and making sure that the results of analyses relate to what you actually observe in the data.
+
+### Task 1: Setting up our workspace and script
+
+I have created teaching workspaces in posit Cloud for all of our workshops, to join the class workspace, you will need to have a free posit Cloud account already set up and then you can click [here](https://posit.cloud/spaces/419887/join?access_code=kUyBX1RavEsGaGDcQfS5BuUZDca_06DhoYsDEtdt). You will be asked if you would like to join the space, click `Yes`. In the left hand panel you will see your workspace and then below that a space called `BIO-7026A`, click on this. You will then see a project set up called `bio-7026A_classroom`. This is essentially the classroom/workspace were we will be working during each practical. This is set up on UEAs educators lisence so has no usage limits for you to worry about. 
+
+We need to make sure our workspace and script are correctly set up, for todays session we will need to make sure that the packages `tidyverse`, `janitor` and `PerformanceAnalytics` are installed and loaded and I have already made the requisite `data`, `scripts` and `figures` folders which are set up in __Files__. Have a look at Chapter \@ref(workspace-setup) and Chapter \@ref(script-setup) if you need a reminder of the significance of this or to remind your self on how to install and load packages. Take a moment to explore your folders and workspace.  
+
+I strongly recommend that you create a separate script for each workshop, this will mean that you have a premade set of notes for each session and it will help you with future analyses. 
+
+If you work through each workshop sequentially you will find that the chunks of code offered can be copied over to your script and if copied and annotated in an ordered way will make up the script you need for each analysis. Sometimes you will need to modify the chunk or rerun the chunk after its been modified, but much of the code you will need will be presented to you in each workshop (some later workshops may require you to flip back to former chapters). 
+
+### Task 2: Importing the data
+
+Today we will be working with crop data collected from dry weights of wheat plants from plots with or without weeds. The data were collected over two years by dividing a field sown with a crop of winter wheat into 140 plots. The plots were then either left to grow normally, or a mixture of three species of weeds (poppies, sterile brome and cleavers) was sown at the same time as the crop. At the end of the growing season, the wheat was harvested from an area of 0.75m x 0.75m within each plot. The table records the dry weight of wheat removed from each plot in year 1 or year 2 from the weedy or non-weedy plots.
+
+You can download our data set [here](https://drive.google.com/uc?export=download&id=1qgIqvW56dSHb0dq07ZMU43POA0jkjuuR). Or by downloading it from blackboard. 
+
+Once you have downloaded the data you will then need to upload it to your `data` folder in posit Cloud. To do this, go to the project you have just set up in posit Cloud. Under the files tab in the the bottom right panel you will see a little icon with a yellow upwards pointing arrow. If you click on this icon you will be given the option to select and upload a file from your home computer. Do this and file your data within your `data` directory. 
+
+Now we can load the data, try running the following chunk;
+
+```{r}
+weedy <- read_csv("data/weedy.csv")
+```
+> * Can you identify the function in this line of code?
+> * What does the `weedy <-` argument do?
+
+Once you have loaded the data, you should see the following in your console;
+
+```
+> weedy <- read_csv("data/weedy-data.csv")
+Rows: 280 Columns: 2                                                         
+── Column specification ───────────────────────────────────────────────────────
+Delimiter: ","
+chr (1): treatment
+dbl (1): yield
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+```
+
+### Task 3: Checking the data {#checking-the-data}
+
+Whenever we start analysis on a new data set we need to start by checking the data. This is to make sure that we are aware of any missing data, any anomalous data points (that could be errors) and that R has interpreted the kind of data we have entered correctly. At some point whatever data set you are working on will almost certainly have been entered manually into a spreadsheet. This creates space for errors to be introduced even if the orrigional data sheets are correct. Try running the following functions, use the `#` to note down what each of these functions does in your script. 
+
+```{r}
+# Some functions to play with
+nrow(weedy)
+ncol(weedy)
+colnames(weedy)
+str(weedy)
+head(weedy)
+tail(weedy)
+view(weedy)
+glimpse(weedy)
+tabyl(weedy,treatment)
+```
+
+> * Can you see how using functions like these to check the data before you start analysing is an important step? 
+
+Now that we have explored some super useful functions to check the data, lets actually have a look at the data themselves. Use the above functions to answer the following questions;
+
+> * What variables are present in this data set?
+> * What types of data are represented by these variables (are the data continuous, discrete, nominal or ordinal?
+> * What do you notice about the way the data has been laid out? Is it long or wide?
+
+### Task 4: When in doubt - make a histogram {#histogram}
+
+The shape of the frequency distribution of the data is a key element in determining how we analyse data. We need to determine (i) whether the data are distributed symmetrically; and (ii) whether there are any extreme values in the data. To do this we are going to create a frequency distribution of the data and display this as a histogram. To recap, a frequency distribution is obtained by grouping the data into intervals and counting the number or proportion of observations that fall within each interval.
+So how do we make histograms in R? When you used the `tabyl()` function above you might have noticed that there are four categories listed under treatment (your experimental treatments). For now we only want to work with one of these treatments so run the following chunk;
+
+```{r}
+weedfree1 <- weedy %>% # pipe the weedy data frame into the next function 
+  filter(treatment == "weedfree1") # filter the piped data frame and only keep treatment weedfree 1
+```
+> A note on syntax: you might have noticed the %>% syntax here. This is a piping variable. This is essentially performing the same function as the `+` that we used when using ggplot in Chapter \@ref(installing-packages). This allows you to take an object and to add more detailed instructions on the job you would like performed, this is a very simple use of a pipe but we will be building more complex examples later on.
+
+Try using some of the data checking functions that we used earlier to check your new data frame `weedfree1`. Are you happy that you have filtered out one of the four treatments from the `weedy` data frame?
+
+Now we are ready to make our first histogram. For this we will call on some functions within the `ggplot2` package. We had a quick play with ggplot in the last chapter so this wont be completely unfamiliar to you. Try running the next chunk;
+
+```{r}
+ggplot(data = weedfree1, aes(x=yield)) +
+  geom_histogram(bins = 6, fill="cornflowerblue")
+```
+
+> * Can you work out what each line of code is asking for? 
+> * What are your functions here? What do the `+` signs do? 
+> * What happens when you change the bin number (have a play with this)? 
+> * Use `#` to add notes to your script.
+
+Now we have looked at the code we can start to ask questions about the distribution;
+
+> * Do the data appear to follow a normal distribution?
+> * Are there any extreme values?
+> * What would the vegetation in these 70 plots look like, in comparison to one another?
+> * Now try using the filter and ggplot functions to make histograms for your other treatments, how do these histograms compare?
+
+## Descriptive statistics in R
+
+We discussed a range of measures of central tendency and spread in lectures. Here we will learn how to derive some of these quickly and easily in R. But first just to recap;
+
+* **Mean:** This is simply the average of the data and measures central tendency, i.e. where the data are located. 
+* **Standard Deviation:** This measures the spread of the data about the mean, and is calculated as the square root of the variance, which itself is the average of the squared deviations about the mean. 
+* **Skewness:** Although not often quoted, this statistic allows us to determine the degree to which the distribution of the data is “L” or “J” shaped.
+* **Median:** This is an alternative measure of the central tendency. It is defined as the middle value of a set of ordered data. If we have an even number of observations then it is defined as the average of the middle two datapoints. 
+* **Mode:** This is the most frequently occurring value in the dataset.
+
+### Task 5: Descriptive statistics {#descriptive-statistics}
+
+We are going to use some functions from within the `tidyverse` package to summarise our yeild data, using descriptive statistics.
+
+Try running the following chunk;
+
+```{r}
+weedy_summary <- weedy %>% 
+  group_by(treatment) %>% 
+  summarise(n=n(),
+            mean=mean(yield))
+weedy_summary
+```
+> * Add comments to each line of code to describe what each piece does.
+
+So we have a mean for our data, but we can produce many more descriptive statisitcs in one place. Try editing your script so that it reads as follows;
+
+```{r}
+weedy_summary <- weedy %>% 
+  group_by(treatment) %>% 
+  summarise(n=n(),
+            mean=mean(yield),
+            sd=sd(yield))
+weedy_summary
+```
+
+Hopefully you can see we now have a standard deviation (sd) of the yield. Now modify your code with the following self explanatory functions; `median()` and `skewness()`. 
+
+### Task 6: Finding the range and the mode
+
+Finding the range and the mode in R is slightly more complex then using a single function. 
+
+We can find the range by adding the following line to the `summarise()` function above; 
+
+```{r}
+range=max(yield)-min(yield) # subtracting the smallest yield value from the largest yield value to give the range
+```
+
+To calculate the mode we will have to create our own function (R doesnt have a base function to calculate the mode). Don't worry if you dont 'get' this right away. 
+
+If you run the following chunk of code independtly to the above `summarise()` function, you will create your own function called `mode()` in base R that calculates the mode;
+
+```{r}
+mode <- function(v) {
+  uniqv <- unique(v)
+  uniqv[which.max(tabulate(match(v, uniqv)))]
+}
+
+# This is a stage by stage translation of the above code.
+# mode <- function(v): First we define a function named mode that calculates the mode of a given vector v.
+# uniqv <- unique(v): This line creates a new vector uniqv by removing duplicate values from the input vector v using the unique() function.
+# tabulate(match(v, uniqv)): The match() function is used to find the position of elements in the input vector v that match the values in the unique vector uniqv. The tabulate() function then counts the occurrences of each position, effectively counting the frequency of each unique value in the input vector.
+# which.max(...): This function is applied to the result of the previous step (the frequency count). It identifies the index of the first occurrence of the maximum value in the frequency count, which corresponds to the mode of the input vector.
+# uniqv[...]: Finally, the uniqv vector is indexed using the position of the mode (identified by which.max(...)) to extract and return the actual mode value.
+# So the mode function first finds the unique values in the input vector, then counts the frequency of each unique value, and finally identifies and returns the mode (the most frequent value).
+# A note of caution if there are multiple modes, this function will only return the first one it finds.
+```
+
+With the above function, we can now compute the mode of our dataset. Try incorporating the following into your `summarise()` function.
+
+```{r}
+mode=mode(yield)
+```
+
+### Task 7: Interpretation
+
+We have done quite a lot of data exploration today, now we need to finish up by checking our interpretation. 
+
+Take a look at your `weedy_summary`, just focus on the first row for now, this should be `weedfree1`, and try to answer the following questions;
+
+> * What is the mean of the distribution?
+> * Is there any evidence that the data are skewed? (remember a normal distribution has a skewness coefficient of zero).
+> * How do the median and mode compare to the mean (are they greater or less than the mean)?
+
+Having completed some interpretation of the data on the weed free plots from year one, we are going to repeat the interpreatation with the data from one of the weedy plots.
+
+> * Remind yourself of what the histogram looks like for weedy1 then go back to your `weedy_summary`
+> * Are the data in weedy1 skewed and, if so, in which direction?
+> * What would the vegetation in these 70 weedy plots look like, in comparison to one another?
+> * How does the mean of these weedy1 data compare with that of the weedfree1 data?
+> * How does the standard deviation compare between weedy1 and weedfree1?
+> * What do these differences in mean and SD suggest about effects of weeds on wheat growth?
+> * Repeat the above with the data from year 2.
+> * How do the differences between the weedy and non-weedy plots compare between the two years’ experiments?
+
+## Conclusion
+
+Exploring the distribution of your data helps you to both understand the data and select the correct statistical tests. In analysing your own data, you should repeat the procedures that we have gone through here so that you know the shape of the frequency distribution for each variable, as well the mean and the standard deviation of the data. In next week’s practical the importance of checking these characteristics will become apparent.
+
+## Before you leave!
+
+You may wish to keep your script for personal reference. You should see your script saved in the appropriate folder in the `Files` panel, it will have a `.R` suffix. If you tick the box next to your `.R` file you can then click `More`, `Export` and `Download` to download your script to your local machine. You can then save this somewhere sensible and use it in your own posit Cloud space or RStudio space if you want to revisit the material. I highly recommend doing this as the posit Cloud workspaces will only remain open for this academic year. 
+
+Please remember to log out of posit Cloud! 
+
+## References
+
+Wickham, H., Averick, M., Bryan, J., Chang, W., D’Agostino McGowan, L., François, R., Grolemund, G., et al., 2019. “Welcome to the tidyverse.” Journal of Open Source Software 4 (43): 1686. https://doi.org/10.21105/joss.01686. <br />
+
+

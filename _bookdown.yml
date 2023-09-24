@@ -1,0 +1,6 @@
+delete_merged_file: true
+book_filename: "7026A"
+output_dir: "docs"
+language:
+  ui:
+    chapter_name: "Chapter "
