@@ -7,7 +7,7 @@ Report Length: 2000 words (maximum)
 There are __two__ separate parts to this assignment:
 
 * **Part 1:**  for each of the five questions below, describe (a) the test you selected (b) why that test is appropriate and (c) the procedures you followed to conduct and interpret each test.
-* **Part 2:** present the results of your analyses in the style of the Results section of a scientific paper.
+* **Part 2:** present the results of your analyses in the style of the results section of a scientific paper.
 
 ## The Problem
 
