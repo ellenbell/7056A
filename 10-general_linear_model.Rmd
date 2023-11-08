@@ -1,0 +1,313 @@
+# Workshop 6/7 - Multivariate Linear Modelling
+
+## Introduction
+
+Multivariate linear modelling techniques are used when entering more than one predictor (independent variable) into an analysis of a dependent variable (also called response variable). The process and much of the output are very similar to those of simple linear regression, in which the effect of just one predictor is assessed. The aim is to explain the variance in the dependent variable, just as in simple regression, but with multiple predictor variables. Each of the predictor variables may explain a unique part of the variance in the dependent variable, but they may also share some of the variance that they explain.  
+
+The form of a multiple regression equation is an extension of that in simple regression:
+ 
+$$
+y = m_1x_1+m_2x_2+m_3x_3...+c
+$$
+
+and the statistical analysis is also in the form of ANOVA and t-tests of each parameter.
+
+1) Multiple regression can be greatly influenced by which predictors are included, so it is important to not just throw in any old predictor; there should be a biological hypothesis attached to each predictor that is included.
+2) The default option for how predictions are entered into models is __Enter__: all predictors are entered simultaneously and the researcher can then choose to exclude non-significant variables (this is often called a step-down method). 
+3) In general with multiple regression, the fewer predictors the better, and you should have a minimum of 10-15 data points per predictor (or your model is unlikely to have sufficient power to identify relationships, should they exist)
+4) Assumptions: even distribution of residuals, no heteroscedasticity and avoid collinearity of predictors (particularly when the correlation coefficient r > 0.7).
+
+In a linear model, you have three ways of entering a predictor variable:
+
+* **Covariates:** continuous predictor variables are entered as covariates
+* **Fixed factors:** these are categorical predictor variables for which you want to compare the different categories. 
+* **Random factors:** these are categorical variables that need to be included in the model but for which you don’t want to compare the categories. Random factors are often included to account for some non-independence in your data (eg multiple datapoints from the same site or year).
+
+**You MUST NOT include both fixed and random effects in the same linear model – for that you have to use a MIXED MODEL**
+
+## Practical 6 - Multiple Linear Regression
+
+This week we will be analysing three separate data sets; Africa, chaffinch and beetle. You can find these in our new classroom LINK HERE. Try to pay special attention to the data interpretation steps and make sure you understand the logic behind each of the decisions made. 
+
+Once you have joined the classroom, spend some time setting up your workspace and script as covered in Chapter \@ref(workspace-setup) and Chapter \@ref(script-setup). You will need to install and load the packages `tidyverse` and `janitor` for this weeks sessions. 
+
+## Data set 1: Africa
+
+Here you will be analysing data from 34 sub-Saharan African nations, collected by the World Bank in 1985. The aim is to fit a model that can be used to predict per capita calorific intake rate and to examine, from a conservation perspective, how deforestation impacts on calorific intake.  
+
+The variables are:
+
+Dependent Variable:	Possible Predictor Variables:
+
+* daycal:	per capita daily calorific intake
+* femlit:	female illiteracy rate (for over 15s)
+* under15: percentage of the population under 15
+* deforest:	annual rate of forest loss
+* gnp:	per capita Gross National Daily Product (US $)
+
+Theories have been suggested that poor diet, as represented by low calorific intake, is more serious in countries with poor economies, lower levels of education, a young population, and high levels of deforestation.  In this practical, try to assess whether such relationships exist.
+
+### Task 1 - Checking the data
+
+Load the dataset `africa.csv` into your workspace under the object name `africa` and try performing some routine checks to make sure R has interpreted the variables correctly and all expected data is present and accounted for. You can use some of the functions explored in Chapter \@ref(checking-the-data) if you need some help with this. 
+
+### Task 2 - Exploring the data
+
+Start by exploring the univariate relationship between per capita daily calorific intake and gross national product. 
+
+> * Write down what question you are asking, and turn this into a word equation (i.e. y = mx + c, with symbols replaced by words).
+
+Draw the scatterplot for the relationship between per capita daily calorific intake (daycal) and gross national product (gnp), revisit Chapter \@ref(c6t2) if you're not sure how to do this. 
+
+> * Does the graph suggest that the assumptions of linear regression (i.e. that all datapoints are contributing similarly to the slope) have been met?
+
+### Task 3 - Regression analysis 
+
+Try running a linear regression for daily calorific intake and gross national product, store your model under the object name `daycal_gnp_lm_1` revisit Chapter \@ref(c6t3) if you're not sure how to do this. 
+
+> * What does the regression model output tell you about the relationship between calorific intake and GNP? 
+> * Write down what the slope, constant, r2 and p-value tell you about this relationship, and consider whether they accurately describe this relationship.
+
+As we did in Chapter \@ref(c6t3), try plotting the residuals against the predicted values.
+
+> * From this plot, have the assumptions of the linear regression been met?
+
+We can also calculate leverage values, this measures the influence of each point on the fit of the regression and can range from 0: no influence to 1: complete influence. Try running the following;
+
+```{r}
+# Checking the leverage 
+africa <- africa %>%
+  mutate(leverage = hatvalues(daycal_gnp_lm_1))
+```
+
+> * What do the leverage values are indicate?
+> * Are any countries not fitting the model well? 
+
+Try performing a log10 transformation on the gnp variable, revisit Chapter \@ref(c7t3) if you unsure how to do this. Then re-run the regression model using the logged variable, and redraw the scatterplot
+
+> * Has the model fit improved? Compare the slope, intercept, r2 and p-value to the model with the unlogged GNP.
+
+Have a look at the leverage values and the residuals for your new model. Country 11 (Gabon) still has something of a disproportionate effect on the fit of the regression line (large-ish leverage), even in the model with log (GNP). Use the following command to temporarily exclude this country from our scatter plot (note we are not deleting the data completely). This will allow you to explore the influence of Gabon.
+
+```{r}
+africa %>%
+  filter(name != "Gabon") %>%
+  ggplot(data = ., aes(x = gnp, y = daycal)) +
+  geom_point() +
+  geom_smooth(method = lm)
+
+```
+
+Now use the same temporary exclusion method to re-run your regression model with Gabon temporarily excluded.
+
+> *	How has the regression changed? What reasons may there be for omitting Gabon from the analysis? Why should you always be careful when dropping variables for this reason?
+
+Re-include Gabon into subsequent analyses. 
+
+### Task 4 - Multivariate linear regression analysis
+
+We are now going to build a multivariate regression model using the Enter method, in which we begin by including all predictor variables in our regression. We then remove from our regression the variable that has the least (statistically non-significant) effect to produce a better model. We repeat this until we are left with a regression containing the best sub-set of predictors. At each stage it is important to consider the impact of removing that predictor on the model. 
+First we will draw a matrix plot to compare all of the relationships between `daycal` and all four predictor variables (use your logged gnp variable to reduce difficulties with Gabon). Try using the following command;
+
+```{r}	
+# Scatter matrix
+pairs(africa[,c(3:7,9)])
+# Note the numbers c(3:7,9) refer to column numbers for daycal, femlit, under15, deforest and log10_gnp they may be different in your data set
+```
+
+> * Write down what these graphs tell you about each of the relationships
+> * Do you see any signs of collinearity between predictor variables?
+
+Now we can try fitting the full multiple regression by adding the other three predictors as independent variables with Enter as the data entry method. Try running the following;
+
+```{r}
+# multiple regression
+daycal_multi_lm_1 <- lm(daycal~gnp+deforest+under15+femlit, data = africa)
+summary(daycal_multi_lm_1)
+```
+	
+> * Which is the most statistically significant variable? 
+
+Remove the non-significant variable with the highest p-value from the regression model and examine the change in the $r^2$. 
+
+> * Has removing the variable altered the explanatory power of the regression (r$^2$) very much?  What has happened to the coefficients (slopes) of the remaining variables?
+
+By removing the least significant variable at each stage, you reduce the regression equation until it only contains significant variables (this is called the minimum model). At each stage, check that removing a predictor variable does not cause the r$^2$ of the model to drop too much or cause the sign of the slope coefficient or the significance of other variables in the model to change strongly.
+	
+> * Look at your final model. How does the r$^2$ compare with the r$^2$ you obtained in exercise 1, using simple regression with log(GNP) as the sole predictor?
+> * Does your final model fit in with the original hypotheses about daily calorific intake? 
+> * What are the agreements and disagreements between your model and the theory (look back at the suggestions listed at the start of the practical)? Looking at the coefficients may be useful here. 
+> * Write a word equation for your final model.
+> * Use your final model to predict the expected per capita calorific intake rate for a country with a GNP of US $975, a female illiteracy rate of 45% and a deforestation rate of -2.0. 
+
+R has a function called `predict()` which can be used to predict values of y based on your model. Try runnign the following;
+
+```{r}
+new <- data.frame(gnp =975, femlit =45, deforest= -2)
+# Create a new data frame called `new` and specify your independent variable values
+
+predict(enter_your_final_model_here, newdata=new, interval = 'confidence')
+# Call the predict function to use your final multivariate linear model to predict the daycal value in a country with the independent variable values specified in your data frame called `new`
+# By including interval = 'confidence' the output will include 95% confidence intervals.
+```
+
+> * Compare the daycal rate you predicted for a country with a GNP of US $975, a female illiteracy rate of 45% and a deforestation rate of -2.0 to that predicted by the `predict()` function in R. 
+> * Does the 95% prediction interval lie above or below the minimum acceptable daily calorific intake rate of 2000 kcal? What does this mean for this hypothetical country?
+	
+You can also specify interactions to test using the `lm()` function by using a `*` between two variables with a potential interaction, as seen here;
+
+```{r}
+daycal_multilog_lm_2 <- lm(daycal~log10_gnp+deforest*femlit, data = africa)
+summary(daycal_multilog_lm_2)
+```
+
+> * Try customising different models, in order to explore this technique.
+ 
+## Data set 2: Chaffinch
+
+Now we will move onto a second data set. Food was presented in a feeder linked to a balance for measuring mass. Individual chaffinches that had been trapped, ringed, measured and sampled for parasite prevalence were recorded visiting the feeder and the mass of food each bird consumed was recorded. The night-time temperature was also recorded and presented as an anomaly from the mean for that season.  The dataset therefore contains the following variables:
+
+* Ring:			Ring number of the bird
+* Species:		Chaffinch
+* Age:			Age class (BTO codes)
+* Sex:			Male or Female
+* Wing:			Wing length (to the nearest mm)
+* Weight: 		Mass (to the nearest 0.1 g)
+* Food:			Mass of food consumed in a visit (to the nearest 0.1 g)
+* Parasite:		Parasite load
+* Temp:	Temperature anomaly (relative to the mean night time temperature for the season (0.5 degrees), closer to 1 = colder)
+
+### Task 1 - Checking the data
+
+Load the dataset `chaffinch.csv` into your workspace under the object name `chaffinch` and try performing some routine checks to make sure R has interpreted the variables correctly and all expected data is present and accounted for. You can use some of the functions explored in Chapter \@ref(checking-the-data) if you need some help with this. 
+
+> *	If the aim of your study was to examine the factors influencing consumption rate of food by wild birds, write down which of these variables you would consider using as dependent variables and which ones as predictor variables.
+> * Write down the direction you might predict for each relationship.
+> *	Which variables are continuous and which are categorical?
+
+### Task 2 - Exporing potential relationships
+
+As we did with the last data set, draw a matrix scatter plot of all the continuous variables
+
+> *	Have a look at how each variable appears to relate to your dependent variable. Are these the same directions that you predicted?
+> * Do you see any problems with the data meeting the assumptions of regression?
+
+The relationship between parasite load and amount of food consumed is non-linear. Given the spread of the data, a logarithmic transformation of parasite load may help to linearise this relationship. Transform the parasite variable and redraw the matrix plot.
+
+### Task 3 - Multiple regression analysis
+
+You can now build a series of models to explore specific hypotheses. Each time you should do the following:
+
+1) Consider whether each variable is a covariate or a fixed factor
+2) Make sure you check that all assumptions are met
+3) Explore any collinearity between predictor variables and think about what you could do about it (see below)
+4) Construct the model that contains only the significant predictor variables
+5) Explore how the model changes each time you remove a predictor variable
+6) Explore whether different minimum models could have been constructed
+7) Draw graphs to check that you understand the model output
+8) Consider what the slope, intercept, r$^2$ and p-values are telling you
+
+### Task 4 - When good predictors go bad (multicollinearity)
+
+An underlying assumption of mulivariate linear model is that your predictors are not correlated with each other.  That is, you are assuming that each predictor brings in entirely new information to your model.  If two predictors are correlated, then they are redundant.  We call this multicollinear predictors, or multicollinearity.  For example, if you wanted to predict the wood volume of a tree, and you had three predictors, height, diameter, and number of rings, it is very likely that diameter and number of rings will be highly correlated with each other.
+
+There are three issues with multicollinearity;
+
+1) Firstly, if two predictors are strongly correlated with each other (strongly multicollinear) and both are in the regression model, both can end up being non-significant.  That is, multicollinear predictors can cancel each other out, even if both, individually, are significant in a regression.  
+2) Secondly, the ‘cancelling out’ effect means that when you are simplifying a model by removing predictors, you should remove predictors one at a time instead of doing the tempting thing and removing all non-significant predictors at once.  And you should try alternative minimal models.  
+3) Finally, the real lesson of multicollinearity is that you have redundant predictive information.  Did you expect multicollinearity?  Were you trying to measure the same predictor in different ways?  If so, then have a good think about which predictor is more appropriate for your purpose (e.g., which one is cheaper to measure, or more scientifically appropriate, or more accurately measured, or all three).  Did you not expect multicollinearity?  Maybe the fact that two predictors are correlated tells you something new about your data or your system.  
+
+How to detect multicollinearity?  The simplest way is to run a matrix plot of your predictors, and to check correlation statistics.
+
+So before you even start your regression modelling, you know that you are going to run the risk of a regression where putting two or more will lead to both being non-significant.  However, this is only a risk.  It is not certain.  In fact, sometimes, you need both predictors in the model for either one to be significant, as we saw above.  There is no way to predict which will happen, so you just have to try out different models, choosing your final model based on logic and scientific knowledge.
+
+> * Take a look at your final model, do you have collinear variables included? 
+> * Can you justify their inclusion or do you need to adjust your model further?
+
+## Data set 3: Beetles
+
+Finally we will consider our third data set. These data are from a study of what causes variation in the density of beetles among different patches of tall vegetation. Beetle densities were sampled on 20 sites, along with a range of other variables:
+
+* beetle_density:		Beetle densities in each site
+* lansdscape_type:	Surrounding landscape (1 = arable, 2 = grassland, 3 = heath, 4 = wood)
+* patch_age:		Estimated patch age in categories (from 1 = young to 3 = old)
+* patch_area:		Area (m2) of each scrub patch
+* veg_height:		Maximum grass height (cm) at each site
+* veg_density: 		Density of grass vegetation (from 1 = sparse to 5 = dense)
+* plant_species:		Mean no. of plant species per m2
+* soil_moisture:		Mean soil moisture level
+* soil)_penetrability:	Soil penetrability
+* min_temp: 	Mean minimum daily temperature
+* max_temp:	Mean maximum daily temperature
+
+You therefore have 10 predictor variables, three of which are categorical (landscape_type, patch_age and veg_density) and the rest of which are continuous
+
+### Task 1 - Checking the data
+
+Load the dataset `beetle.csv` into your workspace under the object name `beetle` and try performing some routine checks to make sure R has interpreted the variables correctly and all expected data is present and accounted for. You can use some of the functions explored in Chapter \@ref(checking-the-data) if you need some help with this.
+
+You should note that R has misidentified your categorical variables as continuous. You will need to convert these variables to factors in order to correctly build your models. Try running the following line;
+
+```{r}
+beetle$landscape_type <- as.factor(beetle$landscape_type)
+# Convert the variable landscape_type to a factor rather then a continuous variable
+```
+
+Try running the `as.factor()` function on your other categorical variables (`patch_age` and `veg_density`). 
+
+### Task 2 - Multiple regression analysis
+
+Construct a linear model with beetle_density as your dependent variable and include all other variables as your independent variables.
+
+> *	Look at your model output – what has happened here?
+
+The main problem is that you have only 20 datapoints, and your model is trying to use 10 different predictors to explain the variation among these 20 sites – that is **too many predictors**! There is no way that the model can partition the variation in beetle density among all these predictors meaningfully. Remember that you should ideally aim for 10-15 datapoints per predictor. With 20 datapoints, you can realistically construct a model with 2, or maybe 3, predictors. 
+
+Which should you choose? Your best bet at this point is to think about the data you have and what they are telling you. For example, take a look at your patch_age data, you may like to use the `group_by()` and `summarise()` functions to do this. 
+
+> * How many datapoints do you have for each of the patch_age categories?
+
+With only one example of age 1 and one example of age 3, you cannot possible understand the variation in beetle densities between these age categories – this is therefore a predictor that should be excluded, although you may wish to run the final model with and without the two sites of age 1 and 3, to see if their inclusion changes anything.
+
+Categorical variables use up more degrees of freedom than continuous variables, so they can be a particular problem with small datasets.
+
+Look at one of the other categorical variables, landscape_type. Draw a scatter matrix plot with landscape_type, beetle_density and all of the continuous variables.
+
+> * Do any of these variables differ clearly between the four landscape types?
+
+If you suspect any differences of note between any of the variables and landscape type it may be worth investigating these more closely, try checking means and standard deviations across different landscapes (you can use the `group_by()` and `summarise()` functions to do this) alternatively you may like to visualise the differences with some box plots. 
+
+> * What do you think now, do any of your continuous variables differ between the four landscape types? 
+
+Broadly, there doesn't seem to be much difference between the continuous variables measured and the four landscapes, so it is unlikely that the surrounding landscape type is an important variable to include. Rebuild a linear model with landscape_type excluded.
+
+> * How is your linear model looking now? 
+
+Let’s think about the other variables.
+
+Draw a matrix scatterplot of all of the remaining variables.
+
+> * Is there any evidence that any of the variables are strongly correlated? If so, why do you think they are correlated and do you think that including both in the model will help you to understand what influences beetle density?
+
+As dry soils are typically harder, soil moisture and soil penetrability are likely to be two different ways of measuring the same thing, so you can exclude one of them. Try rebuilding your linear model with one of these variables excluded. 
+
+We are now left with seven predictor variables (and wishing we had collected data from more sites…). Think about each of these seven variables and how likely they are to help you understand the variation in beetle density:
+
+> *	Is patch area likely to influence beetle density?
+> * Is the maximum height of the grass within a patch likely to influence beetle density?
+> * Is the density of grass in a patch likely to influence beetle density?
+> * Is soil wetness or softness likely to influence beetle density?
+> * Are both temperatures likely to influence beetle density?
+
+
+From this point onwards, you have to use your knowledge of biology and your common sense to try and pick the variables that you think will be most relevant and useful to you. For example, if the aim of your study is to develop management proposals for these sites, you might focus on variables that can be managed (i.e. vegetation and soil moisture, but not temperature). You can also explore the effect of each variable on beetle density separately, but remember that the influence of variables can change when they are included along with others in a multivariate model, so don’t use univariate exploration as the only basis for excluding variables.
+
+> * Have a go at building the best model that you can for understanding the variation in beetle densities among these 20 sites.
+> * Remember to draw graphs to make sure you check the model assumptions and understand the model output
+
+## Before you leave!
+
+Make sure you save your script and download it if you would like to keep a local copy.
+
+Please log out of posit Cloud!
+

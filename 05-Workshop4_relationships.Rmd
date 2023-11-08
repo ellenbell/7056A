@@ -58,9 +58,9 @@ In fact these two tests are equivalent! The value of F is always the square of t
 
 There are 3 main assumptions, which are __different__ from the assumptions of the tests for differences;
 
-1) the deviations of points from the line (residuals) are evenly distributed along the line.
-2) the variance of these residuals is constant across the range of values of x (homoscedasticity).
-3) the measurement error in the x-axis is zero (or at least negligible in comparison to the error in the y-axis).
+1) The deviations of points from the line (residuals) are evenly distributed along the line.
+2) The variance of these residuals is constant across the range of values of x (homoscedasticity).
+3) The measurement error in the x-axis is zero (or at least negligible in comparison to the error in the y-axis).
 
 ### Correlation {-}
 
@@ -140,7 +140,7 @@ We can modify the scatter plot you made in Task 2 to fit a regression line or li
 There are, of course, some assumptions about the data that must be checked before relying on the outputs from a regression analysis. The two key assumptions of linear regression are;
 
 1) The deviations of points from the line (residuals) must be evenly distributed along the line.
-2) Yhe variance of these residuals must be constant across the range of values of x (homoscedasticity).
+2) The variance of these residuals must be constant across the range of values of x (homoscedasticity).
 
 You can often assess these assumptions with visual inspection of the graphs, and it can also help to plot the residuals (difference between the actual value of y and the value predicted from the equation) against the predicted values (values of y predicted from the equation for each value of x). Positive residuals indicate actual values that are greater than predicted values (i.e. points that lie above the line), and negative residuals are less than the predicted values (i.e. points lying below the line). If the regression assumptions are met, then a plot of residuals against predicted values should give a random scatter of points with no systematic pattern or bias. A positive or negative trend in this plot would indicate heteroscedasticity, a wedge-shape would indicate a greater spread of data at one end of the line and a U-shape would indicate a non-linear relationship.
 

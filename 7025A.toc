@@ -1,0 +1,143 @@
+\contentsline {chapter}{\numberline {1}Welcome to the Statistics Coursebook}{7}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Learning Objectives}{7}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Teaching Layout}{7}{section.1.2}%
+\contentsline {section}{\numberline {1.3}How to use this workbook}{8}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Why are we learning R}{8}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Introduction to posit Cloud}{9}{section.1.5}%
+\contentsline {subsection}{\numberline {1.5.1}Task 1; Create your own posit Cloud account}{9}{subsection.1.5.1}%
+\contentsline {subsection}{\numberline {1.5.2}Creating your first posit Cloud Project}{9}{subsection.1.5.2}%
+\contentsline {subsection}{\numberline {1.5.3}A warning on managing your work flow}{12}{subsection.1.5.3}%
+\contentsline {subsection}{\numberline {1.5.4}Maximising the efficiency of your workspace}{12}{subsection.1.5.4}%
+\contentsline {section}{\numberline {1.6}Before you leave!}{13}{section.1.6}%
+\contentsline {chapter}{\numberline {2}Some fundamentals to effective use of R}{15}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Entering commands directly into the console}{15}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Using an R script}{16}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Creating objects}{18}{section.2.3}%
+\contentsline {section}{\numberline {2.4}What are functions and packages?}{19}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Using functions}{20}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Installing packages}{20}{subsection.2.4.2}%
+\contentsline {section}{\numberline {2.5}Analysis hygiene}{21}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}What's in a name?}{22}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.2}Directories and their structure}{22}{subsection.2.5.2}%
+\contentsline {subsection}{\numberline {2.5.3}Workspace set up}{23}{subsection.2.5.3}%
+\contentsline {subsection}{\numberline {2.5.4}Script set up}{24}{subsection.2.5.4}%
+\contentsline {subsection}{\numberline {2.5.5}Comment on your work}{25}{subsection.2.5.5}%
+\contentsline {section}{\numberline {2.6}What do I do if I get an error message?}{25}{section.2.6}%
+\contentsline {section}{\numberline {2.7}Before you leave!}{26}{section.2.7}%
+\contentsline {section}{\numberline {2.8}References}{26}{section.2.8}%
+\contentsline {chapter}{\numberline {3}Workshop 1 - Explorartory Data Analysis}{27}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Introduction}{27}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Practical 1 - Exploring distributions in R}{30}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Task 1: Setting up our workspace and script}{30}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Task 2: Importing the data}{31}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Task 3: Checking the data}{31}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.4}Task 4: When in doubt - make a histogram}{32}{subsection.3.2.4}%
+\contentsline {section}{\numberline {3.3}Descriptive statistics in R}{33}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Task 5: Descriptive statistics}{34}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Task 6: Finding the range and the mode}{34}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Task 7: Interpretation}{35}{subsection.3.3.3}%
+\contentsline {section}{\numberline {3.4}Conclusion}{36}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Before you leave!}{36}{section.3.5}%
+\contentsline {section}{\numberline {3.6}References}{36}{section.3.6}%
+\contentsline {chapter}{\numberline {4}Workshop 2 - Sampling Distributions and Testing for Differences}{37}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Introduction}{37}{section.4.1}%
+\contentsline {subsection}{Sampling}{37}{section*.2}%
+\contentsline {subsection}{Sampling error}{38}{section*.3}%
+\contentsline {subsection}{Probability}{38}{section*.4}%
+\contentsline {subsection}{Variance}{38}{section*.5}%
+\contentsline {subsection}{Standard Deviation}{38}{section*.6}%
+\contentsline {subsection}{Standard Error of the Mean}{39}{section*.7}%
+\contentsline {subsection}{Confidence Intervals}{39}{section*.8}%
+\contentsline {subsection}{T-tests}{40}{section*.9}%
+\contentsline {section}{\numberline {4.2}Some key terms for todays practical}{41}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Practical 2 - Sampling and Testing for Differences}{42}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}The Data}{42}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Task 1 - Setting up your workspace}{42}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Task 2 - Checking the data}{43}{subsection.4.3.3}%
+\contentsline {subsection}{\numberline {4.3.4}Task 3 - Making some basic plots}{43}{subsection.4.3.4}%
+\contentsline {subsection}{\numberline {4.3.5}Task 4 - Produce some descriptive statistics}{44}{subsection.4.3.5}%
+\contentsline {subsection}{\numberline {4.3.6}Task 5 - Answering Question 1}{44}{subsection.4.3.6}%
+\contentsline {subsection}{\numberline {4.3.7}Task 6 - Answering Question 2}{45}{subsection.4.3.7}%
+\contentsline {section}{\numberline {4.4}Conclusion}{47}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Before you leave!}{47}{section.4.5}%
+\contentsline {section}{\numberline {4.6}References}{47}{section.4.6}%
+\contentsline {chapter}{\numberline {5}Workshop 3 - Introduction to Design and Analysis of Experiments}{49}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Introduction}{49}{section.5.1}%
+\contentsline {subsection}{Experimental Design}{49}{section*.10}%
+\contentsline {subsection}{Analysis of Variance}{51}{section*.11}%
+\contentsline {section}{\numberline {5.2}Practical 3 - Introduction to Analysis of Variance}{54}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Aims}{54}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}The Data}{54}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.3}Task 1 - Setting up your workspace}{55}{subsection.5.2.3}%
+\contentsline {subsection}{\numberline {5.2.4}Task 2 - Checking the data}{55}{subsection.5.2.4}%
+\contentsline {subsection}{\numberline {5.2.5}Task 3 - Making some basic plots}{55}{subsection.5.2.5}%
+\contentsline {subsection}{\numberline {5.2.6}Task 4 - Produce some descriptive statistics}{56}{subsection.5.2.6}%
+\contentsline {subsection}{\numberline {5.2.7}Task 5 - Experiment 1 - One-way ANOVA}{56}{subsection.5.2.7}%
+\contentsline {subsection}{\numberline {5.2.8}Task 6 - Experiment 2 - Two-way ANOVA}{58}{subsection.5.2.8}%
+\contentsline {section}{\numberline {5.3}Conclusion}{59}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Before you leave!}{59}{section.5.4}%
+\contentsline {section}{\numberline {5.5}References}{59}{section.5.5}%
+\contentsline {chapter}{\numberline {6}Workshop 4 - Testing for and Measuring Relationships}{61}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Introduction}{61}{section.6.1}%
+\contentsline {subsection}{Direction of associations}{61}{section*.12}%
+\contentsline {subsection}{Fitting the regression}{62}{section*.13}%
+\contentsline {subsection}{Assumptions}{63}{section*.14}%
+\contentsline {subsection}{Correlation}{64}{section*.15}%
+\contentsline {section}{\numberline {6.2}Practical 4 - Regression \& Correlation Introduction}{64}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}The Data}{64}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}Task 1 - Setting up your workspace}{64}{subsection.6.2.2}%
+\contentsline {subsection}{\numberline {6.2.3}Task 2 - Making some basic plots}{65}{subsection.6.2.3}%
+\contentsline {subsection}{\numberline {6.2.4}Task 3 - Regression analysis}{66}{subsection.6.2.4}%
+\contentsline {subsection}{Task 4 - correlation analysis}{71}{section*.16}%
+\contentsline {section}{\numberline {6.3}Conclusion}{71}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Before you leave!}{71}{section.6.4}%
+\contentsline {section}{\numberline {6.5}References}{72}{section.6.5}%
+\contentsline {chapter}{\numberline {7}Workshop 5 - Issues with Probability and Parametric Analysis}{73}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Introduction}{73}{section.7.1}%
+\contentsline {subsection}{Non-normal data \& homogeneity of variance}{74}{section*.17}%
+\contentsline {subsection}{Transformations}{74}{section*.18}%
+\contentsline {subsection}{Non-parametric methods}{76}{section*.19}%
+\contentsline {subsection}{Non-parametric tests for differences}{76}{section*.20}%
+\contentsline {subsection}{Non-parametric tests for association}{77}{section*.21}%
+\contentsline {subsection}{Pitfalls of non-parametric tests}{77}{section*.22}%
+\contentsline {section}{\numberline {7.2}Practical 5 - Transformations \& Non-parametric Tests - An Introduction}{77}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}Task 1 - Setting up your workspace}{78}{subsection.7.2.1}%
+\contentsline {subsection}{\numberline {7.2.2}Task 2 - Explore the data}{79}{subsection.7.2.2}%
+\contentsline {subsection}{\numberline {7.2.3}Task 3 - Data transformations}{79}{subsection.7.2.3}%
+\contentsline {subsection}{\numberline {7.2.4}Task 4 - Non-parametric analysis of the differences}{80}{subsection.7.2.4}%
+\contentsline {subsection}{\numberline {7.2.5}Task 5 - Non-parametric test for associations}{81}{subsection.7.2.5}%
+\contentsline {section}{\numberline {7.3}Conclusion}{83}{section.7.3}%
+\contentsline {section}{\numberline {7.4}Before you leave!}{83}{section.7.4}%
+\contentsline {section}{\numberline {7.5}References}{83}{section.7.5}%
+\contentsline {chapter}{\numberline {8}Plot Beautification!!!}{85}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Deconstructing ggplot}{85}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Labels}{87}{section.8.2}%
+\contentsline {section}{\numberline {8.3}Switching up colours}{88}{section.8.3}%
+\contentsline {section}{\numberline {8.4}Spacing}{89}{section.8.4}%
+\contentsline {section}{\numberline {8.5}Themes}{89}{section.8.5}%
+\contentsline {section}{\numberline {8.6}Beautifying scatter plots}{90}{section.8.6}%
+\contentsline {section}{\numberline {8.7}Explorting your plot to pdf}{91}{section.8.7}%
+\contentsline {section}{\numberline {8.8}Before you leave!}{91}{section.8.8}%
+\contentsline {section}{\numberline {8.9}References}{92}{section.8.9}%
+\contentsline {chapter}{\numberline {9}BIO-7026A: Univariate Statistics Summative Assignment}{93}{chapter.9}%
+\contentsline {section}{\numberline {9.1}The exercise}{93}{section.9.1}%
+\contentsline {section}{\numberline {9.2}The Problem}{93}{section.9.2}%
+\contentsline {section}{\numberline {9.3}The Data}{94}{section.9.3}%
+\contentsline {chapter}{\numberline {10}Introduction to Multivariate Statistics (BIO-7025A)}{97}{chapter.10}%
+\contentsline {chapter}{\numberline {11}Workshop 6/7 - Multivariate Linear Modelling}{99}{chapter.11}%
+\contentsline {section}{\numberline {11.1}Introduction}{99}{section.11.1}%
+\contentsline {section}{\numberline {11.2}Practical 6 - Multiple Linear Regression}{100}{section.11.2}%
+\contentsline {section}{\numberline {11.3}Data set 1: Africa}{100}{section.11.3}%
+\contentsline {subsection}{\numberline {11.3.1}Task 1 - Checking the data}{101}{subsection.11.3.1}%
+\contentsline {subsection}{\numberline {11.3.2}Task 2 - Exploring the data}{101}{subsection.11.3.2}%
+\contentsline {subsection}{\numberline {11.3.3}Task 3 - Regression analysis}{101}{subsection.11.3.3}%
+\contentsline {subsection}{\numberline {11.3.4}Task 4 - Multivariate linear regression analysis}{102}{subsection.11.3.4}%
+\contentsline {section}{\numberline {11.4}Data set 2: Chaffinch}{104}{section.11.4}%
+\contentsline {subsection}{\numberline {11.4.1}Task 1 - Checking the data}{105}{subsection.11.4.1}%
+\contentsline {subsection}{\numberline {11.4.2}Task 2 - Exporing potential relationships}{105}{subsection.11.4.2}%
+\contentsline {subsection}{\numberline {11.4.3}Task 3 - Multiple regression analysis}{105}{subsection.11.4.3}%
+\contentsline {subsection}{\numberline {11.4.4}Task 4 - When good predictors go bad (multicollinearity)}{106}{subsection.11.4.4}%
+\contentsline {section}{\numberline {11.5}Data set 3: Beetles}{107}{section.11.5}%
+\contentsline {subsection}{\numberline {11.5.1}Task 1 - Checking the data}{107}{subsection.11.5.1}%
+\contentsline {subsection}{\numberline {11.5.2}Task 2 - Multiple regression analysis}{108}{subsection.11.5.2}%
+\contentsline {section}{\numberline {11.6}Before you leave!}{109}{section.11.6}%

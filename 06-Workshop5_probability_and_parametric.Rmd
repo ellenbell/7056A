@@ -33,7 +33,7 @@ knitr::include_graphics("figures/log_scatter.png")
 
 A number of useful transformations exist;
 
-1) __Logarithmic:__ remember that the logarithm of a number x is the number to which 10 (or e) has to be raised in order to give x: e.g. log10(100) = 2 since 100 = 102; log10(1000) = 3 since 1000 = 103, and so on.
+1) __Logarithmic:__ remember that the logarithm of a number x is the number to which 10 (or e) has to be raised in order to give x: e.g. log10(100) = 2 since, 100 = 10$^2$; log10(1000) = 3 since, 1000 = 10$^3$, and so on.
 2) __Logarithmic +1:__ if we have some measurements of zero, or close to zero, then this may be a more effective transform that simply taking the logarithm. This is calculated as log(x+1).
 3) __Square Root:__ This operates in a similar fashion to the logarithmic transform and is especially used in regression analysis when the log-transform often goes a bit too far.
 4) __Arcsine-square root:__ This is used on proportional or percentage data, especially when the mean of the data is close to 0 or 1 (0 or 100%). This is calculated as: sin^-1^($\sqrt{x}$). This helps to overcome the problem that such data are bounded, i.e. not continuous.
@@ -131,11 +131,11 @@ Now try comparing the two sites with a levenes and a two sample t-test (check Ch
 > * What does the Levene’s test tell you about the variances of the two groups?
 > * What are the assumptions of a t-test, and do you think that these data conform to them?
 
-### Task 3 - Data transformations
+### Task 3 - Data transformations {#c7t3}
 
 Basically there are two problems with these data;
 
-1) The data (particularly those from site 2 are highly skewed 
+1) The data (particularly those from site 2) are highly skewed 
 2) The variances for the two groups are very different, which could mean that a parametric test may fail to detect a difference, if it exists (although if the difference between the two groups is very large, a parametric test may detect the difference despite the assumptions not being met). 
 
 We can attempt to meet these assumptions by transforming the data. Since the data are spread over several orders of magnitude (e.g. in site 1 we have values ranging from 0.012 to 0.142: the former measurement is ten times the size of the latter), a logarithmic transformation is likely to be appropriate.

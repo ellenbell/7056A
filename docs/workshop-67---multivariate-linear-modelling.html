@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 9 BIO-7026A: Univariate Statistics Summative Assignment | Statistics for Biologists</title>
+  <title>Chapter 11 Workshop 6/7 - Multivariate Linear Modelling | Statistics for Biologists</title>
   <meta name="description" content="This is the coursebook for Univariate and Multivairate Statistics" />
   <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 9 BIO-7026A: Univariate Statistics Summative Assignment | Statistics for Biologists" />
+  <meta property="og:title" content="Chapter 11 Workshop 6/7 - Multivariate Linear Modelling | Statistics for Biologists" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is the coursebook for Univariate and Multivairate Statistics" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 9 BIO-7026A: Univariate Statistics Summative Assignment | Statistics for Biologists" />
+  <meta name="twitter:title" content="Chapter 11 Workshop 6/7 - Multivariate Linear Modelling | Statistics for Biologists" />
   
   <meta name="twitter:description" content="This is the coursebook for Univariate and Multivairate Statistics" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="plot-beautification.html"/>
-<link rel="next" href="introduction-to-multivariate-statistics-bio-7025a.html"/>
+<link rel="prev" href="introduction-to-multivariate-statistics-bio-7025a.html"/>
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -351,485 +351,335 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="bio-7026a-univariate-statistics-summative-assignment" class="section level1 hasAnchor" number="9">
-<h1><span class="header-section-number">Chapter 9</span> BIO-7026A: Univariate Statistics Summative Assignment<a href="bio-7026a-univariate-statistics-summative-assignment.html#bio-7026a-univariate-statistics-summative-assignment" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Report Length: 2000 words (maximum)</p>
-<div id="the-exercise" class="section level2 hasAnchor" number="9.1">
-<h2><span class="header-section-number">9.1</span> The exercise<a href="bio-7026a-univariate-statistics-summative-assignment.html#the-exercise" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>There are <strong>two</strong> separate parts to this assignment:</p>
-<ul>
-<li><strong>Part 1:</strong> for each of the five questions below, describe (a) the test you selected (b) why that test is appropriate and (c) the procedures you followed to conduct and interpret each test.</li>
-<li><strong>Part 2:</strong> present the results of your analyses in the style of the results section of a scientific paper.</li>
-</ul>
-</div>
-<div id="the-problem" class="section level2 hasAnchor" number="9.2">
-<h2><span class="header-section-number">9.2</span> The Problem<a href="bio-7026a-univariate-statistics-summative-assignment.html#the-problem" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The kooki bird is a very rare (fictional) species, which now exists only on a few islands. The birds are largely frugivorous, and natural fruit yield on the islands can vary with weather conditions. Since 1980, a captive breeding programme has been in place and chick productivity has been measured for both captive birds and birds breeding in the wild. Weather data have also been measured at a local meteorological station. The investigators are interested in assessing how maximum daytime temperatures during September and October and rainfall during January and February might affect wild chick productivity. The length of the breeding season was also recorded as the (standardised) number of days during which the temperature reached 15°C. The data table below gives the mean chick productivity for wild and captive birds, and the weather and breeding season length in each year.</p>
-<p>In addition to this, on the largest island, a long-term experiment was set up to examine the effects of different levels of supplemental feeding with bananas and mangos. There are two levels of banana and mango supplementation (none vs the standard supplement of 100 g bird<span class="math inline">\(^-\)</span><span class="math inline">\(^1\)</span>). The experiment is a fully factorial design, with each of the four treatment combinations occurring in each year, and the arrangement of the experimental feeders on the island is fully randomized. As the birds are highly sedentary, they only experience the food supplementation at the feeder nearest them. The data table below gives the mean chick productivity for the pairs experiencing each treatment within each year.</p>
-<p>Using whatever statistical analyses you feel appropriate, answer the following questions;</p>
+<div id="workshop-67---multivariate-linear-modelling" class="section level1 hasAnchor" number="11">
+<h1><span class="header-section-number">Chapter 11</span> Workshop 6/7 - Multivariate Linear Modelling<a href="workshop-67---multivariate-linear-modelling.html#workshop-67---multivariate-linear-modelling" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="introduction-5" class="section level2 hasAnchor" number="11.1">
+<h2><span class="header-section-number">11.1</span> Introduction<a href="workshop-67---multivariate-linear-modelling.html#introduction-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Multivariate linear modelling techniques are used when entering more than one predictor (independent variable) into an analysis of a dependent variable (also called response variable). The process and much of the output are very similar to those of simple linear regression, in which the effect of just one predictor is assessed. The aim is to explain the variance in the dependent variable, just as in simple regression, but with multiple predictor variables. Each of the predictor variables may explain a unique part of the variance in the dependent variable, but they may also share some of the variance that they explain.</p>
+<p>The form of a multiple regression equation is an extension of that in simple regression:</p>
+<p><span class="math display">\[
+y = m_1x_1+m_2x_2+m_3x_3...+c
+\]</span></p>
+<p>and the statistical analysis is also in the form of ANOVA and t-tests of each parameter.</p>
 <ol style="list-style-type: decimal">
-<li>How does chick productivity of wild birds compare to that of the captive birds?</li>
-<li>Is there any evidence for changes in productivity over the study period among the wild birds?<br />
-</li>
-<li>Is there evidence of the weather variables influencing chick productivity among the wild birds?</li>
-<li>Does chick productivity of wild birds vary with the length of the breeding season?</li>
-<li>What are the effects of the food supplementation treatments on kooki bird productivity?</li>
+<li>Multiple regression can be greatly influenced by which predictors are included, so it is important to not just throw in any old predictor; there should be a biological hypothesis attached to each predictor that is included.</li>
+<li>The default option for how predictions are entered into models is <strong>Enter</strong>: all predictors are entered simultaneously and the researcher can then choose to exclude non-significant variables (this is often called a step-down method).</li>
+<li>In general with multiple regression, the fewer predictors the better, and you should have a minimum of 10-15 data points per predictor (or your model is unlikely to have sufficient power to identify relationships, should they exist)</li>
+<li>Assumptions: even distribution of residuals, no heteroscedasticity and avoid collinearity of predictors (particularly when the correlation coefficient r &gt; 0.7).</li>
 </ol>
-<p><strong>Hints &amp; Tips</strong></p>
+<p>In a linear model, you have three ways of entering a predictor variable:</p>
 <ul>
-<li>The data presented below will, in places, need reformatting before you will be able to conduct your analysis.</li>
-<li>For good examples of how results of analyses should be presented and described, consult Results sections of publications in a scientific journal, such as Journal of Animal Ecology or Journal of Applied Ecology. Part 2 of the assignment should be presented in this style.</li>
-<li>Don’t be tempted to use multivariate techniques to analyse the effects of weather on productivity – use only the analytical approaches covered in this module.</li>
+<li><strong>Covariates:</strong> continuous predictor variables are entered as covariates</li>
+<li><strong>Fixed factors:</strong> these are categorical predictor variables for which you want to compare the different categories.</li>
+<li><strong>Random factors:</strong> these are categorical variables that need to be included in the model but for which you don’t want to compare the categories. Random factors are often included to account for some non-independence in your data (eg multiple datapoints from the same site or year).</li>
 </ul>
-<p>Put your responses to <strong>Part 1</strong> and <strong>Part 2</strong> in a word document. You will be able to submit your work through the BIO-7026A page on Blackboard.</p>
+<p><strong>You MUST NOT include both fixed and random effects in the same linear model – for that you have to use a MIXED MODEL</strong></p>
 </div>
-<div id="the-data-3" class="section level2 hasAnchor" number="9.3">
-<h2><span class="header-section-number">9.3</span> The Data<a href="bio-7026a-univariate-statistics-summative-assignment.html#the-data-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<table>
-<colgroup>
-<col width="8%" />
-<col width="8%" />
-<col width="8%" />
-<col width="8%" />
-<col width="8%" />
-<col width="8%" />
-<col width="8%" />
-<col width="8%" />
-<col width="8%" />
-<col width="8%" />
-<col width="8%" />
-<col width="8%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="center">Wild birds <span class="math inline">\(^1\)</span></th>
-<th align="center">Captive-bred birds <span class="math inline">\(^1\)</span></th>
-<th align="center">BO MO <span class="math inline">\(^2\)</span></th>
-<th align="center">B1 MO <span class="math inline">\(^2\)</span></th>
-<th align="center">B0 M1 <span class="math inline">\(^2\)</span></th>
-<th align="center">B1 M1 <span class="math inline">\(^2\)</span></th>
-<th align="center">Jan Rain (cm) <span class="math inline">\(^3\)</span></th>
-<th align="center">Feb Rain (cm) <span class="math inline">\(^3\)</span></th>
-<th align="center">Sept Temp (°C) <span class="math inline">\(^4\)</span></th>
-<th align="center">Oct Temp (°C) <span class="math inline">\(^4\)</span></th>
-<th align="center">Breeding Period (Standardised) <span class="math inline">\(^5\)</span></th>
-<th align="center"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">0.54</td>
-<td align="center">0.04</td>
-<td align="center">0.54</td>
-<td align="center">0.73</td>
-<td align="center">0.56</td>
-<td align="center">0.73</td>
-<td align="center">2.30</td>
-<td align="center">2.30</td>
-<td align="center">15.05</td>
-<td align="center">18</td>
-<td align="center">-0.52</td>
-<td align="center"></td>
-</tr>
-<tr class="even">
-<td align="center">0.55</td>
-<td align="center">0.02</td>
-<td align="center">0.53</td>
-<td align="center">0.64</td>
-<td align="center">0.54</td>
-<td align="center">0.68</td>
-<td align="center">2.40</td>
-<td align="center">2.10</td>
-<td align="center">16.1</td>
-<td align="center">17.55</td>
-<td align="center">0.13</td>
-<td align="center"></td>
-</tr>
-<tr class="odd">
-<td align="center">0.58</td>
-<td align="center">0.04</td>
-<td align="center">0.61</td>
-<td align="center">0.71</td>
-<td align="center">0.61</td>
-<td align="center">0.72</td>
-<td align="center">1.90</td>
-<td align="center">1.10</td>
-<td align="center">17.4</td>
-<td align="center">17.5</td>
-<td align="center">0.39</td>
-<td align="center"></td>
-</tr>
-<tr class="even">
-<td align="center">0.50</td>
-<td align="center">0.02</td>
-<td align="center">0.49</td>
-<td align="center">0.64</td>
-<td align="center">0.51</td>
-<td align="center">0.71</td>
-<td align="center">2.20</td>
-<td align="center">3.50</td>
-<td align="center">16.55</td>
-<td align="center">18.35</td>
-<td align="center">-0.02</td>
-<td align="center"></td>
-</tr>
-<tr class="odd">
-<td align="center">0.49</td>
-<td align="center">0.02</td>
-<td align="center">0.45</td>
-<td align="center">0.52</td>
-<td align="center">0.48</td>
-<td align="center">0.60</td>
-<td align="center">2.20</td>
-<td align="center">1.90</td>
-<td align="center">13.05</td>
-<td align="center">17.5</td>
-<td align="center">-0.17</td>
-<td align="center"></td>
-</tr>
-<tr class="even">
-<td align="center">0.41</td>
-<td align="center">0.06</td>
-<td align="center">0.32</td>
-<td align="center">0.34</td>
-<td align="center">0.33</td>
-<td align="center">0.38</td>
-<td align="center">1.50</td>
-<td align="center">1.40</td>
-<td align="center">13.1</td>
-<td align="center">14.85</td>
-<td align="center">-1.72</td>
-<td align="center"></td>
-</tr>
-<tr class="odd">
-<td align="center">0.32</td>
-<td align="center">0.03</td>
-<td align="center">0.45</td>
-<td align="center">0.46</td>
-<td align="center">0.48</td>
-<td align="center">0.63</td>
-<td align="center">1.10</td>
-<td align="center">1.70</td>
-<td align="center">14.65</td>
-<td align="center">17.4</td>
-<td align="center">-0.37</td>
-<td align="center"></td>
-</tr>
-<tr class="even">
-<td align="center">0.33</td>
-<td align="center">0.50</td>
-<td align="center">0.44</td>
-<td align="center">0.52</td>
-<td align="center">0.51</td>
-<td align="center">0.57</td>
-<td align="center">1.10</td>
-<td align="center">0.80</td>
-<td align="center">16.85</td>
-<td align="center">18.05</td>
-<td align="center">0.08</td>
-<td align="center"></td>
-</tr>
-<tr class="odd">
-<td align="center">0.54</td>
-<td align="center">0.33</td>
-<td align="center">0.54</td>
-<td align="center">0.62</td>
-<td align="center">0.57</td>
-<td align="center">0.63</td>
-<td align="center">1.50</td>
-<td align="center">0.80</td>
-<td align="center">16.45</td>
-<td align="center">17</td>
-<td align="center">0.29</td>
-<td align="center"></td>
-</tr>
-<tr class="even">
-<td align="center">0.35</td>
-<td align="center">0.62</td>
-<td align="center">0.36</td>
-<td align="center">0.46</td>
-<td align="center">0.40</td>
-<td align="center">0.52</td>
-<td align="center">1.10</td>
-<td align="center">2.50</td>
-<td align="center">15.65</td>
-<td align="center">18.15</td>
-<td align="center">0.42</td>
-<td align="center"></td>
-</tr>
-<tr class="odd">
-<td align="center">0.26</td>
-<td align="center">0.10</td>
-<td align="center">0.29</td>
-<td align="center">0.35</td>
-<td align="center">0.33</td>
-<td align="center">0.42</td>
-<td align="center">0.60</td>
-<td align="center">0.40</td>
-<td align="center">14.45</td>
-<td align="center">18.1</td>
-<td align="center">-1.57</td>
-<td align="center"></td>
-</tr>
-<tr class="even">
-<td align="center">0.38</td>
-<td align="center">0.01</td>
-<td align="center">0.35</td>
-<td align="center">0.38</td>
-<td align="center">0.45</td>
-<td align="center">0.46</td>
-<td align="center">0.90</td>
-<td align="center">0.70</td>
-<td align="center">14.6</td>
-<td align="center">17.95</td>
-<td align="center">-0.02</td>
-<td align="center"></td>
-</tr>
-<tr class="odd">
-<td align="center">0.22</td>
-<td align="center">0.02</td>
-<td align="center">0.41</td>
-<td align="center">0.50</td>
-<td align="center">0.47</td>
-<td align="center">0.60</td>
-<td align="center">0.20</td>
-<td align="center">4.20</td>
-<td align="center">16.75</td>
-<td align="center">17.1</td>
-<td align="center">-0.77</td>
-<td align="center"></td>
-</tr>
-<tr class="even">
-<td align="center">0.46</td>
-<td align="center">0.08</td>
-<td align="center">0.31</td>
-<td align="center">0.58</td>
-<td align="center">0.34</td>
-<td align="center">0.60</td>
-<td align="center">1.80</td>
-<td align="center">1.80</td>
-<td align="center">16.65</td>
-<td align="center">16.3</td>
-<td align="center">0.34</td>
-<td align="center"></td>
-</tr>
-<tr class="odd">
-<td align="center">0.43</td>
-<td align="center">0.13</td>
-<td align="center">0.43</td>
-<td align="center">0.56</td>
-<td align="center">0.46</td>
-<td align="center">0.63</td>
-<td align="center">0.50</td>
-<td align="center">2.00</td>
-<td align="center">14.65</td>
-<td align="center">17.9</td>
-<td align="center">-0.97</td>
-<td align="center"></td>
-</tr>
-<tr class="even">
-<td align="center">0.57</td>
-<td align="center">0.81</td>
-<td align="center">0.41</td>
-<td align="center">0.52</td>
-<td align="center">0.42</td>
-<td align="center">0.68</td>
-<td align="center">2.10</td>
-<td align="center">1.10</td>
-<td align="center">14.9</td>
-<td align="center">18.45</td>
-<td align="center">0.03</td>
-<td align="center"></td>
-</tr>
-<tr class="odd">
-<td align="center">0.40</td>
-<td align="center">0.06</td>
-<td align="center">0.50</td>
-<td align="center">0.64</td>
-<td align="center">0.52</td>
-<td align="center">0.62</td>
-<td align="center">1.50</td>
-<td align="center">1.00</td>
-<td align="center">18</td>
-<td align="center">17.45</td>
-<td align="center">-0.12</td>
-<td align="center"></td>
-</tr>
-<tr class="even">
-<td align="center">0.53</td>
-<td align="center">0.09</td>
-<td align="center">0.51</td>
-<td align="center">0.60</td>
-<td align="center">0.59</td>
-<td align="center">0.80</td>
-<td align="center">0.80</td>
-<td align="center">1.60</td>
-<td align="center">16.1</td>
-<td align="center">18.35</td>
-<td align="center">-1.17</td>
-<td align="center"></td>
-</tr>
-<tr class="odd">
-<td align="center">0.36</td>
-<td align="center">0.09</td>
-<td align="center">0.36</td>
-<td align="center">0.37</td>
-<td align="center">0.58</td>
-<td align="center">0.46</td>
-<td align="center">1.10</td>
-<td align="center">0.30</td>
-<td align="center">16.4</td>
-<td align="center">17.1</td>
-<td align="center">-1.72</td>
-<td align="center"></td>
-</tr>
-<tr class="even">
-<td align="center">0.38</td>
-<td align="center">0.03</td>
-<td align="center">0.35</td>
-<td align="center">0.48</td>
-<td align="center">0.42</td>
-<td align="center">0.46</td>
-<td align="center">0.50</td>
-<td align="center">1.40</td>
-<td align="center">14.5</td>
-<td align="center">17.35</td>
-<td align="center">-1.67</td>
-<td align="center"></td>
-</tr>
-<tr class="odd">
-<td align="center">0.45</td>
-<td align="center">0.16</td>
-<td align="center">0.59</td>
-<td align="center">0.55</td>
-<td align="center">0.59</td>
-<td align="center">0.67</td>
-<td align="center">1.30</td>
-<td align="center">1.60</td>
-<td align="center">14.6</td>
-<td align="center">18.65</td>
-<td align="center">0.49</td>
-<td align="center"></td>
-</tr>
-<tr class="even">
-<td align="center">0.51</td>
-<td align="center">0.01</td>
-<td align="center">0.54</td>
-<td align="center">0.68</td>
-<td align="center">0.59</td>
-<td align="center">0.71</td>
-<td align="center">2.10</td>
-<td align="center">2.80</td>
-<td align="center">15</td>
-<td align="center">16.2</td>
-<td align="center">0.89</td>
-<td align="center"></td>
-</tr>
-<tr class="odd">
-<td align="center">0.65</td>
-<td align="center">0.05</td>
-<td align="center">0.45</td>
-<td align="center">0.77</td>
-<td align="center">0.41</td>
-<td align="center">0.67</td>
-<td align="center">2.30</td>
-<td align="center">3.50</td>
-<td align="center">13.5</td>
-<td align="center">20.3</td>
-<td align="center">0.54</td>
-<td align="center"></td>
-</tr>
-<tr class="even">
-<td align="center">0.63</td>
-<td align="center">0.03</td>
-<td align="center">0.55</td>
-<td align="center">0.84</td>
-<td align="center">0.58</td>
-<td align="center">0.97</td>
-<td align="center">2.70</td>
-<td align="center">1.60</td>
-<td align="center">16</td>
-<td align="center">18.2</td>
-<td align="center">1.44</td>
-<td align="center"></td>
-</tr>
-<tr class="odd">
-<td align="center">0.58</td>
-<td align="center">0.01</td>
-<td align="center">0.59</td>
-<td align="center">0.57</td>
-<td align="center">0.71</td>
-<td align="center">0.77</td>
-<td align="center">1.20</td>
-<td align="center">1.20</td>
-<td align="center">17.8</td>
-<td align="center">16.4</td>
-<td align="center">1.74</td>
-<td align="center"></td>
-</tr>
-<tr class="even">
-<td align="center">0.52</td>
-<td align="center">0.02</td>
-<td align="center">0.56</td>
-<td align="center">0.61</td>
-<td align="center">0.53</td>
-<td align="center">0.57</td>
-<td align="center">0.70</td>
-<td align="center">0.90</td>
-<td align="center">18.45</td>
-<td align="center">18.3</td>
-<td align="center">1.79</td>
-<td align="center"></td>
-</tr>
-<tr class="odd">
-<td align="center">0.44</td>
-<td align="center">0.02</td>
-<td align="center">0.45</td>
-<td align="center">0.51</td>
-<td align="center">0.56</td>
-<td align="center">0.56</td>
-<td align="center">0.90</td>
-<td align="center">1.00</td>
-<td align="center">17.95</td>
-<td align="center">17.85</td>
-<td align="center">1.04</td>
-<td align="center"></td>
-</tr>
-<tr class="even">
-<td align="center">0.53</td>
-<td align="center">0.05</td>
-<td align="center">0.55</td>
-<td align="center">0.66</td>
-<td align="center">0.63</td>
-<td align="center">0.79</td>
-<td align="center">1.60</td>
-<td align="center">1.80</td>
-<td align="center">17.4</td>
-<td align="center">18.7</td>
-<td align="center">0.69</td>
-<td align="center"></td>
-</tr>
-<tr class="odd">
-<td align="center">0.69</td>
-<td align="center">0.07</td>
-<td align="center">0.50</td>
-<td align="center">0.82</td>
-<td align="center">0.51</td>
-<td align="center">0.77</td>
-<td align="center">2.70</td>
-<td align="center">1.80</td>
-<td align="center">16.6</td>
-<td align="center">19.9</td>
-<td align="center">1.34</td>
-<td align="center"></td>
-</tr>
-</tbody>
-</table>
-<p><span class="math inline">\(^1\)</span> Mean no. of chicks per pair of wild and captive birds each year (1980 onwards) <br />
-<span class="math inline">\(^2\)</span> Chick no’s per pair in each of the four food treatments (banana supplement (B1), mango supplement (M1) and no supplement (B0 and M0)) in each year <br />
-<span class="math inline">\(^3\)</span> Total rainfall in January and February of each year <br />
-<span class="math inline">\(^4\)</span> Mean temperature in September and October of each year <br />
-<span class="math inline">\(^5\)</span> Standardised length of the breeding season (difference from long-term average) <br /></p>
+<div id="practical-6---multiple-linear-regression" class="section level2 hasAnchor" number="11.2">
+<h2><span class="header-section-number">11.2</span> Practical 6 - Multiple Linear Regression<a href="workshop-67---multivariate-linear-modelling.html#practical-6---multiple-linear-regression" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This week we will be analysing three separate data sets; Africa, chaffinch and beetle. You can find these in our new classroom LINK HERE. Try to pay special attention to the data interpretation steps and make sure you understand the logic behind each of the decisions made.</p>
+<p>Once you have joined the classroom, spend some time setting up your workspace and script as covered in Chapter <a href="c2.html#workspace-setup">2.5.3</a> and Chapter <a href="c2.html#script-setup">2.5.4</a>. You will need to install and load the packages <code>tidyverse</code> and <code>janitor</code> for this weeks sessions.</p>
+</div>
+<div id="data-set-1-africa" class="section level2 hasAnchor" number="11.3">
+<h2><span class="header-section-number">11.3</span> Data set 1: Africa<a href="workshop-67---multivariate-linear-modelling.html#data-set-1-africa" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Here you will be analysing data from 34 sub-Saharan African nations, collected by the World Bank in 1985. The aim is to fit a model that can be used to predict per capita calorific intake rate and to examine, from a conservation perspective, how deforestation impacts on calorific intake.</p>
+<p>The variables are:</p>
+<p>Dependent Variable: Possible Predictor Variables:</p>
+<ul>
+<li>daycal: per capita daily calorific intake</li>
+<li>femlit: female illiteracy rate (for over 15s)</li>
+<li>under15: percentage of the population under 15</li>
+<li>deforest: annual rate of forest loss</li>
+<li>gnp: per capita Gross National Daily Product (US $)</li>
+</ul>
+<p>Theories have been suggested that poor diet, as represented by low calorific intake, is more serious in countries with poor economies, lower levels of education, a young population, and high levels of deforestation. In this practical, try to assess whether such relationships exist.</p>
+<div id="task-1---checking-the-data" class="section level3 hasAnchor" number="11.3.1">
+<h3><span class="header-section-number">11.3.1</span> Task 1 - Checking the data<a href="workshop-67---multivariate-linear-modelling.html#task-1---checking-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Load the dataset <code>africa.csv</code> into your workspace under the object name <code>africa</code> and try performing some routine checks to make sure R has interpreted the variables correctly and all expected data is present and accounted for. You can use some of the functions explored in Chapter <a href="workshop-1---explorartory-data-analysis.html#checking-the-data">3.2.3</a> if you need some help with this.</p>
+</div>
+<div id="task-2---exploring-the-data" class="section level3 hasAnchor" number="11.3.2">
+<h3><span class="header-section-number">11.3.2</span> Task 2 - Exploring the data<a href="workshop-67---multivariate-linear-modelling.html#task-2---exploring-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Start by exploring the univariate relationship between per capita daily calorific intake and gross national product.</p>
+<blockquote>
+<ul>
+<li>Write down what question you are asking, and turn this into a word equation (i.e. y = mx + c, with symbols replaced by words).</li>
+</ul>
+</blockquote>
+<p>Draw the scatterplot for the relationship between per capita daily calorific intake (daycal) and gross national product (gnp), revisit Chapter <a href="workshop-4---testing-for-and-measuring-relationships.html#c6t2">6.2.3</a> if you’re not sure how to do this.</p>
+<blockquote>
+<ul>
+<li>Does the graph suggest that the assumptions of linear regression (i.e. that all datapoints are contributing similarly to the slope) have been met?</li>
+</ul>
+</blockquote>
+</div>
+<div id="task-3---regression-analysis" class="section level3 hasAnchor" number="11.3.3">
+<h3><span class="header-section-number">11.3.3</span> Task 3 - Regression analysis<a href="workshop-67---multivariate-linear-modelling.html#task-3---regression-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Try running a linear regression for daily calorific intake and gross national product, store your model under the object name <code>daycal_gnp_lm_1</code> revisit Chapter <a href="workshop-4---testing-for-and-measuring-relationships.html#c6t3">6.2.4</a> if you’re not sure how to do this.</p>
+<blockquote>
+<ul>
+<li>What does the regression model output tell you about the relationship between calorific intake and GNP?</li>
+<li>Write down what the slope, constant, r2 and p-value tell you about this relationship, and consider whether they accurately describe this relationship.</li>
+</ul>
+</blockquote>
+<p>As we did in Chapter <a href="workshop-4---testing-for-and-measuring-relationships.html#c6t3">6.2.4</a>, try plotting the residuals against the predicted values.</p>
+<blockquote>
+<ul>
+<li>From this plot, have the assumptions of the linear regression been met?</li>
+</ul>
+</blockquote>
+<p>We can also calculate leverage values, this measures the influence of each point on the fit of the regression and can range from 0: no influence to 1: complete influence. Try running the following;</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="workshop-67---multivariate-linear-modelling.html#cb84-1" tabindex="-1"></a><span class="co"># Checking the leverage </span></span>
+<span id="cb84-2"><a href="workshop-67---multivariate-linear-modelling.html#cb84-2" tabindex="-1"></a>africa <span class="ot">&lt;-</span> africa <span class="sc">%&gt;%</span></span>
+<span id="cb84-3"><a href="workshop-67---multivariate-linear-modelling.html#cb84-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">leverage =</span> <span class="fu">hatvalues</span>(daycal_gnp_lm_1))</span></code></pre></div>
+<blockquote>
+<ul>
+<li>What do the leverage values are indicate?</li>
+<li>Are any countries not fitting the model well?</li>
+</ul>
+</blockquote>
+<p>Try performing a log10 transformation on the gnp variable, revisit Chapter <a href="workshop-5---issues-with-probability-and-parametric-analysis.html#c7t3">7.2.3</a> if you unsure how to do this. Then re-run the regression model using the logged variable, and redraw the scatterplot</p>
+<blockquote>
+<ul>
+<li>Has the model fit improved? Compare the slope, intercept, r2 and p-value to the model with the unlogged GNP.</li>
+</ul>
+</blockquote>
+<p>Have a look at the leverage values and the residuals for your new model. Country 11 (Gabon) still has something of a disproportionate effect on the fit of the regression line (large-ish leverage), even in the model with log (GNP). Use the following command to temporarily exclude this country from our scatter plot (note we are not deleting the data completely). This will allow you to explore the influence of Gabon.</p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="workshop-67---multivariate-linear-modelling.html#cb85-1" tabindex="-1"></a>africa <span class="sc">%&gt;%</span></span>
+<span id="cb85-2"><a href="workshop-67---multivariate-linear-modelling.html#cb85-2" tabindex="-1"></a>  <span class="fu">filter</span>(name <span class="sc">!=</span> <span class="st">&quot;Gabon&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb85-3"><a href="workshop-67---multivariate-linear-modelling.html#cb85-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> ., <span class="fu">aes</span>(<span class="at">x =</span> gnp, <span class="at">y =</span> daycal)) <span class="sc">+</span></span>
+<span id="cb85-4"><a href="workshop-67---multivariate-linear-modelling.html#cb85-4" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb85-5"><a href="workshop-67---multivariate-linear-modelling.html#cb85-5" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm)</span></code></pre></div>
+<p>Now use the same temporary exclusion method to re-run your regression model with Gabon temporarily excluded.</p>
+<blockquote>
+<ul>
+<li>How has the regression changed? What reasons may there be for omitting Gabon from the analysis? Why should you always be careful when dropping variables for this reason?</li>
+</ul>
+</blockquote>
+<p>Re-include Gabon into subsequent analyses.</p>
+</div>
+<div id="task-4---multivariate-linear-regression-analysis" class="section level3 hasAnchor" number="11.3.4">
+<h3><span class="header-section-number">11.3.4</span> Task 4 - Multivariate linear regression analysis<a href="workshop-67---multivariate-linear-modelling.html#task-4---multivariate-linear-regression-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We are now going to build a multivariate regression model using the Enter method, in which we begin by including all predictor variables in our regression. We then remove from our regression the variable that has the least (statistically non-significant) effect to produce a better model. We repeat this until we are left with a regression containing the best sub-set of predictors. At each stage it is important to consider the impact of removing that predictor on the model.
+First we will draw a matrix plot to compare all of the relationships between <code>daycal</code> and all four predictor variables (use your logged gnp variable to reduce difficulties with Gabon). Try using the following command;</p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="workshop-67---multivariate-linear-modelling.html#cb86-1" tabindex="-1"></a><span class="co"># Scatter matrix</span></span>
+<span id="cb86-2"><a href="workshop-67---multivariate-linear-modelling.html#cb86-2" tabindex="-1"></a><span class="fu">pairs</span>(africa[,<span class="fu">c</span>(<span class="dv">3</span><span class="sc">:</span><span class="dv">7</span>,<span class="dv">9</span>)])</span>
+<span id="cb86-3"><a href="workshop-67---multivariate-linear-modelling.html#cb86-3" tabindex="-1"></a><span class="co"># Note the numbers c(3:7,9) refer to column numbers for daycal, femlit, under15, deforest and log10_gnp they may be different in your data set</span></span></code></pre></div>
+<blockquote>
+<ul>
+<li>Write down what these graphs tell you about each of the relationships</li>
+<li>Do you see any signs of collinearity between predictor variables?</li>
+</ul>
+</blockquote>
+<p>Now we can try fitting the full multiple regression by adding the other three predictors as independent variables with Enter as the data entry method. Try running the following;</p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="workshop-67---multivariate-linear-modelling.html#cb87-1" tabindex="-1"></a><span class="co"># multiple regression</span></span>
+<span id="cb87-2"><a href="workshop-67---multivariate-linear-modelling.html#cb87-2" tabindex="-1"></a>daycal_multi_lm_1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(daycal<span class="sc">~</span>gnp<span class="sc">+</span>deforest<span class="sc">+</span>under15<span class="sc">+</span>femlit, <span class="at">data =</span> africa)</span>
+<span id="cb87-3"><a href="workshop-67---multivariate-linear-modelling.html#cb87-3" tabindex="-1"></a><span class="fu">summary</span>(daycal_multi_lm_1)</span></code></pre></div>
+<blockquote>
+<ul>
+<li>Which is the most statistically significant variable?</li>
+</ul>
+</blockquote>
+<p>Remove the non-significant variable with the highest p-value from the regression model and examine the change in the <span class="math inline">\(r^2\)</span>.</p>
+<blockquote>
+<ul>
+<li>Has removing the variable altered the explanatory power of the regression (r<span class="math inline">\(^2\)</span>) very much? What has happened to the coefficients (slopes) of the remaining variables?</li>
+</ul>
+</blockquote>
+<p>By removing the least significant variable at each stage, you reduce the regression equation until it only contains significant variables (this is called the minimum model). At each stage, check that removing a predictor variable does not cause the r<span class="math inline">\(^2\)</span> of the model to drop too much or cause the sign of the slope coefficient or the significance of other variables in the model to change strongly.</p>
+<blockquote>
+<ul>
+<li>Look at your final model. How does the r<span class="math inline">\(^2\)</span> compare with the r<span class="math inline">\(^2\)</span> you obtained in exercise 1, using simple regression with log(GNP) as the sole predictor?</li>
+<li>Does your final model fit in with the original hypotheses about daily calorific intake?</li>
+<li>What are the agreements and disagreements between your model and the theory (look back at the suggestions listed at the start of the practical)? Looking at the coefficients may be useful here.</li>
+<li>Write a word equation for your final model.</li>
+<li>Use your final model to predict the expected per capita calorific intake rate for a country with a GNP of US $975, a female illiteracy rate of 45% and a deforestation rate of -2.0.</li>
+</ul>
+</blockquote>
+<p>R has a function called <code>predict()</code> which can be used to predict values of y based on your model. Try runnign the following;</p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="workshop-67---multivariate-linear-modelling.html#cb88-1" tabindex="-1"></a>new <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">gnp =</span><span class="dv">975</span>, <span class="at">femlit =</span><span class="dv">45</span>, <span class="at">deforest=</span> <span class="sc">-</span><span class="dv">2</span>)</span>
+<span id="cb88-2"><a href="workshop-67---multivariate-linear-modelling.html#cb88-2" tabindex="-1"></a><span class="co"># Create a new data frame called `new` and specify your independent variable values</span></span>
+<span id="cb88-3"><a href="workshop-67---multivariate-linear-modelling.html#cb88-3" tabindex="-1"></a></span>
+<span id="cb88-4"><a href="workshop-67---multivariate-linear-modelling.html#cb88-4" tabindex="-1"></a><span class="fu">predict</span>(enter_your_final_model_here, <span class="at">newdata=</span>new, <span class="at">interval =</span> <span class="st">&#39;confidence&#39;</span>)</span>
+<span id="cb88-5"><a href="workshop-67---multivariate-linear-modelling.html#cb88-5" tabindex="-1"></a><span class="co"># Call the predict function to use your final multivariate linear model to predict the daycal value in a country with the independent variable values specified in your data frame called `new`</span></span>
+<span id="cb88-6"><a href="workshop-67---multivariate-linear-modelling.html#cb88-6" tabindex="-1"></a><span class="co"># By including interval = &#39;confidence&#39; the output will include 95% confidence intervals.</span></span></code></pre></div>
+<blockquote>
+<ul>
+<li>Compare the daycal rate you predicted for a country with a GNP of US $975, a female illiteracy rate of 45% and a deforestation rate of -2.0 to that predicted by the <code>predict()</code> function in R.</li>
+<li>Does the 95% prediction interval lie above or below the minimum acceptable daily calorific intake rate of 2000 kcal? What does this mean for this hypothetical country?</li>
+</ul>
+</blockquote>
+<p>You can also specify interactions to test using the <code>lm()</code> function by using a <code>*</code> between two variables with a potential interaction, as seen here;</p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="workshop-67---multivariate-linear-modelling.html#cb89-1" tabindex="-1"></a>daycal_multilog_lm_2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(daycal<span class="sc">~</span>log10_gnp<span class="sc">+</span>deforest<span class="sc">*</span>femlit, <span class="at">data =</span> africa)</span>
+<span id="cb89-2"><a href="workshop-67---multivariate-linear-modelling.html#cb89-2" tabindex="-1"></a><span class="fu">summary</span>(daycal_multilog_lm_2)</span></code></pre></div>
+<blockquote>
+<ul>
+<li>Try customising different models, in order to explore this technique.</li>
+</ul>
+</blockquote>
+</div>
+</div>
+<div id="data-set-2-chaffinch" class="section level2 hasAnchor" number="11.4">
+<h2><span class="header-section-number">11.4</span> Data set 2: Chaffinch<a href="workshop-67---multivariate-linear-modelling.html#data-set-2-chaffinch" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Now we will move onto a second data set. Food was presented in a feeder linked to a balance for measuring mass. Individual chaffinches that had been trapped, ringed, measured and sampled for parasite prevalence were recorded visiting the feeder and the mass of food each bird consumed was recorded. The night-time temperature was also recorded and presented as an anomaly from the mean for that season. The dataset therefore contains the following variables:</p>
+<ul>
+<li>Ring: Ring number of the bird</li>
+<li>Species: Chaffinch</li>
+<li>Age: Age class (BTO codes)</li>
+<li>Sex: Male or Female</li>
+<li>Wing: Wing length (to the nearest mm)</li>
+<li>Weight: Mass (to the nearest 0.1 g)</li>
+<li>Food: Mass of food consumed in a visit (to the nearest 0.1 g)</li>
+<li>Parasite: Parasite load</li>
+<li>Temp: Temperature anomaly (relative to the mean night time temperature for the season (0.5 degrees), closer to 1 = colder)</li>
+</ul>
+<div id="task-1---checking-the-data-1" class="section level3 hasAnchor" number="11.4.1">
+<h3><span class="header-section-number">11.4.1</span> Task 1 - Checking the data<a href="workshop-67---multivariate-linear-modelling.html#task-1---checking-the-data-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Load the dataset <code>chaffinch.csv</code> into your workspace under the object name <code>chaffinch</code> and try performing some routine checks to make sure R has interpreted the variables correctly and all expected data is present and accounted for. You can use some of the functions explored in Chapter <a href="workshop-1---explorartory-data-analysis.html#checking-the-data">3.2.3</a> if you need some help with this.</p>
+<blockquote>
+<ul>
+<li>If the aim of your study was to examine the factors influencing consumption rate of food by wild birds, write down which of these variables you would consider using as dependent variables and which ones as predictor variables.</li>
+<li>Write down the direction you might predict for each relationship.</li>
+<li>Which variables are continuous and which are categorical?</li>
+</ul>
+</blockquote>
+</div>
+<div id="task-2---exporing-potential-relationships" class="section level3 hasAnchor" number="11.4.2">
+<h3><span class="header-section-number">11.4.2</span> Task 2 - Exporing potential relationships<a href="workshop-67---multivariate-linear-modelling.html#task-2---exporing-potential-relationships" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>As we did with the last data set, draw a matrix scatter plot of all the continuous variables</p>
+<blockquote>
+<ul>
+<li>Have a look at how each variable appears to relate to your dependent variable. Are these the same directions that you predicted?</li>
+<li>Do you see any problems with the data meeting the assumptions of regression?</li>
+</ul>
+</blockquote>
+<p>The relationship between parasite load and amount of food consumed is non-linear. Given the spread of the data, a logarithmic transformation of parasite load may help to linearise this relationship. Transform the parasite variable and redraw the matrix plot.</p>
+</div>
+<div id="task-3---multiple-regression-analysis" class="section level3 hasAnchor" number="11.4.3">
+<h3><span class="header-section-number">11.4.3</span> Task 3 - Multiple regression analysis<a href="workshop-67---multivariate-linear-modelling.html#task-3---multiple-regression-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>You can now build a series of models to explore specific hypotheses. Each time you should do the following:</p>
+<ol style="list-style-type: decimal">
+<li>Consider whether each variable is a covariate or a fixed factor</li>
+<li>Make sure you check that all assumptions are met</li>
+<li>Explore any collinearity between predictor variables and think about what you could do about it (see below)</li>
+<li>Construct the model that contains only the significant predictor variables</li>
+<li>Explore how the model changes each time you remove a predictor variable</li>
+<li>Explore whether different minimum models could have been constructed</li>
+<li>Draw graphs to check that you understand the model output</li>
+<li>Consider what the slope, intercept, r<span class="math inline">\(^2\)</span> and p-values are telling you</li>
+</ol>
+</div>
+<div id="task-4---when-good-predictors-go-bad-multicollinearity" class="section level3 hasAnchor" number="11.4.4">
+<h3><span class="header-section-number">11.4.4</span> Task 4 - When good predictors go bad (multicollinearity)<a href="workshop-67---multivariate-linear-modelling.html#task-4---when-good-predictors-go-bad-multicollinearity" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>An underlying assumption of mulivariate linear model is that your predictors are not correlated with each other. That is, you are assuming that each predictor brings in entirely new information to your model. If two predictors are correlated, then they are redundant. We call this multicollinear predictors, or multicollinearity. For example, if you wanted to predict the wood volume of a tree, and you had three predictors, height, diameter, and number of rings, it is very likely that diameter and number of rings will be highly correlated with each other.</p>
+<p>There are three issues with multicollinearity;</p>
+<ol style="list-style-type: decimal">
+<li>Firstly, if two predictors are strongly correlated with each other (strongly multicollinear) and both are in the regression model, both can end up being non-significant. That is, multicollinear predictors can cancel each other out, even if both, individually, are significant in a regression.<br />
+</li>
+<li>Secondly, the ‘cancelling out’ effect means that when you are simplifying a model by removing predictors, you should remove predictors one at a time instead of doing the tempting thing and removing all non-significant predictors at once. And you should try alternative minimal models.<br />
+</li>
+<li>Finally, the real lesson of multicollinearity is that you have redundant predictive information. Did you expect multicollinearity? Were you trying to measure the same predictor in different ways? If so, then have a good think about which predictor is more appropriate for your purpose (e.g., which one is cheaper to measure, or more scientifically appropriate, or more accurately measured, or all three). Did you not expect multicollinearity? Maybe the fact that two predictors are correlated tells you something new about your data or your system.</li>
+</ol>
+<p>How to detect multicollinearity? The simplest way is to run a matrix plot of your predictors, and to check correlation statistics.</p>
+<p>So before you even start your regression modelling, you know that you are going to run the risk of a regression where putting two or more will lead to both being non-significant. However, this is only a risk. It is not certain. In fact, sometimes, you need both predictors in the model for either one to be significant, as we saw above. There is no way to predict which will happen, so you just have to try out different models, choosing your final model based on logic and scientific knowledge.</p>
+<blockquote>
+<ul>
+<li>Take a look at your final model, do you have collinear variables included?</li>
+<li>Can you justify their inclusion or do you need to adjust your model further?</li>
+</ul>
+</blockquote>
+</div>
+</div>
+<div id="data-set-3-beetles" class="section level2 hasAnchor" number="11.5">
+<h2><span class="header-section-number">11.5</span> Data set 3: Beetles<a href="workshop-67---multivariate-linear-modelling.html#data-set-3-beetles" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Finally we will consider our third data set. These data are from a study of what causes variation in the density of beetles among different patches of tall vegetation. Beetle densities were sampled on 20 sites, along with a range of other variables:</p>
+<ul>
+<li>beetle_density: Beetle densities in each site</li>
+<li>lansdscape_type: Surrounding landscape (1 = arable, 2 = grassland, 3 = heath, 4 = wood)</li>
+<li>patch_age: Estimated patch age in categories (from 1 = young to 3 = old)</li>
+<li>patch_area: Area (m2) of each scrub patch</li>
+<li>veg_height: Maximum grass height (cm) at each site</li>
+<li>veg_density: Density of grass vegetation (from 1 = sparse to 5 = dense)</li>
+<li>plant_species: Mean no. of plant species per m2</li>
+<li>soil_moisture: Mean soil moisture level</li>
+<li>soil)_penetrability: Soil penetrability</li>
+<li>min_temp: Mean minimum daily temperature</li>
+<li>max_temp: Mean maximum daily temperature</li>
+</ul>
+<p>You therefore have 10 predictor variables, three of which are categorical (landscape_type, patch_age and veg_density) and the rest of which are continuous</p>
+<div id="task-1---checking-the-data-2" class="section level3 hasAnchor" number="11.5.1">
+<h3><span class="header-section-number">11.5.1</span> Task 1 - Checking the data<a href="workshop-67---multivariate-linear-modelling.html#task-1---checking-the-data-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Load the dataset <code>beetle.csv</code> into your workspace under the object name <code>beetle</code> and try performing some routine checks to make sure R has interpreted the variables correctly and all expected data is present and accounted for. You can use some of the functions explored in Chapter <a href="workshop-1---explorartory-data-analysis.html#checking-the-data">3.2.3</a> if you need some help with this.</p>
+<p>You should note that R has misidentified your categorical variables as continuous. You will need to convert these variables to factors in order to correctly build your models. Try running the following line;</p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="workshop-67---multivariate-linear-modelling.html#cb90-1" tabindex="-1"></a>beetle<span class="sc">$</span>landscape_type <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(beetle<span class="sc">$</span>landscape_type)</span>
+<span id="cb90-2"><a href="workshop-67---multivariate-linear-modelling.html#cb90-2" tabindex="-1"></a><span class="co"># Convert the variable landscape_type to a factor rather then a continuous variable</span></span></code></pre></div>
+<p>Try running the <code>as.factor()</code> function on your other categorical variables (<code>patch_age</code> and <code>veg_density</code>).</p>
+</div>
+<div id="task-2---multiple-regression-analysis" class="section level3 hasAnchor" number="11.5.2">
+<h3><span class="header-section-number">11.5.2</span> Task 2 - Multiple regression analysis<a href="workshop-67---multivariate-linear-modelling.html#task-2---multiple-regression-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Construct a linear model with beetle_density as your dependent variable and include all other variables as your independent variables.</p>
+<blockquote>
+<ul>
+<li>Look at your model output – what has happened here?</li>
+</ul>
+</blockquote>
+<p>The main problem is that you have only 20 datapoints, and your model is trying to use 10 different predictors to explain the variation among these 20 sites – that is <strong>too many predictors</strong>! There is no way that the model can partition the variation in beetle density among all these predictors meaningfully. Remember that you should ideally aim for 10-15 datapoints per predictor. With 20 datapoints, you can realistically construct a model with 2, or maybe 3, predictors.</p>
+<p>Which should you choose? Your best bet at this point is to think about the data you have and what they are telling you. For example, take a look at your patch_age data, you may like to use the <code>group_by()</code> and <code>summarise()</code> functions to do this.</p>
+<blockquote>
+<ul>
+<li>How many datapoints do you have for each of the patch_age categories?</li>
+</ul>
+</blockquote>
+<p>With only one example of age 1 and one example of age 3, you cannot possible understand the variation in beetle densities between these age categories – this is therefore a predictor that should be excluded, although you may wish to run the final model with and without the two sites of age 1 and 3, to see if their inclusion changes anything.</p>
+<p>Categorical variables use up more degrees of freedom than continuous variables, so they can be a particular problem with small datasets.</p>
+<p>Look at one of the other categorical variables, landscape_type. Draw a scatter matrix plot with landscape_type, beetle_density and all of the continuous variables.</p>
+<blockquote>
+<ul>
+<li>Do any of these variables differ clearly between the four landscape types?</li>
+</ul>
+</blockquote>
+<p>If you suspect any differences of note between any of the variables and landscape type it may be worth investigating these more closely, try checking means and standard deviations across different landscapes (you can use the <code>group_by()</code> and <code>summarise()</code> functions to do this) alternatively you may like to visualise the differences with some box plots.</p>
+<blockquote>
+<ul>
+<li>What do you think now, do any of your continuous variables differ between the four landscape types?</li>
+</ul>
+</blockquote>
+<p>Broadly, there doesn’t seem to be much difference between the continuous variables measured and the four landscapes, so it is unlikely that the surrounding landscape type is an important variable to include. Rebuild a linear model with landscape_type excluded.</p>
+<blockquote>
+<ul>
+<li>How is your linear model looking now?</li>
+</ul>
+</blockquote>
+<p>Let’s think about the other variables.</p>
+<p>Draw a matrix scatterplot of all of the remaining variables.</p>
+<blockquote>
+<ul>
+<li>Is there any evidence that any of the variables are strongly correlated? If so, why do you think they are correlated and do you think that including both in the model will help you to understand what influences beetle density?</li>
+</ul>
+</blockquote>
+<p>As dry soils are typically harder, soil moisture and soil penetrability are likely to be two different ways of measuring the same thing, so you can exclude one of them. Try rebuilding your linear model with one of these variables excluded.</p>
+<p>We are now left with seven predictor variables (and wishing we had collected data from more sites…). Think about each of these seven variables and how likely they are to help you understand the variation in beetle density:</p>
+<blockquote>
+<ul>
+<li>Is patch area likely to influence beetle density?</li>
+<li>Is the maximum height of the grass within a patch likely to influence beetle density?</li>
+<li>Is the density of grass in a patch likely to influence beetle density?</li>
+<li>Is soil wetness or softness likely to influence beetle density?</li>
+<li>Are both temperatures likely to influence beetle density?</li>
+</ul>
+</blockquote>
+<p>From this point onwards, you have to use your knowledge of biology and your common sense to try and pick the variables that you think will be most relevant and useful to you. For example, if the aim of your study is to develop management proposals for these sites, you might focus on variables that can be managed (i.e. vegetation and soil moisture, but not temperature). You can also explore the effect of each variable on beetle density separately, but remember that the influence of variables can change when they are included along with others in a multivariate model, so don’t use univariate exploration as the only basis for excluding variables.</p>
+<blockquote>
+<ul>
+<li>Have a go at building the best model that you can for understanding the variation in beetle densities among these 20 sites.</li>
+<li>Remember to draw graphs to make sure you check the model assumptions and understand the model output</li>
+</ul>
+</blockquote>
+</div>
+</div>
+<div id="before-you-leave-8" class="section level2 hasAnchor" number="11.6">
+<h2><span class="header-section-number">11.6</span> Before you leave!<a href="workshop-67---multivariate-linear-modelling.html#before-you-leave-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Make sure you save your script and download it if you would like to keep a local copy.</p>
+<p>Please log out of posit Cloud!</p>
 
 </div>
 </div>
@@ -838,8 +688,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="plot-beautification.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="introduction-to-multivariate-statistics-bio-7025a.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="introduction-to-multivariate-statistics-bio-7025a.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -870,7 +720,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/08-univariate_summative.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/10-general_linear_model.Rmd",
 "text": "Edit"
 },
 "history": {
