@@ -1,1 +1,31 @@
 # Introduction to Multivariate Statistics (BIO-7025A)
+
+## Welcome to Multivairate Statistics
+
+In this second 10 credit module we will be following on from the concepts, skills and techniques we learned before in Univariate statistics (BIO-7026A). The next few chapters will cover;
+
+* Multiple Linear Regressions - Week 8
+* Model Structure, Mixed Multiple Linear Regressions and Repeated Linear Models - Week 9
+* Generalised Linear Models - Week 10
+
+After this point Dr Richard Davies will take over and over Weeks 11 and 12 will cover;
+
+* Principal Component Analysis
+* Multivariate Community Analysis 
+
+As this module builds on many of the skills from Univariate Statistics, you may find that you need to look back and remind yourselves of techniques and code from former chapters or scripts. Don't be afraid to do this. 
+
+## Learning Objectives 
+
+* To introduce students to the statistical framework of General Linear Modelling, combining linear regression, ANOVA and ANCOVA into a single technique
+* Learn binary logistic regression, ordination and Principal Components Analysis
+* Review issues in experimental and sampling design and the assumptions underlying general linear models and the principal model simplification
+* To learn to run these tests using R and to interpret and present the results
+
+## Teaching Layout
+
+This is a 10 credit module which will run from Weeks 8 - 12.
+
+* Each week will have two three hour practical sessions in IT labs (Mondays and Fridays).
+* Some of the following chapters will be completed in a single three hour workshop, others will span both workshops. 
+* Each chapter will be accompanied by a mini lecture at the start of the corresponding workshop.

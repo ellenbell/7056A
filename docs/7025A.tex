@@ -181,7 +181,7 @@
 
 \title{Statistics for Biologists}
 \author{Dr Ellen Bell}
-\date{2023-11-08}
+\date{2023-11-10}
 
 \begin{document}
 \maketitle
@@ -3299,8 +3299,67 @@ Breeding Period (Standardised) \(^5\)
 \hypertarget{introduction-to-multivariate-statistics-bio-7025a}{%
 \chapter{Introduction to Multivariate Statistics (BIO-7025A)}\label{introduction-to-multivariate-statistics-bio-7025a}}
 
-\hypertarget{workshop-67---multivariate-linear-modelling}{%
-\chapter{Workshop 6/7 - Multivariate Linear Modelling}\label{workshop-67---multivariate-linear-modelling}}
+\hypertarget{welcome-to-multivairate-statistics}{%
+\section{Welcome to Multivairate Statistics}\label{welcome-to-multivairate-statistics}}
+
+In this second 10 credit module we will be following on from the concepts, skills and techniques we learned before in Univariate statistics (BIO-7026A). The next few chapters will cover;
+
+\begin{itemize}
+\tightlist
+\item
+  Multiple Linear Regressions - Week 8
+\item
+  Model Structure, Mixed Multiple Linear Regressions and Repeated Linear Models - Week 9
+\item
+  Generalised Linear Models - Week 10
+\end{itemize}
+
+After this point Dr Richard Davies will take over and over Weeks 11 and 12 will cover;
+
+\begin{itemize}
+\tightlist
+\item
+  Principal Component Analysis
+\item
+  Multivariate Community Analysis
+\end{itemize}
+
+As this module builds on many of the skills from Univariate Statistics, you may find that you need to look back and remind yourselves of techniques and code from former chapters or scripts. Don't be afraid to do this.
+
+\hypertarget{learning-objectives-1}{%
+\section{Learning Objectives}\label{learning-objectives-1}}
+
+\begin{itemize}
+\tightlist
+\item
+  To introduce students to the statistical framework of General Linear Modelling, combining linear regression, ANOVA and ANCOVA into a single technique
+\item
+  Learn binary logistic regression, ordination and Principal Components Analysis
+\item
+  Review issues in experimental and sampling design and the assumptions underlying general linear models and the principal model simplification
+\item
+  To learn to run these tests using R and to interpret and present the results
+\end{itemize}
+
+\hypertarget{teaching-layout-1}{%
+\section{Teaching Layout}\label{teaching-layout-1}}
+
+This is a 10 credit module which will run from Weeks 8 - 12.
+
+\begin{itemize}
+\tightlist
+\item
+  Each week will have two three hour practical sessions in IT labs (Mondays and Fridays).
+\item
+  Some of the following chapters will be completed in a single three hour workshop, others will span both workshops.
+\item
+  Each chapter will be accompanied by a mini lecture at the start of the corresponding workshop.
+\end{itemize}
+
+\hypertarget{multivariate-linear-modelling}{%
+\chapter{Multivariate Linear Modelling}\label{multivariate-linear-modelling}}
+
+This chapter will run over both workshops (6/7) in Week 8.
 
 \hypertarget{introduction-5}{%
 \section{Introduction}\label{introduction-5}}
@@ -3342,10 +3401,10 @@ In a linear model, you have three ways of entering a predictor variable:
 
 \textbf{You MUST NOT include both fixed and random effects in the same linear model -- for that you have to use a MIXED MODEL}
 
-\hypertarget{practical-6---multiple-linear-regression}{%
-\section{Practical 6 - Multiple Linear Regression}\label{practical-6---multiple-linear-regression}}
+\hypertarget{practical-6---multiple-linear-models}{%
+\section{Practical 6 - Multiple Linear Models}\label{practical-6---multiple-linear-models}}
 
-This week we will be analysing three separate data sets; Africa, chaffinch and beetle. You can find these in our new classroom LINK HERE. Try to pay special attention to the data interpretation steps and make sure you understand the logic behind each of the decisions made.
+This week we will be analysing three separate data sets; Africa, chaffinch and beetle. You can find these in our new classroom click \href{https://posit.cloud/spaces/445363/join?access_code=FJxK_vnNriot52seLUoKS-fpSCL4Z59m5vRW6d1d}{here}. Try to pay special attention to the data interpretation steps and make sure you understand the logic behind each of the decisions made.
 
 Once you have joined the classroom, spend some time setting up your workspace and script as covered in Chapter \ref{workspace-setup} and Chapter \ref{script-setup}. You will need to install and load the packages \texttt{tidyverse} and \texttt{janitor} for this weeks sessions.
 
@@ -3441,7 +3500,7 @@ We can also calculate leverage values, this measures the influence of each point
 \begin{itemize}
 \tightlist
 \item
-  What do the leverage values are indicate?
+  What do the leverage values indicate?
 \item
   Are any countries not fitting the model well?
 \end{itemize}
@@ -3523,7 +3582,7 @@ Now we can try fitting the full multiple regression by adding the other three pr
 \end{itemize}
 \end{quote}
 
-Remove the non-significant variable with the highest p-value from the regression model and examine the change in the \(r^2\).
+Remove the non-significant variable with the highest p-value from the regression model and examine the change in the adjusted \(r^2\).
 
 \begin{quote}
 \begin{itemize}
@@ -3599,23 +3658,23 @@ Now we will move onto a second data set. Food was presented in a feeder linked t
 \begin{itemize}
 \tightlist
 \item
-  Ring: Ring number of the bird
+  ring: Ring number of the bird
 \item
-  Species: Chaffinch
+  species: Chaffinch
 \item
-  Age: Age class (BTO codes)
+  age: Age class (BTO codes)
 \item
-  Sex: Male or Female
+  sex: Male or Female
 \item
-  Wing: Wing length (to the nearest mm)
+  wing: Wing length (to the nearest mm)
 \item
-  Weight: Mass (to the nearest 0.1 g)
+  weight: Mass (to the nearest 0.1 g)
 \item
-  Food: Mass of food consumed in a visit (to the nearest 0.1 g)
+  food: Mass of food consumed in a visit (to the nearest 0.1 g)
 \item
-  Parasite: Parasite load
+  parasite: Parasite load
 \item
-  Temp: Temperature anomaly (relative to the mean night time temperature for the season (0.5 degrees), closer to 1 = colder)
+  temp: Temperature anomaly (relative to the mean night time temperature for the season (0.5 degrees), closer to 1 = colder)
 \end{itemize}
 
 \hypertarget{task-1---checking-the-data-1}{%
@@ -3720,7 +3779,7 @@ Finally we will consider our third data set. These data are from a study of what
 \item
   beetle\_density: Beetle densities in each site
 \item
-  lansdscape\_type: Surrounding landscape (1 = arable, 2 = grassland, 3 = heath, 4 = wood)
+  landscape\_type: Surrounding landscape (1 = arable, 2 = grassland, 3 = heath, 4 = wood)
 \item
   patch\_age: Estimated patch age in categories (from 1 = young to 3 = old)
 \item
@@ -3743,8 +3802,8 @@ Finally we will consider our third data set. These data are from a study of what
 
 You therefore have 10 predictor variables, three of which are categorical (landscape\_type, patch\_age and veg\_density) and the rest of which are continuous
 
-\hypertarget{task-1---checking-the-data-2}{%
-\subsection{Task 1 - Checking the data}\label{task-1---checking-the-data-2}}
+\hypertarget{c11t1}{%
+\subsection{Task 1 - Checking the data}\label{c11t1}}
 
 Load the dataset \texttt{beetle.csv} into your workspace under the object name \texttt{beetle} and try performing some routine checks to make sure R has interpreted the variables correctly and all expected data is present and accounted for. You can use some of the functions explored in Chapter \ref{checking-the-data} if you need some help with this.
 
@@ -3868,6 +3927,190 @@ From this point onwards, you have to use your knowledge of biology and your comm
 Make sure you save your script and download it if you would like to keep a local copy.
 
 Please log out of posit Cloud!
+
+\hypertarget{model-structure}{%
+\chapter{Model Structure}\label{model-structure}}
+
+This chapter will run in workshop 8 of Week 9.
+
+\hypertarget{introduction-6}{%
+\section{Introduction}\label{introduction-6}}
+
+Linear models use analysis of variance (ANOVA) as the statistical technique to partition the variation in a dependent variable among predictors. In addition, the effect of interactions between predictors on a dependent variable can be quantified in linear model. Linear models can be constructed with continuous and/or categorical variables but the design of the study must be considered when designing the right model structure to use.
+
+\hypertarget{fully-factorial-linear-model}{%
+\subsection{Fully Factorial Linear Model}\label{fully-factorial-linear-model}}
+
+The simplest form of linear model is fully factorial, in which replicates are completely randomised. The potential disadvantage of this design is that random allocation of replicates can, by chance, result in a patchy distribution, e.g.~replicates of one treatment might all end up close to one another.
+
+\hypertarget{randomised-block-linear-model}{%
+\subsection{Randomised Block Linear Model}\label{randomised-block-linear-model}}
+
+In this design, replicates are grouped into blocks but randomly distributed within blocks. Analysis of block designs is very similar to factorial designs except that you generally have to tell the computer that you are using a block design by customising the model. In a block design, the blocks are not replicated and so the interactions between block and the other treatments can't be assessed. Thus, the customised model has to restrict the interactions between treatments to those not including block.
+
+\hypertarget{options}{%
+\subsection{Options}\label{options}}
+
+There are several options within linear models which will allow further assessment of the data. A key one is Homogeneity of Variance, which tests the assumption of equal variances across the treatments.
+
+\hypertarget{post-hoc}{%
+\subsection{Post-hoc}\label{post-hoc}}
+
+Post-hoc tests are pairwise comparisons that compare all combinations of the treatment groups. There are many post-hoc tests which vary in exactly how they deal with Type I and Type II errors. The most commonly used is the Tukey test. Ideally, variances and sample sizes will be similar between treatments and most multiple comparison tests are fairly robust to deviations from these assumptions.
+
+\hypertarget{practical-7---exploring-model-structure}{%
+\section{Practical 7 - Exploring Model Structure}\label{practical-7---exploring-model-structure}}
+
+In this weeks first workshop we will be analysing two separate data sets; Nepal and Tulips. You can find these in the data folder for the BIO-7025A classroom. As always, try to pay special attention to the data interpretation steps and make sure you understand the logic behind each of the decisions made.
+
+Once you have logged into the Posit cloud classroom, spend some time cleaning up your workspace environment and setting up your workspace and script as covered in Chapter \ref{workspace-setup} and Chapter \ref{script-setup}. You will need to install and load the packages ????????? for this weeks sessions.
+
+\hypertarget{linear-model-with-randomised-block-designs-nepal}{%
+\subsection{Linear Model with Randomised Block designs: Nepal}\label{linear-model-with-randomised-block-designs-nepal}}
+
+As an introduction to the analysis of more complex study designs, we are going to look at a randomised block design. This form of design is often used to control for natural variation across an experimental area.
+
+The data we are going to analyse today are taken from an experiment conducted by Nic Peet, a former UEA PhD student, on the effects of different forms of management on the species composition of Nepalese grassland. The details of the experiment are as follows:
+
+This is a randomised block experiment consisting of four blocks, each containing four treatments: cutting, burning, cutting and burning and no management. Each plot measured 35 x 35 m and was surrounded by a 3m wide fire line. Cutting involved removing all above-ground biomass in a plot, and was carried out by local people using sickles. Vegetation monitoring was carried out immediately pre-treatment, in the last week of November 1994, 1995, \& 1996. The data we have are for the percentage cover of \emph{Imperata cylindrica}, one of the dominant species in the plots.
+
+\begin{itemize}
+\tightlist
+\item
+  nepal.csv data file
+\end{itemize}
+
+This file contains the following data:
+
+\begin{itemize}
+\tightlist
+\item
+  cut: plots that were cut (1) or not (0)
+\item
+  burn: plots that were burned (1) or not (0)
+\item
+  treatment: a summary column of cut (c), burn (b), cut and burn (cb) and control (control) treatments
+\item
+  block: the block that each plot was within
+\item
+  year1994: \% cover of \emph{Imperata cylindrica} in 1994
+\item
+  year1995: \% cover of \emph{Imperata cylindrica} in 1995
+\item
+  year1996: \% cover of \emph{Imperata cylindrica} in 1996
+\end{itemize}
+
+\begin{quote}
+Note: although these data are percentages, they tend to be in the range 20-80\%, so there is no need to arcsine-transform the data as this would have little effect.
+\end{quote}
+
+\hypertarget{task-1---checking-the-data-2}{%
+\subsection{Task 1 - Checking the data}\label{task-1---checking-the-data-2}}
+
+Load the dataset \texttt{nepal.csv} into your workspace under the object name \texttt{nepal} and try performing some routine checks to make sure R has interpreted the variables correctly and all expected data is present and accounted for. You can use some of the functions explored in Chapter \ref{checking-the-data} if you need some help with this.
+
+\begin{quote}
+Look at each of your variables, are any of them categorical? Has R characterised them as double (\texttt{dbl}), character (\texttt{chr}) or factor (\texttt{fct}) variables?
+Do some of these need to be changed? Remember you can use the \texttt{as.factor()} function to alter these (see Chapter \ref{c11t1}).
+\end{quote}
+
+\hypertarget{task-2---exploring-the-data-1}{%
+\subsection{Task 2 - Exploring the data}\label{task-2---exploring-the-data-1}}
+
+Draw some histograms for each of the three dependent variables (\% cover), and explore the assumption of data normality. You may find it most efficient to manipulate the data to a long form format and then use facet\_wrap() to combine your plots, as below;
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nepal2 }\OtherTok{\textless{}{-}}\NormalTok{ nepal }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pivot\_longer}\NormalTok{(}\AttributeTok{cols =}\NormalTok{ year1994}\SpecialCharTok{:}\NormalTok{year1996,}
+               \AttributeTok{names\_to =} \StringTok{"year"}\NormalTok{, }
+               \AttributeTok{values\_to =} \StringTok{"perc\_cover"}\NormalTok{)}
+
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ nepal2, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ perc\_cover)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{facet\_wrap}\NormalTok{(}\FunctionTok{vars}\NormalTok{(year))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{quote}
+\begin{itemize}
+\tightlist
+\item
+  Do you understand what each line of code is doing here? Comment your script appripriatly.
+\item
+  Is the assumption met for all three groups?
+\end{itemize}
+\end{quote}
+
+Now try to produce three box-plots for treatment against percentage cover. Use the same method with \texttt{facet\_wrap()} to produce one plot per year. See if you can manipulate this code to add raw data points to the plot (hint \texttt{geom\_point()}) and colour these by block.
+
+\begin{quote}
+\begin{itemize}
+\tightlist
+\item
+  What can you deduce from these plots?
+\end{itemize}
+\end{quote}
+
+\hypertarget{task-3---playing-with-some-models}{%
+\subsection{Task 3 - Playing with some models}\label{task-3---playing-with-some-models}}
+
+Before starting the analysis, you need to be very clear about the study design.
+
+\begin{quote}
+\begin{itemize}
+\tightlist
+\item
+  Draw a diagram of the experimental set-up, following the description given above. How does the design differ from a fully randomised design?
+\end{itemize}
+\end{quote}
+
+The basic differences between this design and the fully randomised design are that `Block' is not replicated (there is only one block 1, one block 2 etc) and all plots within each block occur next to each other. Consequently, we cannot analyse the experiment as if it were a fully randomised design.
+
+To illustrate the problem with analysing this experiment as if it were a fully factorial design (even though it is not fully factorial), we will try constructing a model from our first \texttt{nepal} dataset with year1994 as the dependent variable, and treatment and block as interacting factors. Try running the following;
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lm1 }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(year1994 }\SpecialCharTok{\textasciitilde{}}\NormalTok{ treatment }\SpecialCharTok{*}\NormalTok{ block, }\AttributeTok{data =}\NormalTok{ nepal)}
+\FunctionTok{summary}\NormalTok{(lm1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{quote}
+\begin{itemize}
+\tightlist
+\item
+  What does the output of this analysis tell you?
+\end{itemize}
+\end{quote}
+
+As stressed above, this experiment cannot be analysed as if it were a fully factorial design. The problem is that the analysis is trying to assess all the interactions with Block, but this can't be done because Block is not replicated.
+
+Now, to do the analysis correctly, we need to customise a model that doesn't compare all interactions (as in fully factorial) but only those that are actually replicated. As Block is not replicated, all interactions with this have to be removed. Try constructing a new model called \texttt{lm2} with \texttt{treatment} and \texttt{block} as additive factors but with no interaction (hint - use a \texttt{+} instead of \texttt{*}).
+
+• Re-construct the model (Analyse\textgreater General Linear Model\textgreater Univariate exactly as before but this time also select Model, click on Custom and then select Cut, Burn and Block as individual terms in the model, and also a Cut x Burn interaction term. In the Options box, move Cut and Burn into the Display Means box.
+
+• Scroll down to the Estimated Marginal mean and look at the means of the four Cut and Burn treatments.
+
+ Look at the confidence intervals around these four means -- do you think they are likely to differ significantly?
+
+ Now scroll back up to the ANOVA table. Are the differences between groups as you expected? Which factors have significant effects? Is the interaction significant?
+
+The Plots box allows you to plot the means and examine the interaction between treatments.
+
+• Re-run the analysis but this time select the Plots box and specify Block as the horizontal axis and Burn and Cut as separate lines and plots respectively (then click ADD). Also, as the effect of block is almost significant, run a post-hoc test on this by moving Block into the Post-hoc tests box and selecting Tukey, in order to see how the blocks differ.
+
+ What does the Post-Hoc Tukey test tell you about the differences between blocks?
+
+ What do the means plots show you about the effects of cutting and burning in each block?
+
+• Repeat the analysis for years 1995 and 1996
+
+ Are the effects consistent across years?
+
+ Describe what the analysis shows about the effects of cutting and burning in each year.
+
+The design of a study determines the type of statistical analysis that is appropriate, and it is therefore very important to consider the type of model that you intend to use when you are designing the study.
 
   \bibliography{book.bib,packages.bib}
 

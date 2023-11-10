@@ -1,0 +1,170 @@
+# Model Structure
+
+This chapter will run in workshop 8 of Week 9.
+
+## Introduction
+
+Linear models use analysis of variance (ANOVA) as the statistical technique to partition the variation in a dependent variable among predictors. In addition, the effect of interactions between predictors on a dependent variable can be quantified in linear model. Linear models can be constructed with continuous and/or categorical variables but the design of the study must be considered when designing the right model structure to use.
+
+### Fully Factorial Linear Model
+
+The simplest form of linear model is fully factorial, in which replicates are completely randomised. The potential disadvantage of this design is that random allocation of replicates can, by chance, result in a patchy distribution, e.g. replicates of one treatment might all end up close to one another. 
+
+### Randomised Block Linear Model
+
+In this design, replicates are grouped into blocks but randomly distributed within blocks. Analysis of block designs is very similar to factorial designs except that you generally have to tell the computer that you are using a block design by customising the model. In a block design, the blocks are not replicated and so the interactions between block and the other treatments can’t be assessed. Thus, the customised model has to restrict the interactions between treatments to those not including block.
+
+### Options
+
+There are several options within linear models which will allow further assessment of the data.  A key one is Homogeneity of Variance, which tests the assumption of equal variances across the treatments. 
+
+### Post-hoc
+Post-hoc tests are pairwise comparisons that compare all combinations of the treatment groups.  There are many post-hoc tests which vary in exactly how they deal with Type I and Type II errors. The most commonly used is the Tukey test. Ideally, variances and sample sizes will be similar between treatments and most multiple comparison tests are fairly robust to deviations from these assumptions.
+
+## Practical 7 - Exploring Model Structure
+
+In this weeks first workshop we will be analysing two separate data sets; Nepal and Tulips. You can find these in the data folder for the BIO-7025A classroom. As always, try to pay special attention to the data interpretation steps and make sure you understand the logic behind each of the decisions made.
+
+Once you have logged into the Posit cloud classroom, spend some time cleaning up your workspace environment and setting up your workspace and script as covered in Chapter \@ref(workspace-setup) and Chapter \@ref(script-setup). You will need to install and load the packages ????????? for this weeks sessions. 
+
+### Linear Model with Randomised Block designs: Nepal
+
+As an introduction to the analysis of more complex study designs, we are going to look at a randomised block design. This form of design is often used to control for natural variation across an experimental area. 
+
+The data we are going to analyse today are taken from an experiment conducted by Nic Peet, a former UEA PhD student, on the effects of different forms of management on the species composition of Nepalese grassland. The details of the experiment are as follows:
+
+This is a randomised block experiment consisting of four blocks, each containing four treatments: cutting, burning, cutting and burning and no management. Each plot measured 35 x 35 m and was surrounded by a 3m wide fire line. Cutting involved removing all above-ground biomass in a plot, and was carried out by local people using sickles. Vegetation monitoring was carried out immediately pre-treatment, in the last week of November 1994, 1995, & 1996. The data we have are for the percentage cover of *Imperata cylindrica*, one of the dominant species in the plots.
+
+*	nepal.csv data file
+
+This file contains the following data:
+
+* cut: 		plots that were cut (1) or not (0)
+* burn:		plots that were burned (1) or not (0)
+* treatment: a summary column of cut (c), burn (b), cut and burn (cb) and control (control) treatments 
+* block:		the block that each plot was within
+* year1994:	% cover of *Imperata cylindrica* in 1994
+* year1995:	% cover of *Imperata cylindrica* in 1995
+* year1996:	% cover of *Imperata cylindrica* in 1996
+
+> Note: although these data are percentages, they tend to be in the range 20-80%, so there is no need to arcsine-transform the data as this would have little effect.
+
+### Task 1 - Checking the data
+
+Load the dataset `nepal.csv` into your workspace under the object name `nepal` and try performing some routine checks to make sure R has interpreted the variables correctly and all expected data is present and accounted for. You can use some of the functions explored in Chapter \@ref(checking-the-data) if you need some help with this. 
+
+> Look at each of your variables, are any of them categorical? Has R characterised them as double (`dbl`), character (`chr`) or factor (`fct`) variables? 
+> Do some of these need to be changed? Remember you can use the `as.factor()` function to alter these (see Chapter \@ref(c11t1)). 
+
+### Task 2 - Exploring the data
+
+Draw some histograms for each of the three dependent variables (% cover), and explore the assumption of data normality. You may find it most efficient to manipulate the data to a long form format and then use facet_wrap() to combine your plots, as below;
+
+```{r}
+nepal2 <- nepal %>%
+  pivot_longer(cols = year1994:year1996,
+               names_to = "year", 
+               values_to = "perc_cover")
+
+ggplot(data = nepal2, aes(x = perc_cover)) +
+  geom_histogram() +
+  facet_wrap(vars(year))
+```
+
+> * Do you understand what each line of code is doing here? Comment your script appripriatly. 
+> * Is the assumption met for all three groups?
+
+Now try to produce three box-plots for treatment against percentage cover. Use the same method with `facet_wrap()` to produce one plot per year. See if you can manipulate this code to add raw data points to the plot (hint `geom_point()`) and colour these by block.
+
+> * What can you deduce from these plots?
+
+### Task 3 - Playing with some models
+
+Before starting the analysis, you need to be very clear about the study design.
+
+> * Draw a diagram of the experimental set-up, following the description given above. How does the design differ from a fully randomised design?
+
+The basic differences between this design and the fully randomised design are that ‘Block’ is not replicated (there is only one block 1, one block 2 etc) and all plots within each block occur next to each other. Consequently, we cannot analyse the experiment as if it were a fully randomised design. 
+
+To illustrate the problem with analysing this experiment as if it were a fully factorial design (even though it is not fully factorial), we will try constructing a model from our first `nepal` dataset with year1994 as the dependent variable, and treatment and block as interacting factors. Try running the following;
+
+```{r}
+lm1 <- lm(year1994 ~ treatment * block, data = nepal)
+summary(lm1)
+```
+
+> *	What does the output of this analysis tell you? 
+
+As stressed above, this experiment cannot be analysed as if it were a fully factorial design. The problem is that the analysis is trying to assess all the interactions with Block, but this can’t be done because Block is not replicated. 
+
+Now, to do the analysis correctly, we need to customise a model that doesn’t compare all interactions (as in fully factorial) but only those that are actually replicated.  As Block is not replicated, all interactions with this have to be removed. Try constructing a new model called `lm2` with `treatment` and `block` as additive factors but with no interaction (hint - use a `+` instead of `*`).
+
+
+
+
+
+
+
+•	Re-construct the model (Analyse>General Linear Model>Univariate exactly as before but this time also select Model, click on Custom and then select Cut, Burn and Block as individual terms in the model, and also a Cut x Burn interaction term. In the Options box, move Cut and Burn into the Display Means box.
+
+•	Scroll down to the Estimated Marginal mean and look at the means of the four Cut and Burn treatments.
+
+	Look at the confidence intervals around these four means – do you think they are likely to differ significantly?
+
+
+
+
+
+
+	Now scroll back up to the ANOVA table. Are the differences between groups as you expected? Which factors have significant effects? Is the interaction significant? 
+
+
+
+
+
+
+
+
+
+The Plots box allows you to plot the means and examine the interaction between treatments.  
+
+•	Re-run the analysis but this time select the Plots box and specify Block as the horizontal axis and Burn and Cut as separate lines and plots respectively (then click ADD). Also, as the effect of block is almost significant, run a post-hoc test on this by moving Block into the Post-hoc tests box and selecting Tukey, in order to see how the blocks differ.
+
+	What does the Post-Hoc Tukey test tell you about the differences between blocks?
+
+
+
+
+
+
+	What do the means plots show you about the effects of cutting and burning in each block?
+
+
+
+
+
+
+
+•	Repeat the analysis for years 1995 and 1996
+
+	Are the effects consistent across years?
+	
+
+
+
+
+
+
+	Describe what the analysis shows about the effects of cutting and burning in each year.
+
+
+
+
+
+
+
+
+
+
+The design of a study determines the type of statistical analysis that is appropriate, and it is therefore very important to consider the type of model that you intend to use when you are designing the study.
+

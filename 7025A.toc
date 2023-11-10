@@ -124,9 +124,12 @@
 \contentsline {section}{\numberline {9.2}The Problem}{93}{section.9.2}%
 \contentsline {section}{\numberline {9.3}The Data}{94}{section.9.3}%
 \contentsline {chapter}{\numberline {10}Introduction to Multivariate Statistics (BIO-7025A)}{97}{chapter.10}%
-\contentsline {chapter}{\numberline {11}Workshop 6/7 - Multivariate Linear Modelling}{99}{chapter.11}%
+\contentsline {section}{\numberline {10.1}Welcome to Multivairate Statistics}{97}{section.10.1}%
+\contentsline {section}{\numberline {10.2}Learning Objectives}{97}{section.10.2}%
+\contentsline {section}{\numberline {10.3}Teaching Layout}{98}{section.10.3}%
+\contentsline {chapter}{\numberline {11}Multivariate Linear Modelling}{99}{chapter.11}%
 \contentsline {section}{\numberline {11.1}Introduction}{99}{section.11.1}%
-\contentsline {section}{\numberline {11.2}Practical 6 - Multiple Linear Regression}{100}{section.11.2}%
+\contentsline {section}{\numberline {11.2}Practical 6 - Multiple Linear Models}{100}{section.11.2}%
 \contentsline {section}{\numberline {11.3}Data set 1: Africa}{100}{section.11.3}%
 \contentsline {subsection}{\numberline {11.3.1}Task 1 - Checking the data}{101}{subsection.11.3.1}%
 \contentsline {subsection}{\numberline {11.3.2}Task 2 - Exploring the data}{101}{subsection.11.3.2}%
@@ -141,3 +144,14 @@
 \contentsline {subsection}{\numberline {11.5.1}Task 1 - Checking the data}{107}{subsection.11.5.1}%
 \contentsline {subsection}{\numberline {11.5.2}Task 2 - Multiple regression analysis}{108}{subsection.11.5.2}%
 \contentsline {section}{\numberline {11.6}Before you leave!}{109}{section.11.6}%
+\contentsline {chapter}{\numberline {12}Model Structure}{111}{chapter.12}%
+\contentsline {section}{\numberline {12.1}Introduction}{111}{section.12.1}%
+\contentsline {subsection}{\numberline {12.1.1}Fully Factorial Linear Model}{111}{subsection.12.1.1}%
+\contentsline {subsection}{\numberline {12.1.2}Randomised Block Linear Model}{111}{subsection.12.1.2}%
+\contentsline {subsection}{\numberline {12.1.3}Options}{112}{subsection.12.1.3}%
+\contentsline {subsection}{\numberline {12.1.4}Post-hoc}{112}{subsection.12.1.4}%
+\contentsline {section}{\numberline {12.2}Practical 7 - Exploring Model Structure}{112}{section.12.2}%
+\contentsline {subsection}{\numberline {12.2.1}Linear Model with Randomised Block designs: Nepal}{112}{subsection.12.2.1}%
+\contentsline {subsection}{\numberline {12.2.2}Task 1 - Checking the data}{113}{subsection.12.2.2}%
+\contentsline {subsection}{\numberline {12.2.3}Task 2 - Exploring the data}{113}{subsection.12.2.3}%
+\contentsline {subsection}{\numberline {12.2.4}Task 3 - Playing with some models}{114}{subsection.12.2.4}%

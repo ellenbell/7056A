@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | Statistics for Biologists</title>
+  <title>Chapter 12 Model Structure | Statistics for Biologists</title>
   <meta name="description" content="This is the coursebook for Univariate and Multivairate Statistics" />
   <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | Statistics for Biologists" />
+  <meta property="og:title" content="Chapter 12 Model Structure | Statistics for Biologists" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is the coursebook for Univariate and Multivairate Statistics" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | Statistics for Biologists" />
+  <meta name="twitter:title" content="Chapter 12 Model Structure | Statistics for Biologists" />
   
   <meta name="twitter:description" content="This is the coursebook for Univariate and Multivairate Statistics" />
   
@@ -30,7 +30,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
+<link rel="prev" href="multivariate-linear-modelling.html"/>
 
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -373,18 +373,128 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="model-structure" class="section level1 hasAnchor" number="12">
+<h1><span class="header-section-number">Chapter 12</span> Model Structure<a href="model-structure.html#model-structure" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>This chapter will run in workshop 8 of Week 9.</p>
+<div id="introduction-6" class="section level2 hasAnchor" number="12.1">
+<h2><span class="header-section-number">12.1</span> Introduction<a href="model-structure.html#introduction-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Linear models use analysis of variance (ANOVA) as the statistical technique to partition the variation in a dependent variable among predictors. In addition, the effect of interactions between predictors on a dependent variable can be quantified in linear model. Linear models can be constructed with continuous and/or categorical variables but the design of the study must be considered when designing the right model structure to use.</p>
+<div id="fully-factorial-linear-model" class="section level3 hasAnchor" number="12.1.1">
+<h3><span class="header-section-number">12.1.1</span> Fully Factorial Linear Model<a href="model-structure.html#fully-factorial-linear-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The simplest form of linear model is fully factorial, in which replicates are completely randomised. The potential disadvantage of this design is that random allocation of replicates can, by chance, result in a patchy distribution, e.g. replicates of one treatment might all end up close to one another.</p>
+</div>
+<div id="randomised-block-linear-model" class="section level3 hasAnchor" number="12.1.2">
+<h3><span class="header-section-number">12.1.2</span> Randomised Block Linear Model<a href="model-structure.html#randomised-block-linear-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In this design, replicates are grouped into blocks but randomly distributed within blocks. Analysis of block designs is very similar to factorial designs except that you generally have to tell the computer that you are using a block design by customising the model. In a block design, the blocks are not replicated and so the interactions between block and the other treatments can’t be assessed. Thus, the customised model has to restrict the interactions between treatments to those not including block.</p>
+</div>
+<div id="options" class="section level3 hasAnchor" number="12.1.3">
+<h3><span class="header-section-number">12.1.3</span> Options<a href="model-structure.html#options" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>There are several options within linear models which will allow further assessment of the data. A key one is Homogeneity of Variance, which tests the assumption of equal variances across the treatments.</p>
+</div>
+<div id="post-hoc" class="section level3 hasAnchor" number="12.1.4">
+<h3><span class="header-section-number">12.1.4</span> Post-hoc<a href="model-structure.html#post-hoc" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Post-hoc tests are pairwise comparisons that compare all combinations of the treatment groups. There are many post-hoc tests which vary in exactly how they deal with Type I and Type II errors. The most commonly used is the Tukey test. Ideally, variances and sample sizes will be similar between treatments and most multiple comparison tests are fairly robust to deviations from these assumptions.</p>
+</div>
+</div>
+<div id="practical-7---exploring-model-structure" class="section level2 hasAnchor" number="12.2">
+<h2><span class="header-section-number">12.2</span> Practical 7 - Exploring Model Structure<a href="model-structure.html#practical-7---exploring-model-structure" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In this weeks first workshop we will be analysing two separate data sets; Nepal and Tulips. You can find these in the data folder for the BIO-7025A classroom. As always, try to pay special attention to the data interpretation steps and make sure you understand the logic behind each of the decisions made.</p>
+<p>Once you have logged into the Posit cloud classroom, spend some time cleaning up your workspace environment and setting up your workspace and script as covered in Chapter <a href="c2.html#workspace-setup">2.5.3</a> and Chapter <a href="c2.html#script-setup">2.5.4</a>. You will need to install and load the packages ????????? for this weeks sessions.</p>
+<div id="linear-model-with-randomised-block-designs-nepal" class="section level3 hasAnchor" number="12.2.1">
+<h3><span class="header-section-number">12.2.1</span> Linear Model with Randomised Block designs: Nepal<a href="model-structure.html#linear-model-with-randomised-block-designs-nepal" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>As an introduction to the analysis of more complex study designs, we are going to look at a randomised block design. This form of design is often used to control for natural variation across an experimental area.</p>
+<p>The data we are going to analyse today are taken from an experiment conducted by Nic Peet, a former UEA PhD student, on the effects of different forms of management on the species composition of Nepalese grassland. The details of the experiment are as follows:</p>
+<p>This is a randomised block experiment consisting of four blocks, each containing four treatments: cutting, burning, cutting and burning and no management. Each plot measured 35 x 35 m and was surrounded by a 3m wide fire line. Cutting involved removing all above-ground biomass in a plot, and was carried out by local people using sickles. Vegetation monitoring was carried out immediately pre-treatment, in the last week of November 1994, 1995, &amp; 1996. The data we have are for the percentage cover of <em>Imperata cylindrica</em>, one of the dominant species in the plots.</p>
+<ul>
+<li>nepal.csv data file</li>
+</ul>
+<p>This file contains the following data:</p>
+<ul>
+<li>cut: plots that were cut (1) or not (0)</li>
+<li>burn: plots that were burned (1) or not (0)</li>
+<li>treatment: a summary column of cut (c), burn (b), cut and burn (cb) and control (control) treatments</li>
+<li>block: the block that each plot was within</li>
+<li>year1994: % cover of <em>Imperata cylindrica</em> in 1994</li>
+<li>year1995: % cover of <em>Imperata cylindrica</em> in 1995</li>
+<li>year1996: % cover of <em>Imperata cylindrica</em> in 1996</li>
+</ul>
+<blockquote>
+<p>Note: although these data are percentages, they tend to be in the range 20-80%, so there is no need to arcsine-transform the data as this would have little effect.</p>
+</blockquote>
+</div>
+<div id="task-1---checking-the-data-2" class="section level3 hasAnchor" number="12.2.2">
+<h3><span class="header-section-number">12.2.2</span> Task 1 - Checking the data<a href="model-structure.html#task-1---checking-the-data-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Load the dataset <code>nepal.csv</code> into your workspace under the object name <code>nepal</code> and try performing some routine checks to make sure R has interpreted the variables correctly and all expected data is present and accounted for. You can use some of the functions explored in Chapter <a href="workshop-1---explorartory-data-analysis.html#checking-the-data">3.2.3</a> if you need some help with this.</p>
+<blockquote>
+<p>Look at each of your variables, are any of them categorical? Has R characterised them as double (<code>dbl</code>), character (<code>chr</code>) or factor (<code>fct</code>) variables?
+Do some of these need to be changed? Remember you can use the <code>as.factor()</code> function to alter these (see Chapter <a href="multivariate-linear-modelling.html#c11t1">11.5.1</a>).</p>
+</blockquote>
+</div>
+<div id="task-2---exploring-the-data-1" class="section level3 hasAnchor" number="12.2.3">
+<h3><span class="header-section-number">12.2.3</span> Task 2 - Exploring the data<a href="model-structure.html#task-2---exploring-the-data-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Draw some histograms for each of the three dependent variables (% cover), and explore the assumption of data normality. You may find it most efficient to manipulate the data to a long form format and then use facet_wrap() to combine your plots, as below;</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="model-structure.html#cb91-1" tabindex="-1"></a>nepal2 <span class="ot">&lt;-</span> nepal <span class="sc">%&gt;%</span></span>
+<span id="cb91-2"><a href="model-structure.html#cb91-2" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> year1994<span class="sc">:</span>year1996,</span>
+<span id="cb91-3"><a href="model-structure.html#cb91-3" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;year&quot;</span>, </span>
+<span id="cb91-4"><a href="model-structure.html#cb91-4" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;perc_cover&quot;</span>)</span>
+<span id="cb91-5"><a href="model-structure.html#cb91-5" tabindex="-1"></a></span>
+<span id="cb91-6"><a href="model-structure.html#cb91-6" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> nepal2, <span class="fu">aes</span>(<span class="at">x =</span> perc_cover)) <span class="sc">+</span></span>
+<span id="cb91-7"><a href="model-structure.html#cb91-7" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
+<span id="cb91-8"><a href="model-structure.html#cb91-8" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(year))</span></code></pre></div>
+<blockquote>
+<ul>
+<li>Do you understand what each line of code is doing here? Comment your script appripriatly.</li>
+<li>Is the assumption met for all three groups?</li>
+</ul>
+</blockquote>
+<p>Now try to produce three box-plots for treatment against percentage cover. Use the same method with <code>facet_wrap()</code> to produce one plot per year. See if you can manipulate this code to add raw data points to the plot (hint <code>geom_point()</code>) and colour these by block.</p>
+<blockquote>
+<ul>
+<li>What can you deduce from these plots?</li>
+</ul>
+</blockquote>
+</div>
+<div id="task-3---playing-with-some-models" class="section level3 hasAnchor" number="12.2.4">
+<h3><span class="header-section-number">12.2.4</span> Task 3 - Playing with some models<a href="model-structure.html#task-3---playing-with-some-models" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Before starting the analysis, you need to be very clear about the study design.</p>
+<blockquote>
+<ul>
+<li>Draw a diagram of the experimental set-up, following the description given above. How does the design differ from a fully randomised design?</li>
+</ul>
+</blockquote>
+<p>The basic differences between this design and the fully randomised design are that ‘Block’ is not replicated (there is only one block 1, one block 2 etc) and all plots within each block occur next to each other. Consequently, we cannot analyse the experiment as if it were a fully randomised design.</p>
+<p>To illustrate the problem with analysing this experiment as if it were a fully factorial design (even though it is not fully factorial), we will try constructing a model from our first <code>nepal</code> dataset with year1994 as the dependent variable, and treatment and block as interacting factors. Try running the following;</p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="model-structure.html#cb92-1" tabindex="-1"></a>lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(year1994 <span class="sc">~</span> treatment <span class="sc">*</span> block, <span class="at">data =</span> nepal)</span>
+<span id="cb92-2"><a href="model-structure.html#cb92-2" tabindex="-1"></a><span class="fu">summary</span>(lm1)</span></code></pre></div>
+<blockquote>
+<ul>
+<li>What does the output of this analysis tell you?</li>
+</ul>
+</blockquote>
+<p>As stressed above, this experiment cannot be analysed as if it were a fully factorial design. The problem is that the analysis is trying to assess all the interactions with Block, but this can’t be done because Block is not replicated.</p>
+<p>Now, to do the analysis correctly, we need to customise a model that doesn’t compare all interactions (as in fully factorial) but only those that are actually replicated. As Block is not replicated, all interactions with this have to be removed. Try constructing a new model called <code>lm2</code> with <code>treatment</code> and <code>block</code> as additive factors but with no interaction (hint - use a <code>+</code> instead of <code>*</code>).</p>
+<p>• Re-construct the model (Analyse&gt;General Linear Model&gt;Univariate exactly as before but this time also select Model, click on Custom and then select Cut, Burn and Block as individual terms in the model, and also a Cut x Burn interaction term. In the Options box, move Cut and Burn into the Display Means box.</p>
+<p>• Scroll down to the Estimated Marginal mean and look at the means of the four Cut and Burn treatments.</p>
+<p> Look at the confidence intervals around these four means – do you think they are likely to differ significantly?</p>
+<p> Now scroll back up to the ANOVA table. Are the differences between groups as you expected? Which factors have significant effects? Is the interaction significant?</p>
+<p>The Plots box allows you to plot the means and examine the interaction between treatments.</p>
+<p>• Re-run the analysis but this time select the Plots box and specify Block as the horizontal axis and Burn and Cut as separate lines and plots respectively (then click ADD). Also, as the effect of block is almost significant, run a post-hoc test on this by moving Block into the Post-hoc tests box and selecting Tukey, in order to see how the blocks differ.</p>
+<p> What does the Post-Hoc Tukey test tell you about the differences between blocks?</p>
+<p> What do the means plots show you about the effects of cutting and burning in each block?</p>
+<p>• Repeat the analysis for years 1995 and 1996</p>
+<p> Are the effects consistent across years?</p>
+<p> Describe what the analysis shows about the effects of cutting and burning in each year.</p>
+<p>The design of a study determines the type of statistical analysis that is appropriate, and it is therefore very important to consider the type of model that you intend to use when you are designing the study.</p>
+
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
+<a href="multivariate-linear-modelling.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
     </div>
   </div>
@@ -416,7 +526,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/%s",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/11-model_structure.Rmd",
 "text": "Edit"
 },
 "history": {

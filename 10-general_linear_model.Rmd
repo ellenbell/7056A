@@ -1,4 +1,6 @@
-# Workshop 6/7 - Multivariate Linear Modelling
+# Multivariate Linear Modelling
+
+This chapter will run over both workshops (6/7) in Week 8.
 
 ## Introduction
 
@@ -25,9 +27,9 @@ In a linear model, you have three ways of entering a predictor variable:
 
 **You MUST NOT include both fixed and random effects in the same linear model – for that you have to use a MIXED MODEL**
 
-## Practical 6 - Multiple Linear Regression
+## Practical 6 - Multiple Linear Models
 
-This week we will be analysing three separate data sets; Africa, chaffinch and beetle. You can find these in our new classroom LINK HERE. Try to pay special attention to the data interpretation steps and make sure you understand the logic behind each of the decisions made. 
+This week we will be analysing three separate data sets; Africa, chaffinch and beetle. You can find these in our new classroom click [here](https://posit.cloud/spaces/445363/join?access_code=FJxK_vnNriot52seLUoKS-fpSCL4Z59m5vRW6d1d). Try to pay special attention to the data interpretation steps and make sure you understand the logic behind each of the decisions made. 
 
 Once you have joined the classroom, spend some time setting up your workspace and script as covered in Chapter \@ref(workspace-setup) and Chapter \@ref(script-setup). You will need to install and load the packages `tidyverse` and `janitor` for this weeks sessions. 
 
@@ -80,7 +82,7 @@ africa <- africa %>%
   mutate(leverage = hatvalues(daycal_gnp_lm_1))
 ```
 
-> * What do the leverage values are indicate?
+> * What do the leverage values indicate?
 > * Are any countries not fitting the model well? 
 
 Try performing a log10 transformation on the gnp variable, revisit Chapter \@ref(c7t3) if you unsure how to do this. Then re-run the regression model using the logged variable, and redraw the scatterplot
@@ -128,7 +130,7 @@ summary(daycal_multi_lm_1)
 	
 > * Which is the most statistically significant variable? 
 
-Remove the non-significant variable with the highest p-value from the regression model and examine the change in the $r^2$. 
+Remove the non-significant variable with the highest p-value from the regression model and examine the change in the adjusted $r^2$. 
 
 > * Has removing the variable altered the explanatory power of the regression (r$^2$) very much?  What has happened to the coefficients (slopes) of the remaining variables?
 
@@ -167,15 +169,15 @@ summary(daycal_multilog_lm_2)
 
 Now we will move onto a second data set. Food was presented in a feeder linked to a balance for measuring mass. Individual chaffinches that had been trapped, ringed, measured and sampled for parasite prevalence were recorded visiting the feeder and the mass of food each bird consumed was recorded. The night-time temperature was also recorded and presented as an anomaly from the mean for that season.  The dataset therefore contains the following variables:
 
-* Ring:			Ring number of the bird
-* Species:		Chaffinch
-* Age:			Age class (BTO codes)
-* Sex:			Male or Female
-* Wing:			Wing length (to the nearest mm)
-* Weight: 		Mass (to the nearest 0.1 g)
-* Food:			Mass of food consumed in a visit (to the nearest 0.1 g)
-* Parasite:		Parasite load
-* Temp:	Temperature anomaly (relative to the mean night time temperature for the season (0.5 degrees), closer to 1 = colder)
+* ring:			Ring number of the bird
+* species:		Chaffinch
+* age:			Age class (BTO codes)
+* sex:			Male or Female
+* wing:			Wing length (to the nearest mm)
+* weight: 		Mass (to the nearest 0.1 g)
+* food:			Mass of food consumed in a visit (to the nearest 0.1 g)
+* parasite:		Parasite load
+* temp:	Temperature anomaly (relative to the mean night time temperature for the season (0.5 degrees), closer to 1 = colder)
 
 ### Task 1 - Checking the data
 
@@ -229,7 +231,7 @@ So before you even start your regression modelling, you know that you are going 
 Finally we will consider our third data set. These data are from a study of what causes variation in the density of beetles among different patches of tall vegetation. Beetle densities were sampled on 20 sites, along with a range of other variables:
 
 * beetle_density:		Beetle densities in each site
-* lansdscape_type:	Surrounding landscape (1 = arable, 2 = grassland, 3 = heath, 4 = wood)
+* landscape_type:	Surrounding landscape (1 = arable, 2 = grassland, 3 = heath, 4 = wood)
 * patch_age:		Estimated patch age in categories (from 1 = young to 3 = old)
 * patch_area:		Area (m2) of each scrub patch
 * veg_height:		Maximum grass height (cm) at each site
@@ -242,7 +244,7 @@ Finally we will consider our third data set. These data are from a study of what
 
 You therefore have 10 predictor variables, three of which are categorical (landscape_type, patch_age and veg_density) and the rest of which are continuous
 
-### Task 1 - Checking the data
+### Task 1 - Checking the data {#c11t1}
 
 Load the dataset `beetle.csv` into your workspace under the object name `beetle` and try performing some routine checks to make sure R has interpreted the variables correctly and all expected data is present and accounted for. You can use some of the functions explored in Chapter \@ref(checking-the-data) if you need some help with this.
 
