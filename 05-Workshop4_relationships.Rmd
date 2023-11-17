@@ -91,7 +91,7 @@ Log into posit Cloud and return to your instance in the class work space. Set up
 rm(list = ls())
 ```
 
-You will need to make sure the packages `tidyverse` and `moderndive` are installed and loaded to complete todays workshop, check Chapter \@ref(workspace-setup) and Chapter \@ref(script-setup) if you are unsure how to do this. 
+You will need to make sure the packages `tidyverse`, `performance` and `moderndive` are installed and loaded to complete todays workshop, check Chapter \@ref(workspace-setup) and Chapter \@ref(script-setup) if you are unsure how to do this. 
 
 As previously mentioned, the data set for this part of practical is relatively small, so we can enter it into R manually (this also gives you a chance to learn a little more code).
 

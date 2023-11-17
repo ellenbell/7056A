@@ -1,0 +1,11 @@
+# Repeated Measures Linear Models 
+
+This chapter will run in Workshop 9 of Week 9.
+
+## Introduction
+
+## Practical 9 - Repeated Measures Linear Models
+
+## Data set 1: Activity
+
+## Data set 2: Bird Metabolism 

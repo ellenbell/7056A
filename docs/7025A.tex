@@ -181,7 +181,7 @@
 
 \title{Statistics for Biologists}
 \author{Dr Ellen Bell}
-\date{2023-11-10}
+\date{2023-11-17}
 
 \begin{document}
 \maketitle
@@ -2131,7 +2131,7 @@ Log into posit Cloud and return to your instance in the class work space. Set up
 \end{Highlighting}
 \end{Shaded}
 
-You will need to make sure the packages \texttt{tidyverse} and \texttt{moderndive} are installed and loaded to complete todays workshop, check Chapter \ref{workspace-setup} and Chapter \ref{script-setup} if you are unsure how to do this.
+You will need to make sure the packages \texttt{tidyverse}, \texttt{performance} and \texttt{moderndive} are installed and loaded to complete todays workshop, check Chapter \ref{workspace-setup} and Chapter \ref{script-setup} if you are unsure how to do this.
 
 As previously mentioned, the data set for this part of practical is relatively small, so we can enter it into R manually (this also gives you a chance to learn a little more code).
 
@@ -3472,7 +3472,7 @@ Try running a linear regression for daily calorific intake and gross national pr
 \item
   What does the regression model output tell you about the relationship between calorific intake and GNP?
 \item
-  Write down what the slope, constant, r2 and p-value tell you about this relationship, and consider whether they accurately describe this relationship.
+  Write down what the slope, constant, r\(^2\) and p-value tell you about this relationship, and consider whether they accurately describe this relationship.
 \end{itemize}
 \end{quote}
 
@@ -3512,7 +3512,7 @@ Try performing a log10 transformation on the gnp variable, revisit Chapter \ref{
 \begin{itemize}
 \tightlist
 \item
-  Has the model fit improved? Compare the slope, intercept, r2 and p-value to the model with the unlogged GNP.
+  Has the model fit improved? Compare the slope, intercept, r\(2\) and p-value to the model with the unlogged GNP.
 \end{itemize}
 \end{quote}
 
@@ -3588,7 +3588,7 @@ Remove the non-significant variable with the highest p-value from the regression
 \begin{itemize}
 \tightlist
 \item
-  Has removing the variable altered the explanatory power of the regression (r\(^2\)) very much? What has happened to the coefficients (slopes) of the remaining variables?
+  Has removing the variable altered the explanatory power of the regression (check the adjusted r\(^2\) now we are working with mulivariate linear models) very much? What has happened to the coefficients (slopes) of the remaining variables?
 \end{itemize}
 \end{quote}
 
@@ -3793,7 +3793,7 @@ Finally we will consider our third data set. These data are from a study of what
 \item
   soil\_moisture: Mean soil moisture level
 \item
-  soil)\_penetrability: Soil penetrability
+  soil\_penetrability: Soil penetrability
 \item
   min\_temp: Mean minimum daily temperature
 \item
@@ -3843,7 +3843,7 @@ Which should you choose? Your best bet at this point is to think about the data 
 \end{itemize}
 \end{quote}
 
-With only one example of age 1 and one example of age 3, you cannot possible understand the variation in beetle densities between these age categories -- this is therefore a predictor that should be excluded, although you may wish to run the final model with and without the two sites of age 1 and 3, to see if their inclusion changes anything.
+With only one example of age 1 and one example of age 3, you cannot possibly understand the variation in beetle densities between these age categories -- this is therefore a predictor that should be excluded, although you may wish to run the final model with and without the two sites of age 1 and 3, to see if their inclusion changes anything.
 
 Categorical variables use up more degrees of freedom than continuous variables, so they can be a particular problem with small datasets.
 
@@ -3931,12 +3931,12 @@ Please log out of posit Cloud!
 \hypertarget{model-structure}{%
 \chapter{Model Structure}\label{model-structure}}
 
-This chapter will run in workshop 8 of Week 9.
+This chapter will run in Workshop 8 of Week 9.
 
 \hypertarget{introduction-6}{%
 \section{Introduction}\label{introduction-6}}
 
-Linear models use analysis of variance (ANOVA) as the statistical technique to partition the variation in a dependent variable among predictors. In addition, the effect of interactions between predictors on a dependent variable can be quantified in linear model. Linear models can be constructed with continuous and/or categorical variables but the design of the study must be considered when designing the right model structure to use.
+Linear models use analysis of variance (ANOVA) as the statistical technique to partition the variation in a dependent variable among predictors. In addition, the effect of interactions between predictors on a dependent variable can be quantified in the linear model. Linear models can be constructed with continuous and/or categorical variables but the design of the study must be considered when designing the right model structure to use.
 
 \hypertarget{fully-factorial-linear-model}{%
 \subsection{Fully Factorial Linear Model}\label{fully-factorial-linear-model}}
@@ -3963,10 +3963,10 @@ Post-hoc tests are pairwise comparisons that compare all combinations of the tre
 
 In this weeks first workshop we will be analysing two separate data sets; Nepal and Tulips. You can find these in the data folder for the BIO-7025A classroom. As always, try to pay special attention to the data interpretation steps and make sure you understand the logic behind each of the decisions made.
 
-Once you have logged into the Posit cloud classroom, spend some time cleaning up your workspace environment and setting up your workspace and script as covered in Chapter \ref{workspace-setup} and Chapter \ref{script-setup}. You will need to install and load the packages ????????? for this weeks sessions.
+Once you have logged into the Posit cloud classroom, spend some time cleaning up your workspace environment and setting up your workspace and script as covered in Chapter \ref{workspace-setup} and Chapter \ref{script-setup}. You will need to install and load the packages \texttt{tidyverse}, \texttt{GGally}, \texttt{lmerTest}, \texttt{car} and \texttt{PerformanceAnalytics} for this session.
 
-\hypertarget{linear-model-with-randomised-block-designs-nepal}{%
-\subsection{Linear Model with Randomised Block designs: Nepal}\label{linear-model-with-randomised-block-designs-nepal}}
+\hypertarget{data-set-1-nepal---linear-model-with-randomised-block-designs}{%
+\section{Data set 1: Nepal - Linear Model with Randomised Block designs}\label{data-set-1-nepal---linear-model-with-randomised-block-designs}}
 
 As an introduction to the analysis of more complex study designs, we are going to look at a randomised block design. This form of design is often used to control for natural variation across an experimental area.
 
@@ -4014,18 +4014,47 @@ Look at each of your variables, are any of them categorical? Has R characterised
 Do some of these need to be changed? Remember you can use the \texttt{as.factor()} function to alter these (see Chapter \ref{c11t1}).
 \end{quote}
 
-\hypertarget{task-2---exploring-the-data-1}{%
-\subsection{Task 2 - Exploring the data}\label{task-2---exploring-the-data-1}}
-
-Draw some histograms for each of the three dependent variables (\% cover), and explore the assumption of data normality. You may find it most efficient to manipulate the data to a long form format and then use facet\_wrap() to combine your plots, as below;
+Sometimes we want R to order the different categories within a factor in a specific way (R works alphabetically by default). Lets see how R has ordered our \texttt{treatment} variable. Run the following;
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{\# Report levels within the treatment variable }
+\FunctionTok{levels}\NormalTok{(nepal}\SpecialCharTok{$}\NormalTok{treatment)}
+\end{Highlighting}
+\end{Shaded}
+
+You should get an output that looks a little like this;
+
+\begin{verbatim}
+> levels(nepal$treatment)
+[1] "b"       "c"       "cb"      "control"
+\end{verbatim}
+
+Really it would be great if we could have \texttt{control} as the reference to compare other treatments to, so it would be good if we could reorder this. Try running the following;
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Set control as the reference level within treatment}
+\NormalTok{nepal }\OtherTok{\textless{}{-}} \FunctionTok{mutate}\NormalTok{(nepal, }\AttributeTok{treatment =} \FunctionTok{relevel}\NormalTok{(treatment, }\AttributeTok{ref=}\StringTok{"control"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+Rerun the \texttt{levels()} function, can you see what we have done here? This will be helpful for later analyses.
+
+\hypertarget{task-2---exploring-the-data-1}{%
+\subsection{Task 2 - Exploring the data}\label{task-2---exploring-the-data-1}}
+
+Draw some histograms for each of the three dependent variables (\% cover), and explore the assumption of data normality. You may find it most efficient to manipulate the data to a long form format and then use \texttt{facet\_wrap()} to combine your plots, as below;
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Rearrange the Nepal data set into a long format}
 \NormalTok{nepal2 }\OtherTok{\textless{}{-}}\NormalTok{ nepal }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{pivot\_longer}\NormalTok{(}\AttributeTok{cols =}\NormalTok{ year1994}\SpecialCharTok{:}\NormalTok{year1996,}
                \AttributeTok{names\_to =} \StringTok{"year"}\NormalTok{, }
                \AttributeTok{values\_to =} \StringTok{"perc\_cover"}\NormalTok{)}
 
+\CommentTok{\# Plot histograms for percentage cover and split plots by year}
 \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ nepal2, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ perc\_cover)) }\SpecialCharTok{+}
   \FunctionTok{geom\_histogram}\NormalTok{() }\SpecialCharTok{+}
   \FunctionTok{facet\_wrap}\NormalTok{(}\FunctionTok{vars}\NormalTok{(year))}
@@ -4036,7 +4065,7 @@ Draw some histograms for each of the three dependent variables (\% cover), and e
 \begin{itemize}
 \tightlist
 \item
-  Do you understand what each line of code is doing here? Comment your script appripriatly.
+  Do you understand what each line of code is doing here? Comment your script appropriatly.
 \item
   Is the assumption met for all three groups?
 \end{itemize}
@@ -4052,8 +4081,8 @@ Now try to produce three box-plots for treatment against percentage cover. Use t
 \end{itemize}
 \end{quote}
 
-\hypertarget{task-3---playing-with-some-models}{%
-\subsection{Task 3 - Playing with some models}\label{task-3---playing-with-some-models}}
+\hypertarget{c12t3}{%
+\subsection{Task 3 - Identifying experimental design}\label{c12t3}}
 
 Before starting the analysis, you need to be very clear about the study design.
 
@@ -4065,12 +4094,13 @@ Before starting the analysis, you need to be very clear about the study design.
 \end{itemize}
 \end{quote}
 
-The basic differences between this design and the fully randomised design are that `Block' is not replicated (there is only one block 1, one block 2 etc) and all plots within each block occur next to each other. Consequently, we cannot analyse the experiment as if it were a fully randomised design.
+The basic differences between this design and the fully randomised design are that Block is not replicated (there is only one block 1, one block 2 etc) and all plots within each block occur next to each other. Consequently, we cannot analyse the experiment as if it were a fully randomised factoral design.
 
 To illustrate the problem with analysing this experiment as if it were a fully factorial design (even though it is not fully factorial), we will try constructing a model from our first \texttt{nepal} dataset with year1994 as the dependent variable, and treatment and block as interacting factors. Try running the following;
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{\# Construct our first linear model exploring how much variation in percentage cover in the year 1994 is explained by treatment and block variables}
 \NormalTok{lm1 }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(year1994 }\SpecialCharTok{\textasciitilde{}}\NormalTok{ treatment }\SpecialCharTok{*}\NormalTok{ block, }\AttributeTok{data =}\NormalTok{ nepal)}
 \FunctionTok{summary}\NormalTok{(lm1)}
 \end{Highlighting}
@@ -4084,33 +4114,280 @@ To illustrate the problem with analysing this experiment as if it were a fully f
 \end{itemize}
 \end{quote}
 
-As stressed above, this experiment cannot be analysed as if it were a fully factorial design. The problem is that the analysis is trying to assess all the interactions with Block, but this can't be done because Block is not replicated.
+As stressed above, this experiment cannot be analysed as if it were a fully factorial design. The problem is that the analysis is trying to assess all the interactions with \texttt{block}, but this can't be done because \texttt{block} is not replicated.
 
-Now, to do the analysis correctly, we need to customise a model that doesn't compare all interactions (as in fully factorial) but only those that are actually replicated. As Block is not replicated, all interactions with this have to be removed. Try constructing a new model called \texttt{lm2} with \texttt{treatment} and \texttt{block} as additive factors but with no interaction (hint - use a \texttt{+} instead of \texttt{*}).
+Now, to do the analysis correctly, we need to customise a model that doesn't compare all interactions (as in fully factorial) but only those that are actually replicated. As \texttt{block} is not replicated, all interactions with this have to be removed. We will come back to this shortly but first we need to think about the different ways in which we could go analysing the treatments within our model.
 
-• Re-construct the model (Analyse\textgreater General Linear Model\textgreater Univariate exactly as before but this time also select Model, click on Custom and then select Cut, Burn and Block as individual terms in the model, and also a Cut x Burn interaction term. In the Options box, move Cut and Burn into the Display Means box.
+\hypertarget{task-4---approaches-to-our-model}{%
+\subsection{Task 4 - Approaches to our model}\label{task-4---approaches-to-our-model}}
 
-• Scroll down to the Estimated Marginal mean and look at the means of the four Cut and Burn treatments.
+There are two ways we could approach this model. Use \texttt{glimpse()} to examine your initial \texttt{nepal} data frame again. You will notice we have three columns that define the different treatments each segment in each block was exposed to (i.e.~control, cut, burn and cut \& burn). These are described in two different ways, we have the \texttt{cut} and \texttt{burn} columns that have either a 0 (to signify that this treatment was not used on this segment) or a 1 (to signify that this treatment was used on this segment) and the combination of 0's and 1's indicated each of the four possible combinations. We then have our \texttt{treatment} column which summarises the \texttt{cut} and \texttt{burn} columns with characters (control = control, c = cut, b = burn and cb = cut \& burn). So how do these different notations effect our analysis?
 
- Look at the confidence intervals around these four means -- do you think they are likely to differ significantly?
+We could run our analysis (as we did above) to include effects of the \texttt{treatment} and \texttt{block} factors and ignore the \texttt{cut} and \texttt{burn} factors. If we use \texttt{treatment} as one of our fixed factors in this way we will essentially be performing a one-way ANOVA with four levels (corresponding to the four treatments). Lets ignore \texttt{block} for now and think about what this means. Run the following;
 
- Now scroll back up to the ANOVA table. Are the differences between groups as you expected? Which factors have significant effects? Is the interaction significant?
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Construct a linear model exploring how much variation in percentage cover in the year 1994 is explained by treatment alone }
+\NormalTok{lm1 }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(year1994 }\SpecialCharTok{\textasciitilde{}}\NormalTok{ treatment, }\AttributeTok{data =}\NormalTok{ nepal)}
+\FunctionTok{summary}\NormalTok{(lm1)}
+\end{Highlighting}
+\end{Shaded}
 
-The Plots box allows you to plot the means and examine the interaction between treatments.
+\begin{quote}
+\begin{itemize}
+\tightlist
+\item
+  Take a look at the output for \texttt{summary()}. What is this telling you?
+\end{itemize}
+\end{quote}
 
-• Re-run the analysis but this time select the Plots box and specify Block as the horizontal axis and Burn and Cut as separate lines and plots respectively (then click ADD). Also, as the effect of block is almost significant, run a post-hoc test on this by moving Block into the Post-hoc tests box and selecting Tukey, in order to see how the blocks differ.
+So first of all we can see here that treatment does not explain a significant amount of the variation in percentage cover of \emph{Imperata cylindrica}. But the trouble with this analysis is that we cant really assess if there is an interaction between the the \texttt{cutting} and \texttt{burning} treatments. This model is only looking at additive effects, we cant really say anything about any interaction effects which may be in play.
 
- What does the Post-Hoc Tukey test tell you about the differences between blocks?
+If we want to test for interactions in this instance, we need a design that more closely resembles a fully factorial design, this will let us test and compare additive effects with interactive effects. We can get an indication of whether an interactive effect is in play by looking visualisations of out data. If an additive effect is occurring with no interaction we might expect additional factors to shift the intercept up or down but the slope to remain fairly constant (as seen in panel A of Figure 12.1). On the other hand if interactive effects were occurring we might expect the combined effect of the two factors to be different to the result of us adding the individual effect together (as seen in panel B of Figure 12.1).
 
- What do the means plots show you about the effects of cutting and burning in each block?
+\begin{figure}
+\includegraphics[width=0.9\linewidth]{figures/additive_vs_interactive} \caption{Additive vs interactive effects, A; shows an additive effect where the intercept of the two factors is different but they share a slope, B; shows an interactive effect where the interaction effect changes the relationship and so the slope also changes}\label{fig:unnamed-chunk-100}
+\end{figure}
 
-• Repeat the analysis for years 1995 and 1996
+\begin{quote}
+\begin{itemize}
+\tightlist
+\item
+  Take a look at your initial box plots, do you think there is likely to be an interactive effect of the cut and burn treatments on \emph{I. cylindrica} cover in 1994?
+\end{itemize}
+\end{quote}
 
- Are the effects consistent across years?
+Looking at the medians here, I would guess that an interactive effect between cut and burn treatments is unlikely. But we might like to test this interpretation. This is where having our data in a factorial lay out may be helpful. Try running the following;
 
- Describe what the analysis shows about the effects of cutting and burning in each year.
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Construct a linear model exploring how much variation in percentage cover in the year 1994 is explained by additive and interactive effects of cut and burn treatments and additive effects of block variables}
+\NormalTok{lm2 }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(year1994 }\SpecialCharTok{\textasciitilde{}}\NormalTok{ cut }\SpecialCharTok{*}\NormalTok{burn }\SpecialCharTok{+}\NormalTok{ block, }\AttributeTok{data =}\NormalTok{ nepal)}
+\FunctionTok{summary}\NormalTok{(lm2)}
+\end{Highlighting}
+\end{Shaded}
+
+Remember from Chapter \ref{c12t3} we ascertained that we couldn't look for interactions with block because block isn't replicated, so here we have simply requested it be included only in an additive capacity. However we can now explore potential interactions between cut and burn treatments.
+
+\begin{quote}
+\begin{itemize}
+\tightlist
+\item
+  What is the summary of your new model (lm2) telling you?
+\end{itemize}
+\end{quote}
+
+When incorporating fixed factors with more then two levels it can also be helpful to produce the ANOVA table for your model, this will tell you the overall amount of variation explained by each factor as a whole, try running;
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Produce the ANOVA table for lm2}
+\FunctionTok{anova}\NormalTok{(lm2)}
+\end{Highlighting}
+\end{Shaded}
+
+The variation explained by each factor is captured by the Mean sq column of this output table. The F value is then calculated by dividing the Mean sq of each line by the residual Mean sq.
+
+\begin{quote}
+\begin{itemize}
+\tightlist
+\item
+  Are any of our factors explaining a significant part of the variation in percentact cover of \emph{I. cylindrica}?
+\end{itemize}
+\end{quote}
+
+\hypertarget{exploring-the-model}{%
+\subsection{Exploring the model}\label{exploring-the-model}}
+
+Lets unpack our \texttt{lm2} model a little bit more. The \texttt{GGally} package has a super useful function called \texttt{ggcoef\_model} that produces a plot of the estimated mean difference with estimated 95\% confidence intervals. Try running the following;
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Produce plots for coefficients with 95\% confidence intervals}
+\FunctionTok{ggcoef\_model}\NormalTok{(lm1,}
+             \AttributeTok{show\_p\_values=}\ConstantTok{FALSE}\NormalTok{,}
+             \AttributeTok{signif\_stars =} \ConstantTok{FALSE}\NormalTok{,}
+             \AttributeTok{conf.level=}\FloatTok{0.95}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+And then run the above code again for \texttt{lm2}.
+
+\begin{quote}
+\begin{itemize}
+\tightlist
+\item
+  Can you see the difference in how the models are structured?
+\item
+  What are the 95\% confidence intervals telling you here for \texttt{lm1}? Think back to our discussions in Univariate statistics around 95\% confidence intervals.
+\item
+  How does this compare to the plot produced for \texttt{lm2}
+\end{itemize}
+\end{quote}
+
+These plots allow you to plot the estimated means and examine the interaction between treatments. Something seems to be going on with Block 3 which we may wish to investigate in more detail. We may wish to perform a Tukey test to examine these differences in more detail. To do this we will need to use the \texttt{aov()} function on our \texttt{lm()} and then perform the Tukey test on that. See below;
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Run a post hoc Tukey test for lm2}
+\NormalTok{lm2\_aov }\OtherTok{\textless{}{-}} \FunctionTok{aov}\NormalTok{(lm2)}
+\FunctionTok{TukeyHSD}\NormalTok{(lm2\_aov, }\AttributeTok{conf.level=}\NormalTok{.}\DecValTok{95}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{quote}
+\begin{itemize}
+\tightlist
+\item
+  What does the Post-Hoc Tukey test tell you about the differences between blocks?
+\item
+  What does your overall analysis tell you about the effects of cutting and burning in each block?
+\item
+  Repeat the analysis for years 1995 and 1996
+\item
+  Are the effects consistent across years?
+\item
+  Describe what the analysis shows about the effects of cutting and burning in each year.
+\end{itemize}
+\end{quote}
 
 The design of a study determines the type of statistical analysis that is appropriate, and it is therefore very important to consider the type of model that you intend to use when you are designing the study.
+
+\hypertarget{data-set-2-tulip---linear-model-with-randomised-block-designs}{%
+\section{Data set 2: Tulip - Linear Model with Randomised Block designs}\label{data-set-2-tulip---linear-model-with-randomised-block-designs}}
+
+Lets look at another data set; \texttt{tulip.csv}. These data are from a study of the effects of different levels of shade and irrigation on the production of tulip flowers. There are three shade treatments and three water level treatments, giving a total of nine combinations. The entire experiment was replicated over three different flower beds.
+
+The datafile therefore contains the following variables:
+
+\begin{itemize}
+\tightlist
+\item
+  bed: flower bed 1, 2 or 3
+\item
+  water: water levels 1, 2 or 3
+\item
+  shade: shade levels 1, 2 or 3
+\item
+  blooms: number of tulip blooms produced per plant
+\end{itemize}
+
+\hypertarget{task-5---checking-the-data}{%
+\subsection{Task 5 - Checking the data}\label{task-5---checking-the-data}}
+
+Load the dataset \texttt{tulip.csv} into your workspace under the object name \texttt{tulip} and try performing some routine checks to make sure R has interpreted the variables correctly and that all expected data is present and accounted for. You can use some of the functions explored in Chapter \ref{checking-the-data} if you need some help with this.
+
+\begin{quote}
+Look at each of your variables, are any of them categorical? Has R characterised them as double (\texttt{dbl}), character (\texttt{chr}) or factor (\texttt{fct}) variables?
+Do some of these need to be changed? Remember you can use the \texttt{as.factor()} function to alter these (see Chapter \ref{c11t1}).
+\end{quote}
+
+\hypertarget{task-6---exploring-the-data}{%
+\subsection{Task 6 - Exploring the data}\label{task-6---exploring-the-data}}
+
+You are going to need to construct a linear model to explore how tulip flower production varies among the shade and water treatments. But first it may be helpful to visualise our data using box\_plots. See if you can construct a box plot with \texttt{water} treatment on the x axis, \texttt{blooms} on the y axis and coloured by the \texttt{shade} treatment.
+
+\begin{quote}
+\begin{itemize}
+\tightlist
+\item
+  What do you notice about this plot?
+\item
+  Do you notice any possible additive or interactive effects?
+\end{itemize}
+\end{quote}
+
+Before we start modeling, we need to check that our data meets the assumptions of the linear model. Start by calculating some descriptive statistics for each treatment and consider what you think the effects of the predictor variables and whether the data meet the assumptions of the linear model. Build some histograms and run Levenes Test to check the assumptions of the linear model -- normality of the data for each treatment and equality of variance between treatments.
+
+\hypertarget{playing-with-some-models}{%
+\subsection{Playing with some models}\label{playing-with-some-models}}
+
+Construct the linear model with \texttt{bloom} as the dependent variable and \texttt{bed}, \texttt{water} and \texttt{shade} as fixed factors. As with the Nepal data, you have a randomized block experiment here, as the water and shade treatments are replicated across three flower beds (blocks). You therefore have to customize the model with an interactive term between \texttt{water} and \texttt{shade} and an additive term for \texttt{bed} (remember, this is to avoid the model trying to look for interactions with \texttt{bed}).
+
+\begin{quote}
+\begin{itemize}
+\tightlist
+\item
+  Run the model and write down what the model output tells you about the effect of each treatment and the effects of the interaction between treatments on tulip production. You may find it helpful to use both \texttt{summary()} and \texttt{anova()} functions.\\
+\item
+  Look back at your orrigional boxplot, does your analysis corroborate the plot?
+\item
+  What is the effect of the treatments on tulip production
+\end{itemize}
+\end{quote}
+
+The interaction term of water:shade is significant (p = 0.005). You can see why most easily by looking at our orrigional box plot. At shade 1, there are big differences among the water treatments while, at shade levels 2 \& 3, there is only a slight increase in blooms at water level 3. Shade 1 is the lowest shade level, and water 3 is the highest water level, so this suggests that watering more is most helpful when there is little shade, an interpretation supported by the low bloom response at water level 1 and shade level 1.
+
+The effect of water therefore depends on shade level. Tulip bloom production increases strongly with increasing water levels at low shade 1, but less so at higher shades. However, overall there seems to be an overall positive effect on blooms going from 1 to 3 for any given shade level.
+
+\hypertarget{mixed-effects-linear-models}{%
+\section{Mixed effects linear models}\label{mixed-effects-linear-models}}
+
+In some cases, you may wish to include model predictors that may have an influence on your dependent variable but for which you only want to account for that effect, i.e.~not measure it directly -- these are known as \textbf{random} factors. For example, in both the Nepal and Tulip examples, the data were grouped together in space (\textbf{block} in Nepal and \textbf{bed} in Tulip). As an alternative to a customised model design, we could have included this grouping predictor as a random factor.
+
+If you are including random and fixed effects in one model we are constructing something called a mixed effects model, and random effects must have more than two levels (but ideally these models work best if you have at least 5 levels).
+
+We will see if how this works now, with our \texttt{tulip.csv} data set.
+
+Previously, we constructed a customised linear model to analyse these data but an alternative would be to construct a mixed model and account for the non-independence of plants from the same flowerbed by including \texttt{bed} as a random factor. This will mean that the model accounts for the variation that can be attributed to bed but will not statistically compare the three flowerbeds.
+
+To construct a mixed effects model we will be making use of the function \texttt{lmer} from the \texttt{lmerTest} package. Try running the following;
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Run a mixed effects linear model}
+\NormalTok{mixed\_model }\OtherTok{\textless{}{-}} \FunctionTok{lmer}\NormalTok{(blooms }\SpecialCharTok{\textasciitilde{}}\NormalTok{ water}\SpecialCharTok{*}\NormalTok{shade }\SpecialCharTok{+}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{|}\NormalTok{bed), }\AttributeTok{data =}\NormalTok{ tulip)}
+\end{Highlighting}
+\end{Shaded}
+
+And then check out the output by using \texttt{summary()} and \texttt{anova()} functions.
+
+\begin{quote}
+\begin{itemize}
+\tightlist
+\item
+  What does these functions tell you about the effects of water and shade on the numbers of blooms produced?
+\item
+  Compare the F values in the ANOVA output to those that you found when you constructed a customised linear model \texttt{tulip}.
+\end{itemize}
+\end{quote}
+
+You might have noticed that the \texttt{summary()} output for your mixed effects model is very similar to that of your standard linear model. And this is broadly true. The additional section to pay attention to is the \texttt{Random\ effects:} table, this gives you additional information on how much of the variation from your mixed effects model is explained by your random factor (in this case bed).
+
+The results of these two modelling approaches are, in this case, the same and either of these models would be an appropriate way to analyse these data. In this case, including bed as a fixed or random effect makes little difference to the model but if there had been many different beds and a less balanced design, it is likely that the mixed model would be more powerful (as fitting \texttt{bed} as a random effect leaves more degrees of freedom for the model, and thus there is more power to find any effects that exist).
+
+\hypertarget{conclusions}{%
+\section{Conclusions}\label{conclusions}}
+
+Today we have explored how the way you conduct a study influences how you structure your model. We have examined the differences between additive and interactive effects and how to spot the hallmarks of each and we have dabbled with incorporating random effects into a mixed effects linear model.
+
+These sessions are very much introductions into the world of multivariate statistics and your knowledge will benefit from further reading. I highly recommend Getting Started with R; An Introduction for Biologists by Beckerman, Childs and Petchey for further reading.
+
+\hypertarget{before-you-leave-9}{%
+\section{Before you leave!}\label{before-you-leave-9}}
+
+Make sure you save your script and download it if you would like to keep a local copy.
+
+Please log out of posit Cloud!
+
+\url{https://www.datanovia.com/en/lessons/repeated-measures-anova-in-r/\#google_vignette}
+
+\hypertarget{repeated-measures-linear-models}{%
+\chapter{Repeated Measures Linear Models}\label{repeated-measures-linear-models}}
+
+This chapter will run in Workshop 9 of Week 9.
+
+\hypertarget{introduction-7}{%
+\section{Introduction}\label{introduction-7}}
+
+\hypertarget{practical-9---repeated-measures-linear-models}{%
+\section{Practical 9 - Repeated Measures Linear Models}\label{practical-9---repeated-measures-linear-models}}
+
+\hypertarget{data-set-1-activity}{%
+\section{Data set 1: Activity}\label{data-set-1-activity}}
+
+\hypertarget{data-set-2-bird-metabolism}{%
+\section{Data set 2: Bird Metabolism}\label{data-set-2-bird-metabolism}}
 
   \bibliography{book.bib,packages.bib}
 

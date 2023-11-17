@@ -68,7 +68,7 @@ Draw the scatterplot for the relationship between per capita daily calorific int
 Try running a linear regression for daily calorific intake and gross national product, store your model under the object name `daycal_gnp_lm_1` revisit Chapter \@ref(c6t3) if you're not sure how to do this. 
 
 > * What does the regression model output tell you about the relationship between calorific intake and GNP? 
-> * Write down what the slope, constant, r2 and p-value tell you about this relationship, and consider whether they accurately describe this relationship.
+> * Write down what the slope, constant, r$^2$ and p-value tell you about this relationship, and consider whether they accurately describe this relationship.
 
 As we did in Chapter \@ref(c6t3), try plotting the residuals against the predicted values.
 
@@ -87,7 +87,7 @@ africa <- africa %>%
 
 Try performing a log10 transformation on the gnp variable, revisit Chapter \@ref(c7t3) if you unsure how to do this. Then re-run the regression model using the logged variable, and redraw the scatterplot
 
-> * Has the model fit improved? Compare the slope, intercept, r2 and p-value to the model with the unlogged GNP.
+> * Has the model fit improved? Compare the slope, intercept, r$2$ and p-value to the model with the unlogged GNP.
 
 Have a look at the leverage values and the residuals for your new model. Country 11 (Gabon) still has something of a disproportionate effect on the fit of the regression line (large-ish leverage), even in the model with log (GNP). Use the following command to temporarily exclude this country from our scatter plot (note we are not deleting the data completely). This will allow you to explore the influence of Gabon.
 
@@ -132,7 +132,7 @@ summary(daycal_multi_lm_1)
 
 Remove the non-significant variable with the highest p-value from the regression model and examine the change in the adjusted $r^2$. 
 
-> * Has removing the variable altered the explanatory power of the regression (r$^2$) very much?  What has happened to the coefficients (slopes) of the remaining variables?
+> * Has removing the variable altered the explanatory power of the regression (check the adjusted r$^2$ now we are working with mulivariate linear models) very much?  What has happened to the coefficients (slopes) of the remaining variables?
 
 By removing the least significant variable at each stage, you reduce the regression equation until it only contains significant variables (this is called the minimum model). At each stage, check that removing a predictor variable does not cause the r$^2$ of the model to drop too much or cause the sign of the slope coefficient or the significance of other variables in the model to change strongly.
 	
@@ -238,7 +238,7 @@ Finally we will consider our third data set. These data are from a study of what
 * veg_density: 		Density of grass vegetation (from 1 = sparse to 5 = dense)
 * plant_species:		Mean no. of plant species per m2
 * soil_moisture:		Mean soil moisture level
-* soil)_penetrability:	Soil penetrability
+* soil_penetrability:	Soil penetrability
 * min_temp: 	Mean minimum daily temperature
 * max_temp:	Mean maximum daily temperature
 
@@ -269,7 +269,7 @@ Which should you choose? Your best bet at this point is to think about the data 
 
 > * How many datapoints do you have for each of the patch_age categories?
 
-With only one example of age 1 and one example of age 3, you cannot possible understand the variation in beetle densities between these age categories – this is therefore a predictor that should be excluded, although you may wish to run the final model with and without the two sites of age 1 and 3, to see if their inclusion changes anything.
+With only one example of age 1 and one example of age 3, you cannot possibly understand the variation in beetle densities between these age categories – this is therefore a predictor that should be excluded, although you may wish to run the final model with and without the two sites of age 1 and 3, to see if their inclusion changes anything.
 
 Categorical variables use up more degrees of freedom than continuous variables, so they can be a particular problem with small datasets.
 
