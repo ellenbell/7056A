@@ -181,7 +181,7 @@
 
 \title{Statistics for Biologists}
 \author{Dr Ellen Bell}
-\date{2023-11-17}
+\date{2023-11-19}
 
 \begin{document}
 \maketitle
@@ -3958,8 +3958,8 @@ There are several options within linear models which will allow further assessme
 
 Post-hoc tests are pairwise comparisons that compare all combinations of the treatment groups. There are many post-hoc tests which vary in exactly how they deal with Type I and Type II errors. The most commonly used is the Tukey test. Ideally, variances and sample sizes will be similar between treatments and most multiple comparison tests are fairly robust to deviations from these assumptions.
 
-\hypertarget{practical-7---exploring-model-structure}{%
-\section{Practical 7 - Exploring Model Structure}\label{practical-7---exploring-model-structure}}
+\hypertarget{practical-8---exploring-model-structure}{%
+\section{Practical 8 - Exploring Model Structure}\label{practical-8---exploring-model-structure}}
 
 In this weeks first workshop we will be analysing two separate data sets; Nepal and Tulips. You can find these in the data folder for the BIO-7025A classroom. As always, try to pay special attention to the data interpretation steps and make sure you understand the logic behind each of the decisions made.
 
@@ -4310,13 +4310,13 @@ Construct the linear model with \texttt{bloom} as the dependent variable and \te
 \item
   Run the model and write down what the model output tells you about the effect of each treatment and the effects of the interaction between treatments on tulip production. You may find it helpful to use both \texttt{summary()} and \texttt{anova()} functions.\\
 \item
-  Look back at your orrigional boxplot, does your analysis corroborate the plot?
+  Look back at your original boxplot, does your analysis corroborate the plot?
 \item
   What is the effect of the treatments on tulip production
 \end{itemize}
 \end{quote}
 
-The interaction term of water:shade is significant (p = 0.005). You can see why most easily by looking at our orrigional box plot. At shade 1, there are big differences among the water treatments while, at shade levels 2 \& 3, there is only a slight increase in blooms at water level 3. Shade 1 is the lowest shade level, and water 3 is the highest water level, so this suggests that watering more is most helpful when there is little shade, an interpretation supported by the low bloom response at water level 1 and shade level 1.
+The interaction term of water:shade is significant (p = 0.005). You can see why most easily by looking at our original box plot. At shade 1, there are big differences among the water treatments while, at shade levels 2 \& 3, there is only a slight increase in blooms at water level 3. Shade 1 is the lowest shade level, and water 3 is the highest water level, so this suggests that watering more is most helpful when there is little shade, an interpretation supported by the low bloom response at water level 1 and shade level 1.
 
 The effect of water therefore depends on shade level. Tulip bloom production increases strongly with increasing water levels at low shade 1, but less so at higher shades. However, overall there seems to be an overall positive effect on blooms going from 1 to 3 for any given shade level.
 
@@ -4370,8 +4370,6 @@ Make sure you save your script and download it if you would like to keep a local
 
 Please log out of posit Cloud!
 
-\url{https://www.datanovia.com/en/lessons/repeated-measures-anova-in-r/\#google_vignette}
-
 \hypertarget{repeated-measures-linear-models}{%
 \chapter{Repeated Measures Linear Models}\label{repeated-measures-linear-models}}
 
@@ -4380,14 +4378,290 @@ This chapter will run in Workshop 9 of Week 9.
 \hypertarget{introduction-7}{%
 \section{Introduction}\label{introduction-7}}
 
+When we are exploring the effect of different treatments on a dependent variable, the most powerful method is to include the same individuals within each treatment. This method allows you to explore the effect of the treatment, having controlled for the inherent variation among individuals in their response to the treatments. This is called a Repeated Measures design. For example, if you were measuring how the growth of plants changed over time with the addition of a nutrient, you could either measure different plants from each treatment (nutrient versus control) at each time interval (e.g.~every week), or you could measure the same plants at each time interval -- the latter is much more powerful because individual variation in plant growth (independent of the treatment) can be controlled in the analysis.
+
 \hypertarget{practical-9---repeated-measures-linear-models}{%
 \section{Practical 9 - Repeated Measures Linear Models}\label{practical-9---repeated-measures-linear-models}}
 
-\hypertarget{data-set-1-activity}{%
-\section{Data set 1: Activity}\label{data-set-1-activity}}
+In this session we will be working with two data sets. First of all we have \texttt{activity.csv} which measures sweat produced in 10 individuals during a bout of intense activity. We will then move onto \texttt{metabolism.csv} which measures metabolism in a migrant bird species under different conditions, so we will look at how we can implement repeated measures design in a two-way ANOVA.
 
-\hypertarget{data-set-2-bird-metabolism}{%
-\section{Data set 2: Bird Metabolism}\label{data-set-2-bird-metabolism}}
+Log into the Posit cloud classroom and install and load the following packages; \texttt{tidyverse}and \texttt{rstatix}.
+
+\hypertarget{data-set-1---activity}{%
+\section{Data set 1 - Activity}\label{data-set-1---activity}}
+
+This is an example of where repeated measured design was used to measure sweat produced in 10 individuals at three time points before, during and after a bout of intense physical activity.
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{activity.csv} data file
+\end{itemize}
+
+This data file contains the following data;
+
+\begin{itemize}
+\tightlist
+\item
+  time0 - amount of sweat produced before activity
+\item
+  time1 - amount of sweat produced during activity
+\item
+  time2 - amount of sweat produced after activity
+\end{itemize}
+
+\hypertarget{task-1---checking-the-data-3}{%
+\subsection{Task 1 - Checking the data}\label{task-1---checking-the-data-3}}
+
+Load the data set \texttt{activity.csv} into your workspace under the object name \texttt{activity} and try performing some routine checks to make sure R has interpreted the variables correctly and all expected data is present and accounted for. You can use some of the functions explored in Chapter \ref{checking-the-data} if you need some help with this.
+
+We are going to have to do some data wrangling before we can continue this analysis. We really need an individual identifier here so we can relate individual participants back to their scores at each time point. Try running the following;
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create an object with individual identifiers (1 to 10)}
+\NormalTok{individual }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{)}
+\CommentTok{\# Bind our \textasciigrave{}individual\textasciigrave{} object as a column to our \textasciigrave{}activity\textasciigrave{} data frame}
+\NormalTok{activity }\OtherTok{\textless{}{-}} \FunctionTok{cbind}\NormalTok{(activity,individual)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{quote}
+\begin{itemize}
+\tightlist
+\item
+  Make sure you understand how the above piece of code works.
+\item
+  Is our data frame in a wide or a long format? Which format do you think it should be in?
+\end{itemize}
+\end{quote}
+
+Make sure your data is in a long format, try running the following to put your time columns into a long format;
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{activity }\OtherTok{\textless{}{-}}\NormalTok{ activity }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pivot\_longer}\NormalTok{(}\AttributeTok{cols =}\NormalTok{ time0}\SpecialCharTok{:}\NormalTok{time2,}
+               \AttributeTok{names\_to =} \StringTok{"time\_point"}\NormalTok{, }
+               \AttributeTok{values\_to =} \StringTok{"response"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{quote}
+\begin{itemize}
+\tightlist
+\item
+  Now use \texttt{glimpse()} to check how R has categorised the different data types for each variable?
+\item
+  Really we need \texttt{individual} and \texttt{time\_point} to be categorised as factors. See if you can use \texttt{as.factor()} to convert these variables to factors.
+\end{itemize}
+\end{quote}
+
+\hypertarget{task-2---exploring-the-data-2}{%
+\subsection{Task 2 - Exploring the data}\label{task-2---exploring-the-data-2}}
+
+Now that we have our data in a sensible format we can start to do some data exploration.
+
+\begin{quote}
+\begin{itemize}
+\tightlist
+\item
+  Start by calculating the means and SE for each of the three time periods.
+\item
+  Write down what this tells you about the effect of activity on sweat production.
+\item
+  Do you think that these groups are likely to differ significantly from one another?
+\end{itemize}
+\end{quote}
+
+Lets try to make a data visualisation to help with this last point
+
+\begin{quote}
+\begin{itemize}
+\tightlist
+\item
+  See if you can make a boxplot with \texttt{time\_point} on the x axis and \texttt{response} on the y axis.
+\item
+  Draw histograms to check the assumption of normally distributed data.
+\item
+  Is this assumption met for all three groups?
+\end{itemize}
+\end{quote}
+
+\hypertarget{task-3---playing-with-some-statistics}{%
+\subsection{Task 3 - Playing with some statistics}\label{task-3---playing-with-some-statistics}}
+
+You could explore the difference between the sweating rates of individuals before, during or after activity by running a one-way ANOVA (i.e.~a linear model with sweat production as the dependent variable and the three time periods as predictors). However, as the same 10 people took part in all three treatments, a more powerful analysis is a Repeated Measures ANOVA\ldots{}
+
+To run this model we are going to start using a new ANOVA function. Here we need to define a subject identifier, within subject factor (or grouping variable) and our dependent variable. Try running the following;
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Run a repeated measures ANOVA comparing response (dependent variable) between different time points (within subject variable) across individuals (subject identifier)}
+\NormalTok{repeated\_aov }\OtherTok{\textless{}{-}} \FunctionTok{anova\_test}\NormalTok{(}\AttributeTok{data =}\NormalTok{ activity, }\AttributeTok{dv =}\NormalTok{ response, }\AttributeTok{wid =}\NormalTok{ individual, }\AttributeTok{within =}\NormalTok{ time\_point)}
+\CommentTok{\# Call the ANOVA table for our model}
+\FunctionTok{get\_anova\_table}\NormalTok{(repeated\_aov)}
+\end{Highlighting}
+\end{Shaded}
+
+You will be aware that ANOVAs make a range of assumtions of the input data. The repeated measures ANOVA has an additional assumption - sphericity. Sphericity is a test of the assumption of equality of variance among treatments. Generally a Mauchley's test is applied to test for this and if p \textgreater{} 0.05, then there is no significant differences between the variances of the treatments, and the assumption is met. If p \textless{} 0.05, then the variances between your treatments are significantly different and the test assumption is violated.
+
+Very conveniently, get\_anova\_table() does a lot of the work for you. It automatically checks the sphericity assumption using Mauchley's test and if the sphericity assumption is violated then it will automatically apply a correction (the Greenhouse\_Geisser sphericity correction) to within subject factors that are in violation of the sphericity assumption. Applying the correction essentially reduces the degrees of freedom to make the test more conservative.
+
+Take a look at the output from the \texttt{get\_anova\_table()} function. This output is a little different from other ANOVA outputs we've seen so far. DFn and DFd represent the degrees of freedom for treatment (T-1) and error ((T-1)(n-1)) respectively. The F statistic, represents the ratio of the variance between groups to the variance within groups and the p value which gives the probability of seeing the test statistic if the null hypothesis were true. Finally the \texttt{ges} gives a general effect size, i.e.~the amount of variability due to the within subject factor.
+
+\begin{quote}
+\begin{itemize}
+\tightlist
+\item
+  Write down a few lines interpreting the output of this analysis
+\item
+  Does this match what you might think from the boxplot?
+\end{itemize}
+\end{quote}
+
+A post-hoc test would be helpful here to add some direction to the differences we are seeing. With repeated measures ANOVA, Bonferroni post-hoc test is the recommended test. We can perform this using the following piece of code;
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pwc }\OtherTok{\textless{}{-}}\NormalTok{ activity }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pairwise\_t\_test}\NormalTok{(}
+\NormalTok{    response }\SpecialCharTok{\textasciitilde{}}\NormalTok{ time\_point, }\AttributeTok{paired =} \ConstantTok{TRUE}\NormalTok{,}
+    \AttributeTok{p.adjust.method =} \StringTok{"bonferroni"}
+\NormalTok{  )}
+\NormalTok{pwc}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{quote}
+\begin{itemize}
+\tightlist
+\item
+  Take a look at the output, how would you interpret this?
+\item
+  What does this output tell you about the differences among treatments?
+\end{itemize}
+\end{quote}
+
+So we have played with some very basic repeated measures analysis, essentially a one-way repeated measures ANOVA. But often if you are using repeated measures designs you will want to incorporate more variables.
+
+\hypertarget{data-set-2---metabolism}{%
+\section{Data set 2 - Metabolism}\label{data-set-2---metabolism}}
+
+Now we can start to play with a slightly more complex data set and analysis.
+
+We will look at a study of the metabolism of migrant birds under different environmental (temperature) and physiological (parasite load) conditions. The metabolism of 30 different birds was measured at three different time periods (1 = after 10 minutes, 2 = after two hours, 3 = after four hours), under either warm (inside) or cold (outside) temperatures, and the parasite load of each bird (low, medium, high) was measured at the end of the experiment. The data for this can be found in;
+
+\texttt{bird\_metabolism.csv}
+
+The data in this file is as follows;
+
+\begin{itemize}
+\tightlist
+\item
+  individual - individual identifier
+\item
+  para - an index or parasite load (1 = low parasite load, 2 = medium parasite load and 3 = high parasite load)
+\item
+  temp - temperature conditions (1 = warm, 2 = cold)
+\item
+  met1 - metabolism at time point 1 (after 10 minutes)
+\item
+  met2 - metabolism at time point 2 (after two hours)
+\item
+  met3 - metabolism at time point 3 (after four hours)
+\end{itemize}
+
+\hypertarget{task-4---checking-the-data}{%
+\subsection{Task 4 - Checking the data}\label{task-4---checking-the-data}}
+
+Load the data set \texttt{metabolism.csv} into your workspace under the object name \texttt{metabolism} and try performing some routine checks to make sure R has interpreted the variables correctly and all expected data is present and accounted for. You can use some of the functions explored in Chapter \ref{checking-the-data} if you need some help with this.
+
+\begin{quote}
+\begin{itemize}
+\tightlist
+\item
+  Which variables are you going to include as fixed factors. Has R interpreted these variables as factors?
+\item
+  Is this data set in a wide or a long format? Does it need to be converted?
+\end{itemize}
+\end{quote}
+
+Both \texttt{temp} and \texttt{para} are categorical and need to be identified as factors and the columns \texttt{met1}, \texttt{met2}, \texttt{met3} need to be in a single column. Have a go at creating some code to complete both of these tasks. Look at earlier sections if you get stuck.
+
+\hypertarget{task-5---exploring-the-data}{%
+\subsection{Task 5 - Exploring the data}\label{task-5---exploring-the-data}}
+
+Now that we have our data in a sensible format we can start to do some data exploration.
+
+\begin{quote}
+\begin{itemize}
+\tightlist
+\item
+  Start by calculating the means and SE for each of the different time points
+\end{itemize}
+\end{quote}
+
+Lets try to make some data visualisation to help explore this data set.
+
+\begin{quote}
+\begin{itemize}
+\tightlist
+\item
+  See if you can make a boxplot with time point on the x axis and metabolism on the y axis. Colour your boxes by \texttt{temp}
+\item
+  Now create another boxplot but try colouring the boxes by \texttt{para}
+\item
+  What do these box plots tell you about the effects of time, temperature and parasites on metabolism?
+\item
+  Draw histograms to check the assumption of normally distributed data.
+\item
+  Is this assumption met for all time points?
+\end{itemize}
+\end{quote}
+
+\hypertarget{task-6---playing-with-some-statistics}{%
+\subsection{Task 6 - Playing with some statistics}\label{task-6---playing-with-some-statistics}}
+
+Now we are ready to start playing with some statistics.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Fun a repeated measures ANOVA with metabolism as the dependent variable, individul as the subject identifier, time as the within subject variable and temp and para as between subject variables.}
+\NormalTok{met\_aov }\OtherTok{\textless{}{-}} \FunctionTok{anova\_test}\NormalTok{(}
+  \AttributeTok{data =}\NormalTok{ metabolism, }\AttributeTok{dv =}\NormalTok{ metabolism, }\AttributeTok{wid =}\NormalTok{ individual,}
+  \AttributeTok{within =}\NormalTok{  time, }\AttributeTok{between =} \FunctionTok{c}\NormalTok{(temp,para))}
+\FunctionTok{get\_anova\_table}\NormalTok{(met\_aov)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{quote}
+\begin{itemize}
+\tightlist
+\item
+  What does the output tell you about the variation in metabolism over the three time periods?
+\item
+  What do the interactions with time rows tell you?
+\item
+  What do the tests between subject variables tell you about the effects of parasite load and temperature on metabolism?
+\item
+  Run a post-hoc test to get more information on the direction of some of these relationships.
+\item
+  How do your conclusions here compare to the conclusions you drew from the box plots earlier?
+\end{itemize}
+\end{quote}
+
+\hypertarget{conclusions-1}{%
+\section{Conclusions}\label{conclusions-1}}
+
+This session we have explored how we can incorporate repeated measures designs into our analysis by using repeated measures ANOVAs.
+
+\hypertarget{before-you-leave-10}{%
+\section{Before you leave!}\label{before-you-leave-10}}
+
+Make sure you save your script and download it if you would like to keep a local copy.
+
+Please log out of posit Cloud!
 
   \bibliography{book.bib,packages.bib}
 

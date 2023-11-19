@@ -4,8 +4,170 @@ This chapter will run in Workshop 9 of Week 9.
 
 ## Introduction
 
+When we are exploring the effect of different treatments on a dependent variable, the most powerful method is to include the same individuals within each treatment. This method allows you to explore the effect of the treatment, having controlled for the inherent variation among individuals in their response to the treatments. This is called a Repeated Measures design. For example, if you were measuring how the growth of plants changed over time with the addition of a nutrient, you could either measure different plants from each treatment (nutrient versus control) at each time interval (e.g. every week), or you could measure the same plants at each time interval – the latter is much more powerful because individual variation in plant growth (independent of the treatment) can be controlled in the analysis.
+
 ## Practical 9 - Repeated Measures Linear Models
 
-## Data set 1: Activity
+In this session we will be working with two data sets. First of all we have `activity.csv` which measures sweat produced in 10 individuals during a bout of intense activity. We will then move onto `metabolism.csv` which measures metabolism in a migrant bird species under different conditions, so we will look at how we can implement repeated measures design in a two-way ANOVA.
 
-## Data set 2: Bird Metabolism 
+Log into the Posit cloud classroom and install and load the following packages; `tidyverse`and `rstatix`.
+
+## Data set 1 - Activity
+
+This is an example of where repeated measured design was used to measure sweat produced in 10 individuals at three time points before, during and after a bout of intense physical activity. 
+
+* `activity.csv` data file
+
+This data file contains the following data;
+
+* time0 - amount of sweat produced before activity
+* time1 - amount of sweat produced during activity
+* time2 - amount of sweat produced after activity
+
+### Task 1 - Checking the data
+
+Load the data set `activity.csv` into your workspace under the object name `activity` and try performing some routine checks to make sure R has interpreted the variables correctly and all expected data is present and accounted for. You can use some of the functions explored in Chapter \@ref(checking-the-data) if you need some help with this. 
+
+We are going to have to do some data wrangling before we can continue this analysis. We really need an individual identifier here so we can relate individual participants back to their scores at each time point. Try running the following;
+
+```{r}
+# Create an object with individual identifiers (1 to 10)
+individual <- c(1:10)
+# Bind our `individual` object as a column to our `activity` data frame
+activity <- cbind(activity,individual)
+```
+
+> * Make sure you understand how the above piece of code works. 
+> * Is our data frame in a wide or a long format? Which format do you think it should be in?
+
+Make sure your data is in a long format, try running the following to put your time columns into a long format;
+
+```{r}
+activity <- activity %>%
+  pivot_longer(cols = time0:time2,
+               names_to = "time_point", 
+               values_to = "response")
+```
+
+> * Now use `glimpse()` to check how R has categorised the different data types for each variable? 
+> * Really we need `individual` and `time_point` to be categorised as factors. See if you can use `as.factor()` to convert these variables to factors. 
+
+### Task 2 - Exploring the data
+
+Now that we have our data in a sensible format we can start to do some data exploration. 
+
+> * Start by calculating the means and SE for each of the three time periods.
+> * Write down what this tells you about the effect of activity on sweat production.
+> * Do you think that these groups are likely to differ significantly from one another?
+
+Lets try to make a data visualisation to help with this last point
+
+> * See if you can make a boxplot with `time_point` on the x axis and `response` on the y axis. 
+> * Draw histograms to check the assumption of normally distributed data.
+> * Is this assumption met for all three groups?
+
+### Task 3 - Playing with some statistics
+
+You could explore the difference between the sweating rates of individuals before, during or after activity by running a one-way ANOVA (i.e. a linear model with sweat production as the dependent variable and the three time periods as predictors). However, as the same 10 people took part in all three treatments, a more powerful analysis is a Repeated Measures ANOVA…
+
+To run this model we are going to start using a new ANOVA function. Here we need to define a subject identifier, within subject factor (or grouping variable) and our dependent variable. Try running the following;
+
+```{r}
+# Run a repeated measures ANOVA comparing response (dependent variable) between different time points (within subject variable) across individuals (subject identifier)
+repeated_aov <- anova_test(data = activity, dv = response, wid = individual, within = time_point)
+# Call the ANOVA table for our model
+get_anova_table(repeated_aov)
+```
+
+You will be aware that ANOVAs make a range of assumtions of the input data. The repeated measures ANOVA has an additional assumption - sphericity. Sphericity is a test of the assumption of equality of variance among treatments. Generally a Mauchley's test is applied to test for this and if p > 0.05, then there is no significant differences between the variances of the treatments, and the assumption is met.  If p < 0.05, then the variances between your treatments are significantly different and the test assumption is violated. 
+
+Very conveniently, get_anova_table() does a lot of the work for you. It automatically checks the sphericity assumption using Mauchley's test and if the sphericity assumption is violated then it will automatically apply a correction (the Greenhouse_Geisser sphericity correction) to within subject factors that are in violation of the sphericity assumption. Applying the correction essentially reduces the degrees of freedom to make the test more conservative.
+
+Take a look at the output from the `get_anova_table()` function. This output is a little different from other ANOVA outputs we've seen so far. DFn and DFd represent the degrees of freedom for  treatment (T-1) and error ((T-1)(n-1)) respectively. The F statistic, represents the ratio of the variance between groups to the variance within groups and the p value which gives the probability of seeing the test statistic if the null hypothesis were true. Finally the `ges` gives a general effect size, i.e. the amount of variability due to the within subject factor. 
+
+> * Write down a few lines interpreting the output of this analysis
+> * Does this match what you might think from the boxplot?
+
+A post-hoc test would be helpful here to add some direction to the differences we are seeing. With repeated measures ANOVA, Bonferroni post-hoc test is the recommended test. We can perform this using the following piece of code;
+
+```{r}
+pwc <- activity %>%
+  pairwise_t_test(
+    response ~ time_point, paired = TRUE,
+    p.adjust.method = "bonferroni"
+  )
+pwc
+```
+
+> * Take a look at the output, how would you interpret this?
+> * What does this output tell you about the differences among treatments? 
+
+So we have played with some very basic repeated measures analysis, essentially a one-way repeated measures ANOVA. But often if you are using repeated measures designs you will want to incorporate more variables.
+
+## Data set 2 - Metabolism
+
+Now we can start to play with a slightly more complex data set and analysis.
+
+We will look at a study of the metabolism of migrant birds under different environmental (temperature) and physiological (parasite load) conditions. The metabolism of 30 different birds was measured at three different time periods (1 = after 10 minutes, 2 = after two hours, 3 = after four hours), under either warm (inside) or cold (outside) temperatures, and the parasite load of each bird (low, medium, high) was measured at the end of the experiment. The data for this can be found in;
+
+`bird_metabolism.csv`
+
+The data in this file is as follows;
+
+* individual - individual identifier 
+* para - an index or parasite load (1 = low parasite load, 2 = medium parasite load and 3 = high parasite load)
+* temp - temperature conditions (1 = warm, 2 = cold)
+* met1 - metabolism at time point 1 (after 10 minutes)
+* met2 - metabolism at time point 2 (after two hours)
+* met3 - metabolism at time point 3 (after four hours)
+
+### Task 4 - Checking the data
+
+Load the data set `metabolism.csv` into your workspace under the object name `metabolism` and try performing some routine checks to make sure R has interpreted the variables correctly and all expected data is present and accounted for. You can use some of the functions explored in Chapter \@ref(checking-the-data) if you need some help with this. 
+
+> * Which variables are you going to include as fixed factors. Has R interpreted these variables as factors?
+> * Is this data set in a wide or a long format? Does it need to be converted?
+
+Both `temp` and `para` are categorical and need to be identified as factors and the columns `met1`, `met2`, `met3` need to be in a single column. Have a go at creating some code to complete both of these tasks. Look at earlier sections if you get stuck. 
+
+### Task 5 - Exploring the data
+
+Now that we have our data in a sensible format we can start to do some data exploration. 
+
+> * Start by calculating the means and SE for each of the different time points
+
+Lets try to make some data visualisation to help explore this data set. 
+
+> * See if you can make a boxplot with time point on the x axis and metabolism on the y axis. Colour your boxes by `temp`
+> * Now create another boxplot but try colouring the boxes by `para`
+> * What do these box plots tell you about the effects of time, temperature and parasites on metabolism?
+> * Draw histograms to check the assumption of normally distributed data.
+> * Is this assumption met for all time points?
+
+### Task 6 - Playing with some statistics
+
+Now we are ready to start playing with some statistics. 
+
+```{r}
+# Fun a repeated measures ANOVA with metabolism as the dependent variable, individul as the subject identifier, time as the within subject variable and temp and para as between subject variables.
+met_aov <- anova_test(
+  data = metabolism, dv = metabolism, wid = individual,
+  within =  time, between = c(temp,para))
+get_anova_table(met_aov)
+```
+
+> * What does the output tell you about the variation in metabolism over the three time periods?
+> * What do the interactions with time rows tell you?
+> * What do the tests between subject variables tell you about the effects of parasite load and temperature on metabolism? 
+> * Run a post-hoc test to get more information on the direction of some of these relationships. 
+> * How do your conclusions here compare to the conclusions you drew from the box plots earlier? 
+
+## Conclusions
+
+This session we have explored how we can incorporate repeated measures designs into our analysis by using repeated measures ANOVAs. 
+
+## Before you leave!
+
+Make sure you save your script and download it if you would like to keep a local copy.
+
+Please log out of posit Cloud!

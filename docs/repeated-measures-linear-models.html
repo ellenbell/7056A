@@ -23,7 +23,7 @@
 <meta name="author" content="Dr Ellen Bell" />
 
 
-<meta name="date" content="2023-11-17" />
+<meta name="date" content="2023-11-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -345,7 +345,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.1.3" data-path="model-structure.html"><a href="model-structure.html#options"><i class="fa fa-check"></i><b>12.1.3</b> Options</a></li>
 <li class="chapter" data-level="12.1.4" data-path="model-structure.html"><a href="model-structure.html#post-hoc"><i class="fa fa-check"></i><b>12.1.4</b> Post-hoc</a></li>
 </ul></li>
-<li class="chapter" data-level="12.2" data-path="model-structure.html"><a href="model-structure.html#practical-7---exploring-model-structure"><i class="fa fa-check"></i><b>12.2</b> Practical 7 - Exploring Model Structure</a></li>
+<li class="chapter" data-level="12.2" data-path="model-structure.html"><a href="model-structure.html#practical-8---exploring-model-structure"><i class="fa fa-check"></i><b>12.2</b> Practical 8 - Exploring Model Structure</a></li>
 <li class="chapter" data-level="12.3" data-path="model-structure.html"><a href="model-structure.html#data-set-1-nepal---linear-model-with-randomised-block-designs"><i class="fa fa-check"></i><b>12.3</b> Data set 1: Nepal - Linear Model with Randomised Block designs</a>
 <ul>
 <li class="chapter" data-level="12.3.1" data-path="model-structure.html"><a href="model-structure.html#task-1---checking-the-data-2"><i class="fa fa-check"></i><b>12.3.1</b> Task 1 - Checking the data</a></li>
@@ -368,8 +368,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="13.1" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#introduction-7"><i class="fa fa-check"></i><b>13.1</b> Introduction</a></li>
 <li class="chapter" data-level="13.2" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#practical-9---repeated-measures-linear-models"><i class="fa fa-check"></i><b>13.2</b> Practical 9 - Repeated Measures Linear Models</a></li>
-<li class="chapter" data-level="13.3" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#data-set-1-activity"><i class="fa fa-check"></i><b>13.3</b> Data set 1: Activity</a></li>
-<li class="chapter" data-level="13.4" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#data-set-2-bird-metabolism"><i class="fa fa-check"></i><b>13.4</b> Data set 2: Bird Metabolism</a></li>
+<li class="chapter" data-level="13.3" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#data-set-1---activity"><i class="fa fa-check"></i><b>13.3</b> Data set 1 - Activity</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#task-1---checking-the-data-3"><i class="fa fa-check"></i><b>13.3.1</b> Task 1 - Checking the data</a></li>
+<li class="chapter" data-level="13.3.2" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#task-2---exploring-the-data-2"><i class="fa fa-check"></i><b>13.3.2</b> Task 2 - Exploring the data</a></li>
+<li class="chapter" data-level="13.3.3" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#task-3---playing-with-some-statistics"><i class="fa fa-check"></i><b>13.3.3</b> Task 3 - Playing with some statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#data-set-2---metabolism"><i class="fa fa-check"></i><b>13.4</b> Data set 2 - Metabolism</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#task-4---checking-the-data"><i class="fa fa-check"></i><b>13.4.1</b> Task 4 - Checking the data</a></li>
+<li class="chapter" data-level="13.4.2" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#task-5---exploring-the-data"><i class="fa fa-check"></i><b>13.4.2</b> Task 5 - Exploring the data</a></li>
+<li class="chapter" data-level="13.4.3" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#task-6---playing-with-some-statistics"><i class="fa fa-check"></i><b>13.4.3</b> Task 6 - Playing with some statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#conclusions-1"><i class="fa fa-check"></i><b>13.5</b> Conclusions</a></li>
+<li class="chapter" data-level="13.6" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#before-you-leave-10"><i class="fa fa-check"></i><b>13.6</b> Before you leave!</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -396,15 +408,174 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>This chapter will run in Workshop 9 of Week 9.</p>
 <div id="introduction-7" class="section level2 hasAnchor" number="13.1">
 <h2><span class="header-section-number">13.1</span> Introduction<a href="repeated-measures-linear-models.html#introduction-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>When we are exploring the effect of different treatments on a dependent variable, the most powerful method is to include the same individuals within each treatment. This method allows you to explore the effect of the treatment, having controlled for the inherent variation among individuals in their response to the treatments. This is called a Repeated Measures design. For example, if you were measuring how the growth of plants changed over time with the addition of a nutrient, you could either measure different plants from each treatment (nutrient versus control) at each time interval (e.g. every week), or you could measure the same plants at each time interval – the latter is much more powerful because individual variation in plant growth (independent of the treatment) can be controlled in the analysis.</p>
 </div>
 <div id="practical-9---repeated-measures-linear-models" class="section level2 hasAnchor" number="13.2">
 <h2><span class="header-section-number">13.2</span> Practical 9 - Repeated Measures Linear Models<a href="repeated-measures-linear-models.html#practical-9---repeated-measures-linear-models" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In this session we will be working with two data sets. First of all we have <code>activity.csv</code> which measures sweat produced in 10 individuals during a bout of intense activity. We will then move onto <code>metabolism.csv</code> which measures metabolism in a migrant bird species under different conditions, so we will look at how we can implement repeated measures design in a two-way ANOVA.</p>
+<p>Log into the Posit cloud classroom and install and load the following packages; <code>tidyverse</code>and <code>rstatix</code>.</p>
 </div>
-<div id="data-set-1-activity" class="section level2 hasAnchor" number="13.3">
-<h2><span class="header-section-number">13.3</span> Data set 1: Activity<a href="repeated-measures-linear-models.html#data-set-1-activity" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="data-set-1---activity" class="section level2 hasAnchor" number="13.3">
+<h2><span class="header-section-number">13.3</span> Data set 1 - Activity<a href="repeated-measures-linear-models.html#data-set-1---activity" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This is an example of where repeated measured design was used to measure sweat produced in 10 individuals at three time points before, during and after a bout of intense physical activity.</p>
+<ul>
+<li><code>activity.csv</code> data file</li>
+</ul>
+<p>This data file contains the following data;</p>
+<ul>
+<li>time0 - amount of sweat produced before activity</li>
+<li>time1 - amount of sweat produced during activity</li>
+<li>time2 - amount of sweat produced after activity</li>
+</ul>
+<div id="task-1---checking-the-data-3" class="section level3 hasAnchor" number="13.3.1">
+<h3><span class="header-section-number">13.3.1</span> Task 1 - Checking the data<a href="repeated-measures-linear-models.html#task-1---checking-the-data-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Load the data set <code>activity.csv</code> into your workspace under the object name <code>activity</code> and try performing some routine checks to make sure R has interpreted the variables correctly and all expected data is present and accounted for. You can use some of the functions explored in Chapter <a href="workshop-1---explorartory-data-analysis.html#checking-the-data">3.2.3</a> if you need some help with this.</p>
+<p>We are going to have to do some data wrangling before we can continue this analysis. We really need an individual identifier here so we can relate individual participants back to their scores at each time point. Try running the following;</p>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="repeated-measures-linear-models.html#cb102-1" tabindex="-1"></a><span class="co"># Create an object with individual identifiers (1 to 10)</span></span>
+<span id="cb102-2"><a href="repeated-measures-linear-models.html#cb102-2" tabindex="-1"></a>individual <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
+<span id="cb102-3"><a href="repeated-measures-linear-models.html#cb102-3" tabindex="-1"></a><span class="co"># Bind our `individual` object as a column to our `activity` data frame</span></span>
+<span id="cb102-4"><a href="repeated-measures-linear-models.html#cb102-4" tabindex="-1"></a>activity <span class="ot">&lt;-</span> <span class="fu">cbind</span>(activity,individual)</span></code></pre></div>
+<blockquote>
+<ul>
+<li>Make sure you understand how the above piece of code works.</li>
+<li>Is our data frame in a wide or a long format? Which format do you think it should be in?</li>
+</ul>
+</blockquote>
+<p>Make sure your data is in a long format, try running the following to put your time columns into a long format;</p>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="repeated-measures-linear-models.html#cb103-1" tabindex="-1"></a>activity <span class="ot">&lt;-</span> activity <span class="sc">%&gt;%</span></span>
+<span id="cb103-2"><a href="repeated-measures-linear-models.html#cb103-2" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> time0<span class="sc">:</span>time2,</span>
+<span id="cb103-3"><a href="repeated-measures-linear-models.html#cb103-3" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;time_point&quot;</span>, </span>
+<span id="cb103-4"><a href="repeated-measures-linear-models.html#cb103-4" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;response&quot;</span>)</span></code></pre></div>
+<blockquote>
+<ul>
+<li>Now use <code>glimpse()</code> to check how R has categorised the different data types for each variable?</li>
+<li>Really we need <code>individual</code> and <code>time_point</code> to be categorised as factors. See if you can use <code>as.factor()</code> to convert these variables to factors.</li>
+</ul>
+</blockquote>
 </div>
-<div id="data-set-2-bird-metabolism" class="section level2 hasAnchor" number="13.4">
-<h2><span class="header-section-number">13.4</span> Data set 2: Bird Metabolism<a href="repeated-measures-linear-models.html#data-set-2-bird-metabolism" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="task-2---exploring-the-data-2" class="section level3 hasAnchor" number="13.3.2">
+<h3><span class="header-section-number">13.3.2</span> Task 2 - Exploring the data<a href="repeated-measures-linear-models.html#task-2---exploring-the-data-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Now that we have our data in a sensible format we can start to do some data exploration.</p>
+<blockquote>
+<ul>
+<li>Start by calculating the means and SE for each of the three time periods.</li>
+<li>Write down what this tells you about the effect of activity on sweat production.</li>
+<li>Do you think that these groups are likely to differ significantly from one another?</li>
+</ul>
+</blockquote>
+<p>Lets try to make a data visualisation to help with this last point</p>
+<blockquote>
+<ul>
+<li>See if you can make a boxplot with <code>time_point</code> on the x axis and <code>response</code> on the y axis.</li>
+<li>Draw histograms to check the assumption of normally distributed data.</li>
+<li>Is this assumption met for all three groups?</li>
+</ul>
+</blockquote>
+</div>
+<div id="task-3---playing-with-some-statistics" class="section level3 hasAnchor" number="13.3.3">
+<h3><span class="header-section-number">13.3.3</span> Task 3 - Playing with some statistics<a href="repeated-measures-linear-models.html#task-3---playing-with-some-statistics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>You could explore the difference between the sweating rates of individuals before, during or after activity by running a one-way ANOVA (i.e. a linear model with sweat production as the dependent variable and the three time periods as predictors). However, as the same 10 people took part in all three treatments, a more powerful analysis is a Repeated Measures ANOVA…</p>
+<p>To run this model we are going to start using a new ANOVA function. Here we need to define a subject identifier, within subject factor (or grouping variable) and our dependent variable. Try running the following;</p>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="repeated-measures-linear-models.html#cb104-1" tabindex="-1"></a><span class="co"># Run a repeated measures ANOVA comparing response (dependent variable) between different time points (within subject variable) across individuals (subject identifier)</span></span>
+<span id="cb104-2"><a href="repeated-measures-linear-models.html#cb104-2" tabindex="-1"></a>repeated_aov <span class="ot">&lt;-</span> <span class="fu">anova_test</span>(<span class="at">data =</span> activity, <span class="at">dv =</span> response, <span class="at">wid =</span> individual, <span class="at">within =</span> time_point)</span>
+<span id="cb104-3"><a href="repeated-measures-linear-models.html#cb104-3" tabindex="-1"></a><span class="co"># Call the ANOVA table for our model</span></span>
+<span id="cb104-4"><a href="repeated-measures-linear-models.html#cb104-4" tabindex="-1"></a><span class="fu">get_anova_table</span>(repeated_aov)</span></code></pre></div>
+<p>You will be aware that ANOVAs make a range of assumtions of the input data. The repeated measures ANOVA has an additional assumption - sphericity. Sphericity is a test of the assumption of equality of variance among treatments. Generally a Mauchley’s test is applied to test for this and if p &gt; 0.05, then there is no significant differences between the variances of the treatments, and the assumption is met. If p &lt; 0.05, then the variances between your treatments are significantly different and the test assumption is violated.</p>
+<p>Very conveniently, get_anova_table() does a lot of the work for you. It automatically checks the sphericity assumption using Mauchley’s test and if the sphericity assumption is violated then it will automatically apply a correction (the Greenhouse_Geisser sphericity correction) to within subject factors that are in violation of the sphericity assumption. Applying the correction essentially reduces the degrees of freedom to make the test more conservative.</p>
+<p>Take a look at the output from the <code>get_anova_table()</code> function. This output is a little different from other ANOVA outputs we’ve seen so far. DFn and DFd represent the degrees of freedom for treatment (T-1) and error ((T-1)(n-1)) respectively. The F statistic, represents the ratio of the variance between groups to the variance within groups and the p value which gives the probability of seeing the test statistic if the null hypothesis were true. Finally the <code>ges</code> gives a general effect size, i.e. the amount of variability due to the within subject factor.</p>
+<blockquote>
+<ul>
+<li>Write down a few lines interpreting the output of this analysis</li>
+<li>Does this match what you might think from the boxplot?</li>
+</ul>
+</blockquote>
+<p>A post-hoc test would be helpful here to add some direction to the differences we are seeing. With repeated measures ANOVA, Bonferroni post-hoc test is the recommended test. We can perform this using the following piece of code;</p>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="repeated-measures-linear-models.html#cb105-1" tabindex="-1"></a>pwc <span class="ot">&lt;-</span> activity <span class="sc">%&gt;%</span></span>
+<span id="cb105-2"><a href="repeated-measures-linear-models.html#cb105-2" tabindex="-1"></a>  <span class="fu">pairwise_t_test</span>(</span>
+<span id="cb105-3"><a href="repeated-measures-linear-models.html#cb105-3" tabindex="-1"></a>    response <span class="sc">~</span> time_point, <span class="at">paired =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb105-4"><a href="repeated-measures-linear-models.html#cb105-4" tabindex="-1"></a>    <span class="at">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span></span>
+<span id="cb105-5"><a href="repeated-measures-linear-models.html#cb105-5" tabindex="-1"></a>  )</span>
+<span id="cb105-6"><a href="repeated-measures-linear-models.html#cb105-6" tabindex="-1"></a>pwc</span></code></pre></div>
+<blockquote>
+<ul>
+<li>Take a look at the output, how would you interpret this?</li>
+<li>What does this output tell you about the differences among treatments?</li>
+</ul>
+</blockquote>
+<p>So we have played with some very basic repeated measures analysis, essentially a one-way repeated measures ANOVA. But often if you are using repeated measures designs you will want to incorporate more variables.</p>
+</div>
+</div>
+<div id="data-set-2---metabolism" class="section level2 hasAnchor" number="13.4">
+<h2><span class="header-section-number">13.4</span> Data set 2 - Metabolism<a href="repeated-measures-linear-models.html#data-set-2---metabolism" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Now we can start to play with a slightly more complex data set and analysis.</p>
+<p>We will look at a study of the metabolism of migrant birds under different environmental (temperature) and physiological (parasite load) conditions. The metabolism of 30 different birds was measured at three different time periods (1 = after 10 minutes, 2 = after two hours, 3 = after four hours), under either warm (inside) or cold (outside) temperatures, and the parasite load of each bird (low, medium, high) was measured at the end of the experiment. The data for this can be found in;</p>
+<p><code>bird_metabolism.csv</code></p>
+<p>The data in this file is as follows;</p>
+<ul>
+<li>individual - individual identifier</li>
+<li>para - an index or parasite load (1 = low parasite load, 2 = medium parasite load and 3 = high parasite load)</li>
+<li>temp - temperature conditions (1 = warm, 2 = cold)</li>
+<li>met1 - metabolism at time point 1 (after 10 minutes)</li>
+<li>met2 - metabolism at time point 2 (after two hours)</li>
+<li>met3 - metabolism at time point 3 (after four hours)</li>
+</ul>
+<div id="task-4---checking-the-data" class="section level3 hasAnchor" number="13.4.1">
+<h3><span class="header-section-number">13.4.1</span> Task 4 - Checking the data<a href="repeated-measures-linear-models.html#task-4---checking-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Load the data set <code>metabolism.csv</code> into your workspace under the object name <code>metabolism</code> and try performing some routine checks to make sure R has interpreted the variables correctly and all expected data is present and accounted for. You can use some of the functions explored in Chapter <a href="workshop-1---explorartory-data-analysis.html#checking-the-data">3.2.3</a> if you need some help with this.</p>
+<blockquote>
+<ul>
+<li>Which variables are you going to include as fixed factors. Has R interpreted these variables as factors?</li>
+<li>Is this data set in a wide or a long format? Does it need to be converted?</li>
+</ul>
+</blockquote>
+<p>Both <code>temp</code> and <code>para</code> are categorical and need to be identified as factors and the columns <code>met1</code>, <code>met2</code>, <code>met3</code> need to be in a single column. Have a go at creating some code to complete both of these tasks. Look at earlier sections if you get stuck.</p>
+</div>
+<div id="task-5---exploring-the-data" class="section level3 hasAnchor" number="13.4.2">
+<h3><span class="header-section-number">13.4.2</span> Task 5 - Exploring the data<a href="repeated-measures-linear-models.html#task-5---exploring-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Now that we have our data in a sensible format we can start to do some data exploration.</p>
+<blockquote>
+<ul>
+<li>Start by calculating the means and SE for each of the different time points</li>
+</ul>
+</blockquote>
+<p>Lets try to make some data visualisation to help explore this data set.</p>
+<blockquote>
+<ul>
+<li>See if you can make a boxplot with time point on the x axis and metabolism on the y axis. Colour your boxes by <code>temp</code></li>
+<li>Now create another boxplot but try colouring the boxes by <code>para</code></li>
+<li>What do these box plots tell you about the effects of time, temperature and parasites on metabolism?</li>
+<li>Draw histograms to check the assumption of normally distributed data.</li>
+<li>Is this assumption met for all time points?</li>
+</ul>
+</blockquote>
+</div>
+<div id="task-6---playing-with-some-statistics" class="section level3 hasAnchor" number="13.4.3">
+<h3><span class="header-section-number">13.4.3</span> Task 6 - Playing with some statistics<a href="repeated-measures-linear-models.html#task-6---playing-with-some-statistics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Now we are ready to start playing with some statistics.</p>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="repeated-measures-linear-models.html#cb106-1" tabindex="-1"></a><span class="co"># Fun a repeated measures ANOVA with metabolism as the dependent variable, individul as the subject identifier, time as the within subject variable and temp and para as between subject variables.</span></span>
+<span id="cb106-2"><a href="repeated-measures-linear-models.html#cb106-2" tabindex="-1"></a>met_aov <span class="ot">&lt;-</span> <span class="fu">anova_test</span>(</span>
+<span id="cb106-3"><a href="repeated-measures-linear-models.html#cb106-3" tabindex="-1"></a>  <span class="at">data =</span> metabolism, <span class="at">dv =</span> metabolism, <span class="at">wid =</span> individual,</span>
+<span id="cb106-4"><a href="repeated-measures-linear-models.html#cb106-4" tabindex="-1"></a>  <span class="at">within =</span>  time, <span class="at">between =</span> <span class="fu">c</span>(temp,para))</span>
+<span id="cb106-5"><a href="repeated-measures-linear-models.html#cb106-5" tabindex="-1"></a><span class="fu">get_anova_table</span>(met_aov)</span></code></pre></div>
+<blockquote>
+<ul>
+<li>What does the output tell you about the variation in metabolism over the three time periods?</li>
+<li>What do the interactions with time rows tell you?</li>
+<li>What do the tests between subject variables tell you about the effects of parasite load and temperature on metabolism?</li>
+<li>Run a post-hoc test to get more information on the direction of some of these relationships.</li>
+<li>How do your conclusions here compare to the conclusions you drew from the box plots earlier?</li>
+</ul>
+</blockquote>
+</div>
+</div>
+<div id="conclusions-1" class="section level2 hasAnchor" number="13.5">
+<h2><span class="header-section-number">13.5</span> Conclusions<a href="repeated-measures-linear-models.html#conclusions-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This session we have explored how we can incorporate repeated measures designs into our analysis by using repeated measures ANOVAs.</p>
+</div>
+<div id="before-you-leave-10" class="section level2 hasAnchor" number="13.6">
+<h2><span class="header-section-number">13.6</span> Before you leave!<a href="repeated-measures-linear-models.html#before-you-leave-10" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Make sure you save your script and download it if you would like to keep a local copy.</p>
+<p>Please log out of posit Cloud!</p>
 
 </div>
 </div>

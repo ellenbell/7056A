@@ -23,7 +23,7 @@
 <meta name="author" content="Dr Ellen Bell" />
 
 
-<meta name="date" content="2023-11-17" />
+<meta name="date" content="2023-11-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -345,7 +345,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.1.3" data-path="model-structure.html"><a href="model-structure.html#options"><i class="fa fa-check"></i><b>12.1.3</b> Options</a></li>
 <li class="chapter" data-level="12.1.4" data-path="model-structure.html"><a href="model-structure.html#post-hoc"><i class="fa fa-check"></i><b>12.1.4</b> Post-hoc</a></li>
 </ul></li>
-<li class="chapter" data-level="12.2" data-path="model-structure.html"><a href="model-structure.html#practical-7---exploring-model-structure"><i class="fa fa-check"></i><b>12.2</b> Practical 7 - Exploring Model Structure</a></li>
+<li class="chapter" data-level="12.2" data-path="model-structure.html"><a href="model-structure.html#practical-8---exploring-model-structure"><i class="fa fa-check"></i><b>12.2</b> Practical 8 - Exploring Model Structure</a></li>
 <li class="chapter" data-level="12.3" data-path="model-structure.html"><a href="model-structure.html#data-set-1-nepal---linear-model-with-randomised-block-designs"><i class="fa fa-check"></i><b>12.3</b> Data set 1: Nepal - Linear Model with Randomised Block designs</a>
 <ul>
 <li class="chapter" data-level="12.3.1" data-path="model-structure.html"><a href="model-structure.html#task-1---checking-the-data-2"><i class="fa fa-check"></i><b>12.3.1</b> Task 1 - Checking the data</a></li>
@@ -368,8 +368,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="13.1" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#introduction-7"><i class="fa fa-check"></i><b>13.1</b> Introduction</a></li>
 <li class="chapter" data-level="13.2" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#practical-9---repeated-measures-linear-models"><i class="fa fa-check"></i><b>13.2</b> Practical 9 - Repeated Measures Linear Models</a></li>
-<li class="chapter" data-level="13.3" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#data-set-1-activity"><i class="fa fa-check"></i><b>13.3</b> Data set 1: Activity</a></li>
-<li class="chapter" data-level="13.4" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#data-set-2-bird-metabolism"><i class="fa fa-check"></i><b>13.4</b> Data set 2: Bird Metabolism</a></li>
+<li class="chapter" data-level="13.3" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#data-set-1---activity"><i class="fa fa-check"></i><b>13.3</b> Data set 1 - Activity</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#task-1---checking-the-data-3"><i class="fa fa-check"></i><b>13.3.1</b> Task 1 - Checking the data</a></li>
+<li class="chapter" data-level="13.3.2" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#task-2---exploring-the-data-2"><i class="fa fa-check"></i><b>13.3.2</b> Task 2 - Exploring the data</a></li>
+<li class="chapter" data-level="13.3.3" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#task-3---playing-with-some-statistics"><i class="fa fa-check"></i><b>13.3.3</b> Task 3 - Playing with some statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#data-set-2---metabolism"><i class="fa fa-check"></i><b>13.4</b> Data set 2 - Metabolism</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#task-4---checking-the-data"><i class="fa fa-check"></i><b>13.4.1</b> Task 4 - Checking the data</a></li>
+<li class="chapter" data-level="13.4.2" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#task-5---exploring-the-data"><i class="fa fa-check"></i><b>13.4.2</b> Task 5 - Exploring the data</a></li>
+<li class="chapter" data-level="13.4.3" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#task-6---playing-with-some-statistics"><i class="fa fa-check"></i><b>13.4.3</b> Task 6 - Playing with some statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#conclusions-1"><i class="fa fa-check"></i><b>13.5</b> Conclusions</a></li>
+<li class="chapter" data-level="13.6" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#before-you-leave-10"><i class="fa fa-check"></i><b>13.6</b> Before you leave!</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -414,8 +426,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Post-hoc tests are pairwise comparisons that compare all combinations of the treatment groups. There are many post-hoc tests which vary in exactly how they deal with Type I and Type II errors. The most commonly used is the Tukey test. Ideally, variances and sample sizes will be similar between treatments and most multiple comparison tests are fairly robust to deviations from these assumptions.</p>
 </div>
 </div>
-<div id="practical-7---exploring-model-structure" class="section level2 hasAnchor" number="12.2">
-<h2><span class="header-section-number">12.2</span> Practical 7 - Exploring Model Structure<a href="model-structure.html#practical-7---exploring-model-structure" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="practical-8---exploring-model-structure" class="section level2 hasAnchor" number="12.2">
+<h2><span class="header-section-number">12.2</span> Practical 8 - Exploring Model Structure<a href="model-structure.html#practical-8---exploring-model-structure" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In this weeks first workshop we will be analysing two separate data sets; Nepal and Tulips. You can find these in the data folder for the BIO-7025A classroom. As always, try to pay special attention to the data interpretation steps and make sure you understand the logic behind each of the decisions made.</p>
 <p>Once you have logged into the Posit cloud classroom, spend some time cleaning up your workspace environment and setting up your workspace and script as covered in Chapter <a href="c2.html#workspace-setup">2.5.3</a> and Chapter <a href="c2.html#script-setup">2.5.4</a>. You will need to install and load the packages <code>tidyverse</code>, <code>GGally</code>, <code>lmerTest</code>, <code>car</code> and <code>PerformanceAnalytics</code> for this session.</p>
 </div>
@@ -618,11 +630,11 @@ Do some of these need to be changed? Remember you can use the <code>as.factor()<
 <ul>
 <li>Run the model and write down what the model output tells you about the effect of each treatment and the effects of the interaction between treatments on tulip production. You may find it helpful to use both <code>summary()</code> and <code>anova()</code> functions.<br />
 </li>
-<li>Look back at your orrigional boxplot, does your analysis corroborate the plot?</li>
+<li>Look back at your original boxplot, does your analysis corroborate the plot?</li>
 <li>What is the effect of the treatments on tulip production</li>
 </ul>
 </blockquote>
-<p>The interaction term of water:shade is significant (p = 0.005). You can see why most easily by looking at our orrigional box plot. At shade 1, there are big differences among the water treatments while, at shade levels 2 &amp; 3, there is only a slight increase in blooms at water level 3. Shade 1 is the lowest shade level, and water 3 is the highest water level, so this suggests that watering more is most helpful when there is little shade, an interpretation supported by the low bloom response at water level 1 and shade level 1.</p>
+<p>The interaction term of water:shade is significant (p = 0.005). You can see why most easily by looking at our original box plot. At shade 1, there are big differences among the water treatments while, at shade levels 2 &amp; 3, there is only a slight increase in blooms at water level 3. Shade 1 is the lowest shade level, and water 3 is the highest water level, so this suggests that watering more is most helpful when there is little shade, an interpretation supported by the low bloom response at water level 1 and shade level 1.</p>
 <p>The effect of water therefore depends on shade level. Tulip bloom production increases strongly with increasing water levels at low shade 1, but less so at higher shades. However, overall there seems to be an overall positive effect on blooms going from 1 to 3 for any given shade level.</p>
 </div>
 </div>
@@ -654,7 +666,6 @@ Do some of these need to be changed? Remember you can use the <code>as.factor()<
 <h2><span class="header-section-number">12.7</span> Before you leave!<a href="model-structure.html#before-you-leave-9" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Make sure you save your script and download it if you would like to keep a local copy.</p>
 <p>Please log out of posit Cloud!</p>
-<p><a href="https://www.datanovia.com/en/lessons/repeated-measures-anova-in-r/#google_vignette" class="uri">https://www.datanovia.com/en/lessons/repeated-measures-anova-in-r/#google_vignette</a></p>
 
 </div>
 </div>

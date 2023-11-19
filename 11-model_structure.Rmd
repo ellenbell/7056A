@@ -21,7 +21,7 @@ There are several options within linear models which will allow further assessme
 ### Post-hoc
 Post-hoc tests are pairwise comparisons that compare all combinations of the treatment groups.  There are many post-hoc tests which vary in exactly how they deal with Type I and Type II errors. The most commonly used is the Tukey test. Ideally, variances and sample sizes will be similar between treatments and most multiple comparison tests are fairly robust to deviations from these assumptions.
 
-## Practical 7 - Exploring Model Structure
+## Practical 8 - Exploring Model Structure
 
 In this weeks first workshop we will be analysing two separate data sets; Nepal and Tulips. You can find these in the data folder for the BIO-7025A classroom. As always, try to pay special attention to the data interpretation steps and make sure you understand the logic behind each of the decisions made.
 
@@ -238,10 +238,10 @@ Before we start modeling, we need to check that our data meets the assumptions o
 Construct the linear model with `bloom` as the dependent variable and `bed`, `water` and `shade` as fixed factors. As with the Nepal data, you have a randomized block experiment here, as the water and shade treatments are replicated across three flower beds (blocks). You therefore have to customize the model with an interactive term between `water` and `shade` and an additive term for `bed` (remember, this is to avoid the model trying to look for interactions with `bed`).
 
 > * Run the model and write down what the model output tells you about the effect of each treatment and the effects of the interaction between treatments on tulip production. You may find it helpful to use both `summary()` and `anova()` functions.  
-> * Look back at your orrigional boxplot, does your analysis corroborate the plot? 
+> * Look back at your original boxplot, does your analysis corroborate the plot? 
 > * What is the effect of the treatments on tulip production
 
-The interaction term of water:shade is significant (p = 0.005). You can see why most easily by looking at our orrigional box plot. At shade 1, there are big differences among the water treatments while, at shade levels 2 & 3, there is only a slight increase in blooms at water level 3. Shade 1 is the lowest shade level, and water 3 is the highest water level, so this suggests that watering more is most helpful when there is little shade, an interpretation supported by the low bloom response at water level 1 and shade level 1. 
+The interaction term of water:shade is significant (p = 0.005). You can see why most easily by looking at our original box plot. At shade 1, there are big differences among the water treatments while, at shade levels 2 & 3, there is only a slight increase in blooms at water level 3. Shade 1 is the lowest shade level, and water 3 is the highest water level, so this suggests that watering more is most helpful when there is little shade, an interpretation supported by the low bloom response at water level 1 and shade level 1. 
 
 The effect of water therefore depends on shade level. Tulip bloom production increases strongly with increasing water levels at low shade 1, but less so at higher shades.  However, overall there seems to be an overall positive effect on blooms going from 1 to 3 for any given shade level.
 
@@ -282,6 +282,3 @@ These sessions are very much introductions into the world of multivariate statis
 Make sure you save your script and download it if you would like to keep a local copy.
 
 Please log out of posit Cloud!
-
-
-https://www.datanovia.com/en/lessons/repeated-measures-anova-in-r/#google_vignette

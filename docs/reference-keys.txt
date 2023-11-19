@@ -150,7 +150,7 @@ fully-factorial-linear-model
 randomised-block-linear-model
 options
 post-hoc
-practical-7---exploring-model-structure
+practical-8---exploring-model-structure
 data-set-1-nepal---linear-model-with-randomised-block-designs
 task-1---checking-the-data-2
 task-2---exploring-the-data-1
@@ -167,5 +167,13 @@ before-you-leave-9
 repeated-measures-linear-models
 introduction-7
 practical-9---repeated-measures-linear-models
-data-set-1-activity
-data-set-2-bird-metabolism
+data-set-1---activity
+task-1---checking-the-data-3
+task-2---exploring-the-data-2
+task-3---playing-with-some-statistics
+data-set-2---metabolism
+task-4---checking-the-data
+task-5---exploring-the-data
+task-6---playing-with-some-statistics
+conclusions-1
+before-you-leave-10
