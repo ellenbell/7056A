@@ -177,3 +177,31 @@
 \contentsline {subsection}{\numberline {13.4.3}Task 6 - Playing with some statistics}{128}{subsection.13.4.3}%
 \contentsline {section}{\numberline {13.5}Conclusions}{128}{section.13.5}%
 \contentsline {section}{\numberline {13.6}Before you leave!}{128}{section.13.6}%
+\contentsline {chapter}{\numberline {14}A Very Introductory Introduction to Generalised Linear Models}{129}{chapter.14}%
+\contentsline {section}{\numberline {14.1}Introduction}{129}{section.14.1}%
+\contentsline {subsection}{\numberline {14.1.1}What is a Generalised Linear Model and why are they useful?}{129}{subsection.14.1.1}%
+\contentsline {subsection}{\numberline {14.1.2}Key parts of a GLM}{130}{subsection.14.1.2}%
+\contentsline {subsection}{\numberline {14.1.3}Different famlies and their link functions}{130}{subsection.14.1.3}%
+\contentsline {subsection}{\numberline {14.1.4}GLMs with a Poisson Error Structure}{131}{subsection.14.1.4}%
+\contentsline {subsection}{\numberline {14.1.5}GLMs with a Binomial Error Structure}{131}{subsection.14.1.5}%
+\contentsline {section}{\numberline {14.2}Practical 10 - GLMs}{132}{section.14.2}%
+\contentsline {section}{\numberline {14.3}A Poisson GLM on some beautifully behaved data}{133}{section.14.3}%
+\contentsline {subsection}{\numberline {14.3.1}Task 1 - Check the data}{133}{subsection.14.3.1}%
+\contentsline {subsection}{\numberline {14.3.2}Task 2 - Exploring the data}{133}{subsection.14.3.2}%
+\contentsline {subsection}{\numberline {14.3.3}Task 3 - Fitting a GLM}{134}{subsection.14.3.3}%
+\contentsline {subsection}{\numberline {14.3.4}Task 4 - Checking the model}{136}{subsection.14.3.4}%
+\contentsline {subsection}{\numberline {14.3.5}Task 5 - Plotting our model}{137}{subsection.14.3.5}%
+\contentsline {section}{\numberline {14.4}A Binomial GLM}{138}{section.14.4}%
+\contentsline {subsection}{\numberline {14.4.1}Task 6 - Check the data}{138}{subsection.14.4.1}%
+\contentsline {subsection}{\numberline {14.4.2}Task 7 - Explore the data}{138}{subsection.14.4.2}%
+\contentsline {subsection}{\numberline {14.4.3}Task 8 - Fitting a GLM}{139}{subsection.14.4.3}%
+\contentsline {subsection}{\numberline {14.4.4}Task 9 - Interpretation and plotting}{140}{subsection.14.4.4}%
+\contentsline {section}{\numberline {14.5}A Poisson Mixed Effects GLM}{142}{section.14.5}%
+\contentsline {subsection}{\numberline {14.5.1}Task 10 - Check the data}{142}{subsection.14.5.1}%
+\contentsline {subsection}{\numberline {14.5.2}Task 11 - Explore the data}{142}{subsection.14.5.2}%
+\contentsline {subsection}{\numberline {14.5.3}Task 12 - Fitting a GLM}{142}{subsection.14.5.3}%
+\contentsline {section}{\numberline {14.6}Conclusions}{144}{section.14.6}%
+\contentsline {section}{\numberline {14.7}Before you leave!}{144}{section.14.7}%
+\contentsline {section}{\numberline {14.8}References}{144}{section.14.8}%
+\contentsline {chapter}{\numberline {15}BIO-7025A: Multivariate Statitsics Assignment}{145}{chapter.15}%
+\contentsline {section}{\numberline {15.1}Patterns of habitat selection in breeding Black-tailed Godwits in Iceland}{145}{section.15.1}%

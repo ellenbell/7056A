@@ -106,7 +106,7 @@ Now use the same temporary exclusion method to re-run your regression model with
 
 Re-include Gabon into subsequent analyses. 
 
-### Task 4 - Multivariate linear regression analysis
+### Task 4 - Multivariate linear regression analysis {#c11t4} 
 
 We are now going to build a multivariate regression model using the Enter method, in which we begin by including all predictor variables in our regression. We then remove from our regression the variable that has the least (statistically non-significant) effect to produce a better model. We repeat this until we are left with a regression containing the best sub-set of predictors. At each stage it is important to consider the impact of removing that predictor on the model. 
 First we will draw a matrix plot to compare all of the relationships between `daycal` and all four predictor variables (use your logged gnp variable to reduce difficulties with Gabon). Try using the following command;

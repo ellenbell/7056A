@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 14 A Very Introductory Introduction to Generalised Linear Models | Statistics for Biologists</title>
+  <meta name="description" content="This is the coursebook for Univariate and Multivairate Statistics" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 14 A Very Introductory Introduction to Generalised Linear Models | Statistics for Biologists" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is the coursebook for Univariate and Multivairate Statistics" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 14 A Very Introductory Introduction to Generalised Linear Models | Statistics for Biologists" />
+  
+  <meta name="twitter:description" content="This is the coursebook for Univariate and Multivairate Statistics" />
+  
+
+<meta name="author" content="Dr Ellen Bell" />
+
+
+<meta name="date" content="2023-11-23" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="repeated-measures-linear-models.html"/>
+<link rel="next" href="bio-7025a-multivariate-statitsics-assignment.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Statistics for Biologists</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome to the Statistics Coursebook</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#learning-objectives"><i class="fa fa-check"></i><b>1.1</b> Learning Objectives</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#teaching-layout"><i class="fa fa-check"></i><b>1.2</b> Teaching Layout</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#how-to-use-this-workbook"><i class="fa fa-check"></i><b>1.3</b> How to use this workbook</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#why-are-we-learning-r"><i class="fa fa-check"></i><b>1.4</b> Why are we learning R</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#intro-to-posit"><i class="fa fa-check"></i><b>1.5</b> Introduction to posit Cloud</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="index.html"><a href="index.html#task-1-create-your-own-posit-cloud-account"><i class="fa fa-check"></i><b>1.5.1</b> Task 1; Create your own posit Cloud account</a></li>
+<li class="chapter" data-level="1.5.2" data-path="index.html"><a href="index.html#creating-your-first-posit-cloud-project"><i class="fa fa-check"></i><b>1.5.2</b> Creating your first posit Cloud Project</a></li>
+<li class="chapter" data-level="1.5.3" data-path="index.html"><a href="index.html#a-warning-on-managing-your-work-flow"><i class="fa fa-check"></i><b>1.5.3</b> A warning on managing your work flow</a></li>
+<li class="chapter" data-level="1.5.4" data-path="index.html"><a href="index.html#efficiency"><i class="fa fa-check"></i><b>1.5.4</b> Maximising the efficiency of your workspace</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#before-you-leave"><i class="fa fa-check"></i><b>1.6</b> Before you leave!</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="c2.html"><a href="c2.html"><i class="fa fa-check"></i><b>2</b> Some fundamentals to effective use of R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="c2.html"><a href="c2.html#entering-commands-directly-into-the-console"><i class="fa fa-check"></i><b>2.1</b> Entering commands directly into the console</a></li>
+<li class="chapter" data-level="2.2" data-path="c2.html"><a href="c2.html#using-an-r-script"><i class="fa fa-check"></i><b>2.2</b> Using an R script</a></li>
+<li class="chapter" data-level="2.3" data-path="c2.html"><a href="c2.html#creating-objects"><i class="fa fa-check"></i><b>2.3</b> Creating objects</a></li>
+<li class="chapter" data-level="2.4" data-path="c2.html"><a href="c2.html#what-are-functions-and-packages"><i class="fa fa-check"></i><b>2.4</b> What are functions and packages?</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="c2.html"><a href="c2.html#using-functions"><i class="fa fa-check"></i><b>2.4.1</b> Using functions</a></li>
+<li class="chapter" data-level="2.4.2" data-path="c2.html"><a href="c2.html#installing-packages"><i class="fa fa-check"></i><b>2.4.2</b> Installing packages</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="c2.html"><a href="c2.html#analysis-hygiene"><i class="fa fa-check"></i><b>2.5</b> Analysis hygiene</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="c2.html"><a href="c2.html#whats-in-a-name"><i class="fa fa-check"></i><b>2.5.1</b> What’s in a name?</a></li>
+<li class="chapter" data-level="2.5.2" data-path="c2.html"><a href="c2.html#directories-and-their-structure"><i class="fa fa-check"></i><b>2.5.2</b> Directories and their structure</a></li>
+<li class="chapter" data-level="2.5.3" data-path="c2.html"><a href="c2.html#workspace-setup"><i class="fa fa-check"></i><b>2.5.3</b> Workspace set up</a></li>
+<li class="chapter" data-level="2.5.4" data-path="c2.html"><a href="c2.html#script-setup"><i class="fa fa-check"></i><b>2.5.4</b> Script set up</a></li>
+<li class="chapter" data-level="2.5.5" data-path="c2.html"><a href="c2.html#comment-on-your-work"><i class="fa fa-check"></i><b>2.5.5</b> Comment on your work</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="c2.html"><a href="c2.html#what-do-i-do-if-i-get-an-error-message"><i class="fa fa-check"></i><b>2.6</b> What do I do if I get an error message?</a></li>
+<li class="chapter" data-level="2.7" data-path="c2.html"><a href="c2.html#before-you-leave-1"><i class="fa fa-check"></i><b>2.7</b> Before you leave!</a></li>
+<li class="chapter" data-level="2.8" data-path="c2.html"><a href="c2.html#references"><i class="fa fa-check"></i><b>2.8</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="workshop-1---explorartory-data-analysis.html"><a href="workshop-1---explorartory-data-analysis.html"><i class="fa fa-check"></i><b>3</b> Workshop 1 - Explorartory Data Analysis</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="workshop-1---explorartory-data-analysis.html"><a href="workshop-1---explorartory-data-analysis.html#introduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.2" data-path="workshop-1---explorartory-data-analysis.html"><a href="workshop-1---explorartory-data-analysis.html#practical-1---exploring-distributions-in-r"><i class="fa fa-check"></i><b>3.2</b> Practical 1 - Exploring distributions in R</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="workshop-1---explorartory-data-analysis.html"><a href="workshop-1---explorartory-data-analysis.html#task-1-setting-up-our-workspace-and-script"><i class="fa fa-check"></i><b>3.2.1</b> Task 1: Setting up our workspace and script</a></li>
+<li class="chapter" data-level="3.2.2" data-path="workshop-1---explorartory-data-analysis.html"><a href="workshop-1---explorartory-data-analysis.html#task-2-importing-the-data"><i class="fa fa-check"></i><b>3.2.2</b> Task 2: Importing the data</a></li>
+<li class="chapter" data-level="3.2.3" data-path="workshop-1---explorartory-data-analysis.html"><a href="workshop-1---explorartory-data-analysis.html#checking-the-data"><i class="fa fa-check"></i><b>3.2.3</b> Task 3: Checking the data</a></li>
+<li class="chapter" data-level="3.2.4" data-path="workshop-1---explorartory-data-analysis.html"><a href="workshop-1---explorartory-data-analysis.html#histogram"><i class="fa fa-check"></i><b>3.2.4</b> Task 4: When in doubt - make a histogram</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="workshop-1---explorartory-data-analysis.html"><a href="workshop-1---explorartory-data-analysis.html#descriptive-statistics-in-r"><i class="fa fa-check"></i><b>3.3</b> Descriptive statistics in R</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="workshop-1---explorartory-data-analysis.html"><a href="workshop-1---explorartory-data-analysis.html#descriptive-statistics"><i class="fa fa-check"></i><b>3.3.1</b> Task 5: Descriptive statistics</a></li>
+<li class="chapter" data-level="3.3.2" data-path="workshop-1---explorartory-data-analysis.html"><a href="workshop-1---explorartory-data-analysis.html#task-6-finding-the-range-and-the-mode"><i class="fa fa-check"></i><b>3.3.2</b> Task 6: Finding the range and the mode</a></li>
+<li class="chapter" data-level="3.3.3" data-path="workshop-1---explorartory-data-analysis.html"><a href="workshop-1---explorartory-data-analysis.html#task-7-interpretation"><i class="fa fa-check"></i><b>3.3.3</b> Task 7: Interpretation</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="workshop-1---explorartory-data-analysis.html"><a href="workshop-1---explorartory-data-analysis.html#conclusion"><i class="fa fa-check"></i><b>3.4</b> Conclusion</a></li>
+<li class="chapter" data-level="3.5" data-path="workshop-1---explorartory-data-analysis.html"><a href="workshop-1---explorartory-data-analysis.html#before-you-leave-2"><i class="fa fa-check"></i><b>3.5</b> Before you leave!</a></li>
+<li class="chapter" data-level="3.6" data-path="workshop-1---explorartory-data-analysis.html"><a href="workshop-1---explorartory-data-analysis.html#references-1"><i class="fa fa-check"></i><b>3.6</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html"><i class="fa fa-check"></i><b>4</b> Workshop 2 - Sampling Distributions and Testing for Differences</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#introduction-1"><i class="fa fa-check"></i><b>4.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#sampling"><i class="fa fa-check"></i>Sampling</a></li>
+<li class="chapter" data-level="" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#sampling-error"><i class="fa fa-check"></i>Sampling error</a></li>
+<li class="chapter" data-level="" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#probability"><i class="fa fa-check"></i>Probability</a></li>
+<li class="chapter" data-level="" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#variance"><i class="fa fa-check"></i>Variance</a></li>
+<li class="chapter" data-level="" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#standard-deviation"><i class="fa fa-check"></i>Standard Deviation</a></li>
+<li class="chapter" data-level="" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#standard-error-of-the-mean"><i class="fa fa-check"></i>Standard Error of the Mean</a></li>
+<li class="chapter" data-level="" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#confidence-intervals"><i class="fa fa-check"></i>Confidence Intervals</a></li>
+<li class="chapter" data-level="" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#t-tests"><i class="fa fa-check"></i>T-tests</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#some-key-terms-for-todays-practical"><i class="fa fa-check"></i><b>4.2</b> Some key terms for todays practical</a></li>
+<li class="chapter" data-level="4.3" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#practical-2---sampling-and-testing-for-differences"><i class="fa fa-check"></i><b>4.3</b> Practical 2 - Sampling and Testing for Differences</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#the-data"><i class="fa fa-check"></i><b>4.3.1</b> The Data</a></li>
+<li class="chapter" data-level="4.3.2" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#task-1---setting-up-your-workspace"><i class="fa fa-check"></i><b>4.3.2</b> Task 1 - Setting up your workspace</a></li>
+<li class="chapter" data-level="4.3.3" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#task-2---checking-the-data"><i class="fa fa-check"></i><b>4.3.3</b> Task 2 - Checking the data</a></li>
+<li class="chapter" data-level="4.3.4" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#task-3---making-some-basic-plots"><i class="fa fa-check"></i><b>4.3.4</b> Task 3 - Making some basic plots</a></li>
+<li class="chapter" data-level="4.3.5" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#task-4---produce-some-descriptive-statistics"><i class="fa fa-check"></i><b>4.3.5</b> Task 4 - Produce some descriptive statistics</a></li>
+<li class="chapter" data-level="4.3.6" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#task-5---answering-question-1"><i class="fa fa-check"></i><b>4.3.6</b> Task 5 - Answering Question 1</a></li>
+<li class="chapter" data-level="4.3.7" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#levene-test"><i class="fa fa-check"></i><b>4.3.7</b> Task 6 - Answering Question 2</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#conclusion-1"><i class="fa fa-check"></i><b>4.4</b> Conclusion</a></li>
+<li class="chapter" data-level="4.5" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#before-you-leave-3"><i class="fa fa-check"></i><b>4.5</b> Before you leave!</a></li>
+<li class="chapter" data-level="4.6" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#references-2"><i class="fa fa-check"></i><b>4.6</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="differences.html"><a href="differences.html"><i class="fa fa-check"></i><b>5</b> Workshop 3 - Introduction to Design and Analysis of Experiments</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="differences.html"><a href="differences.html#introduction-2"><i class="fa fa-check"></i><b>5.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="" data-path="differences.html"><a href="differences.html#experimental-design"><i class="fa fa-check"></i>Experimental Design</a></li>
+<li class="chapter" data-level="" data-path="differences.html"><a href="differences.html#analysis-of-variance"><i class="fa fa-check"></i>Analysis of Variance</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="differences.html"><a href="differences.html#practical-3---introduction-to-analysis-of-variance"><i class="fa fa-check"></i><b>5.2</b> Practical 3 - Introduction to Analysis of Variance</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="differences.html"><a href="differences.html#aims"><i class="fa fa-check"></i><b>5.2.1</b> Aims</a></li>
+<li class="chapter" data-level="5.2.2" data-path="differences.html"><a href="differences.html#the-data-1"><i class="fa fa-check"></i><b>5.2.2</b> The Data</a></li>
+<li class="chapter" data-level="5.2.3" data-path="differences.html"><a href="differences.html#task-1---setting-up-your-workspace-1"><i class="fa fa-check"></i><b>5.2.3</b> Task 1 - Setting up your workspace</a></li>
+<li class="chapter" data-level="5.2.4" data-path="differences.html"><a href="differences.html#c5t2"><i class="fa fa-check"></i><b>5.2.4</b> Task 2 - Checking the data</a></li>
+<li class="chapter" data-level="5.2.5" data-path="differences.html"><a href="differences.html#c5t3"><i class="fa fa-check"></i><b>5.2.5</b> Task 3 - Making some basic plots</a></li>
+<li class="chapter" data-level="5.2.6" data-path="differences.html"><a href="differences.html#c5t4"><i class="fa fa-check"></i><b>5.2.6</b> Task 4 - Produce some descriptive statistics</a></li>
+<li class="chapter" data-level="5.2.7" data-path="differences.html"><a href="differences.html#task-5---experiment-1---one-way-anova"><i class="fa fa-check"></i><b>5.2.7</b> Task 5 - Experiment 1 - One-way ANOVA</a></li>
+<li class="chapter" data-level="5.2.8" data-path="differences.html"><a href="differences.html#first-boxplot"><i class="fa fa-check"></i><b>5.2.8</b> Task 6 - Experiment 2 - Two-way ANOVA</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="differences.html"><a href="differences.html#conclusion-2"><i class="fa fa-check"></i><b>5.3</b> Conclusion</a></li>
+<li class="chapter" data-level="5.4" data-path="differences.html"><a href="differences.html#before-you-leave-4"><i class="fa fa-check"></i><b>5.4</b> Before you leave!</a></li>
+<li class="chapter" data-level="5.5" data-path="differences.html"><a href="differences.html#references-3"><i class="fa fa-check"></i><b>5.5</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html"><i class="fa fa-check"></i><b>6</b> Workshop 4 - Testing for and Measuring Relationships</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#introduction-3"><i class="fa fa-check"></i><b>6.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#direction-of-associations"><i class="fa fa-check"></i>Direction of associations</a></li>
+<li class="chapter" data-level="" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#fitting-the-regression"><i class="fa fa-check"></i>Fitting the regression</a></li>
+<li class="chapter" data-level="" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#assumptions"><i class="fa fa-check"></i>Assumptions</a></li>
+<li class="chapter" data-level="" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#correlation"><i class="fa fa-check"></i>Correlation</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#practical-4---regression-correlation-introduction"><i class="fa fa-check"></i><b>6.2</b> Practical 4 - Regression &amp; Correlation Introduction</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#the-data-2"><i class="fa fa-check"></i><b>6.2.1</b> The Data</a></li>
+<li class="chapter" data-level="6.2.2" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#manual-data-entry"><i class="fa fa-check"></i><b>6.2.2</b> Task 1 - Setting up your workspace</a></li>
+<li class="chapter" data-level="6.2.3" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#c6t2"><i class="fa fa-check"></i><b>6.2.3</b> Task 2 - Making some basic plots</a></li>
+<li class="chapter" data-level="6.2.4" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#c6t3"><i class="fa fa-check"></i><b>6.2.4</b> Task 3 - Regression analysis</a></li>
+<li class="chapter" data-level="" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#task-4---correlation-analysis"><i class="fa fa-check"></i>Task 4 - correlation analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#conclusion-3"><i class="fa fa-check"></i><b>6.3</b> Conclusion</a></li>
+<li class="chapter" data-level="6.4" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#before-you-leave-5"><i class="fa fa-check"></i><b>6.4</b> Before you leave!</a></li>
+<li class="chapter" data-level="6.5" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#references-4"><i class="fa fa-check"></i><b>6.5</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html"><i class="fa fa-check"></i><b>7</b> Workshop 5 - Issues with Probability and Parametric Analysis</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#introduction-4"><i class="fa fa-check"></i><b>7.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#non-normal-data-homogeneity-of-variance"><i class="fa fa-check"></i>Non-normal data &amp; homogeneity of variance</a></li>
+<li class="chapter" data-level="" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#transformations"><i class="fa fa-check"></i>Transformations</a></li>
+<li class="chapter" data-level="" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#non-parametric-methods"><i class="fa fa-check"></i>Non-parametric methods</a></li>
+<li class="chapter" data-level="" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#non-parametric-tests-for-differences"><i class="fa fa-check"></i>Non-parametric tests for differences</a></li>
+<li class="chapter" data-level="" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#non-parametric-tests-for-association"><i class="fa fa-check"></i>Non-parametric tests for association</a></li>
+<li class="chapter" data-level="" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#pitfalls-of-non-parametric-tests"><i class="fa fa-check"></i>Pitfalls of non-parametric tests</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#practical-5---transformations-non-parametric-tests---an-introduction"><i class="fa fa-check"></i><b>7.2</b> Practical 5 - Transformations &amp; Non-parametric Tests - An Introduction</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#task-1---setting-up-your-workspace-2"><i class="fa fa-check"></i><b>7.2.1</b> Task 1 - Setting up your workspace</a></li>
+<li class="chapter" data-level="7.2.2" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#c7t2"><i class="fa fa-check"></i><b>7.2.2</b> Task 2 - Explore the data</a></li>
+<li class="chapter" data-level="7.2.3" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#c7t3"><i class="fa fa-check"></i><b>7.2.3</b> Task 3 - Data transformations</a></li>
+<li class="chapter" data-level="7.2.4" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#task-4---non-parametric-analysis-of-the-differences"><i class="fa fa-check"></i><b>7.2.4</b> Task 4 - Non-parametric analysis of the differences</a></li>
+<li class="chapter" data-level="7.2.5" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#task-5---non-parametric-test-for-associations"><i class="fa fa-check"></i><b>7.2.5</b> Task 5 - Non-parametric test for associations</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#conclusion-4"><i class="fa fa-check"></i><b>7.3</b> Conclusion</a></li>
+<li class="chapter" data-level="7.4" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#before-you-leave-6"><i class="fa fa-check"></i><b>7.4</b> Before you leave!</a></li>
+<li class="chapter" data-level="7.5" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#references-5"><i class="fa fa-check"></i><b>7.5</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="plot-beautification.html"><a href="plot-beautification.html"><i class="fa fa-check"></i><b>8</b> Plot Beautification!!!</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="plot-beautification.html"><a href="plot-beautification.html#deconstructing-ggplot"><i class="fa fa-check"></i><b>8.1</b> Deconstructing ggplot</a></li>
+<li class="chapter" data-level="8.2" data-path="plot-beautification.html"><a href="plot-beautification.html#labels"><i class="fa fa-check"></i><b>8.2</b> Labels</a></li>
+<li class="chapter" data-level="8.3" data-path="plot-beautification.html"><a href="plot-beautification.html#colours"><i class="fa fa-check"></i><b>8.3</b> Switching up colours</a></li>
+<li class="chapter" data-level="8.4" data-path="plot-beautification.html"><a href="plot-beautification.html#spacing"><i class="fa fa-check"></i><b>8.4</b> Spacing</a></li>
+<li class="chapter" data-level="8.5" data-path="plot-beautification.html"><a href="plot-beautification.html#themes"><i class="fa fa-check"></i><b>8.5</b> Themes</a></li>
+<li class="chapter" data-level="8.6" data-path="plot-beautification.html"><a href="plot-beautification.html#beautifying-scatter-plots"><i class="fa fa-check"></i><b>8.6</b> Beautifying scatter plots</a></li>
+<li class="chapter" data-level="8.7" data-path="plot-beautification.html"><a href="plot-beautification.html#explorting-your-plot-to-pdf"><i class="fa fa-check"></i><b>8.7</b> Explorting your plot to pdf</a></li>
+<li class="chapter" data-level="8.8" data-path="plot-beautification.html"><a href="plot-beautification.html#before-you-leave-7"><i class="fa fa-check"></i><b>8.8</b> Before you leave!</a></li>
+<li class="chapter" data-level="8.9" data-path="plot-beautification.html"><a href="plot-beautification.html#references-6"><i class="fa fa-check"></i><b>8.9</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="bio-7026a-univariate-statistics-summative-assignment.html"><a href="bio-7026a-univariate-statistics-summative-assignment.html"><i class="fa fa-check"></i><b>9</b> BIO-7026A: Univariate Statistics Summative Assignment</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="bio-7026a-univariate-statistics-summative-assignment.html"><a href="bio-7026a-univariate-statistics-summative-assignment.html#the-exercise"><i class="fa fa-check"></i><b>9.1</b> The exercise</a></li>
+<li class="chapter" data-level="9.2" data-path="bio-7026a-univariate-statistics-summative-assignment.html"><a href="bio-7026a-univariate-statistics-summative-assignment.html#the-problem"><i class="fa fa-check"></i><b>9.2</b> The Problem</a></li>
+<li class="chapter" data-level="9.3" data-path="bio-7026a-univariate-statistics-summative-assignment.html"><a href="bio-7026a-univariate-statistics-summative-assignment.html#the-data-3"><i class="fa fa-check"></i><b>9.3</b> The Data</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="introduction-to-multivariate-statistics-bio-7025a.html"><a href="introduction-to-multivariate-statistics-bio-7025a.html"><i class="fa fa-check"></i><b>10</b> Introduction to Multivariate Statistics (BIO-7025A)</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="introduction-to-multivariate-statistics-bio-7025a.html"><a href="introduction-to-multivariate-statistics-bio-7025a.html#welcome-to-multivairate-statistics"><i class="fa fa-check"></i><b>10.1</b> Welcome to Multivairate Statistics</a></li>
+<li class="chapter" data-level="10.2" data-path="introduction-to-multivariate-statistics-bio-7025a.html"><a href="introduction-to-multivariate-statistics-bio-7025a.html#learning-objectives-1"><i class="fa fa-check"></i><b>10.2</b> Learning Objectives</a></li>
+<li class="chapter" data-level="10.3" data-path="introduction-to-multivariate-statistics-bio-7025a.html"><a href="introduction-to-multivariate-statistics-bio-7025a.html#teaching-layout-1"><i class="fa fa-check"></i><b>10.3</b> Teaching Layout</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html"><i class="fa fa-check"></i><b>11</b> Multivariate Linear Modelling</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html#introduction-5"><i class="fa fa-check"></i><b>11.1</b> Introduction</a></li>
+<li class="chapter" data-level="11.2" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html#practical-6---multiple-linear-models"><i class="fa fa-check"></i><b>11.2</b> Practical 6 - Multiple Linear Models</a></li>
+<li class="chapter" data-level="11.3" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html#data-set-1-africa"><i class="fa fa-check"></i><b>11.3</b> Data set 1: Africa</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html#task-1---checking-the-data"><i class="fa fa-check"></i><b>11.3.1</b> Task 1 - Checking the data</a></li>
+<li class="chapter" data-level="11.3.2" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html#task-2---exploring-the-data"><i class="fa fa-check"></i><b>11.3.2</b> Task 2 - Exploring the data</a></li>
+<li class="chapter" data-level="11.3.3" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html#task-3---regression-analysis"><i class="fa fa-check"></i><b>11.3.3</b> Task 3 - Regression analysis</a></li>
+<li class="chapter" data-level="11.3.4" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html#c11t4"><i class="fa fa-check"></i><b>11.3.4</b> Task 4 - Multivariate linear regression analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html#data-set-2-chaffinch"><i class="fa fa-check"></i><b>11.4</b> Data set 2: Chaffinch</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html#task-1---checking-the-data-1"><i class="fa fa-check"></i><b>11.4.1</b> Task 1 - Checking the data</a></li>
+<li class="chapter" data-level="11.4.2" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html#task-2---exporing-potential-relationships"><i class="fa fa-check"></i><b>11.4.2</b> Task 2 - Exporing potential relationships</a></li>
+<li class="chapter" data-level="11.4.3" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html#task-3---multiple-regression-analysis"><i class="fa fa-check"></i><b>11.4.3</b> Task 3 - Multiple regression analysis</a></li>
+<li class="chapter" data-level="11.4.4" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html#task-4---when-good-predictors-go-bad-multicollinearity"><i class="fa fa-check"></i><b>11.4.4</b> Task 4 - When good predictors go bad (multicollinearity)</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html#data-set-3-beetles"><i class="fa fa-check"></i><b>11.5</b> Data set 3: Beetles</a>
+<ul>
+<li class="chapter" data-level="11.5.1" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html#c11t1"><i class="fa fa-check"></i><b>11.5.1</b> Task 1 - Checking the data</a></li>
+<li class="chapter" data-level="11.5.2" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html#task-2---multiple-regression-analysis"><i class="fa fa-check"></i><b>11.5.2</b> Task 2 - Multiple regression analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="11.6" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html#before-you-leave-8"><i class="fa fa-check"></i><b>11.6</b> Before you leave!</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="model-structure.html"><a href="model-structure.html"><i class="fa fa-check"></i><b>12</b> Model Structure</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="model-structure.html"><a href="model-structure.html#introduction-6"><i class="fa fa-check"></i><b>12.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="model-structure.html"><a href="model-structure.html#fully-factorial-linear-model"><i class="fa fa-check"></i><b>12.1.1</b> Fully Factorial Linear Model</a></li>
+<li class="chapter" data-level="12.1.2" data-path="model-structure.html"><a href="model-structure.html#randomised-block-linear-model"><i class="fa fa-check"></i><b>12.1.2</b> Randomised Block Linear Model</a></li>
+<li class="chapter" data-level="12.1.3" data-path="model-structure.html"><a href="model-structure.html#options"><i class="fa fa-check"></i><b>12.1.3</b> Options</a></li>
+<li class="chapter" data-level="12.1.4" data-path="model-structure.html"><a href="model-structure.html#post-hoc"><i class="fa fa-check"></i><b>12.1.4</b> Post-hoc</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="model-structure.html"><a href="model-structure.html#practical-8---exploring-model-structure"><i class="fa fa-check"></i><b>12.2</b> Practical 8 - Exploring Model Structure</a></li>
+<li class="chapter" data-level="12.3" data-path="model-structure.html"><a href="model-structure.html#data-set-1-nepal---linear-model-with-randomised-block-designs"><i class="fa fa-check"></i><b>12.3</b> Data set 1: Nepal - Linear Model with Randomised Block designs</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="model-structure.html"><a href="model-structure.html#task-1---checking-the-data-2"><i class="fa fa-check"></i><b>12.3.1</b> Task 1 - Checking the data</a></li>
+<li class="chapter" data-level="12.3.2" data-path="model-structure.html"><a href="model-structure.html#task-2---exploring-the-data-1"><i class="fa fa-check"></i><b>12.3.2</b> Task 2 - Exploring the data</a></li>
+<li class="chapter" data-level="12.3.3" data-path="model-structure.html"><a href="model-structure.html#c12t3"><i class="fa fa-check"></i><b>12.3.3</b> Task 3 - Identifying experimental design</a></li>
+<li class="chapter" data-level="12.3.4" data-path="model-structure.html"><a href="model-structure.html#task-4---approaches-to-our-model"><i class="fa fa-check"></i><b>12.3.4</b> Task 4 - Approaches to our model</a></li>
+<li class="chapter" data-level="12.3.5" data-path="model-structure.html"><a href="model-structure.html#exploring-the-model"><i class="fa fa-check"></i><b>12.3.5</b> Exploring the model</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="model-structure.html"><a href="model-structure.html#data-set-2-tulip---linear-model-with-randomised-block-designs"><i class="fa fa-check"></i><b>12.4</b> Data set 2: Tulip - Linear Model with Randomised Block designs</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="model-structure.html"><a href="model-structure.html#task-5---checking-the-data"><i class="fa fa-check"></i><b>12.4.1</b> Task 5 - Checking the data</a></li>
+<li class="chapter" data-level="12.4.2" data-path="model-structure.html"><a href="model-structure.html#task-6---exploring-the-data"><i class="fa fa-check"></i><b>12.4.2</b> Task 6 - Exploring the data</a></li>
+<li class="chapter" data-level="12.4.3" data-path="model-structure.html"><a href="model-structure.html#playing-with-some-models"><i class="fa fa-check"></i><b>12.4.3</b> Playing with some models</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="model-structure.html"><a href="model-structure.html#mixed-effects-linear-models"><i class="fa fa-check"></i><b>12.5</b> Mixed effects linear models</a></li>
+<li class="chapter" data-level="12.6" data-path="model-structure.html"><a href="model-structure.html#conclusions"><i class="fa fa-check"></i><b>12.6</b> Conclusions</a></li>
+<li class="chapter" data-level="12.7" data-path="model-structure.html"><a href="model-structure.html#before-you-leave-9"><i class="fa fa-check"></i><b>12.7</b> Before you leave!</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html"><i class="fa fa-check"></i><b>13</b> Repeated Measures Linear Models</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#introduction-7"><i class="fa fa-check"></i><b>13.1</b> Introduction</a></li>
+<li class="chapter" data-level="13.2" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#practical-9---repeated-measures-linear-models"><i class="fa fa-check"></i><b>13.2</b> Practical 9 - Repeated Measures Linear Models</a></li>
+<li class="chapter" data-level="13.3" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#data-set-1---activity"><i class="fa fa-check"></i><b>13.3</b> Data set 1 - Activity</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#task-1---checking-the-data-3"><i class="fa fa-check"></i><b>13.3.1</b> Task 1 - Checking the data</a></li>
+<li class="chapter" data-level="13.3.2" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#task-2---exploring-the-data-2"><i class="fa fa-check"></i><b>13.3.2</b> Task 2 - Exploring the data</a></li>
+<li class="chapter" data-level="13.3.3" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#task-3---playing-with-some-statistics"><i class="fa fa-check"></i><b>13.3.3</b> Task 3 - Playing with some statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#data-set-2---metabolism"><i class="fa fa-check"></i><b>13.4</b> Data set 2 - Metabolism</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#task-4---checking-the-data"><i class="fa fa-check"></i><b>13.4.1</b> Task 4 - Checking the data</a></li>
+<li class="chapter" data-level="13.4.2" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#task-5---exploring-the-data"><i class="fa fa-check"></i><b>13.4.2</b> Task 5 - Exploring the data</a></li>
+<li class="chapter" data-level="13.4.3" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#task-6---playing-with-some-statistics"><i class="fa fa-check"></i><b>13.4.3</b> Task 6 - Playing with some statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#conclusions-1"><i class="fa fa-check"></i><b>13.5</b> Conclusions</a></li>
+<li class="chapter" data-level="13.6" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#before-you-leave-10"><i class="fa fa-check"></i><b>13.6</b> Before you leave!</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html"><i class="fa fa-check"></i><b>14</b> A Very Introductory Introduction to Generalised Linear Models</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#introduction-8"><i class="fa fa-check"></i><b>14.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#what-is-a-generalised-linear-model-and-why-are-they-useful"><i class="fa fa-check"></i><b>14.1.1</b> What is a Generalised Linear Model and why are they useful?</a></li>
+<li class="chapter" data-level="14.1.2" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#key-parts-of-a-glm"><i class="fa fa-check"></i><b>14.1.2</b> Key parts of a GLM</a></li>
+<li class="chapter" data-level="14.1.3" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#different-famlies-and-their-link-functions"><i class="fa fa-check"></i><b>14.1.3</b> Different famlies and their link functions</a></li>
+<li class="chapter" data-level="14.1.4" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#glms-with-a-poisson-error-structure"><i class="fa fa-check"></i><b>14.1.4</b> GLMs with a Poisson Error Structure</a></li>
+<li class="chapter" data-level="14.1.5" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#glms-with-a-binomial-error-structure"><i class="fa fa-check"></i><b>14.1.5</b> GLMs with a Binomial Error Structure</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#practical-10---glms"><i class="fa fa-check"></i><b>14.2</b> Practical 10 - GLMs</a></li>
+<li class="chapter" data-level="14.3" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#a-poisson-glm-on-some-beautifully-behaved-data"><i class="fa fa-check"></i><b>14.3</b> A Poisson GLM on some beautifully behaved data</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#task-1---check-the-data"><i class="fa fa-check"></i><b>14.3.1</b> Task 1 - Check the data</a></li>
+<li class="chapter" data-level="14.3.2" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#task-2---exploring-the-data-3"><i class="fa fa-check"></i><b>14.3.2</b> Task 2 - Exploring the data</a></li>
+<li class="chapter" data-level="14.3.3" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#task-3---fitting-a-glm"><i class="fa fa-check"></i><b>14.3.3</b> Task 3 - Fitting a GLM</a></li>
+<li class="chapter" data-level="14.3.4" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#task-4---checking-the-model"><i class="fa fa-check"></i><b>14.3.4</b> Task 4 - Checking the model</a></li>
+<li class="chapter" data-level="14.3.5" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#task-5---plotting-our-model"><i class="fa fa-check"></i><b>14.3.5</b> Task 5 - Plotting our model</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#a-binomial-glm"><i class="fa fa-check"></i><b>14.4</b> A Binomial GLM</a>
+<ul>
+<li class="chapter" data-level="14.4.1" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#task-6---check-the-data"><i class="fa fa-check"></i><b>14.4.1</b> Task 6 - Check the data</a></li>
+<li class="chapter" data-level="14.4.2" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#task-7---explore-the-data"><i class="fa fa-check"></i><b>14.4.2</b> Task 7 - Explore the data</a></li>
+<li class="chapter" data-level="14.4.3" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#task-8---fitting-a-glm"><i class="fa fa-check"></i><b>14.4.3</b> Task 8 - Fitting a GLM</a></li>
+<li class="chapter" data-level="14.4.4" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#task-9---interpretation-and-plotting"><i class="fa fa-check"></i><b>14.4.4</b> Task 9 - Interpretation and plotting</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#a-poisson-mixed-effects-glm"><i class="fa fa-check"></i><b>14.5</b> A Poisson Mixed Effects GLM</a>
+<ul>
+<li class="chapter" data-level="14.5.1" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#task-10---check-the-data"><i class="fa fa-check"></i><b>14.5.1</b> Task 10 - Check the data</a></li>
+<li class="chapter" data-level="14.5.2" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#task-11---explore-the-data"><i class="fa fa-check"></i><b>14.5.2</b> Task 11 - Explore the data</a></li>
+<li class="chapter" data-level="14.5.3" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#task-12---fitting-a-glm"><i class="fa fa-check"></i><b>14.5.3</b> Task 12 - Fitting a GLM</a></li>
+</ul></li>
+<li class="chapter" data-level="14.6" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#conclusions-2"><i class="fa fa-check"></i><b>14.6</b> Conclusions</a></li>
+<li class="chapter" data-level="14.7" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#before-you-leave-11"><i class="fa fa-check"></i><b>14.7</b> Before you leave!</a></li>
+<li class="chapter" data-level="14.8" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#references-7"><i class="fa fa-check"></i><b>14.8</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="bio-7025a-multivariate-statitsics-assignment.html"><a href="bio-7025a-multivariate-statitsics-assignment.html"><i class="fa fa-check"></i><b>15</b> BIO-7025A: Multivariate Statitsics Assignment</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="bio-7025a-multivariate-statitsics-assignment.html"><a href="bio-7025a-multivariate-statitsics-assignment.html#patterns-of-habitat-selection-in-breeding-black-tailed-godwits-in-iceland"><i class="fa fa-check"></i><b>15.1</b> Patterns of habitat selection in breeding Black-tailed Godwits in Iceland</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistics for Biologists</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="a-very-introductory-introduction-to-generalised-linear-models" class="section level1 hasAnchor" number="14">
+<h1><span class="header-section-number">Chapter 14</span> A Very Introductory Introduction to Generalised Linear Models<a href="a-very-introductory-introduction-to-generalised-linear-models.html#a-very-introductory-introduction-to-generalised-linear-models" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>This chapter will run in Workshops 10 and 11 of Week 10.</p>
+<div id="introduction-8" class="section level2 hasAnchor" number="14.1">
+<h2><span class="header-section-number">14.1</span> Introduction<a href="a-very-introductory-introduction-to-generalised-linear-models.html#introduction-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This week we will start to explore the world of generalised linear models (GLMs), not to be confused with general linear models (that have underpinned all of the statistical techniques we have studies so far).</p>
+<div id="what-is-a-generalised-linear-model-and-why-are-they-useful" class="section level3 hasAnchor" number="14.1.1">
+<h3><span class="header-section-number">14.1.1</span> What is a Generalised Linear Model and why are they useful?<a href="a-very-introductory-introduction-to-generalised-linear-models.html#what-is-a-generalised-linear-model-and-why-are-they-useful" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We have so far spent a lot of time thinking about the general linear model family (including regressions, ANOVAs and ANCOVAs). We have also spent some time dealing with assumptions. All of these models make certain assumptions about the data they are dealing with and some of these assumptions are held in common within the general linear model family.</p>
+<p>Of the dependent/response variable they all assume;</p>
+<ul>
+<li>A continuous variable that can have both positive and negative values as well as fractions</li>
+<li>That the data are unbounded (although this is somewhat loosely applied, size, for example, cannot be negative)</li>
+<li>Equal variance<br />
+</li>
+<li>A normal distribution</li>
+</ul>
+<p>You will have checked the distribution and equality of variance for all of our previous analyses and where these assumptions were violated we either transformed the data or performed non-parametric alternative tests.</p>
+<p>However often in the biological sciences you will be collecting data that is not appropriate for use in general linear models. For example your response variable may be count data (so bounded, counts cannot go below 0) or binary (e.g. presence/absence, denoted by 1s and 0s), or another type of categorical data. Here a general linear model would be inappropriate and this is where GLMs really come into their own.</p>
+<p>These workshops will be, in no way, a definitive guide to the minutia of GLMs, but we will cover a couple of common usages and have a think about what you need to look out for to ensure your model is an appropriate fit for your data. If you use this family of models on your own data (which, if you continue in the field of ecology, you almost certainly will) you will need to do additional reading and also, probably, spend quite a lot of time playing with different model structures to become proficient.</p>
+</div>
+<div id="key-parts-of-a-glm" class="section level3 hasAnchor" number="14.1.2">
+<h3><span class="header-section-number">14.1.2</span> Key parts of a GLM<a href="a-very-introductory-introduction-to-generalised-linear-models.html#key-parts-of-a-glm" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The implementation of GLMs in R is quite different to the other models we have previously constructed. There are three additional components to be aware of;</p>
+<ul>
+<li><strong>Linear Predictor</strong> - this sounds scarier then it is. You have all already used linear predictors. This is an equation which describes how the predictor variables affect the response variable. With our linear models an example of this was;</li>
+</ul>
+<p><span class="math display">\[
+y = mx + c
+\]</span></p>
+<ul>
+<li><strong>Family</strong> - also known as the error structure. This is the probability distribution that describes the response variable and that will underpin how your GLM treats your data.</li>
+<li><strong>Link Function</strong> - this accompanies your family argument and provides a link between the linear predictor and the probability distribution.</li>
+</ul>
+</div>
+<div id="different-famlies-and-their-link-functions" class="section level3 hasAnchor" number="14.1.3">
+<h3><span class="header-section-number">14.1.3</span> Different famlies and their link functions<a href="a-very-introductory-introduction-to-generalised-linear-models.html#different-famlies-and-their-link-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The family (or error structure) you select for your GLM will depend on how your data look, but the most common ones are listed below.</p>
+<table style="width:100%;">
+<colgroup>
+<col width="16%" />
+<col width="16%" />
+<col width="16%" />
+<col width="16%" />
+<col width="16%" />
+<col width="16%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Data Distribution</th>
+<th align="center">Family</th>
+<th align="center">Default Link Function</th>
+<th align="center">Link Function</th>
+<th align="center">R code</th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Normal</td>
+<td align="center">Gaussian</td>
+<td align="center">Identity</td>
+<td align="center"><span class="math inline">\(gμ = μ\)</span></td>
+<td align="center"><code>gausian(link="identity")</code></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">Poisson</td>
+<td align="center">Poisson</td>
+<td align="center">Log</td>
+<td align="center"><span class="math inline">\(g(μ) = log(μ)\)</span></td>
+<td align="center"><code>poisson(link="log")</code></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">Binomial</td>
+<td align="center">Binomial</td>
+<td align="center">Logit</td>
+<td align="center"><span class="math inline">\(g(μ)= log(\frac{μ}{1-μ})\)</span></td>
+<td align="center"><code>binomial(link="logit")</code></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">Gamma</td>
+<td align="center">Gamma</td>
+<td align="center">Inverse</td>
+<td align="center"><span class="math inline">\(g(μ)= \frac{1}{μ}\)</span></td>
+<td align="center"><code>gamma(link="inverse")</code></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p>These are just a few of the more commonly used GLM error structures and their default link functions that you are likely to come across. We will explore two of these in more depth over the course of this week.</p>
+</div>
+<div id="glms-with-a-poisson-error-structure" class="section level3 hasAnchor" number="14.1.4">
+<h3><span class="header-section-number">14.1.4</span> GLMs with a Poisson Error Structure<a href="a-very-introductory-introduction-to-generalised-linear-models.html#glms-with-a-poisson-error-structure" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>As ecologists you will frequently find that the data you are collecting is count data. Count data is inherently tricky to analyse using general linear model approaches. For a start it breaks the assumption that the data are unbounded (it cant go below 0) and often it cannot form fractions (often we count in whole numbers only), so really its discrete data. These two factors mean that count data are unlikely to conform to a normal distribution, which works with continuous data and allows for negative values (neither of which are permitted by count data). In addition, normal distributions are symetrical, with half of the data points falling on either side of the mean. Count data (often but not always) has a greater number of data points towards the lower end of the x axis. So it will be positively skewed and follow a Poisson distribution.</p>
+<p>If we come across data like this, we could try doing some log transformations and that might fix the issue or it might not. Or if we only want to build a simple model we could explore non-parametric alternatives to our general linear models. But sometimes we want to build a more complex model with several independent variables and sometimes log transformations just don’t cut it anymore. So here we may consider performing a GLM with a poisson error structure and log link function.</p>
+<p>So our model would look something like this;</p>
+<p><span class="math display">\[
+y = log_e^{mx+c}
+\]</span></p>
+</div>
+<div id="glms-with-a-binomial-error-structure" class="section level3 hasAnchor" number="14.1.5">
+<h3><span class="header-section-number">14.1.5</span> GLMs with a Binomial Error Structure<a href="a-very-introductory-introduction-to-generalised-linear-models.html#glms-with-a-binomial-error-structure" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>You may also end up designing your experiment in such a way that your response/dependent variable is categorical and/or binary. For example, commonly ecologists use binary data to measure the presence or absence of a species. When we have a categorical or binary response variable we will automatically be breaking several of the assumptions of the general linear models (i.e. the response is not continuous, it is bounded and it wont conform to a normal distribution). This is where GLMs with a binomial error structure come in super handy (they essentially perform something akin to a logistic regression, you may see these refereed to in the literature).</p>
+<p>When we construct a model with a binary (or categorical) dependent variable, such as presence or absence, we are essentially asking which independent variables make it more or less probable that we will detect the presence of a species. This can be expressed mathematically like this;</p>
+<p><span class="math display">\[
+P(Y) = \frac{e^z}{(1+e^z)}
+\]</span></p>
+<p>Where <span class="math inline">\(P(Y)\)</span> is the probability of a given Y value (e.g. present or absent), <span class="math inline">\(e\)</span> is the base of natural logarithms and <span class="math inline">\(z\)</span> is the linear regression equation (<span class="math inline">\(m_1x_1+m_2x_2+m_3x_3+...c\)</span>). The above equation can then be rearranged to;</p>
+<p><span class="math display">\[
+log_e(\frac{P(Y)}{1-P(Y)}) = m_1x_1 + m_2x_2+m_3x_3 +... c
+\]</span>
+So, this equation is the (natural logarithm of) the probability of being in one group (e.g. present) divided by the probability of being in the other group (e.g. absent). The predictor coefficients (slope (m) and intercept (c)) are used in the same way as in regression, but instead of predicting an actual value of Y, they predict the probability of Y being in one group or the other. Neat right???</p>
+</div>
+</div>
+<div id="practical-10---glms" class="section level2 hasAnchor" number="14.2">
+<h2><span class="header-section-number">14.2</span> Practical 10 - GLMs<a href="a-very-introductory-introduction-to-generalised-linear-models.html#practical-10---glms" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This week we will be working through three data sets;</p>
+<ul>
+<li>Sheep</li>
+<li>Frogs</li>
+<li>The return of the Kooki bird</li>
+</ul>
+<p>I have created a new Classroom in Posit cloud for you to work from this week. Follow the link <a href="https://posit.cloud/spaces/451048/join?access_code=SiQlhHzulmeBkbO4NcMfueUek8iqroLUiJnPLxJU">here</a>. Please note, to hopefully fix the issues around crashes last week, I have installed all of the packages in advance, you can see this in the script called <code>startup.R</code> saved in the workspace. The package installations are hashed out, you will still need to load <code>tidyverse</code>, <code>performance</code>, <code>pscl</code>, <code>lme4</code>, <code>Matrix</code> and <code>MASS</code> with the <code>library()</code> function but you WONT need to run <code>install.packages()</code> at all.</p>
+</div>
+<div id="a-poisson-glm-on-some-beautifully-behaved-data" class="section level2 hasAnchor" number="14.3">
+<h2><span class="header-section-number">14.3</span> A Poisson GLM on some beautifully behaved data<a href="a-very-introductory-introduction-to-generalised-linear-models.html#a-poisson-glm-on-some-beautifully-behaved-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Our first workshop mirrors an excellent workshop taken from Beckerman et al., 2017. The data were collected from the Soay sheep population on the island of Hirta (Scotland). Scientists wanted to know if lifetime reproductive success (number of live young produced over the course of a lifetime) increased with the average body mass of female sheep (ewes). This data set is very neat, quite simple and beautifully well behaved so makes for a great starting point with your first GLM. I also highly recommend this publication if you wish for further reading.</p>
+<ul>
+<li><code>SoaySheepFitness.csv</code> data file</li>
+</ul>
+<p>This data file contains the following data;</p>
+<ul>
+<li>fitness - the number of offspring produced over a ewes lifetime</li>
+<li>body.size - the average body mass of each ewe</li>
+</ul>
+<div id="task-1---check-the-data" class="section level3 hasAnchor" number="14.3.1">
+<h3><span class="header-section-number">14.3.1</span> Task 1 - Check the data<a href="a-very-introductory-introduction-to-generalised-linear-models.html#task-1---check-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Load the data set <code>SoaySheepFitness.csv</code> into your workspace under the object name <code>sheep</code> and try performing some routine checks to make sure R has interpreted the variables correctly and all expected data is present and accounted for. You can use some of the functions explored in Chapter <a href="workshop-1---explorartory-data-analysis.html#checking-the-data">3.2.3</a> if you need some help with this.</p>
+</div>
+<div id="task-2---exploring-the-data-3" class="section level3 hasAnchor" number="14.3.2">
+<h3><span class="header-section-number">14.3.2</span> Task 2 - Exploring the data<a href="a-very-introductory-introduction-to-generalised-linear-models.html#task-2---exploring-the-data-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>As always, its a really good idea to explore your data set before you start launching into more advanced analyses.</p>
+<blockquote>
+<ul>
+<li>Build a histogram for <code>fitness</code> what does the distribution of the data look like?</li>
+<li>Is a mean going to be a fair reflection for this data distribution?</li>
+<li>Build a box plot with <code>body.size</code> on the x axis and <code>fitness</code> on the y axis, how would you interpret this plot, what shape is it?</li>
+</ul>
+</blockquote>
+<p>Try adding the following line to the code for your scatter plot;</p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#cb107-1" tabindex="-1"></a><span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<blockquote>
+<ul>
+<li>Does this regression line fairly reflect the data?</li>
+</ul>
+</blockquote>
+<p>Spoilers, no not really, a curve would be a much better fit for these data. Try adding this additional line to your scatter plot code;</p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#cb108-1" tabindex="-1"></a><span class="fu">geom_smooth</span>(<span class="at">span =</span> <span class="dv">1</span>, <span class="at">colour =</span> <span class="st">&quot;red&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<blockquote>
+<ul>
+<li>Hopefully you have two lines on your scatter plot, which one is a better fit, blue or red?</li>
+</ul>
+</blockquote>
+<p>These kinds of patterns are classic for poisson distributions. We could try and build a linear model with these data and R would let you, but the model fit would be terrible and you would run the risk of producing a nonsensical analysis.</p>
+<p>Instead lets try fitting a generalised linear model with a poisson error structure.</p>
+</div>
+<div id="task-3---fitting-a-glm" class="section level3 hasAnchor" number="14.3.3">
+<h3><span class="header-section-number">14.3.3</span> Task 3 - Fitting a GLM<a href="a-very-introductory-introduction-to-generalised-linear-models.html#task-3---fitting-a-glm" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>So our first GLM. There is a nice simple function for fitting this model, try running the following;</p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#cb109-1" tabindex="-1"></a><span class="co"># Running a GLM with poisson error structure and log link function</span></span>
+<span id="cb109-2"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#cb109-2" tabindex="-1"></a>sheep_glm <span class="ot">&lt;-</span> <span class="fu">glm</span>(fitness <span class="sc">~</span> body.size, <span class="at">data =</span> sheep, <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link=</span>log))</span></code></pre></div>
+<p>Right lets have a look at this model. Try running the following;</p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#cb110-1" tabindex="-1"></a><span class="co"># Summary for our sheep_glm </span></span>
+<span id="cb110-2"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#cb110-2" tabindex="-1"></a><span class="fu">summary</span>(sheep_glm)</span>
+<span id="cb110-3"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#cb110-3" tabindex="-1"></a></span>
+<span id="cb110-4"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#cb110-4" tabindex="-1"></a><span class="co"># Produce an analysis of deviance table for our sheep_glm</span></span>
+<span id="cb110-5"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#cb110-5" tabindex="-1"></a><span class="fu">anova</span>(sheep_glm, <span class="at">test =</span> <span class="st">&quot;Chisq&quot;</span>)</span></code></pre></div>
+<p>Take a look at the <code>summary()</code> function output. This output should look fairly familiar, it bares a is a fairly close resemblance to the <code>summary()</code> we produced for our <code>lm()</code> functions.</p>
+<ul>
+<li><strong>Call</strong> - This is just a reminder of the model that were looking at</li>
+<li><strong>Coefficients</strong> - Once again we have a intercept and a slope, we are still just modeling a line, and each of these comes with an standard error value. We also have a z value which, along with our p-values, allow us to work out the probability of our coefficients being 0.</li>
+<li><strong>Dispersion parameter</strong> - gives an indication of acceptable levels of dispersion for your model.</li>
+<li><strong>Null deviance</strong> - this is a measure for all of the variation in the data.</li>
+<li><strong>Residual deviance</strong> - this is a measure for the variation left over after the model has been fitted. So if there is a big difference between Residual and Null deviance then more of the variation is explained by the model.</li>
+<li><strong>AIC</strong> - Akaike information criterion - we wont go into this in any depth but you can use this score to compare the fit of different models which may be useful to you.</li>
+<li><strong>Fisher scoring iterations</strong> - Again we wont really worry about this, its a way R expresses how hard it was to find a model of best fit.</li>
+</ul>
+<p>So if we apply our old practices of, for a given value of x, trying to calculate y based on our <code>summary()</code> outputs.</p>
+<blockquote>
+<ul>
+<li>Take a look at the intercept, what does this tell you? Does it match what you might expect from the first scatter plot we produced?</li>
+<li>See if you can use <span class="math inline">\(y=mx_c\)</span> to calculate y for sheep that weighs 5kg. Again take a look at your figure, do these support each other?</li>
+</ul>
+</blockquote>
+<p>Hopefully you recognise that our plot does not support a negative intercept and a 5kg ewe producing, on average, 0.3 lambs over her lifetime seems a little on the low side.</p>
+<blockquote>
+<ul>
+<li>Take a look at the equations above that describe GLMs with a Poisson error structure and log link function. Do you notice anything?</li>
+</ul>
+</blockquote>
+<p>Bingo - our model equation is log transformed. So we need to undo that if we want to get meaningful predictions out of our <code>summary()</code>.</p>
+<p>Try running the following;</p>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#cb111-1" tabindex="-1"></a><span class="fu">exp</span>(<span class="dv">5</span> <span class="sc">*</span> <span class="fl">0.54087</span> <span class="sc">+</span> <span class="sc">-</span><span class="fl">2.4</span>)</span></code></pre></div>
+<p>The <code>exp()</code> function is essentially undoing the effects of the <span class="math inline">\(log_e\)</span> transformation. So we can see that a 5kg ewe, would on average, be expected to produce 1.35 lambs over her lifetime.</p>
+<p>We can also see that both slope and intercept in this model are significantly different to zero.</p>
+<p>Now try running the above <code>anova()</code> function. Note this does not perform an ANOVA. In this context it is producing an analysis of deviance table. You will note that the term <strong>Deviance</strong> comes up a lot here, this is essentially a measure of the fitted GLM with respect to a perfect model. So here we have the total deviance in the data (fitness) - 85.081 and the deviance explained by body size - 37.041. So almost half of the deviance here is explained by body size. We then have a p-value, but you might have noticed that when you ran the <code>anova()</code> function you had to specify <code>Chisq</code>. When we run GLMs we have to specify which distribution table to use. We are <strong>NOT</strong> running a <span class="math inline">\(X^2\)</span> test here, but we are using the <span class="math inline">\(X^2\)</span> distribution table to find out p-value. So here our test statistic would be <span class="math inline">\(X^2\)</span> = 37.04, df = 1 and p &lt; 0.001.</p>
+<p>The statistical theory that underpins all of this is related to likelihood tests which we wont be going into any more depth with here. You are welcome to read around these though if you want to further your understanding.</p>
+</div>
+<div id="task-4---checking-the-model" class="section level3 hasAnchor" number="14.3.4">
+<h3><span class="header-section-number">14.3.4</span> Task 4 - Checking the model<a href="a-very-introductory-introduction-to-generalised-linear-models.html#task-4---checking-the-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Really, if I was running this analysis for reals, I would do the model check before leaping into interp, but for teaching purposes its good for you to get familiar with model outputs first. But now we really can’t put this off any further, its time to check out model and see if its any good. Thankfully, there is a nice function that does a lot of the work for us here (you can also use this on your linear models as well btw).</p>
+<p>Try running the following;</p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#cb112-1" tabindex="-1"></a><span class="co"># Checking out models</span></span>
+<span id="cb112-2"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#cb112-2" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">check_model</span>(sheep_glm)</span></code></pre></div>
+<p>Hopefully R has built you a series of 5 plots. The nice thing about performance, is it gives you clues to what we are looking for in a good model fit and then also shows you where our model is on that scale. But lets break this down a little further;</p>
+<ol style="list-style-type: decimal">
+<li><strong>Posterior predictive check</strong> - this simply compares mean simulated replicated data under the fitted model (blue) with the observed data points (green).</li>
+<li><strong>Overdispersion and zero inflation</strong> - this compares observed variance to the variance of a theoretical model, it estimates that variance should be roughly equal to the mean, it its much higher then you have evidence of overdispersion.</li>
+<li><strong>Homogeneity of Variance</strong> - rather like the fitted vs residuals plots we produced before for our linear models this plot checks the assumption of homoscedasicity. We’re looking for a nice even distribution of points above and below the line</li>
+<li><strong>Influential observations</strong> - We have calculated leverage values for our data points before, this plot is a nice way of quickly checking them. Points should be within the contours, if they fall outside, you may have outliers present.</li>
+<li><strong>Normality of residuals</strong> - This checks to see if the residuals from the model are normally distributed. If points follow the line then they follow a normal distribution. Quite frequently, you will see some deviation from the line at the top or tail of the residuals. This would indicate that the model doesn’t predict the outcome for points in that range very well.</li>
+</ol>
+<p>A note on overdispersion and zero inflated data &lt;- this is the thorn in the side of almost every ecologist I know. It’s a total pain in the bum and it happens a lot. But what really is it? In real terms, overdispersion is talking about extra variation that is not accounted for in your model. It could come from an experimental design that doesn’t account for every single source of variation (very likely in biological studies), it can also come from non-independence in your data set or it could come from zero-inflation, which is when we have more zeros relative to the number expected for the distribution we are using.</p>
+<p>All of these sources of overdispersion are common in the biological sciences and you need to take note if your model is overdispersed because it plays havoc with your p-values (I know, not the p-values!!!). Overdispersion makes your p-values less conservative so you are more likely to get a false positive, which as a scientist, this is right up there in the top 5 worst nightmares (after the one where you’re trying to run away from the thing you cant quite see and then you fall over).</p>
+<p>Alongside our output from the <code>check_model()</code> function, we can also check for overdispersion ourselves by dividing the residual deviance by the residual degrees of freedom. In a perfect model, this would be 1 as indicated by our dispersion parameter. If the result of dividing residual deviance by residual degrees of freedom is much more then 1 (the rule of thumb is if its greater then 2) its our data is overdispersed, and if its much less then our data are underdispersed.</p>
+<p>So what do we do if we have evidence of overdispersion? Well we tinker with the model, there are lots of variants of the GLM so it maybe a new error structure of link function will allow you to account for the overdispersion. A common alternative for the poisson error structure is the quasipoisson error structure. All the quasipoisson error structure does is estimates the dispersion index and then R adjusts your p-values accordingly (making them more conservative).</p>
+<p>You can try it out if you like, try running the following;</p>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#cb113-1" tabindex="-1"></a><span class="co"># Fitting a GLM with a quasipoisson error structure</span></span>
+<span id="cb113-2"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#cb113-2" tabindex="-1"></a>sheep_glm <span class="ot">&lt;-</span> <span class="fu">glm</span>(fitness <span class="sc">~</span> body.size, <span class="at">data =</span> sheep, <span class="at">family =</span> <span class="fu">quasipoisson</span>(<span class="at">link=</span>log))</span>
+<span id="cb113-3"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#cb113-3" tabindex="-1"></a><span class="fu">summary</span>(sheep_glm)</span>
+<span id="cb113-4"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#cb113-4" tabindex="-1"></a><span class="fu">anova</span>(sheep_glm, <span class="at">test =</span> <span class="st">&quot;F&quot;</span>)</span></code></pre></div>
+<p>Note that when we call the <code>anova()</code> function, we have changed from <code>Chisq</code> to <code>F</code>, this is just telling R to run an F ratio test rather then a likelihood ratio test. Its just a nuance of using a different model structure.</p>
+</div>
+<div id="task-5---plotting-our-model" class="section level3 hasAnchor" number="14.3.5">
+<h3><span class="header-section-number">14.3.5</span> Task 5 - Plotting our model<a href="a-very-introductory-introduction-to-generalised-linear-models.html#task-5---plotting-our-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Right, that’s an absolute tone of theory, lets do something fun and make a plot with a good regression line.</p>
+<p>Try running the following;</p>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#cb114-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> sheep, <span class="fu">aes</span>(<span class="at">x=</span> body.size, <span class="at">y =</span> fitness)) <span class="sc">+</span></span>
+<span id="cb114-2"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#cb114-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb114-3"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#cb114-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;glm&quot;</span>, <span class="at">method.args =</span> <span class="fu">list</span>(<span class="at">family=</span>poisson), <span class="at">se =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>Doesn’t that look better! Feel free to do some tinkering to see if you can make this plot as beautiful as it deserves to be!</p>
+</div>
+</div>
+<div id="a-binomial-glm" class="section level2 hasAnchor" number="14.4">
+<h2><span class="header-section-number">14.4</span> A Binomial GLM<a href="a-very-introductory-introduction-to-generalised-linear-models.html#a-binomial-glm" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In this data set were going to have a look at tackling another commonly occurring issue in ecological data. Having a binary dependent variable.</p>
+<p>We will explore the effect of water depth, vegetation height and aquatic vegetation type on the presence or absence of frogs across 76 pools. We wish to know whether the presence or absence of frogs can be predicted from these parameters. Previous analyses have shown that water depth and vegetation height can both influence frog distribution but the impact of dominant aquatic plant type is as yet unknown.</p>
+<ul>
+<li><code>frogs.csv</code> data file</li>
+</ul>
+<p>This data file contains the following data;</p>
+<ul>
+<li>frogs - frog presence (1)/absence (0)</li>
+<li>water - Mean water depth (cm)</li>
+<li>veght - Mean vegetation height (cm)</li>
+<li>distance - Distance to nearest path (m)</li>
+<li>planttype - Dominant aquatic plant type (species)</li>
+</ul>
+<p>Take note - in this data set water depth, vegetation height and distance to paths are all continuous measurements, whereas planttype is categorical.</p>
+<div id="task-6---check-the-data" class="section level3 hasAnchor" number="14.4.1">
+<h3><span class="header-section-number">14.4.1</span> Task 6 - Check the data<a href="a-very-introductory-introduction-to-generalised-linear-models.html#task-6---check-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Load the data set <code>frogs.csv</code> into your workspace under the object name <code>frogs</code> and try performing some routine checks to make sure R has interpreted the variables correctly and all expected data is present and accounted for. You can use some of the functions explored in Chapter <a href="workshop-1---explorartory-data-analysis.html#checking-the-data">3.2.3</a> if you need some help with this.</p>
+</div>
+<div id="task-7---explore-the-data" class="section level3 hasAnchor" number="14.4.2">
+<h3><span class="header-section-number">14.4.2</span> Task 7 - Explore the data<a href="a-very-introductory-introduction-to-generalised-linear-models.html#task-7---explore-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>As always its good to spend some time exploring the data, our dependent variable here is binary so that reduces the number of checks we can do at this stage. However we can make some plots, try running the following;</p>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#cb115-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> frogs, <span class="fu">aes</span>(<span class="at">x=</span>water, <span class="at">y =</span> frogs)) <span class="sc">+</span></span>
+<span id="cb115-2"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#cb115-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb115-3"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#cb115-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
+<blockquote>
+<ul>
+<li>What is this plot telling you about the relationship between frog prescence and water depth?</li>
+<li>Is the regression line a good fit?</li>
+<li>Produce similar plots for the other variables in the data set. When you get to plotting <code>planttype</code> on the x axis you may want to add <code>position="jitter"</code> to the <code>geom_point()</code> function and colour the points by <code>frogs</code>.</li>
+<li>Look at each of these plots in turn, do you think any of these independent variables might help us predict presence of frogs?</li>
+<li>Finally, before we start fitting some models produce a matrix scatter plot for all of our variables, see Chapter <a href="multivariate-linear-modelling.html#c11t4">11.3.4</a> if you need a little help with this.</li>
+</ul>
+</blockquote>
+</div>
+<div id="task-8---fitting-a-glm" class="section level3 hasAnchor" number="14.4.3">
+<h3><span class="header-section-number">14.4.3</span> Task 8 - Fitting a GLM<a href="a-very-introductory-introduction-to-generalised-linear-models.html#task-8---fitting-a-glm" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Right so we are ready to start fitting some models. We will use the Enter method, as we did with our linear models in Chapter 11. We will begin by including all relevant variables and removing them one at a time. We know we have a binary dependent variable so we are going to need to run a GLM with a binomial error structure, the default link function for this family is logit. So we have all the basic elements for our first GLM. Try running the following;</p>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#cb116-1" tabindex="-1"></a><span class="co"># Fitting a glm with binomial error structure</span></span>
+<span id="cb116-2"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#cb116-2" tabindex="-1"></a>frog_glm1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(frogs <span class="sc">~</span> water <span class="sc">*</span> veght <span class="sc">*</span> distance <span class="sc">*</span> planttype,</span>
+<span id="cb116-3"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#cb116-3" tabindex="-1"></a>                 <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link=</span><span class="st">&quot;logit&quot;</span>),</span>
+<span id="cb116-4"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#cb116-4" tabindex="-1"></a>                 <span class="at">data =</span> frogs)</span></code></pre></div>
+<p>Notice we got a little warning message about convergence, so we know we might have a bit of an issue with this model. Try running; <code>performance::check_model()</code>, <code>summary()</code> and <code>anova()</code> for this GLM (remember for <code>anova()</code> you will need to specify <code>test = "Chisq"</code>).</p>
+<blockquote>
+<ul>
+<li>What do these outputs tell you?</li>
+</ul>
+</blockquote>
+<p>Yup this model is a bit of a mess, <code>check.model()</code> will almost certainly have failed to produce an output. That is because we have far too many variables and interactions going on and not enough data. Ok, lets try again.</p>
+<blockquote>
+<ul>
+<li>Run the above model again and save it under <code>frog_glm2</code> but change the interaction terms to additive ones. Take a look at the <code>performance::check_model()</code>, <code>anova()</code> and <code>summary()</code> outputs. What are these telling you? Note you will have a few additional plots from <code>check_model()</code>, see if you can work out how to interpret them. Ask for help if needed.</li>
+</ul>
+</blockquote>
+<p>You might have seen we have some evidence of collinearity in our data. This is never a good think when fitting models. Take a look at the variables flagged and select one to exclude in the next iteration of model fitting.</p>
+<blockquote>
+<ul>
+<li>Fit a new model but with one of the collinear variabled removed. Take a look at the <code>performance::check_model()</code>, <code>anova()</code> and <code>summary()</code> outputs. What are these telling you?</li>
+<li>You might have noticed that an additional variable has now been identified as significant. Why do you think this is?</li>
+<li>Run the model again, removing one variable at a time (starting with the least significant), until only significant vairables remain. Take a look at the <code>performance::check_model()</code>, <code>anova()</code> and <code>summary()</code> outputs each time. What are these telling you?</li>
+</ul>
+</blockquote>
+<p>So now we have our minimal model, we can start thinking about what it all means in real terms.</p>
+</div>
+<div id="task-9---interpretation-and-plotting" class="section level3 hasAnchor" number="14.4.4">
+<h3><span class="header-section-number">14.4.4</span> Task 9 - Interpretation and plotting<a href="a-very-introductory-introduction-to-generalised-linear-models.html#task-9---interpretation-and-plotting" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Interpreting models that have a binomial error distribution can be a little bit of a brain teaser, binary data isn’t something we have spent much time thinking about and the theory is a little bit different to that we have considered before.</p>
+<p>Lets have a look at your <code>summary()</code> output. This can be interpreted in a very similar way to our interpretation of our GLM with a poisson error structure (above). The key difference is when we look at the estimates for our coefficients. For both of the variables in our minimal model, <code>Estimate</code> still refers to slope but what does that mean when we have binary data? Lets go back to our linear model equation;</p>
+<p><span class="math display">\[
+y = mx + c
+\]</span></p>
+<p>We have used this equation lots of times to work out how <span class="math inline">\(y\)</span> might be expected to change per unit change in <span class="math inline">\(x\)</span>. We can apply a similar logic here, essentially our GLM with a binomial error structure is trying to calculate the probability of detecting <span class="math inline">\(y\)</span> (our frogs) per unit change in <span class="math inline">\(x\)</span> (our water and vegetation height variables). Lets just look at these slopes, run;</p>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#cb117-1" tabindex="-1"></a>frog_glm4<span class="sc">$</span>coefficient[<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>]</span></code></pre></div>
+<p>Now these values doesn’t really make sense, negative water depth? What? Remember our model is running another one of those pesky <span class="math inline">\(log_e\)</span> transformations. Ok so try this;</p>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#cb118-1" tabindex="-1"></a><span class="fu">exp</span>(frog_glm4<span class="sc">$</span>coefficient[<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>])</span></code></pre></div>
+<p>You should get an out put that looks something like this;</p>
+<pre><code>&gt; exp(frog_glm4$coefficient[2:3])
+    water     veght 
+0.9751004 1.9345468 </code></pre>
+<p>So, we can think of these exponentials as giving us the odds that frogs will be present. This is slightly easier when values are above 1. So we will look at <code>veght</code> first. Our value of <code>1.94</code> suggests that for every cm increase in vegetation height we increase the likelihood of finding a frog by 1.94. You will see this also referred to as an odds ratio if you do any further reading.</p>
+<p>Lets turn our attention to water depth. When your odds value is less then one, that marks negative relationship between your response and predictor variable, when your odds value is greater then 1 this relationship is positive. If your confidence intervals include zero the relationship is not significant.</p>
+<p>For water depth, we have an odds value of 0.98, so we know our relationship between frog presence and water depth will be negative. We also need to do a little maths trick to interpret this value as we did for vegetation height. We have to calculate the inverse value (1 divided by the odds). Do this now.</p>
+<pre><code>1/0.98 = 1.020408</code></pre>
+<p>Hopefully you have an answer like the one above. This means that for every cm increase in water depth the likelihood of finding a frog decreases by 1.02.</p>
+<p>Finally lets have a think about our intercept. Once again we will need to work out the exponential for our intercept, if we wish to interpret it in real terms. Our intercept is the probability of finding frogs when both water depth and vegetation height are set to zero.</p>
+<blockquote>
+<ul>
+<li>See if you can work out what this is from the <code>summary()</code> output of our model.</li>
+</ul>
+</blockquote>
+<p>We wont go through the Analysis of Deviance table called by your <code>anova()</code> function here, the interpretation is much the same as before, when we were looking at GLMs with a poisson error structure.</p>
+<p>Finally, it would be great to get some decent regression lines plotted on our figures, again <code>ggolot()</code> does a lot of the leg work for you here. Try running the following;</p>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#cb121-1" tabindex="-1"></a><span class="co"># Plotting binary data</span></span>
+<span id="cb121-2"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#cb121-2" tabindex="-1"></a><span class="fu">ggplot</span>(frogs, <span class="fu">aes</span>(<span class="at">x =</span> veght, <span class="at">y =</span> frogs)) <span class="sc">+</span> </span>
+<span id="cb121-3"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#cb121-3" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb121-4"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#cb121-4" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;glm&quot;</span>, <span class="at">method.args =</span> <span class="fu">list</span>(<span class="at">family=</span>binomial), <span class="at">se =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<blockquote>
+<ul>
+<li>Take a look at this plot, does it support the conclusions drawn from our <code>summary()</code> output?</li>
+<li>Build a similar plot for water depth, what does this plot tell you?</li>
+</ul>
+</blockquote>
+</div>
+</div>
+<div id="a-poisson-mixed-effects-glm" class="section level2 hasAnchor" number="14.5">
+<h2><span class="header-section-number">14.5</span> A Poisson Mixed Effects GLM<a href="a-very-introductory-introduction-to-generalised-linear-models.html#a-poisson-mixed-effects-glm" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Finally we are going to see whats going on with our lovely kooki bird population. Your aim is to build a model to expore which factors influence kooki bird abundance within patches of forest. You have a data set that contains the following survey data from 50 forest patches;</p>
+<ul>
+<li>kooki.csv - data file</li>
+</ul>
+<p>This file contains the following data;</p>
+<ul>
+<li>site - coded 1 to 5</li>
+<li>Kooki_count - kooki bird abundance</li>
+<li>fruit_trees - presence or absence of fruiting trees</li>
+<li>distance_river - distance to teh nearest river (m)</li>
+<li>canopy_cover - canopy cover (%)</li>
+</ul>
+<div id="task-10---check-the-data" class="section level3 hasAnchor" number="14.5.1">
+<h3><span class="header-section-number">14.5.1</span> Task 10 - Check the data<a href="a-very-introductory-introduction-to-generalised-linear-models.html#task-10---check-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Load the data set <code>kooki.csv</code> into your workspace under the object name <code>kooki</code> and try performing some routine checks to make sure R has interpreted the variables correctly and all expected data is present and accounted for. You can use some of the functions explored in Chapter <a href="workshop-1---explorartory-data-analysis.html#checking-the-data">3.2.3</a> if you need some help with this.</p>
+</div>
+<div id="task-11---explore-the-data" class="section level3 hasAnchor" number="14.5.2">
+<h3><span class="header-section-number">14.5.2</span> Task 11 - Explore the data<a href="a-very-introductory-introduction-to-generalised-linear-models.html#task-11---explore-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Start by exploring the data, build some histograms and other exploratory plots. You may find it helpful to build a matrix scatter plot as well.</p>
+<blockquote>
+<ul>
+<li>How are these data distributed? What does that mean for the type of model you may wish to fit?</li>
+</ul>
+</blockquote>
+<p>As you know, count data are very often left-skewed (i.e. lots of small counts and few large counts), and of course they cannot be negative (i.e. bounded at zero). Consequently, the normal distribution is very often a poor fit to count data.</p>
+<blockquote>
+<ul>
+<li>Do your other data explorations tell you anything else? How do you think our other variables are affecting kooki bird abundance?</li>
+</ul>
+</blockquote>
+</div>
+<div id="task-12---fitting-a-glm" class="section level3 hasAnchor" number="14.5.3">
+<h3><span class="header-section-number">14.5.3</span> Task 12 - Fitting a GLM<a href="a-very-introductory-introduction-to-generalised-linear-models.html#task-12---fitting-a-glm" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Try running a GLM, with a Poisson distribution and log link function. Add <code>kooki_count</code> as your response variable and add <code>fruit_trees</code>, <code>distance_river</code> and <code>canopy_cover</code> as predictors. Follow the enter method until you have constructed a minimal model. Remember to keep using<code>performance::check_model()</code> to check each model you produce.</p>
+<blockquote>
+<ul>
+<li>Do any of the predictors explain a significant amount of the variation in kooki bird abundance?</li>
+<li>Which variables are retained in your minimum model?</li>
+<li>Are there any features of the study design that should be considered in your model?</li>
+<li>What do your model diagnostics tell you?</li>
+</ul>
+</blockquote>
+<p>The 50 survey locations for which you have data were spread across 5 sites, with between 6 and 14 survey locations per site. As survey locations from the same site are not independent of one another (and especially as the number of surveys per site is not equal), it is possible that some sites are contributing disproportionately to the model and influencing the results. You therefore need to include Site in the model, but including it as a fixed effect will use up a lot of the power in your model. You can, however, include Site as a random effect, if you build a Generalised Linear Mixed Model. For this we will need to use a new function. Try running the following code;</p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#cb122-1" tabindex="-1"></a><span class="co"># Building a generalised mixed effects model</span></span>
+<span id="cb122-2"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#cb122-2" tabindex="-1"></a>kooki_glmer <span class="ot">&lt;-</span> <span class="fu">glmer</span>(kooki_count<span class="sc">~</span> fruit_trees <span class="sc">+</span> canopy_cover <span class="sc">+</span> distance_river <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>site), <span class="at">family=</span><span class="fu">poisson</span>(<span class="at">link=</span>log), <span class="at">data=</span>kooki)</span></code></pre></div>
+<p>Rather like our linear mixed effects models, here we have incorporated <code>site</code> as a random factor. Take a look at the model outputs and diagnostics.</p>
+<blockquote>
+<ul>
+<li>How would you interpret the outputs from this model?</li>
+<li>Why might including site as a random effect have altered the significance of some predictors? A matrix plot of all the variables will help here.</li>
+<li>Which model do think is the most robust at identifying factors contributing to variation in kooki bird abundance?</li>
+<li>How do your model diagnostics look?</li>
+</ul>
+</blockquote>
+<p>If you think these data are highly overdispersed, congratulations buy yourself a treat, you have won at statistics. These data are overdisperded any guesses as to why?</p>
+<blockquote>
+<ul>
+<li>Go back to your initial histogram, why do you think we have signatures of overdispersion?</li>
+</ul>
+</blockquote>
+<p>If you answered, zero inflation, you are on a roll. Yes these data are full of zeros. Which is not uncommon in ecology. There are several things you can try to do to improve model fit when you have zero inflation. You can try quasi Poisson or negative binomial error structures or even mixture and hurdle models. There are packages that can be used to fit all of these. You are welcome to try and improve the model fit for the kooki bird data set in class with our good old friend Google or we can leave it there if you have reached stats saturation point.</p>
+</div>
+</div>
+<div id="conclusions-2" class="section level2 hasAnchor" number="14.6">
+<h2><span class="header-section-number">14.6</span> Conclusions<a href="a-very-introductory-introduction-to-generalised-linear-models.html#conclusions-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This concludes my teaching on this module. We have played with lots of types of multivariate linear models and a few different types of generalised linear models. Over the next two weeks Dr Richard Davies will be taking over and introducing you to principal components analysis (PCA) as well as multivariate community analysis.</p>
+<p>You can find the summative coursework for BIO-7025A in the next chapter. However, I would recommend completing Richards materials on PCA and multivariate community analysis before beginning the assignment.</p>
+</div>
+<div id="before-you-leave-11" class="section level2 hasAnchor" number="14.7">
+<h2><span class="header-section-number">14.7</span> Before you leave!<a href="a-very-introductory-introduction-to-generalised-linear-models.html#before-you-leave-11" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Make sure you save your script and download it if you would like to keep a local copy.</p>
+<p>Please log out of posit Cloud!</p>
+</div>
+<div id="references-7" class="section level2 hasAnchor" number="14.8">
+<h2><span class="header-section-number">14.8</span> References<a href="a-very-introductory-introduction-to-generalised-linear-models.html#references-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Beckerman, A.P., Childs, D. &amp; Petchey, O.L., 2017. Getting Started with R; an Introduction for Biologists. Oxford University Press. Oxford, UK.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="repeated-measures-linear-models.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="bio-7025a-multivariate-statitsics-assignment.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/13-generalised_linear_models.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["7025A.pdf", "7025A.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
