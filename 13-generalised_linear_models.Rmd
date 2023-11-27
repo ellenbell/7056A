@@ -163,7 +163,7 @@ Take a look at the `summary()` function output. This output should look fairly f
 So if we apply our old practices of, for a given value of x, trying to calculate y based on our `summary()` outputs. 
 
 > * Take a look at the intercept, what does this tell you? Does it match what you might expect from the first scatter plot we produced?
-> * See if you can use $y=mx_c$ to calculate y for sheep that weighs 5kg. Again take a look at your figure, do these support each other?  
+> * See if you can use $y=mx+c$ to calculate y for sheep that weighs 5kg. Again take a look at your figure, do these support each other?  
 
 Hopefully you recognise that our plot does not support a negative intercept and a 5kg ewe producing, on average, 0.3 lambs over her lifetime seems a little on the low side. 
 
