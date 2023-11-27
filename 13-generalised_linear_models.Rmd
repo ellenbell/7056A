@@ -109,7 +109,7 @@ As always, its a really good idea to explore your data set before you start laun
 
 > * Build a histogram for `fitness` what does the distribution of the data look like?
 > * Is a mean going to be a fair reflection for this data distribution?
-> * Build a box plot with `body.size` on the x axis and `fitness` on the y axis, how would you interpret this plot, what shape is it?
+> * Build a scatter plot with `body.size` on the x axis and `fitness` on the y axis, how would you interpret this plot, what shape is it?
 
 Try adding the following line to the code for your scatter plot;
 
@@ -181,7 +181,7 @@ The `exp()` function is essentially undoing the effects of the $log_e$ transform
 
 We can also see that both slope and intercept in this model are significantly different to zero. 
 
-Now try running the above `anova()` function. Note this does not perform an ANOVA. In this context it is producing an analysis of deviance table. You will note that the term **Deviance** comes up a lot here, this is essentially a measure of the fitted GLM with respect to a perfect model. So here we have the total deviance in the data (fitness) - 85.081 and the deviance explained by body size - 37.041. So almost half of the deviance here is explained by body size. We then have a p-value, but you might have noticed that when you ran the `anova()` function you had to specify `Chisq`. When we run GLMs we have to specify which distribution table to use. We are **NOT** running a $X^2$ test here, but we are using the $X^2$ distribution table to find out p-value. So here our test statistic would be $X^2$ = 37.04, df = 1 and p < 0.001.
+Now try running the above `anova()` function. Note this does not perform an ANOVA. In this context it is producing an analysis of deviance table. You will note that the term **Deviance** comes up a lot here, this is essentially a measure of the fitted GLM with respect to a perfect model. So here we have the total deviance in the data (fitness) = 85.081 and the deviance explained by body size = 37.041. So almost half of the deviance here is explained by body size. We then have a p-value, but you might have noticed that when you ran the `anova()` function you had to specify `Chisq`. When we run GLMs we have to specify which distribution table to use. We are **NOT** running a $X^2$ test here, but we are using the $X^2$ distribution table to find out p-value. So here our test statistic would be $X^2$ = 37.04, df = 1 and p < 0.001.
 
 The statistical theory that underpins all of this is related to likelihood tests which we wont be going into any more depth with here. You are welcome to read around these though if you want to further your understanding. 
 

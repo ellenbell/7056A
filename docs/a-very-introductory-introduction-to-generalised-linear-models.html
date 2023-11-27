@@ -23,7 +23,7 @@
 <meta name="author" content="Dr Ellen Bell" />
 
 
-<meta name="date" content="2023-11-23" />
+<meta name="date" content="2023-11-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -592,7 +592,7 @@ So, this equation is the (natural logarithm of) the probability of being in one 
 <ul>
 <li>Build a histogram for <code>fitness</code> what does the distribution of the data look like?</li>
 <li>Is a mean going to be a fair reflection for this data distribution?</li>
-<li>Build a box plot with <code>body.size</code> on the x axis and <code>fitness</code> on the y axis, how would you interpret this plot, what shape is it?</li>
+<li>Build a scatter plot with <code>body.size</code> on the x axis and <code>fitness</code> on the y axis, how would you interpret this plot, what shape is it?</li>
 </ul>
 </blockquote>
 <p>Try adding the following line to the code for your scatter plot;</p>
@@ -651,7 +651,7 @@ So, this equation is the (natural logarithm of) the probability of being in one 
 <div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#cb111-1" tabindex="-1"></a><span class="fu">exp</span>(<span class="dv">5</span> <span class="sc">*</span> <span class="fl">0.54087</span> <span class="sc">+</span> <span class="sc">-</span><span class="fl">2.4</span>)</span></code></pre></div>
 <p>The <code>exp()</code> function is essentially undoing the effects of the <span class="math inline">\(log_e\)</span> transformation. So we can see that a 5kg ewe, would on average, be expected to produce 1.35 lambs over her lifetime.</p>
 <p>We can also see that both slope and intercept in this model are significantly different to zero.</p>
-<p>Now try running the above <code>anova()</code> function. Note this does not perform an ANOVA. In this context it is producing an analysis of deviance table. You will note that the term <strong>Deviance</strong> comes up a lot here, this is essentially a measure of the fitted GLM with respect to a perfect model. So here we have the total deviance in the data (fitness) - 85.081 and the deviance explained by body size - 37.041. So almost half of the deviance here is explained by body size. We then have a p-value, but you might have noticed that when you ran the <code>anova()</code> function you had to specify <code>Chisq</code>. When we run GLMs we have to specify which distribution table to use. We are <strong>NOT</strong> running a <span class="math inline">\(X^2\)</span> test here, but we are using the <span class="math inline">\(X^2\)</span> distribution table to find out p-value. So here our test statistic would be <span class="math inline">\(X^2\)</span> = 37.04, df = 1 and p &lt; 0.001.</p>
+<p>Now try running the above <code>anova()</code> function. Note this does not perform an ANOVA. In this context it is producing an analysis of deviance table. You will note that the term <strong>Deviance</strong> comes up a lot here, this is essentially a measure of the fitted GLM with respect to a perfect model. So here we have the total deviance in the data (fitness) = 85.081 and the deviance explained by body size = 37.041. So almost half of the deviance here is explained by body size. We then have a p-value, but you might have noticed that when you ran the <code>anova()</code> function you had to specify <code>Chisq</code>. When we run GLMs we have to specify which distribution table to use. We are <strong>NOT</strong> running a <span class="math inline">\(X^2\)</span> test here, but we are using the <span class="math inline">\(X^2\)</span> distribution table to find out p-value. So here our test statistic would be <span class="math inline">\(X^2\)</span> = 37.04, df = 1 and p &lt; 0.001.</p>
 <p>The statistical theory that underpins all of this is related to likelihood tests which we wont be going into any more depth with here. You are welcome to read around these though if you want to further your understanding.</p>
 </div>
 <div id="task-4---checking-the-model" class="section level3 hasAnchor" number="14.3.4">
