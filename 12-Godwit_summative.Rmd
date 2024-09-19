@@ -1,0 +1,42 @@
+# Coursework 2; the black tailed godwit
+
+## Patterns of habitat selection in breeding Black-tailed Godwits in Iceland
+
+The black-tailed godwit is a migratory shorebird that breeds all around the lowland areas of Iceland, but little is known about its habitat preferences. The potential impact on godwits of the large-scale land drainage and increases in horse grazing that have occurred in recent decades are therefore unknown. You have data from a large-scale survey of breeding godwits, at points all around lowland Iceland, the following parameters were recorded:
+
+* elevation -	Elevation (m above sea level)
+* swardht -	Sward height (1 = 0-5 cm, 2 = 5-10 cm, 3 = 10-20 cm, 4 = 20-40 cm)
+* willows -	% cover of willows, Salix spp.
+* birch -	% cover of dwarf birch, Betula nana
+* juncus - % cover of Juncus arcticus
+* sand - % cover of sand and gravel
+* ditches - No. of surrounding drainage ditches (a measure of the extent of land drainage)
+* watertab -	Depth of the water table (cm)
+* disthay -	Distance to the nearest hayfield (m) (these are often used by feeding godwits)
+* sedpools -	Number of sedge pools (pools with sedges growing in the shallows)
+* poolcov -	% cover of pools within the patch
+* godoccur -	godwit presence or absence (presence = 1, absence = 0)
+* goddens -	density of black-tailed godwits (number/ha)
+
+For this assignment you are asked address the following two questions as fully as possible, using the type and range of statistics that you think are appropriate and informative;
+
+1)	Which environmental conditions influence the presence or absence of godwits?
+
+2)	For only the sites with godwits, which environmental conditions influence godwit density?
+
+You should then be prepared to present your findings (both results and interpretation) for each of the analyses (with professional, publication quality, figures and/or tables). 
+
+Following this presentation you will then discuss the following with your examiners;
+
+1) how you have tackled the data analysis for each question and why
+2) the final results for each of the analyses
+3) the interpretation of what these results indicate to you about what influences godwit distribution and density (you do not need to refer to published literature)
+
+Presentations will be limited to 7 minutes.
+Discussions will be limited to 20 minutes. 
+
+You may wish to wait until after you have covered PCA and multivariate community analysis with Richard before beginning this assignment. The final workshop session of week 12 will be a help session to help you get started on the analysis for this assignment.
+
+The data for this can be found alongside the assessment briefs on the blackboard course page under Assessment Briefs > godwit data. Clicking on this should download a file called `assignment_godwit_data.csv`.  
+
+Have a good Christmas break!

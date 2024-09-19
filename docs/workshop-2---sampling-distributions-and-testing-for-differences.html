@@ -4,33 +4,33 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 4 Workshop 2 - Sampling Distributions and Testing for Differences | Statistics for Biologists</title>
-  <meta name="description" content="This is the coursebook for Univariate and Multivairate Statistics" />
+  <title>Chapter 3 Workshop 2 - Sampling Distributions and Testing for Differences | Statistics for Biologists</title>
+  <meta name="description" content="This is the coursebook for BIO-7056A Statistics for Biologists" />
   <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 4 Workshop 2 - Sampling Distributions and Testing for Differences | Statistics for Biologists" />
+  <meta property="og:title" content="Chapter 3 Workshop 2 - Sampling Distributions and Testing for Differences | Statistics for Biologists" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="This is the coursebook for Univariate and Multivairate Statistics" />
+  <meta property="og:description" content="This is the coursebook for BIO-7056A Statistics for Biologists" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 4 Workshop 2 - Sampling Distributions and Testing for Differences | Statistics for Biologists" />
+  <meta name="twitter:title" content="Chapter 3 Workshop 2 - Sampling Distributions and Testing for Differences | Statistics for Biologists" />
   
-  <meta name="twitter:description" content="This is the coursebook for Univariate and Multivairate Statistics" />
+  <meta name="twitter:description" content="This is the coursebook for BIO-7056A Statistics for Biologists" />
   
 
 <meta name="author" content="Dr Ellen Bell" />
 
 
-<meta name="date" content="2023-11-27" />
+<meta name="date" content="2024-09-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="workshop-1---explorartory-data-analysis.html"/>
+<link rel="prev" href="workshop-2---explorartory-data-analysis.html"/>
 <link rel="next" href="differences.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -56,7 +56,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -138,64 +138,53 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome to the Statistics Coursebook</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#learning-objectives"><i class="fa fa-check"></i><b>1.1</b> Learning Objectives</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#teaching-layout"><i class="fa fa-check"></i><b>1.2</b> Teaching Layout</a></li>
-<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#how-to-use-this-workbook"><i class="fa fa-check"></i><b>1.3</b> How to use this workbook</a></li>
-<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#why-are-we-learning-r"><i class="fa fa-check"></i><b>1.4</b> Why are we learning R</a></li>
-<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#intro-to-posit"><i class="fa fa-check"></i><b>1.5</b> Introduction to posit Cloud</a>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#introduction"><i class="fa fa-check"></i><b>1.1</b> Introduction</a>
 <ul>
-<li class="chapter" data-level="1.5.1" data-path="index.html"><a href="index.html#task-1-create-your-own-posit-cloud-account"><i class="fa fa-check"></i><b>1.5.1</b> Task 1; Create your own posit Cloud account</a></li>
-<li class="chapter" data-level="1.5.2" data-path="index.html"><a href="index.html#creating-your-first-posit-cloud-project"><i class="fa fa-check"></i><b>1.5.2</b> Creating your first posit Cloud Project</a></li>
-<li class="chapter" data-level="1.5.3" data-path="index.html"><a href="index.html#a-warning-on-managing-your-work-flow"><i class="fa fa-check"></i><b>1.5.3</b> A warning on managing your work flow</a></li>
-<li class="chapter" data-level="1.5.4" data-path="index.html"><a href="index.html#efficiency"><i class="fa fa-check"></i><b>1.5.4</b> Maximising the efficiency of your workspace</a></li>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#learning-objectives"><i class="fa fa-check"></i><b>1.1.1</b> Learning Objectives</a></li>
+<li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#teaching-layout"><i class="fa fa-check"></i><b>1.1.2</b> Teaching Layout</a></li>
+<li class="chapter" data-level="1.1.3" data-path="index.html"><a href="index.html#how-to-use-this-workbook"><i class="fa fa-check"></i><b>1.1.3</b> How to use this workbook</a></li>
+<li class="chapter" data-level="1.1.4" data-path="index.html"><a href="index.html#why-are-we-learning-r"><i class="fa fa-check"></i><b>1.1.4</b> Why are we learning R</a></li>
 </ul></li>
-<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#before-you-leave"><i class="fa fa-check"></i><b>1.6</b> Before you leave!</a></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="c2.html"><a href="c2.html"><i class="fa fa-check"></i><b>2</b> Some fundamentals to effective use of R</a>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#intro-to-posit"><i class="fa fa-check"></i><b>1.2</b> Practical 1 - Introduction to posit Cloud</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="c2.html"><a href="c2.html#entering-commands-directly-into-the-console"><i class="fa fa-check"></i><b>2.1</b> Entering commands directly into the console</a></li>
-<li class="chapter" data-level="2.2" data-path="c2.html"><a href="c2.html#using-an-r-script"><i class="fa fa-check"></i><b>2.2</b> Using an R script</a></li>
-<li class="chapter" data-level="2.3" data-path="c2.html"><a href="c2.html#creating-objects"><i class="fa fa-check"></i><b>2.3</b> Creating objects</a></li>
-<li class="chapter" data-level="2.4" data-path="c2.html"><a href="c2.html#what-are-functions-and-packages"><i class="fa fa-check"></i><b>2.4</b> What are functions and packages?</a>
-<ul>
-<li class="chapter" data-level="2.4.1" data-path="c2.html"><a href="c2.html#using-functions"><i class="fa fa-check"></i><b>2.4.1</b> Using functions</a></li>
-<li class="chapter" data-level="2.4.2" data-path="c2.html"><a href="c2.html#installing-packages"><i class="fa fa-check"></i><b>2.4.2</b> Installing packages</a></li>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#task-1-create-your-own-posit-cloud-account"><i class="fa fa-check"></i><b>1.2.1</b> Task 1; Create your own posit Cloud account</a></li>
+<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#creating-your-first-posit-cloud-project"><i class="fa fa-check"></i><b>1.2.2</b> Creating your first posit Cloud Project</a></li>
+<li class="chapter" data-level="1.2.3" data-path="index.html"><a href="index.html#a-warning-on-managing-your-work-flow"><i class="fa fa-check"></i><b>1.2.3</b> A warning on managing your work flow</a></li>
+<li class="chapter" data-level="1.2.4" data-path="index.html"><a href="index.html#c2"><i class="fa fa-check"></i><b>1.2.4</b> Task 2; Some fundamentals to effective use of R</a></li>
+<li class="chapter" data-level="1.2.5" data-path="index.html"><a href="index.html#using-an-r-script"><i class="fa fa-check"></i><b>1.2.5</b> Task 3; Using an R script</a></li>
+<li class="chapter" data-level="1.2.6" data-path="index.html"><a href="index.html#task-4-creating-objects"><i class="fa fa-check"></i><b>1.2.6</b> Task 4; Creating objects</a></li>
+<li class="chapter" data-level="1.2.7" data-path="index.html"><a href="index.html#task-5-using-functions"><i class="fa fa-check"></i><b>1.2.7</b> Task 5; Using functions</a></li>
+<li class="chapter" data-level="1.2.8" data-path="index.html"><a href="index.html#installing-packages"><i class="fa fa-check"></i><b>1.2.8</b> Task 6; Playing with packages</a></li>
+<li class="chapter" data-level="1.2.9" data-path="index.html"><a href="index.html#analysis-hygiene"><i class="fa fa-check"></i><b>1.2.9</b> Analysis hygiene</a></li>
+<li class="chapter" data-level="1.2.10" data-path="index.html"><a href="index.html#what-do-i-do-if-i-get-an-error-message"><i class="fa fa-check"></i><b>1.2.10</b> What do I do if I get an error message?</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="c2.html"><a href="c2.html#analysis-hygiene"><i class="fa fa-check"></i><b>2.5</b> Analysis hygiene</a>
-<ul>
-<li class="chapter" data-level="2.5.1" data-path="c2.html"><a href="c2.html#whats-in-a-name"><i class="fa fa-check"></i><b>2.5.1</b> What’s in a name?</a></li>
-<li class="chapter" data-level="2.5.2" data-path="c2.html"><a href="c2.html#directories-and-their-structure"><i class="fa fa-check"></i><b>2.5.2</b> Directories and their structure</a></li>
-<li class="chapter" data-level="2.5.3" data-path="c2.html"><a href="c2.html#workspace-setup"><i class="fa fa-check"></i><b>2.5.3</b> Workspace set up</a></li>
-<li class="chapter" data-level="2.5.4" data-path="c2.html"><a href="c2.html#script-setup"><i class="fa fa-check"></i><b>2.5.4</b> Script set up</a></li>
-<li class="chapter" data-level="2.5.5" data-path="c2.html"><a href="c2.html#comment-on-your-work"><i class="fa fa-check"></i><b>2.5.5</b> Comment on your work</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#conclusion"><i class="fa fa-check"></i><b>1.3</b> Conclusion</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#before-you-leave"><i class="fa fa-check"></i><b>1.4</b> Before you leave!</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#references"><i class="fa fa-check"></i><b>1.5</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="2.6" data-path="c2.html"><a href="c2.html#what-do-i-do-if-i-get-an-error-message"><i class="fa fa-check"></i><b>2.6</b> What do I do if I get an error message?</a></li>
-<li class="chapter" data-level="2.7" data-path="c2.html"><a href="c2.html#before-you-leave-1"><i class="fa fa-check"></i><b>2.7</b> Before you leave!</a></li>
-<li class="chapter" data-level="2.8" data-path="c2.html"><a href="c2.html#references"><i class="fa fa-check"></i><b>2.8</b> References</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="workshop-1---explorartory-data-analysis.html"><a href="workshop-1---explorartory-data-analysis.html"><i class="fa fa-check"></i><b>3</b> Workshop 1 - Explorartory Data Analysis</a>
+<li class="chapter" data-level="2" data-path="workshop-2---explorartory-data-analysis.html"><a href="workshop-2---explorartory-data-analysis.html"><i class="fa fa-check"></i><b>2</b> Workshop 2 - Explorartory Data Analysis</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="workshop-1---explorartory-data-analysis.html"><a href="workshop-1---explorartory-data-analysis.html#introduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
-<li class="chapter" data-level="3.2" data-path="workshop-1---explorartory-data-analysis.html"><a href="workshop-1---explorartory-data-analysis.html#practical-1---exploring-distributions-in-r"><i class="fa fa-check"></i><b>3.2</b> Practical 1 - Exploring distributions in R</a>
+<li class="chapter" data-level="2.1" data-path="workshop-2---explorartory-data-analysis.html"><a href="workshop-2---explorartory-data-analysis.html#introduction-1"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
+<li class="chapter" data-level="2.2" data-path="workshop-2---explorartory-data-analysis.html"><a href="workshop-2---explorartory-data-analysis.html#practical-2---exploring-distributions-in-r"><i class="fa fa-check"></i><b>2.2</b> Practical 2 - Exploring distributions in R</a>
 <ul>
-<li class="chapter" data-level="3.2.1" data-path="workshop-1---explorartory-data-analysis.html"><a href="workshop-1---explorartory-data-analysis.html#task-1-setting-up-our-workspace-and-script"><i class="fa fa-check"></i><b>3.2.1</b> Task 1: Setting up our workspace and script</a></li>
-<li class="chapter" data-level="3.2.2" data-path="workshop-1---explorartory-data-analysis.html"><a href="workshop-1---explorartory-data-analysis.html#task-2-importing-the-data"><i class="fa fa-check"></i><b>3.2.2</b> Task 2: Importing the data</a></li>
-<li class="chapter" data-level="3.2.3" data-path="workshop-1---explorartory-data-analysis.html"><a href="workshop-1---explorartory-data-analysis.html#checking-the-data"><i class="fa fa-check"></i><b>3.2.3</b> Task 3: Checking the data</a></li>
-<li class="chapter" data-level="3.2.4" data-path="workshop-1---explorartory-data-analysis.html"><a href="workshop-1---explorartory-data-analysis.html#histogram"><i class="fa fa-check"></i><b>3.2.4</b> Task 4: When in doubt - make a histogram</a></li>
+<li class="chapter" data-level="2.2.1" data-path="workshop-2---explorartory-data-analysis.html"><a href="workshop-2---explorartory-data-analysis.html#task-1-setting-up-our-workspace-and-script"><i class="fa fa-check"></i><b>2.2.1</b> Task 1: Setting up our workspace and script</a></li>
+<li class="chapter" data-level="2.2.2" data-path="workshop-2---explorartory-data-analysis.html"><a href="workshop-2---explorartory-data-analysis.html#task-2-importing-the-data"><i class="fa fa-check"></i><b>2.2.2</b> Task 2: Importing the data</a></li>
+<li class="chapter" data-level="2.2.3" data-path="workshop-2---explorartory-data-analysis.html"><a href="workshop-2---explorartory-data-analysis.html#checking-the-data"><i class="fa fa-check"></i><b>2.2.3</b> Task 3: Checking the data</a></li>
+<li class="chapter" data-level="2.2.4" data-path="workshop-2---explorartory-data-analysis.html"><a href="workshop-2---explorartory-data-analysis.html#histogram"><i class="fa fa-check"></i><b>2.2.4</b> Task 4: When in doubt - make a histogram</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="workshop-1---explorartory-data-analysis.html"><a href="workshop-1---explorartory-data-analysis.html#descriptive-statistics-in-r"><i class="fa fa-check"></i><b>3.3</b> Descriptive statistics in R</a>
+<li class="chapter" data-level="2.3" data-path="workshop-2---explorartory-data-analysis.html"><a href="workshop-2---explorartory-data-analysis.html#descriptive-statistics-in-r"><i class="fa fa-check"></i><b>2.3</b> Descriptive statistics in R</a>
 <ul>
-<li class="chapter" data-level="3.3.1" data-path="workshop-1---explorartory-data-analysis.html"><a href="workshop-1---explorartory-data-analysis.html#descriptive-statistics"><i class="fa fa-check"></i><b>3.3.1</b> Task 5: Descriptive statistics</a></li>
-<li class="chapter" data-level="3.3.2" data-path="workshop-1---explorartory-data-analysis.html"><a href="workshop-1---explorartory-data-analysis.html#task-6-finding-the-range-and-the-mode"><i class="fa fa-check"></i><b>3.3.2</b> Task 6: Finding the range and the mode</a></li>
-<li class="chapter" data-level="3.3.3" data-path="workshop-1---explorartory-data-analysis.html"><a href="workshop-1---explorartory-data-analysis.html#task-7-interpretation"><i class="fa fa-check"></i><b>3.3.3</b> Task 7: Interpretation</a></li>
+<li class="chapter" data-level="2.3.1" data-path="workshop-2---explorartory-data-analysis.html"><a href="workshop-2---explorartory-data-analysis.html#descriptive-statistics"><i class="fa fa-check"></i><b>2.3.1</b> Task 5: Descriptive statistics</a></li>
+<li class="chapter" data-level="2.3.2" data-path="workshop-2---explorartory-data-analysis.html"><a href="workshop-2---explorartory-data-analysis.html#task-6-finding-the-range-and-the-mode"><i class="fa fa-check"></i><b>2.3.2</b> Task 6: Finding the range and the mode</a></li>
+<li class="chapter" data-level="2.3.3" data-path="workshop-2---explorartory-data-analysis.html"><a href="workshop-2---explorartory-data-analysis.html#task-7-interpretation"><i class="fa fa-check"></i><b>2.3.3</b> Task 7: Interpretation</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="workshop-1---explorartory-data-analysis.html"><a href="workshop-1---explorartory-data-analysis.html#conclusion"><i class="fa fa-check"></i><b>3.4</b> Conclusion</a></li>
-<li class="chapter" data-level="3.5" data-path="workshop-1---explorartory-data-analysis.html"><a href="workshop-1---explorartory-data-analysis.html#before-you-leave-2"><i class="fa fa-check"></i><b>3.5</b> Before you leave!</a></li>
-<li class="chapter" data-level="3.6" data-path="workshop-1---explorartory-data-analysis.html"><a href="workshop-1---explorartory-data-analysis.html#references-1"><i class="fa fa-check"></i><b>3.6</b> References</a></li>
+<li class="chapter" data-level="2.4" data-path="workshop-2---explorartory-data-analysis.html"><a href="workshop-2---explorartory-data-analysis.html#conclusion-1"><i class="fa fa-check"></i><b>2.4</b> Conclusion</a></li>
+<li class="chapter" data-level="2.5" data-path="workshop-2---explorartory-data-analysis.html"><a href="workshop-2---explorartory-data-analysis.html#before-you-leave-1"><i class="fa fa-check"></i><b>2.5</b> Before you leave!</a></li>
+<li class="chapter" data-level="2.6" data-path="workshop-2---explorartory-data-analysis.html"><a href="workshop-2---explorartory-data-analysis.html#references-1"><i class="fa fa-check"></i><b>2.6</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html"><i class="fa fa-check"></i><b>4</b> Workshop 2 - Sampling Distributions and Testing for Differences</a>
+<li class="chapter" data-level="3" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html"><i class="fa fa-check"></i><b>3</b> Workshop 2 - Sampling Distributions and Testing for Differences</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#introduction-1"><i class="fa fa-check"></i><b>4.1</b> Introduction</a>
+<li class="chapter" data-level="3.1" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#introduction-2"><i class="fa fa-check"></i><b>3.1</b> Introduction</a>
 <ul>
 <li class="chapter" data-level="" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#sampling"><i class="fa fa-check"></i>Sampling</a></li>
 <li class="chapter" data-level="" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#sampling-error"><i class="fa fa-check"></i>Sampling error</a></li>
@@ -206,67 +195,67 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#confidence-intervals"><i class="fa fa-check"></i>Confidence Intervals</a></li>
 <li class="chapter" data-level="" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#t-tests"><i class="fa fa-check"></i>T-tests</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#some-key-terms-for-todays-practical"><i class="fa fa-check"></i><b>4.2</b> Some key terms for todays practical</a></li>
-<li class="chapter" data-level="4.3" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#practical-2---sampling-and-testing-for-differences"><i class="fa fa-check"></i><b>4.3</b> Practical 2 - Sampling and Testing for Differences</a>
+<li class="chapter" data-level="3.2" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#some-key-terms-for-todays-practical"><i class="fa fa-check"></i><b>3.2</b> Some key terms for todays practical</a></li>
+<li class="chapter" data-level="3.3" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#practical-2---sampling-and-testing-for-differences"><i class="fa fa-check"></i><b>3.3</b> Practical 2 - Sampling and Testing for Differences</a>
 <ul>
-<li class="chapter" data-level="4.3.1" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#the-data"><i class="fa fa-check"></i><b>4.3.1</b> The Data</a></li>
-<li class="chapter" data-level="4.3.2" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#task-1---setting-up-your-workspace"><i class="fa fa-check"></i><b>4.3.2</b> Task 1 - Setting up your workspace</a></li>
-<li class="chapter" data-level="4.3.3" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#task-2---checking-the-data"><i class="fa fa-check"></i><b>4.3.3</b> Task 2 - Checking the data</a></li>
-<li class="chapter" data-level="4.3.4" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#task-3---making-some-basic-plots"><i class="fa fa-check"></i><b>4.3.4</b> Task 3 - Making some basic plots</a></li>
-<li class="chapter" data-level="4.3.5" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#task-4---produce-some-descriptive-statistics"><i class="fa fa-check"></i><b>4.3.5</b> Task 4 - Produce some descriptive statistics</a></li>
-<li class="chapter" data-level="4.3.6" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#task-5---answering-question-1"><i class="fa fa-check"></i><b>4.3.6</b> Task 5 - Answering Question 1</a></li>
-<li class="chapter" data-level="4.3.7" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#levene-test"><i class="fa fa-check"></i><b>4.3.7</b> Task 6 - Answering Question 2</a></li>
+<li class="chapter" data-level="3.3.1" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#the-data"><i class="fa fa-check"></i><b>3.3.1</b> The Data</a></li>
+<li class="chapter" data-level="3.3.2" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#task-1---setting-up-your-workspace"><i class="fa fa-check"></i><b>3.3.2</b> Task 1 - Setting up your workspace</a></li>
+<li class="chapter" data-level="3.3.3" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#task-2---checking-the-data"><i class="fa fa-check"></i><b>3.3.3</b> Task 2 - Checking the data</a></li>
+<li class="chapter" data-level="3.3.4" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#task-3---making-some-basic-plots"><i class="fa fa-check"></i><b>3.3.4</b> Task 3 - Making some basic plots</a></li>
+<li class="chapter" data-level="3.3.5" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#task-4---produce-some-descriptive-statistics"><i class="fa fa-check"></i><b>3.3.5</b> Task 4 - Produce some descriptive statistics</a></li>
+<li class="chapter" data-level="3.3.6" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#task-5---answering-question-1"><i class="fa fa-check"></i><b>3.3.6</b> Task 5 - Answering Question 1</a></li>
+<li class="chapter" data-level="3.3.7" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#levene-test"><i class="fa fa-check"></i><b>3.3.7</b> Task 6 - Answering Question 2</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#conclusion-1"><i class="fa fa-check"></i><b>4.4</b> Conclusion</a></li>
-<li class="chapter" data-level="4.5" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#before-you-leave-3"><i class="fa fa-check"></i><b>4.5</b> Before you leave!</a></li>
-<li class="chapter" data-level="4.6" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#references-2"><i class="fa fa-check"></i><b>4.6</b> References</a></li>
+<li class="chapter" data-level="3.4" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#conclusion-2"><i class="fa fa-check"></i><b>3.4</b> Conclusion</a></li>
+<li class="chapter" data-level="3.5" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#before-you-leave-2"><i class="fa fa-check"></i><b>3.5</b> Before you leave!</a></li>
+<li class="chapter" data-level="3.6" data-path="workshop-2---sampling-distributions-and-testing-for-differences.html"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#references-2"><i class="fa fa-check"></i><b>3.6</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="differences.html"><a href="differences.html"><i class="fa fa-check"></i><b>5</b> Workshop 3 - Introduction to Design and Analysis of Experiments</a>
+<li class="chapter" data-level="4" data-path="differences.html"><a href="differences.html"><i class="fa fa-check"></i><b>4</b> Workshop 3 - Introduction to Design and Analysis of Experiments</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="differences.html"><a href="differences.html#introduction-2"><i class="fa fa-check"></i><b>5.1</b> Introduction</a>
+<li class="chapter" data-level="4.1" data-path="differences.html"><a href="differences.html#introduction-3"><i class="fa fa-check"></i><b>4.1</b> Introduction</a>
 <ul>
 <li class="chapter" data-level="" data-path="differences.html"><a href="differences.html#experimental-design"><i class="fa fa-check"></i>Experimental Design</a></li>
 <li class="chapter" data-level="" data-path="differences.html"><a href="differences.html#analysis-of-variance"><i class="fa fa-check"></i>Analysis of Variance</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="differences.html"><a href="differences.html#practical-3---introduction-to-analysis-of-variance"><i class="fa fa-check"></i><b>5.2</b> Practical 3 - Introduction to Analysis of Variance</a>
+<li class="chapter" data-level="4.2" data-path="differences.html"><a href="differences.html#practical-3---introduction-to-analysis-of-variance"><i class="fa fa-check"></i><b>4.2</b> Practical 3 - Introduction to Analysis of Variance</a>
 <ul>
-<li class="chapter" data-level="5.2.1" data-path="differences.html"><a href="differences.html#aims"><i class="fa fa-check"></i><b>5.2.1</b> Aims</a></li>
-<li class="chapter" data-level="5.2.2" data-path="differences.html"><a href="differences.html#the-data-1"><i class="fa fa-check"></i><b>5.2.2</b> The Data</a></li>
-<li class="chapter" data-level="5.2.3" data-path="differences.html"><a href="differences.html#task-1---setting-up-your-workspace-1"><i class="fa fa-check"></i><b>5.2.3</b> Task 1 - Setting up your workspace</a></li>
-<li class="chapter" data-level="5.2.4" data-path="differences.html"><a href="differences.html#c5t2"><i class="fa fa-check"></i><b>5.2.4</b> Task 2 - Checking the data</a></li>
-<li class="chapter" data-level="5.2.5" data-path="differences.html"><a href="differences.html#c5t3"><i class="fa fa-check"></i><b>5.2.5</b> Task 3 - Making some basic plots</a></li>
-<li class="chapter" data-level="5.2.6" data-path="differences.html"><a href="differences.html#c5t4"><i class="fa fa-check"></i><b>5.2.6</b> Task 4 - Produce some descriptive statistics</a></li>
-<li class="chapter" data-level="5.2.7" data-path="differences.html"><a href="differences.html#task-5---experiment-1---one-way-anova"><i class="fa fa-check"></i><b>5.2.7</b> Task 5 - Experiment 1 - One-way ANOVA</a></li>
-<li class="chapter" data-level="5.2.8" data-path="differences.html"><a href="differences.html#first-boxplot"><i class="fa fa-check"></i><b>5.2.8</b> Task 6 - Experiment 2 - Two-way ANOVA</a></li>
+<li class="chapter" data-level="4.2.1" data-path="differences.html"><a href="differences.html#aims"><i class="fa fa-check"></i><b>4.2.1</b> Aims</a></li>
+<li class="chapter" data-level="4.2.2" data-path="differences.html"><a href="differences.html#the-data-1"><i class="fa fa-check"></i><b>4.2.2</b> The Data</a></li>
+<li class="chapter" data-level="4.2.3" data-path="differences.html"><a href="differences.html#task-1---setting-up-your-workspace-1"><i class="fa fa-check"></i><b>4.2.3</b> Task 1 - Setting up your workspace</a></li>
+<li class="chapter" data-level="4.2.4" data-path="differences.html"><a href="differences.html#c5t2"><i class="fa fa-check"></i><b>4.2.4</b> Task 2 - Checking the data</a></li>
+<li class="chapter" data-level="4.2.5" data-path="differences.html"><a href="differences.html#c5t3"><i class="fa fa-check"></i><b>4.2.5</b> Task 3 - Making some basic plots</a></li>
+<li class="chapter" data-level="4.2.6" data-path="differences.html"><a href="differences.html#c5t4"><i class="fa fa-check"></i><b>4.2.6</b> Task 4 - Produce some descriptive statistics</a></li>
+<li class="chapter" data-level="4.2.7" data-path="differences.html"><a href="differences.html#task-5---experiment-1---one-way-anova"><i class="fa fa-check"></i><b>4.2.7</b> Task 5 - Experiment 1 - One-way ANOVA</a></li>
+<li class="chapter" data-level="4.2.8" data-path="differences.html"><a href="differences.html#first-boxplot"><i class="fa fa-check"></i><b>4.2.8</b> Task 6 - Experiment 2 - Two-way ANOVA</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="differences.html"><a href="differences.html#conclusion-2"><i class="fa fa-check"></i><b>5.3</b> Conclusion</a></li>
-<li class="chapter" data-level="5.4" data-path="differences.html"><a href="differences.html#before-you-leave-4"><i class="fa fa-check"></i><b>5.4</b> Before you leave!</a></li>
-<li class="chapter" data-level="5.5" data-path="differences.html"><a href="differences.html#references-3"><i class="fa fa-check"></i><b>5.5</b> References</a></li>
+<li class="chapter" data-level="4.3" data-path="differences.html"><a href="differences.html#conclusion-3"><i class="fa fa-check"></i><b>4.3</b> Conclusion</a></li>
+<li class="chapter" data-level="4.4" data-path="differences.html"><a href="differences.html#before-you-leave-3"><i class="fa fa-check"></i><b>4.4</b> Before you leave!</a></li>
+<li class="chapter" data-level="4.5" data-path="differences.html"><a href="differences.html#references-3"><i class="fa fa-check"></i><b>4.5</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html"><i class="fa fa-check"></i><b>6</b> Workshop 4 - Testing for and Measuring Relationships</a>
+<li class="chapter" data-level="5" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html"><i class="fa fa-check"></i><b>5</b> Workshop 4 - Testing for and Measuring Relationships</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#introduction-3"><i class="fa fa-check"></i><b>6.1</b> Introduction</a>
+<li class="chapter" data-level="5.1" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#introduction-4"><i class="fa fa-check"></i><b>5.1</b> Introduction</a>
 <ul>
 <li class="chapter" data-level="" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#direction-of-associations"><i class="fa fa-check"></i>Direction of associations</a></li>
 <li class="chapter" data-level="" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#fitting-the-regression"><i class="fa fa-check"></i>Fitting the regression</a></li>
 <li class="chapter" data-level="" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#assumptions"><i class="fa fa-check"></i>Assumptions</a></li>
 <li class="chapter" data-level="" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#correlation"><i class="fa fa-check"></i>Correlation</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#practical-4---regression-correlation-introduction"><i class="fa fa-check"></i><b>6.2</b> Practical 4 - Regression &amp; Correlation Introduction</a>
+<li class="chapter" data-level="5.2" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#practical-4---regression-correlation-introduction"><i class="fa fa-check"></i><b>5.2</b> Practical 4 - Regression &amp; Correlation Introduction</a>
 <ul>
-<li class="chapter" data-level="6.2.1" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#the-data-2"><i class="fa fa-check"></i><b>6.2.1</b> The Data</a></li>
-<li class="chapter" data-level="6.2.2" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#manual-data-entry"><i class="fa fa-check"></i><b>6.2.2</b> Task 1 - Setting up your workspace</a></li>
-<li class="chapter" data-level="6.2.3" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#c6t2"><i class="fa fa-check"></i><b>6.2.3</b> Task 2 - Making some basic plots</a></li>
-<li class="chapter" data-level="6.2.4" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#c6t3"><i class="fa fa-check"></i><b>6.2.4</b> Task 3 - Regression analysis</a></li>
+<li class="chapter" data-level="5.2.1" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#the-data-2"><i class="fa fa-check"></i><b>5.2.1</b> The Data</a></li>
+<li class="chapter" data-level="5.2.2" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#manual-data-entry"><i class="fa fa-check"></i><b>5.2.2</b> Task 1 - Setting up your workspace</a></li>
+<li class="chapter" data-level="5.2.3" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#c6t2"><i class="fa fa-check"></i><b>5.2.3</b> Task 2 - Making some basic plots</a></li>
+<li class="chapter" data-level="5.2.4" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#c6t3"><i class="fa fa-check"></i><b>5.2.4</b> Task 3 - Regression analysis</a></li>
 <li class="chapter" data-level="" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#task-4---correlation-analysis"><i class="fa fa-check"></i>Task 4 - correlation analysis</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#conclusion-3"><i class="fa fa-check"></i><b>6.3</b> Conclusion</a></li>
-<li class="chapter" data-level="6.4" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#before-you-leave-5"><i class="fa fa-check"></i><b>6.4</b> Before you leave!</a></li>
-<li class="chapter" data-level="6.5" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#references-4"><i class="fa fa-check"></i><b>6.5</b> References</a></li>
+<li class="chapter" data-level="5.3" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#conclusion-4"><i class="fa fa-check"></i><b>5.3</b> Conclusion</a></li>
+<li class="chapter" data-level="5.4" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#before-you-leave-4"><i class="fa fa-check"></i><b>5.4</b> Before you leave!</a></li>
+<li class="chapter" data-level="5.5" data-path="workshop-4---testing-for-and-measuring-relationships.html"><a href="workshop-4---testing-for-and-measuring-relationships.html#references-4"><i class="fa fa-check"></i><b>5.5</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html"><i class="fa fa-check"></i><b>7</b> Workshop 5 - Issues with Probability and Parametric Analysis</a>
+<li class="chapter" data-level="6" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html"><i class="fa fa-check"></i><b>6</b> Workshop 5 - Issues with Probability and Parametric Analysis</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#introduction-4"><i class="fa fa-check"></i><b>7.1</b> Introduction</a>
+<li class="chapter" data-level="6.1" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#introduction-5"><i class="fa fa-check"></i><b>6.1</b> Introduction</a>
 <ul>
 <li class="chapter" data-level="" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#non-normal-data-homogeneity-of-variance"><i class="fa fa-check"></i>Non-normal data &amp; homogeneity of variance</a></li>
 <li class="chapter" data-level="" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#transformations"><i class="fa fa-check"></i>Transformations</a></li>
@@ -275,153 +264,147 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#non-parametric-tests-for-association"><i class="fa fa-check"></i>Non-parametric tests for association</a></li>
 <li class="chapter" data-level="" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#pitfalls-of-non-parametric-tests"><i class="fa fa-check"></i>Pitfalls of non-parametric tests</a></li>
 </ul></li>
-<li class="chapter" data-level="7.2" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#practical-5---transformations-non-parametric-tests---an-introduction"><i class="fa fa-check"></i><b>7.2</b> Practical 5 - Transformations &amp; Non-parametric Tests - An Introduction</a>
+<li class="chapter" data-level="6.2" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#practical-5---transformations-non-parametric-tests---an-introduction"><i class="fa fa-check"></i><b>6.2</b> Practical 5 - Transformations &amp; Non-parametric Tests - An Introduction</a>
 <ul>
-<li class="chapter" data-level="7.2.1" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#task-1---setting-up-your-workspace-2"><i class="fa fa-check"></i><b>7.2.1</b> Task 1 - Setting up your workspace</a></li>
-<li class="chapter" data-level="7.2.2" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#c7t2"><i class="fa fa-check"></i><b>7.2.2</b> Task 2 - Explore the data</a></li>
-<li class="chapter" data-level="7.2.3" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#c7t3"><i class="fa fa-check"></i><b>7.2.3</b> Task 3 - Data transformations</a></li>
-<li class="chapter" data-level="7.2.4" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#task-4---non-parametric-analysis-of-the-differences"><i class="fa fa-check"></i><b>7.2.4</b> Task 4 - Non-parametric analysis of the differences</a></li>
-<li class="chapter" data-level="7.2.5" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#task-5---non-parametric-test-for-associations"><i class="fa fa-check"></i><b>7.2.5</b> Task 5 - Non-parametric test for associations</a></li>
+<li class="chapter" data-level="6.2.1" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#task-1---setting-up-your-workspace-2"><i class="fa fa-check"></i><b>6.2.1</b> Task 1 - Setting up your workspace</a></li>
+<li class="chapter" data-level="6.2.2" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#c7t2"><i class="fa fa-check"></i><b>6.2.2</b> Task 2 - Explore the data</a></li>
+<li class="chapter" data-level="6.2.3" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#c7t3"><i class="fa fa-check"></i><b>6.2.3</b> Task 3 - Data transformations</a></li>
+<li class="chapter" data-level="6.2.4" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#task-4---non-parametric-analysis-of-the-differences"><i class="fa fa-check"></i><b>6.2.4</b> Task 4 - Non-parametric analysis of the differences</a></li>
+<li class="chapter" data-level="6.2.5" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#task-5---non-parametric-test-for-associations"><i class="fa fa-check"></i><b>6.2.5</b> Task 5 - Non-parametric test for associations</a></li>
 </ul></li>
-<li class="chapter" data-level="7.3" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#conclusion-4"><i class="fa fa-check"></i><b>7.3</b> Conclusion</a></li>
-<li class="chapter" data-level="7.4" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#before-you-leave-6"><i class="fa fa-check"></i><b>7.4</b> Before you leave!</a></li>
-<li class="chapter" data-level="7.5" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#references-5"><i class="fa fa-check"></i><b>7.5</b> References</a></li>
+<li class="chapter" data-level="6.3" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#conclusion-5"><i class="fa fa-check"></i><b>6.3</b> Conclusion</a></li>
+<li class="chapter" data-level="6.4" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#before-you-leave-5"><i class="fa fa-check"></i><b>6.4</b> Before you leave!</a></li>
+<li class="chapter" data-level="6.5" data-path="workshop-5---issues-with-probability-and-parametric-analysis.html"><a href="workshop-5---issues-with-probability-and-parametric-analysis.html#references-5"><i class="fa fa-check"></i><b>6.5</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="plot-beautification.html"><a href="plot-beautification.html"><i class="fa fa-check"></i><b>8</b> Plot Beautification!!!</a>
+<li class="chapter" data-level="7" data-path="plot-beautification.html"><a href="plot-beautification.html"><i class="fa fa-check"></i><b>7</b> Plot Beautification!!!</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="plot-beautification.html"><a href="plot-beautification.html#deconstructing-ggplot"><i class="fa fa-check"></i><b>8.1</b> Deconstructing ggplot</a></li>
-<li class="chapter" data-level="8.2" data-path="plot-beautification.html"><a href="plot-beautification.html#labels"><i class="fa fa-check"></i><b>8.2</b> Labels</a></li>
-<li class="chapter" data-level="8.3" data-path="plot-beautification.html"><a href="plot-beautification.html#colours"><i class="fa fa-check"></i><b>8.3</b> Switching up colours</a></li>
-<li class="chapter" data-level="8.4" data-path="plot-beautification.html"><a href="plot-beautification.html#spacing"><i class="fa fa-check"></i><b>8.4</b> Spacing</a></li>
-<li class="chapter" data-level="8.5" data-path="plot-beautification.html"><a href="plot-beautification.html#themes"><i class="fa fa-check"></i><b>8.5</b> Themes</a></li>
-<li class="chapter" data-level="8.6" data-path="plot-beautification.html"><a href="plot-beautification.html#beautifying-scatter-plots"><i class="fa fa-check"></i><b>8.6</b> Beautifying scatter plots</a></li>
-<li class="chapter" data-level="8.7" data-path="plot-beautification.html"><a href="plot-beautification.html#explorting-your-plot-to-pdf"><i class="fa fa-check"></i><b>8.7</b> Explorting your plot to pdf</a></li>
-<li class="chapter" data-level="8.8" data-path="plot-beautification.html"><a href="plot-beautification.html#before-you-leave-7"><i class="fa fa-check"></i><b>8.8</b> Before you leave!</a></li>
-<li class="chapter" data-level="8.9" data-path="plot-beautification.html"><a href="plot-beautification.html#references-6"><i class="fa fa-check"></i><b>8.9</b> References</a></li>
+<li class="chapter" data-level="7.1" data-path="plot-beautification.html"><a href="plot-beautification.html#deconstructing-ggplot"><i class="fa fa-check"></i><b>7.1</b> Deconstructing ggplot</a></li>
+<li class="chapter" data-level="7.2" data-path="plot-beautification.html"><a href="plot-beautification.html#labels"><i class="fa fa-check"></i><b>7.2</b> Labels</a></li>
+<li class="chapter" data-level="7.3" data-path="plot-beautification.html"><a href="plot-beautification.html#colours"><i class="fa fa-check"></i><b>7.3</b> Switching up colours</a></li>
+<li class="chapter" data-level="7.4" data-path="plot-beautification.html"><a href="plot-beautification.html#spacing"><i class="fa fa-check"></i><b>7.4</b> Spacing</a></li>
+<li class="chapter" data-level="7.5" data-path="plot-beautification.html"><a href="plot-beautification.html#themes"><i class="fa fa-check"></i><b>7.5</b> Themes</a></li>
+<li class="chapter" data-level="7.6" data-path="plot-beautification.html"><a href="plot-beautification.html#beautifying-scatter-plots"><i class="fa fa-check"></i><b>7.6</b> Beautifying scatter plots</a></li>
+<li class="chapter" data-level="7.7" data-path="plot-beautification.html"><a href="plot-beautification.html#explorting-your-plot-to-pdf"><i class="fa fa-check"></i><b>7.7</b> Explorting your plot to pdf</a></li>
+<li class="chapter" data-level="7.8" data-path="plot-beautification.html"><a href="plot-beautification.html#before-you-leave-6"><i class="fa fa-check"></i><b>7.8</b> Before you leave!</a></li>
+<li class="chapter" data-level="7.9" data-path="plot-beautification.html"><a href="plot-beautification.html#references-6"><i class="fa fa-check"></i><b>7.9</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="bio-7026a-univariate-statistics-summative-assignment.html"><a href="bio-7026a-univariate-statistics-summative-assignment.html"><i class="fa fa-check"></i><b>9</b> BIO-7026A: Univariate Statistics Summative Assignment</a>
+<li class="chapter" data-level="8" data-path="bio-7026a-univariate-statistics-summative-assignment.html"><a href="bio-7026a-univariate-statistics-summative-assignment.html"><i class="fa fa-check"></i><b>8</b> BIO-7026A: Univariate Statistics Summative Assignment</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="bio-7026a-univariate-statistics-summative-assignment.html"><a href="bio-7026a-univariate-statistics-summative-assignment.html#the-exercise"><i class="fa fa-check"></i><b>9.1</b> The exercise</a></li>
-<li class="chapter" data-level="9.2" data-path="bio-7026a-univariate-statistics-summative-assignment.html"><a href="bio-7026a-univariate-statistics-summative-assignment.html#the-problem"><i class="fa fa-check"></i><b>9.2</b> The Problem</a></li>
-<li class="chapter" data-level="9.3" data-path="bio-7026a-univariate-statistics-summative-assignment.html"><a href="bio-7026a-univariate-statistics-summative-assignment.html#the-data-3"><i class="fa fa-check"></i><b>9.3</b> The Data</a></li>
+<li class="chapter" data-level="8.1" data-path="bio-7026a-univariate-statistics-summative-assignment.html"><a href="bio-7026a-univariate-statistics-summative-assignment.html#the-exercise"><i class="fa fa-check"></i><b>8.1</b> The exercise</a></li>
+<li class="chapter" data-level="8.2" data-path="bio-7026a-univariate-statistics-summative-assignment.html"><a href="bio-7026a-univariate-statistics-summative-assignment.html#the-problem"><i class="fa fa-check"></i><b>8.2</b> The Problem</a></li>
+<li class="chapter" data-level="8.3" data-path="bio-7026a-univariate-statistics-summative-assignment.html"><a href="bio-7026a-univariate-statistics-summative-assignment.html#the-data-3"><i class="fa fa-check"></i><b>8.3</b> The Data</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="introduction-to-multivariate-statistics-bio-7025a.html"><a href="introduction-to-multivariate-statistics-bio-7025a.html"><i class="fa fa-check"></i><b>10</b> Introduction to Multivariate Statistics (BIO-7025A)</a>
+<li class="chapter" data-level="9" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html"><i class="fa fa-check"></i><b>9</b> Multivariate Linear Modelling</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="introduction-to-multivariate-statistics-bio-7025a.html"><a href="introduction-to-multivariate-statistics-bio-7025a.html#welcome-to-multivairate-statistics"><i class="fa fa-check"></i><b>10.1</b> Welcome to Multivairate Statistics</a></li>
-<li class="chapter" data-level="10.2" data-path="introduction-to-multivariate-statistics-bio-7025a.html"><a href="introduction-to-multivariate-statistics-bio-7025a.html#learning-objectives-1"><i class="fa fa-check"></i><b>10.2</b> Learning Objectives</a></li>
-<li class="chapter" data-level="10.3" data-path="introduction-to-multivariate-statistics-bio-7025a.html"><a href="introduction-to-multivariate-statistics-bio-7025a.html#teaching-layout-1"><i class="fa fa-check"></i><b>10.3</b> Teaching Layout</a></li>
+<li class="chapter" data-level="9.1" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html#introduction-6"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.2" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html#practical-6---multiple-linear-models"><i class="fa fa-check"></i><b>9.2</b> Practical 6 - Multiple Linear Models</a></li>
+<li class="chapter" data-level="9.3" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html#data-set-1-africa"><i class="fa fa-check"></i><b>9.3</b> Data set 1: Africa</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html#task-1---checking-the-data"><i class="fa fa-check"></i><b>9.3.1</b> Task 1 - Checking the data</a></li>
+<li class="chapter" data-level="9.3.2" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html#task-2---exploring-the-data"><i class="fa fa-check"></i><b>9.3.2</b> Task 2 - Exploring the data</a></li>
+<li class="chapter" data-level="9.3.3" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html#task-3---regression-analysis"><i class="fa fa-check"></i><b>9.3.3</b> Task 3 - Regression analysis</a></li>
+<li class="chapter" data-level="9.3.4" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html#c11t4"><i class="fa fa-check"></i><b>9.3.4</b> Task 4 - Multivariate linear regression analysis</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html"><i class="fa fa-check"></i><b>11</b> Multivariate Linear Modelling</a>
+<li class="chapter" data-level="9.4" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html#data-set-2-chaffinch"><i class="fa fa-check"></i><b>9.4</b> Data set 2: Chaffinch</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html#introduction-5"><i class="fa fa-check"></i><b>11.1</b> Introduction</a></li>
-<li class="chapter" data-level="11.2" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html#practical-6---multiple-linear-models"><i class="fa fa-check"></i><b>11.2</b> Practical 6 - Multiple Linear Models</a></li>
-<li class="chapter" data-level="11.3" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html#data-set-1-africa"><i class="fa fa-check"></i><b>11.3</b> Data set 1: Africa</a>
-<ul>
-<li class="chapter" data-level="11.3.1" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html#task-1---checking-the-data"><i class="fa fa-check"></i><b>11.3.1</b> Task 1 - Checking the data</a></li>
-<li class="chapter" data-level="11.3.2" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html#task-2---exploring-the-data"><i class="fa fa-check"></i><b>11.3.2</b> Task 2 - Exploring the data</a></li>
-<li class="chapter" data-level="11.3.3" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html#task-3---regression-analysis"><i class="fa fa-check"></i><b>11.3.3</b> Task 3 - Regression analysis</a></li>
-<li class="chapter" data-level="11.3.4" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html#c11t4"><i class="fa fa-check"></i><b>11.3.4</b> Task 4 - Multivariate linear regression analysis</a></li>
+<li class="chapter" data-level="9.4.1" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html#task-1---checking-the-data-1"><i class="fa fa-check"></i><b>9.4.1</b> Task 1 - Checking the data</a></li>
+<li class="chapter" data-level="9.4.2" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html#task-2---exporing-potential-relationships"><i class="fa fa-check"></i><b>9.4.2</b> Task 2 - Exporing potential relationships</a></li>
+<li class="chapter" data-level="9.4.3" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html#task-3---multiple-regression-analysis"><i class="fa fa-check"></i><b>9.4.3</b> Task 3 - Multiple regression analysis</a></li>
+<li class="chapter" data-level="9.4.4" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html#task-4---when-good-predictors-go-bad-multicollinearity"><i class="fa fa-check"></i><b>9.4.4</b> Task 4 - When good predictors go bad (multicollinearity)</a></li>
 </ul></li>
-<li class="chapter" data-level="11.4" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html#data-set-2-chaffinch"><i class="fa fa-check"></i><b>11.4</b> Data set 2: Chaffinch</a>
+<li class="chapter" data-level="9.5" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html#data-set-3-beetles"><i class="fa fa-check"></i><b>9.5</b> Data set 3: Beetles</a>
 <ul>
-<li class="chapter" data-level="11.4.1" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html#task-1---checking-the-data-1"><i class="fa fa-check"></i><b>11.4.1</b> Task 1 - Checking the data</a></li>
-<li class="chapter" data-level="11.4.2" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html#task-2---exporing-potential-relationships"><i class="fa fa-check"></i><b>11.4.2</b> Task 2 - Exporing potential relationships</a></li>
-<li class="chapter" data-level="11.4.3" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html#task-3---multiple-regression-analysis"><i class="fa fa-check"></i><b>11.4.3</b> Task 3 - Multiple regression analysis</a></li>
-<li class="chapter" data-level="11.4.4" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html#task-4---when-good-predictors-go-bad-multicollinearity"><i class="fa fa-check"></i><b>11.4.4</b> Task 4 - When good predictors go bad (multicollinearity)</a></li>
+<li class="chapter" data-level="9.5.1" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html#c11t1"><i class="fa fa-check"></i><b>9.5.1</b> Task 1 - Checking the data</a></li>
+<li class="chapter" data-level="9.5.2" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html#task-2---multiple-regression-analysis"><i class="fa fa-check"></i><b>9.5.2</b> Task 2 - Multiple regression analysis</a></li>
 </ul></li>
-<li class="chapter" data-level="11.5" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html#data-set-3-beetles"><i class="fa fa-check"></i><b>11.5</b> Data set 3: Beetles</a>
+<li class="chapter" data-level="9.6" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html#before-you-leave-7"><i class="fa fa-check"></i><b>9.6</b> Before you leave!</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="model-structure.html"><a href="model-structure.html"><i class="fa fa-check"></i><b>10</b> Model Structure</a>
 <ul>
-<li class="chapter" data-level="11.5.1" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html#c11t1"><i class="fa fa-check"></i><b>11.5.1</b> Task 1 - Checking the data</a></li>
-<li class="chapter" data-level="11.5.2" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html#task-2---multiple-regression-analysis"><i class="fa fa-check"></i><b>11.5.2</b> Task 2 - Multiple regression analysis</a></li>
-</ul></li>
-<li class="chapter" data-level="11.6" data-path="multivariate-linear-modelling.html"><a href="multivariate-linear-modelling.html#before-you-leave-8"><i class="fa fa-check"></i><b>11.6</b> Before you leave!</a></li>
-</ul></li>
-<li class="chapter" data-level="12" data-path="model-structure.html"><a href="model-structure.html"><i class="fa fa-check"></i><b>12</b> Model Structure</a>
+<li class="chapter" data-level="10.1" data-path="model-structure.html"><a href="model-structure.html#introduction-7"><i class="fa fa-check"></i><b>10.1</b> Introduction</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="model-structure.html"><a href="model-structure.html#introduction-6"><i class="fa fa-check"></i><b>12.1</b> Introduction</a>
-<ul>
-<li class="chapter" data-level="12.1.1" data-path="model-structure.html"><a href="model-structure.html#fully-factorial-linear-model"><i class="fa fa-check"></i><b>12.1.1</b> Fully Factorial Linear Model</a></li>
-<li class="chapter" data-level="12.1.2" data-path="model-structure.html"><a href="model-structure.html#randomised-block-linear-model"><i class="fa fa-check"></i><b>12.1.2</b> Randomised Block Linear Model</a></li>
-<li class="chapter" data-level="12.1.3" data-path="model-structure.html"><a href="model-structure.html#options"><i class="fa fa-check"></i><b>12.1.3</b> Options</a></li>
-<li class="chapter" data-level="12.1.4" data-path="model-structure.html"><a href="model-structure.html#post-hoc"><i class="fa fa-check"></i><b>12.1.4</b> Post-hoc</a></li>
+<li class="chapter" data-level="10.1.1" data-path="model-structure.html"><a href="model-structure.html#fully-factorial-linear-model"><i class="fa fa-check"></i><b>10.1.1</b> Fully Factorial Linear Model</a></li>
+<li class="chapter" data-level="10.1.2" data-path="model-structure.html"><a href="model-structure.html#randomised-block-linear-model"><i class="fa fa-check"></i><b>10.1.2</b> Randomised Block Linear Model</a></li>
+<li class="chapter" data-level="10.1.3" data-path="model-structure.html"><a href="model-structure.html#options"><i class="fa fa-check"></i><b>10.1.3</b> Options</a></li>
+<li class="chapter" data-level="10.1.4" data-path="model-structure.html"><a href="model-structure.html#post-hoc"><i class="fa fa-check"></i><b>10.1.4</b> Post-hoc</a></li>
 </ul></li>
-<li class="chapter" data-level="12.2" data-path="model-structure.html"><a href="model-structure.html#practical-8---exploring-model-structure"><i class="fa fa-check"></i><b>12.2</b> Practical 8 - Exploring Model Structure</a></li>
-<li class="chapter" data-level="12.3" data-path="model-structure.html"><a href="model-structure.html#data-set-1-nepal---linear-model-with-randomised-block-designs"><i class="fa fa-check"></i><b>12.3</b> Data set 1: Nepal - Linear Model with Randomised Block designs</a>
+<li class="chapter" data-level="10.2" data-path="model-structure.html"><a href="model-structure.html#practical-8---exploring-model-structure"><i class="fa fa-check"></i><b>10.2</b> Practical 8 - Exploring Model Structure</a></li>
+<li class="chapter" data-level="10.3" data-path="model-structure.html"><a href="model-structure.html#data-set-1-nepal---linear-model-with-randomised-block-designs"><i class="fa fa-check"></i><b>10.3</b> Data set 1: Nepal - Linear Model with Randomised Block designs</a>
 <ul>
-<li class="chapter" data-level="12.3.1" data-path="model-structure.html"><a href="model-structure.html#task-1---checking-the-data-2"><i class="fa fa-check"></i><b>12.3.1</b> Task 1 - Checking the data</a></li>
-<li class="chapter" data-level="12.3.2" data-path="model-structure.html"><a href="model-structure.html#task-2---exploring-the-data-1"><i class="fa fa-check"></i><b>12.3.2</b> Task 2 - Exploring the data</a></li>
-<li class="chapter" data-level="12.3.3" data-path="model-structure.html"><a href="model-structure.html#c12t3"><i class="fa fa-check"></i><b>12.3.3</b> Task 3 - Identifying experimental design</a></li>
-<li class="chapter" data-level="12.3.4" data-path="model-structure.html"><a href="model-structure.html#task-4---approaches-to-our-model"><i class="fa fa-check"></i><b>12.3.4</b> Task 4 - Approaches to our model</a></li>
-<li class="chapter" data-level="12.3.5" data-path="model-structure.html"><a href="model-structure.html#exploring-the-model"><i class="fa fa-check"></i><b>12.3.5</b> Exploring the model</a></li>
+<li class="chapter" data-level="10.3.1" data-path="model-structure.html"><a href="model-structure.html#task-1---checking-the-data-2"><i class="fa fa-check"></i><b>10.3.1</b> Task 1 - Checking the data</a></li>
+<li class="chapter" data-level="10.3.2" data-path="model-structure.html"><a href="model-structure.html#task-2---exploring-the-data-1"><i class="fa fa-check"></i><b>10.3.2</b> Task 2 - Exploring the data</a></li>
+<li class="chapter" data-level="10.3.3" data-path="model-structure.html"><a href="model-structure.html#c12t3"><i class="fa fa-check"></i><b>10.3.3</b> Task 3 - Identifying experimental design</a></li>
+<li class="chapter" data-level="10.3.4" data-path="model-structure.html"><a href="model-structure.html#task-4---approaches-to-our-model"><i class="fa fa-check"></i><b>10.3.4</b> Task 4 - Approaches to our model</a></li>
+<li class="chapter" data-level="10.3.5" data-path="model-structure.html"><a href="model-structure.html#exploring-the-model"><i class="fa fa-check"></i><b>10.3.5</b> Exploring the model</a></li>
 </ul></li>
-<li class="chapter" data-level="12.4" data-path="model-structure.html"><a href="model-structure.html#data-set-2-tulip---linear-model-with-randomised-block-designs"><i class="fa fa-check"></i><b>12.4</b> Data set 2: Tulip - Linear Model with Randomised Block designs</a>
+<li class="chapter" data-level="10.4" data-path="model-structure.html"><a href="model-structure.html#data-set-2-tulip---linear-model-with-randomised-block-designs"><i class="fa fa-check"></i><b>10.4</b> Data set 2: Tulip - Linear Model with Randomised Block designs</a>
 <ul>
-<li class="chapter" data-level="12.4.1" data-path="model-structure.html"><a href="model-structure.html#task-5---checking-the-data"><i class="fa fa-check"></i><b>12.4.1</b> Task 5 - Checking the data</a></li>
-<li class="chapter" data-level="12.4.2" data-path="model-structure.html"><a href="model-structure.html#task-6---exploring-the-data"><i class="fa fa-check"></i><b>12.4.2</b> Task 6 - Exploring the data</a></li>
-<li class="chapter" data-level="12.4.3" data-path="model-structure.html"><a href="model-structure.html#playing-with-some-models"><i class="fa fa-check"></i><b>12.4.3</b> Playing with some models</a></li>
+<li class="chapter" data-level="10.4.1" data-path="model-structure.html"><a href="model-structure.html#task-5---checking-the-data"><i class="fa fa-check"></i><b>10.4.1</b> Task 5 - Checking the data</a></li>
+<li class="chapter" data-level="10.4.2" data-path="model-structure.html"><a href="model-structure.html#task-6---exploring-the-data"><i class="fa fa-check"></i><b>10.4.2</b> Task 6 - Exploring the data</a></li>
+<li class="chapter" data-level="10.4.3" data-path="model-structure.html"><a href="model-structure.html#playing-with-some-models"><i class="fa fa-check"></i><b>10.4.3</b> Playing with some models</a></li>
 </ul></li>
-<li class="chapter" data-level="12.5" data-path="model-structure.html"><a href="model-structure.html#mixed-effects-linear-models"><i class="fa fa-check"></i><b>12.5</b> Mixed effects linear models</a></li>
-<li class="chapter" data-level="12.6" data-path="model-structure.html"><a href="model-structure.html#conclusions"><i class="fa fa-check"></i><b>12.6</b> Conclusions</a></li>
-<li class="chapter" data-level="12.7" data-path="model-structure.html"><a href="model-structure.html#before-you-leave-9"><i class="fa fa-check"></i><b>12.7</b> Before you leave!</a></li>
+<li class="chapter" data-level="10.5" data-path="model-structure.html"><a href="model-structure.html#mixed-effects-linear-models"><i class="fa fa-check"></i><b>10.5</b> Mixed effects linear models</a></li>
+<li class="chapter" data-level="10.6" data-path="model-structure.html"><a href="model-structure.html#conclusions"><i class="fa fa-check"></i><b>10.6</b> Conclusions</a></li>
+<li class="chapter" data-level="10.7" data-path="model-structure.html"><a href="model-structure.html#before-you-leave-8"><i class="fa fa-check"></i><b>10.7</b> Before you leave!</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html"><i class="fa fa-check"></i><b>13</b> Repeated Measures Linear Models</a>
+<li class="chapter" data-level="11" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html"><i class="fa fa-check"></i><b>11</b> Repeated Measures Linear Models</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#introduction-7"><i class="fa fa-check"></i><b>13.1</b> Introduction</a></li>
-<li class="chapter" data-level="13.2" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#practical-9---repeated-measures-linear-models"><i class="fa fa-check"></i><b>13.2</b> Practical 9 - Repeated Measures Linear Models</a></li>
-<li class="chapter" data-level="13.3" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#data-set-1---activity"><i class="fa fa-check"></i><b>13.3</b> Data set 1 - Activity</a>
+<li class="chapter" data-level="11.1" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#introduction-8"><i class="fa fa-check"></i><b>11.1</b> Introduction</a></li>
+<li class="chapter" data-level="11.2" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#practical-9---repeated-measures-linear-models"><i class="fa fa-check"></i><b>11.2</b> Practical 9 - Repeated Measures Linear Models</a></li>
+<li class="chapter" data-level="11.3" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#data-set-1---activity"><i class="fa fa-check"></i><b>11.3</b> Data set 1 - Activity</a>
 <ul>
-<li class="chapter" data-level="13.3.1" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#task-1---checking-the-data-3"><i class="fa fa-check"></i><b>13.3.1</b> Task 1 - Checking the data</a></li>
-<li class="chapter" data-level="13.3.2" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#task-2---exploring-the-data-2"><i class="fa fa-check"></i><b>13.3.2</b> Task 2 - Exploring the data</a></li>
-<li class="chapter" data-level="13.3.3" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#task-3---playing-with-some-statistics"><i class="fa fa-check"></i><b>13.3.3</b> Task 3 - Playing with some statistics</a></li>
+<li class="chapter" data-level="11.3.1" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#task-1---checking-the-data-3"><i class="fa fa-check"></i><b>11.3.1</b> Task 1 - Checking the data</a></li>
+<li class="chapter" data-level="11.3.2" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#task-2---exploring-the-data-2"><i class="fa fa-check"></i><b>11.3.2</b> Task 2 - Exploring the data</a></li>
+<li class="chapter" data-level="11.3.3" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#task-3---playing-with-some-statistics"><i class="fa fa-check"></i><b>11.3.3</b> Task 3 - Playing with some statistics</a></li>
 </ul></li>
-<li class="chapter" data-level="13.4" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#data-set-2---metabolism"><i class="fa fa-check"></i><b>13.4</b> Data set 2 - Metabolism</a>
+<li class="chapter" data-level="11.4" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#data-set-2---metabolism"><i class="fa fa-check"></i><b>11.4</b> Data set 2 - Metabolism</a>
 <ul>
-<li class="chapter" data-level="13.4.1" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#task-4---checking-the-data"><i class="fa fa-check"></i><b>13.4.1</b> Task 4 - Checking the data</a></li>
-<li class="chapter" data-level="13.4.2" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#task-5---exploring-the-data"><i class="fa fa-check"></i><b>13.4.2</b> Task 5 - Exploring the data</a></li>
-<li class="chapter" data-level="13.4.3" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#task-6---playing-with-some-statistics"><i class="fa fa-check"></i><b>13.4.3</b> Task 6 - Playing with some statistics</a></li>
+<li class="chapter" data-level="11.4.1" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#task-4---checking-the-data"><i class="fa fa-check"></i><b>11.4.1</b> Task 4 - Checking the data</a></li>
+<li class="chapter" data-level="11.4.2" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#task-5---exploring-the-data"><i class="fa fa-check"></i><b>11.4.2</b> Task 5 - Exploring the data</a></li>
+<li class="chapter" data-level="11.4.3" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#task-6---playing-with-some-statistics"><i class="fa fa-check"></i><b>11.4.3</b> Task 6 - Playing with some statistics</a></li>
 </ul></li>
-<li class="chapter" data-level="13.5" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#conclusions-1"><i class="fa fa-check"></i><b>13.5</b> Conclusions</a></li>
-<li class="chapter" data-level="13.6" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#before-you-leave-10"><i class="fa fa-check"></i><b>13.6</b> Before you leave!</a></li>
+<li class="chapter" data-level="11.5" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#conclusions-1"><i class="fa fa-check"></i><b>11.5</b> Conclusions</a></li>
+<li class="chapter" data-level="11.6" data-path="repeated-measures-linear-models.html"><a href="repeated-measures-linear-models.html#before-you-leave-9"><i class="fa fa-check"></i><b>11.6</b> Before you leave!</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html"><i class="fa fa-check"></i><b>14</b> A Very Introductory Introduction to Generalised Linear Models</a>
+<li class="chapter" data-level="12" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html"><i class="fa fa-check"></i><b>12</b> A Very Introductory Introduction to Generalised Linear Models</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#introduction-8"><i class="fa fa-check"></i><b>14.1</b> Introduction</a>
+<li class="chapter" data-level="12.1" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#introduction-9"><i class="fa fa-check"></i><b>12.1</b> Introduction</a>
 <ul>
-<li class="chapter" data-level="14.1.1" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#what-is-a-generalised-linear-model-and-why-are-they-useful"><i class="fa fa-check"></i><b>14.1.1</b> What is a Generalised Linear Model and why are they useful?</a></li>
-<li class="chapter" data-level="14.1.2" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#key-parts-of-a-glm"><i class="fa fa-check"></i><b>14.1.2</b> Key parts of a GLM</a></li>
-<li class="chapter" data-level="14.1.3" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#different-famlies-and-their-link-functions"><i class="fa fa-check"></i><b>14.1.3</b> Different famlies and their link functions</a></li>
-<li class="chapter" data-level="14.1.4" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#glms-with-a-poisson-error-structure"><i class="fa fa-check"></i><b>14.1.4</b> GLMs with a Poisson Error Structure</a></li>
-<li class="chapter" data-level="14.1.5" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#glms-with-a-binomial-error-structure"><i class="fa fa-check"></i><b>14.1.5</b> GLMs with a Binomial Error Structure</a></li>
+<li class="chapter" data-level="12.1.1" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#what-is-a-generalised-linear-model-and-why-are-they-useful"><i class="fa fa-check"></i><b>12.1.1</b> What is a Generalised Linear Model and why are they useful?</a></li>
+<li class="chapter" data-level="12.1.2" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#key-parts-of-a-glm"><i class="fa fa-check"></i><b>12.1.2</b> Key parts of a GLM</a></li>
+<li class="chapter" data-level="12.1.3" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#different-famlies-and-their-link-functions"><i class="fa fa-check"></i><b>12.1.3</b> Different famlies and their link functions</a></li>
+<li class="chapter" data-level="12.1.4" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#glms-with-a-poisson-error-structure"><i class="fa fa-check"></i><b>12.1.4</b> GLMs with a Poisson Error Structure</a></li>
+<li class="chapter" data-level="12.1.5" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#glms-with-a-binomial-error-structure"><i class="fa fa-check"></i><b>12.1.5</b> GLMs with a Binomial Error Structure</a></li>
 </ul></li>
-<li class="chapter" data-level="14.2" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#practical-10---glms"><i class="fa fa-check"></i><b>14.2</b> Practical 10 - GLMs</a></li>
-<li class="chapter" data-level="14.3" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#a-poisson-glm-on-some-beautifully-behaved-data"><i class="fa fa-check"></i><b>14.3</b> A Poisson GLM on some beautifully behaved data</a>
+<li class="chapter" data-level="12.2" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#practical-10---glms"><i class="fa fa-check"></i><b>12.2</b> Practical 10 - GLMs</a></li>
+<li class="chapter" data-level="12.3" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#a-poisson-glm-on-some-beautifully-behaved-data"><i class="fa fa-check"></i><b>12.3</b> A Poisson GLM on some beautifully behaved data</a>
 <ul>
-<li class="chapter" data-level="14.3.1" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#task-1---check-the-data"><i class="fa fa-check"></i><b>14.3.1</b> Task 1 - Check the data</a></li>
-<li class="chapter" data-level="14.3.2" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#task-2---exploring-the-data-3"><i class="fa fa-check"></i><b>14.3.2</b> Task 2 - Exploring the data</a></li>
-<li class="chapter" data-level="14.3.3" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#task-3---fitting-a-glm"><i class="fa fa-check"></i><b>14.3.3</b> Task 3 - Fitting a GLM</a></li>
-<li class="chapter" data-level="14.3.4" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#task-4---checking-the-model"><i class="fa fa-check"></i><b>14.3.4</b> Task 4 - Checking the model</a></li>
-<li class="chapter" data-level="14.3.5" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#task-5---plotting-our-model"><i class="fa fa-check"></i><b>14.3.5</b> Task 5 - Plotting our model</a></li>
+<li class="chapter" data-level="12.3.1" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#task-1---check-the-data"><i class="fa fa-check"></i><b>12.3.1</b> Task 1 - Check the data</a></li>
+<li class="chapter" data-level="12.3.2" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#task-2---exploring-the-data-3"><i class="fa fa-check"></i><b>12.3.2</b> Task 2 - Exploring the data</a></li>
+<li class="chapter" data-level="12.3.3" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#task-3---fitting-a-glm"><i class="fa fa-check"></i><b>12.3.3</b> Task 3 - Fitting a GLM</a></li>
+<li class="chapter" data-level="12.3.4" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#task-4---checking-the-model"><i class="fa fa-check"></i><b>12.3.4</b> Task 4 - Checking the model</a></li>
+<li class="chapter" data-level="12.3.5" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#task-5---plotting-our-model"><i class="fa fa-check"></i><b>12.3.5</b> Task 5 - Plotting our model</a></li>
 </ul></li>
-<li class="chapter" data-level="14.4" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#a-binomial-glm"><i class="fa fa-check"></i><b>14.4</b> A Binomial GLM</a>
+<li class="chapter" data-level="12.4" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#a-binomial-glm"><i class="fa fa-check"></i><b>12.4</b> A Binomial GLM</a>
 <ul>
-<li class="chapter" data-level="14.4.1" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#task-6---check-the-data"><i class="fa fa-check"></i><b>14.4.1</b> Task 6 - Check the data</a></li>
-<li class="chapter" data-level="14.4.2" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#task-7---explore-the-data"><i class="fa fa-check"></i><b>14.4.2</b> Task 7 - Explore the data</a></li>
-<li class="chapter" data-level="14.4.3" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#task-8---fitting-a-glm"><i class="fa fa-check"></i><b>14.4.3</b> Task 8 - Fitting a GLM</a></li>
-<li class="chapter" data-level="14.4.4" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#task-9---interpretation-and-plotting"><i class="fa fa-check"></i><b>14.4.4</b> Task 9 - Interpretation and plotting</a></li>
+<li class="chapter" data-level="12.4.1" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#task-6---check-the-data"><i class="fa fa-check"></i><b>12.4.1</b> Task 6 - Check the data</a></li>
+<li class="chapter" data-level="12.4.2" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#task-7---explore-the-data"><i class="fa fa-check"></i><b>12.4.2</b> Task 7 - Explore the data</a></li>
+<li class="chapter" data-level="12.4.3" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#task-8---fitting-a-glm"><i class="fa fa-check"></i><b>12.4.3</b> Task 8 - Fitting a GLM</a></li>
+<li class="chapter" data-level="12.4.4" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#task-9---interpretation-and-plotting"><i class="fa fa-check"></i><b>12.4.4</b> Task 9 - Interpretation and plotting</a></li>
 </ul></li>
-<li class="chapter" data-level="14.5" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#a-poisson-mixed-effects-glm"><i class="fa fa-check"></i><b>14.5</b> A Poisson Mixed Effects GLM</a>
+<li class="chapter" data-level="12.5" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#a-poisson-mixed-effects-glm"><i class="fa fa-check"></i><b>12.5</b> A Poisson Mixed Effects GLM</a>
 <ul>
-<li class="chapter" data-level="14.5.1" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#task-10---check-the-data"><i class="fa fa-check"></i><b>14.5.1</b> Task 10 - Check the data</a></li>
-<li class="chapter" data-level="14.5.2" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#task-11---explore-the-data"><i class="fa fa-check"></i><b>14.5.2</b> Task 11 - Explore the data</a></li>
-<li class="chapter" data-level="14.5.3" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#task-12---fitting-a-glm"><i class="fa fa-check"></i><b>14.5.3</b> Task 12 - Fitting a GLM</a></li>
+<li class="chapter" data-level="12.5.1" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#task-10---check-the-data"><i class="fa fa-check"></i><b>12.5.1</b> Task 10 - Check the data</a></li>
+<li class="chapter" data-level="12.5.2" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#task-11---explore-the-data"><i class="fa fa-check"></i><b>12.5.2</b> Task 11 - Explore the data</a></li>
+<li class="chapter" data-level="12.5.3" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#task-12---fitting-a-glm"><i class="fa fa-check"></i><b>12.5.3</b> Task 12 - Fitting a GLM</a></li>
 </ul></li>
-<li class="chapter" data-level="14.6" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#conclusions-2"><i class="fa fa-check"></i><b>14.6</b> Conclusions</a></li>
-<li class="chapter" data-level="14.7" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#before-you-leave-11"><i class="fa fa-check"></i><b>14.7</b> Before you leave!</a></li>
-<li class="chapter" data-level="14.8" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#references-7"><i class="fa fa-check"></i><b>14.8</b> References</a></li>
+<li class="chapter" data-level="12.6" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#conclusions-2"><i class="fa fa-check"></i><b>12.6</b> Conclusions</a></li>
+<li class="chapter" data-level="12.7" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#before-you-leave-10"><i class="fa fa-check"></i><b>12.7</b> Before you leave!</a></li>
+<li class="chapter" data-level="12.8" data-path="a-very-introductory-introduction-to-generalised-linear-models.html"><a href="a-very-introductory-introduction-to-generalised-linear-models.html#references-7"><i class="fa fa-check"></i><b>12.8</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="bio-7025a-multivariate-statitsics-assignment.html"><a href="bio-7025a-multivariate-statitsics-assignment.html"><i class="fa fa-check"></i><b>15</b> BIO-7025A: Multivariate Statitsics Assignment</a>
+<li class="chapter" data-level="13" data-path="bio-7025a-multivariate-statitsics-assignment.html"><a href="bio-7025a-multivariate-statitsics-assignment.html"><i class="fa fa-check"></i><b>13</b> BIO-7025A: Multivariate Statitsics Assignment</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="bio-7025a-multivariate-statitsics-assignment.html"><a href="bio-7025a-multivariate-statitsics-assignment.html#patterns-of-habitat-selection-in-breeding-black-tailed-godwits-in-iceland"><i class="fa fa-check"></i><b>15.1</b> Patterns of habitat selection in breeding Black-tailed Godwits in Iceland</a></li>
+<li class="chapter" data-level="13.1" data-path="bio-7025a-multivariate-statitsics-assignment.html"><a href="bio-7025a-multivariate-statitsics-assignment.html#patterns-of-habitat-selection-in-breeding-black-tailed-godwits-in-iceland"><i class="fa fa-check"></i><b>13.1</b> Patterns of habitat selection in breeding Black-tailed Godwits in Iceland</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -443,10 +426,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="workshop-2---sampling-distributions-and-testing-for-differences" class="section level1 hasAnchor" number="4">
-<h1><span class="header-section-number">Chapter 4</span> Workshop 2 - Sampling Distributions and Testing for Differences<a href="workshop-2---sampling-distributions-and-testing-for-differences.html#workshop-2---sampling-distributions-and-testing-for-differences" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="introduction-1" class="section level2 hasAnchor" number="4.1">
-<h2><span class="header-section-number">4.1</span> Introduction<a href="workshop-2---sampling-distributions-and-testing-for-differences.html#introduction-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="workshop-2---sampling-distributions-and-testing-for-differences" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Workshop 2 - Sampling Distributions and Testing for Differences<a href="workshop-2---sampling-distributions-and-testing-for-differences.html#workshop-2---sampling-distributions-and-testing-for-differences" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="introduction-2" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Introduction<a href="workshop-2---sampling-distributions-and-testing-for-differences.html#introduction-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In the lecture last week we noted that one of the most important applications for statistical analyses is assessing whether differences exist between groups. In the next two sessions, we are going to concentrate on a series of statistical analyses that allow us to determine whether there are differences between groups of data.
 In developing an understanding of this form of statistical analysis, we have to be clear about two statistical concepts. These are the ideas of sampling and of probability.</p>
 <div id="sampling" class="section level3 unnumbered hasAnchor">
@@ -531,8 +514,8 @@ The most common use of the t-statistic is in comparing two samples to assess whe
 <p>But don’t panic - we will cover how to check these assumptions very straightforward.</p>
 </div>
 </div>
-<div id="some-key-terms-for-todays-practical" class="section level2 hasAnchor" number="4.2">
-<h2><span class="header-section-number">4.2</span> Some key terms for todays practical<a href="workshop-2---sampling-distributions-and-testing-for-differences.html#some-key-terms-for-todays-practical" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="some-key-terms-for-todays-practical" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Some key terms for todays practical<a href="workshop-2---sampling-distributions-and-testing-for-differences.html#some-key-terms-for-todays-practical" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li><p><strong>Standard deviation:</strong> the standard deviation is a measure of the spread of the data. It is calculated from the variance, which is defined as the average squared deviation from the mean. Importantly, and in contrast with the standard error, the standard deviation is unaffected by the sample size.</p></li>
 <li><p><strong>Standard error:</strong> the standard error is a function of the sample size, and is defined as the standard deviation divided by the square root of the sample size. Whilst the standard deviation measures the spread of the data, the standard error measures how the combination of the spread of the data and the number of measurements in our sample affect how well we are likely to have estimated the mean, i.e. it measures error in our estimate of the mean.</p></li>
@@ -540,12 +523,12 @@ The most common use of the t-statistic is in comparing two samples to assess whe
 <li><p><strong>Statistical significance:</strong> When we do a statistical test we cannot state categorically that a hypothesis is true or false - rather, we have to state the probability that the hypothesis is true. For example, in the one-sample t-test that we look at below, we calculate a difference between our sample mean and another value. Then, based on the combination of the size of this difference, the variability within our data and the sample size, we calculate the probability that this difference is zero (i.e. that our mean is not different from the value we specified). When we do this we need some cut-off value to be able to say if our probability is big enough to regard as important - and Fisher decided that this would be a probability of P &lt; 0.05, that is a less than one-in-twenty probability that such a large difference would arise by chance alone.</p></li>
 </ul>
 </div>
-<div id="practical-2---sampling-and-testing-for-differences" class="section level2 hasAnchor" number="4.3">
-<h2><span class="header-section-number">4.3</span> Practical 2 - Sampling and Testing for Differences<a href="workshop-2---sampling-distributions-and-testing-for-differences.html#practical-2---sampling-and-testing-for-differences" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="practical-2---sampling-and-testing-for-differences" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Practical 2 - Sampling and Testing for Differences<a href="workshop-2---sampling-distributions-and-testing-for-differences.html#practical-2---sampling-and-testing-for-differences" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Most data are collected as samples from larger collections or populations. The basis for all statistical analyses is attempting to infer population parameters (e.g. the population mean, variance, standard deviation etc.) from the sample data. This week’s practical is intended as an introduction to analysing data using simple tests on samples from populations.</p>
 <p>The importance of exploratory analyses of data was stressed last week: today we will apply some of these ideas in analysing data from a field study.</p>
-<div id="the-data" class="section level3 hasAnchor" number="4.3.1">
-<h3><span class="header-section-number">4.3.1</span> The Data<a href="workshop-2---sampling-distributions-and-testing-for-differences.html#the-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="the-data" class="section level3 hasAnchor" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> The Data<a href="workshop-2---sampling-distributions-and-testing-for-differences.html#the-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>As many of you are new to Norfolk, we are going to analyse some data on the yields of sugar beet, which is something of a Norfolk specialty. Sugar beet is a root crop which is grown across East Anglia and into the Midlands. It is sown in March-April and then harvested in October. The roots are then used to make sugar. Being sown in April, the crop is rather vulnerable to attack by pests. In particular, plants are attacked by aphids, which transmit viruses to the crop. The main symptom of these viruses is a yellowing of the crop, and the viruses have the potential to reduce yields by up to 40%. However, sometimes the crop does not succumb to the virus and yields can be unaffected. <br />
 These data were taken from 56 fields in Norfolk &amp; Suffolk, half of which were determined to have viral infection, half of which did not. The data report the dry weight of sugar beet processed from each field at the same factory. The investigators wished to ask 2 questions of the data:</p>
 <ol style="list-style-type: decimal">
@@ -562,16 +545,16 @@ These data were taken from 56 fields in Norfolk &amp; Suffolk, half of which wer
 </blockquote>
 <p>The data are stored in a .csv file called <code>sugar_beet_virus.csv</code> and can be found in this classroom workspace on posit Cloud in the <code>data</code> folder. For each field, we have a measure of yield and whether or not it was infected by virus.</p>
 </div>
-<div id="task-1---setting-up-your-workspace" class="section level3 hasAnchor" number="4.3.2">
-<h3><span class="header-section-number">4.3.2</span> Task 1 - Setting up your workspace<a href="workshop-2---sampling-distributions-and-testing-for-differences.html#task-1---setting-up-your-workspace" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Go to the classroom workspace in posit Cloud and open up a <strong>New</strong> script, give this script a sensible name and save it in your <code>scripts</code> folder. You will need to make sure the packages <code>tidyverse</code> and <code>car</code> are installed and loaded to complete todays workshop, check Chapter <a href="c2.html#workspace-setup">2.5.3</a> and Chapter <a href="c2.html#script-setup">2.5.4</a> if you are unsure how to do this.</p>
+<div id="task-1---setting-up-your-workspace" class="section level3 hasAnchor" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> Task 1 - Setting up your workspace<a href="workshop-2---sampling-distributions-and-testing-for-differences.html#task-1---setting-up-your-workspace" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Go to the classroom workspace in posit Cloud and open up a <strong>New</strong> script, give this script a sensible name and save it in your <code>scripts</code> folder. You will need to make sure the packages <code>tidyverse</code> and <code>car</code> are installed and loaded to complete todays workshop, check Chapter <a href="index.html#workspace-setup">1.2.9.3</a> and Chapter <a href="index.html#script-setup">1.2.9.4</a> if you are unsure how to do this.</p>
 <p>You will probably have lots of bits and pieces stored in your environment from last weeks session. As we are starting a new analysis with new data it makes sence to begin with a nice clean environment. Don’t worry about loosing things from your environment, provided you have <strong>saved your script</strong> in your <code>script</code> folder and have the raw data .csv file you will be able to reproduce all of those analyses from last week. If you run the following piece of code, everything stored in your environment will be removed;</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#cb34-1" tabindex="-1"></a><span class="co"># Clean up your environment</span></span>
-<span id="cb34-2"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#cb34-2" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#cb35-1" tabindex="-1"></a><span class="co"># Clean up your environment</span></span>
+<span id="cb35-2"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#cb35-2" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span></code></pre></div>
 </div>
-<div id="task-2---checking-the-data" class="section level3 hasAnchor" number="4.3.3">
-<h3><span class="header-section-number">4.3.3</span> Task 2 - Checking the data<a href="workshop-2---sampling-distributions-and-testing-for-differences.html#task-2---checking-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Load the data into your workspace. Make sure you load it into an object named <code>sugar_beet_virus</code> and then try performing some routine checks to make sure R has interpreted the data variables correctly and all expected data is present and accounted for. You can use some of the functions we explored in Chapter <a href="workshop-1---explorartory-data-analysis.html#checking-the-data">3.2.3</a> if you need some help with this.</p>
+<div id="task-2---checking-the-data" class="section level3 hasAnchor" number="3.3.3">
+<h3><span class="header-section-number">3.3.3</span> Task 2 - Checking the data<a href="workshop-2---sampling-distributions-and-testing-for-differences.html#task-2---checking-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Load the data into your workspace. Make sure you load it into an object named <code>sugar_beet_virus</code> and then try performing some routine checks to make sure R has interpreted the data variables correctly and all expected data is present and accounted for. You can use some of the functions we explored in Chapter <a href="workshop-2---explorartory-data-analysis.html#checking-the-data">2.2.3</a> if you need some help with this.</p>
 <p>The data consist of measures of yields per field and then an indicator of whether the field was infected by virus or not.</p>
 <blockquote>
 <ul>
@@ -579,13 +562,13 @@ These data were taken from 56 fields in Norfolk &amp; Suffolk, half of which wer
 </ul>
 </blockquote>
 </div>
-<div id="task-3---making-some-basic-plots" class="section level3 hasAnchor" number="4.3.4">
-<h3><span class="header-section-number">4.3.4</span> Task 3 - Making some basic plots<a href="workshop-2---sampling-distributions-and-testing-for-differences.html#task-3---making-some-basic-plots" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="task-3---making-some-basic-plots" class="section level3 hasAnchor" number="3.3.4">
+<h3><span class="header-section-number">3.3.4</span> Task 3 - Making some basic plots<a href="workshop-2---sampling-distributions-and-testing-for-differences.html#task-3---making-some-basic-plots" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We will now use the <code>filter()</code> and <code>ggplot</code> functions to split the data sets and make some histograms. Try using the following chunk to look at yields of sugar been from fields infected with virus;</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#cb35-1" tabindex="-1"></a>sugar_beet_virus <span class="sc">%&gt;%</span> <span class="co"># pipe our data set into the filter function</span></span>
-<span id="cb35-2"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#cb35-2" tabindex="-1"></a>  <span class="fu">filter</span>(virus <span class="sc">==</span><span class="st">&quot;v&quot;</span>) <span class="sc">%&gt;%</span> <span class="co"># filter out data from virus infected fields</span></span>
-<span id="cb35-3"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#cb35-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">x=</span>yield)) <span class="sc">+</span> <span class="co"># note that there is a . here instead of a data set. This is because we are piping our filtered data set straight into ggplot and then telling it that the yield variable will be on our x axis</span></span>
-<span id="cb35-4"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#cb35-4" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">6</span>) <span class="co"># plots a histogram with 6 bins</span></span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#cb36-1" tabindex="-1"></a>sugar_beet_virus <span class="sc">%&gt;%</span> <span class="co"># pipe our data set into the filter function</span></span>
+<span id="cb36-2"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#cb36-2" tabindex="-1"></a>  <span class="fu">filter</span>(virus <span class="sc">==</span><span class="st">&quot;v&quot;</span>) <span class="sc">%&gt;%</span> <span class="co"># filter out data from virus infected fields</span></span>
+<span id="cb36-3"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#cb36-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">x=</span>yield)) <span class="sc">+</span> <span class="co"># note that there is a . here instead of a data set. This is because we are piping our filtered data set straight into ggplot and then telling it that the yield variable will be on our x axis</span></span>
+<span id="cb36-4"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#cb36-4" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">6</span>) <span class="co"># plots a histogram with 6 bins</span></span></code></pre></div>
 <p>You might notice that we haven’t assigned any of this to an object. We are also doing a lot of piping here. As you get more confident with code you will find that for quick explorations of the data, this method of analysis is much cleaner and a little faster. Now see if you can manipulate the above code to report a histogram for fields that aren’t infected with virus.</p>
 <blockquote>
 <ul>
@@ -593,9 +576,9 @@ These data were taken from 56 fields in Norfolk &amp; Suffolk, half of which wer
 </ul>
 </blockquote>
 </div>
-<div id="task-4---produce-some-descriptive-statistics" class="section level3 hasAnchor" number="4.3.5">
-<h3><span class="header-section-number">4.3.5</span> Task 4 - Produce some descriptive statistics<a href="workshop-2---sampling-distributions-and-testing-for-differences.html#task-4---produce-some-descriptive-statistics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Try to calculate the mean, standard deviation and standard error of the mean for yields from virus infected fields and fields without virus detected in them. Try using the <code>group_by()</code> and <code>summarise()</code> functions to do this, the code from Chapter <a href="workshop-1---explorartory-data-analysis.html#descriptive-statistics">3.3.1</a> will help you with two of these. See if you can figure out how to manipulate this code to give you the standard error of the mean. The equation for the standard error of the mean is given above.</p>
+<div id="task-4---produce-some-descriptive-statistics" class="section level3 hasAnchor" number="3.3.5">
+<h3><span class="header-section-number">3.3.5</span> Task 4 - Produce some descriptive statistics<a href="workshop-2---sampling-distributions-and-testing-for-differences.html#task-4---produce-some-descriptive-statistics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Try to calculate the mean, standard deviation and standard error of the mean for yields from virus infected fields and fields without virus detected in them. Try using the <code>group_by()</code> and <code>summarise()</code> functions to do this, the code from Chapter <a href="workshop-2---explorartory-data-analysis.html#descriptive-statistics">2.3.1</a> will help you with two of these. See if you can figure out how to manipulate this code to give you the standard error of the mean. The equation for the standard error of the mean is given above.</p>
 <blockquote>
 <ul>
 <li>Is there any preliminary evidence that the virus has affected the yields?</li>
@@ -604,8 +587,8 @@ These data were taken from 56 fields in Norfolk &amp; Suffolk, half of which wer
 <p>It is incredibly important to begin all statistical analyses with a visual inspection of your data, to assess the extent of any differences or associations and <strong>critically</strong>, to assess whether the assumptions of particular tests are met. In parametric tests of differences, data should be approximately normally distributed. If the data are skewed, you can explore whether the skew is influencing the outcome of the test, by comparing tests with and without datapoints driving the skew and/or comparing parametric and non-paramteric tests (we will cover these later in the course).</p>
 <p>Parametric statistical tests make certain assumptions about the shape and distribution of the data. Specifically, in the case of the one-sample t-test, our data should ideally be normally distributed. You will sometimes see the “Kolmogorov-Smirnov” test used to explore the assumption of normality. The null hypothesis is that the data are drawn from a normal distribution, so p&lt;0.05 means that the data are statistically significantly different from a normal distribution. However, the real question is are your data sufficiently different from a normal distribution to make a parametric test result unreliable? There is no test for this, you have to explore your data and try different approaches.</p>
 </div>
-<div id="task-5---answering-question-1" class="section level3 hasAnchor" number="4.3.6">
-<h3><span class="header-section-number">4.3.6</span> Task 5 - Answering Question 1<a href="workshop-2---sampling-distributions-and-testing-for-differences.html#task-5---answering-question-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="task-5---answering-question-1" class="section level3 hasAnchor" number="3.3.6">
+<h3><span class="header-section-number">3.3.6</span> Task 5 - Answering Question 1<a href="workshop-2---sampling-distributions-and-testing-for-differences.html#task-5---answering-question-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>Did yields in this year deviate from the long-term average yields for the region?</strong></p>
 <p>You should have answered above that in order to answer this question we require the “one-sample t-test”. This test allows us to look at whether the mean of a sample is statistically significantly different from a pre-specified value. In this case, we are using the test to ask whether the mean yield from our sample of fields is different from the long-term average yield. The basis for the t-test is the existence of sampling error. The data we have are from a sample, not from the whole population. In this example we have 56 fields (the sample) from all the fields of sugar beet grown in Britain (the population). We want to use the sample to infer something about the population. We know (hope!) that the sample will be representative of the population, but we also know that our estimates of population parameters (mean, variance) will not be exactly the same as those of the population. The t-test is derived from statistical sampling theory and allows us to specify, based on the sample size how likely it is (the statistical probability) that we have over- or under-estimated the population mean by a given amount.</p>
 <blockquote>
@@ -621,12 +604,12 @@ These data were taken from 56 fields in Norfolk &amp; Suffolk, half of which wer
 </ul>
 </blockquote>
 <p>Now we are ready to try running a one sample t-test. Try running the following;</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#cb36-1" tabindex="-1"></a><span class="co"># One-sample t-test</span></span>
-<span id="cb36-2"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#cb36-2" tabindex="-1"></a>one_sided_t <span class="ot">&lt;-</span> <span class="fu">t.test</span>(sugar_beet_virus<span class="sc">$</span>yield, <span class="at">mu =</span> <span class="fl">10.7</span>)</span>
-<span id="cb36-3"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#cb36-3" tabindex="-1"></a><span class="co"># mu here is our test mean, this is the mean known yield of the population as a whole</span></span>
-<span id="cb36-4"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#cb36-4" tabindex="-1"></a></span>
-<span id="cb36-5"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#cb36-5" tabindex="-1"></a><span class="co"># Printing the results</span></span>
-<span id="cb36-6"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#cb36-6" tabindex="-1"></a>one_sided_t </span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#cb37-1" tabindex="-1"></a><span class="co"># One-sample t-test</span></span>
+<span id="cb37-2"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#cb37-2" tabindex="-1"></a>one_sided_t <span class="ot">&lt;-</span> <span class="fu">t.test</span>(sugar_beet_virus<span class="sc">$</span>yield, <span class="at">mu =</span> <span class="fl">10.7</span>)</span>
+<span id="cb37-3"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#cb37-3" tabindex="-1"></a><span class="co"># mu here is our test mean, this is the mean known yield of the population as a whole</span></span>
+<span id="cb37-4"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#cb37-4" tabindex="-1"></a></span>
+<span id="cb37-5"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#cb37-5" tabindex="-1"></a><span class="co"># Printing the results</span></span>
+<span id="cb37-6"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#cb37-6" tabindex="-1"></a>one_sided_t </span></code></pre></div>
 <blockquote>
 <ul>
 <li>What does the one-sample t-test indicate about whether the mean yields of the pooled virus and non-virus affected fields differ from the long-term average?</li>
@@ -635,14 +618,14 @@ These data were taken from 56 fields in Norfolk &amp; Suffolk, half of which wer
 </blockquote>
 <p>Note that the output in the one-sample t-test includes the 95% Confidence Interval of the Difference. This is calculated from the difference between the sample mean and the hypothesised mean, and so is different from the 95% CIs that you calculated previously.</p>
 </div>
-<div id="levene-test" class="section level3 hasAnchor" number="4.3.7">
-<h3><span class="header-section-number">4.3.7</span> Task 6 - Answering Question 2<a href="workshop-2---sampling-distributions-and-testing-for-differences.html#levene-test" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="levene-test" class="section level3 hasAnchor" number="3.3.7">
+<h3><span class="header-section-number">3.3.7</span> Task 6 - Answering Question 2<a href="workshop-2---sampling-distributions-and-testing-for-differences.html#levene-test" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>Did the presence of viruses affect the yield of sugar beet in this year?</strong></p>
 <p>This time we need the two-sample t-test. The two sample t-test assesses whether the means of two samples are different from each other. It is therefore more commonly used than the one-sample test. The principle of the test is very similar to the one-sample test, but in the two-sample test we look at the standard error and confidence intervals for the difference between the means of the two samples. Specifically, we calculate a standard error for the difference between the two means, and then use this to generate a t-statistic. The assumptions of two-sample t-test are that the data for both samples are normally distributed and that the variances of the two groups are similar. To test this second assumption we can use a test called Levene’s test for Equality of Variances.</p>
 <p>Try running the following;</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#cb37-1" tabindex="-1"></a><span class="co"># Using leveneTest()</span></span>
-<span id="cb37-2"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#cb37-2" tabindex="-1"></a><span class="fu">leveneTest</span>(yield <span class="sc">~</span> virus, sugar_beet_virus)</span>
-<span id="cb37-3"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#cb37-3" tabindex="-1"></a><span class="co"># Be careful with which variable you place on which side of the tilde (~). You want your dependent (response) variable to be before the tilde and the independent (predictor) variable to be after the tilde.</span></span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#cb38-1" tabindex="-1"></a><span class="co"># Using leveneTest()</span></span>
+<span id="cb38-2"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#cb38-2" tabindex="-1"></a><span class="fu">leveneTest</span>(yield <span class="sc">~</span> virus, sugar_beet_virus)</span>
+<span id="cb38-3"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#cb38-3" tabindex="-1"></a><span class="co"># Be careful with which variable you place on which side of the tilde (~). You want your dependent (response) variable to be before the tilde and the independent (predictor) variable to be after the tilde.</span></span></code></pre></div>
 <p>The null hypothesis for Levene’s test predicts that the variances of the two groups are equal.</p>
 <blockquote>
 <ul>
@@ -656,10 +639,10 @@ These data were taken from 56 fields in Norfolk &amp; Suffolk, half of which wer
 </ul>
 </blockquote>
 <p>Try running the following;</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#cb38-1" tabindex="-1"></a><span class="co"># Two sample t test</span></span>
-<span id="cb38-2"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#cb38-2" tabindex="-1"></a><span class="fu">t.test</span>(yield <span class="sc">~</span> virus, <span class="at">data =</span> sugar_beet_virus, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb38-3"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#cb38-3" tabindex="-1"></a><span class="co"># Once again the tilde is used to denote dependent and independent variables</span></span>
-<span id="cb38-4"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#cb38-4" tabindex="-1"></a><span class="co"># We also specify which type of t-test we wish to perform and identify (based on our earlier Levene&#39;s test) that variances are equal (using the var.equal = TRUE expression), you can state that they are not equal by specifying FALSE here, R will then perform a correction without the assumption of equal variance and report Welch&#39;s two sample t-test.</span></span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#cb39-1" tabindex="-1"></a><span class="co"># Two sample t test</span></span>
+<span id="cb39-2"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#cb39-2" tabindex="-1"></a><span class="fu">t.test</span>(yield <span class="sc">~</span> virus, <span class="at">data =</span> sugar_beet_virus, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb39-3"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#cb39-3" tabindex="-1"></a><span class="co"># Once again the tilde is used to denote dependent and independent variables</span></span>
+<span id="cb39-4"><a href="workshop-2---sampling-distributions-and-testing-for-differences.html#cb39-4" tabindex="-1"></a><span class="co"># We also specify which type of t-test we wish to perform and identify (based on our earlier Levene&#39;s test) that variances are equal (using the var.equal = TRUE expression), you can state that they are not equal by specifying FALSE here, R will then perform a correction without the assumption of equal variance and report Welch&#39;s two sample t-test.</span></span></code></pre></div>
 <p>You should see a reported output from our two sample t-test and it should look something like this;</p>
 <pre><code>    Two Sample t-test
 
@@ -693,17 +676,17 @@ mean in group NV  mean in group V
 </blockquote>
 </div>
 </div>
-<div id="conclusion-1" class="section level2 hasAnchor" number="4.4">
-<h2><span class="header-section-number">4.4</span> Conclusion<a href="workshop-2---sampling-distributions-and-testing-for-differences.html#conclusion-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="conclusion-2" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Conclusion<a href="workshop-2---sampling-distributions-and-testing-for-differences.html#conclusion-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We have begun to explore some inferential statistics, beginning with two variations of the t-test. Next week we will extend some of these ideas of analysing differences between groups to the analysis and design of experiments.</p>
 </div>
-<div id="before-you-leave-3" class="section level2 hasAnchor" number="4.5">
-<h2><span class="header-section-number">4.5</span> Before you leave!<a href="workshop-2---sampling-distributions-and-testing-for-differences.html#before-you-leave-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="before-you-leave-2" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Before you leave!<a href="workshop-2---sampling-distributions-and-testing-for-differences.html#before-you-leave-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Make sure you save your script and download it if you would like to keep a local copy.</p>
 <p>Please log out of posit Cloud!</p>
 </div>
-<div id="references-2" class="section level2 hasAnchor" number="4.6">
-<h2><span class="header-section-number">4.6</span> References<a href="workshop-2---sampling-distributions-and-testing-for-differences.html#references-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="references-2" class="section level2 hasAnchor" number="3.6">
+<h2><span class="header-section-number">3.6</span> References<a href="workshop-2---sampling-distributions-and-testing-for-differences.html#references-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Wickham, H., Averick, M., Bryan, J., Chang, W., D’Agostino McGowan, L., François, R., Grolemund, G., et al., 2019. “Welcome to the tidyverse.” Journal of Open Source Software 4 (43): 1686. <a href="https://doi.org/10.21105/joss.01686" class="uri">https://doi.org/10.21105/joss.01686</a>. <br /></p>
 
 </div>
@@ -713,7 +696,7 @@ mean in group NV  mean in group V
           </div>
         </div>
       </div>
-<a href="workshop-1---explorartory-data-analysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="workshop-2---explorartory-data-analysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="differences.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
@@ -745,7 +728,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/03-Workshop2_testing_for_differences.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/02-Workshop3_testing_for_differences.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -756,7 +739,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["7025A.pdf", "7025A.epub"],
+"download": ["7056A.pdf", "7056A.epub"],
 "search": {
 "engine": "fuse",
 "options": null

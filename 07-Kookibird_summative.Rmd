@@ -1,0 +1,72 @@
+# Coursework 1; The Kooki Bird Summative Assignment					
+
+Report Length: 2000 words (maximum)
+
+## The exercise
+
+There are __two__ separate parts to this assignment:
+
+* **Part 1:**  for each of the five questions below, describe (a) the test you selected (b) why that test is appropriate and (c) the procedures you followed to conduct and interpret each test.
+* **Part 2:** present the results of your analyses in the style of the results section of a scientific paper.
+
+## The Problem
+
+The kooki bird is a very rare (fictional) species, which now exists only on a few islands. The birds are largely frugivorous, and natural fruit yield on the islands can vary with weather conditions.  Since 1980, a captive breeding programme has been in place and chick productivity has been measured for both captive birds and birds breeding in the wild.  Weather data have also been measured at a local meteorological station. The investigators are interested in assessing how maximum daytime temperatures during September and October and rainfall during January and February might affect wild chick productivity. The length of the breeding season was also recorded as the (standardised) number of days during which the temperature reached 15°C. The data table below gives the mean chick productivity for wild and captive birds, and the weather and breeding season length in each year.
+
+In addition to this, on the largest island, a long-term experiment was set up to examine the effects of different levels of supplemental feeding with bananas and mangos. There are two levels of banana and mango supplementation (none vs the standard supplement of 100 g bird$^-$$^1$). The experiment is a fully factorial design, with each of the four treatment combinations occurring in each year, and the arrangement of the experimental feeders on the island is fully randomized. As the birds are highly sedentary, they only experience the food supplementation at the feeder nearest them.  The data table below gives the mean chick productivity for the pairs experiencing each treatment within each year.  
+
+Using whatever statistical analyses you feel appropriate, answer the following questions;
+
+1)	How does chick productivity of wild birds compare to that of the captive birds?
+2)	Is there any evidence for changes in productivity over the study period among the wild birds?  
+3)	Is there evidence of the weather variables influencing chick productivity among the wild birds? 
+4)	Does chick productivity of wild birds vary with the length of the breeding season?
+5)	What are the effects of the food supplementation treatments on kooki bird productivity?
+
+__Hints & Tips__
+
+* The data presented below will, in places, need reformatting before you will be able to conduct your analysis. 
+*	For good examples of how results of analyses should be presented and described, consult Results sections of publications in a scientific journal, such as Journal of Animal Ecology or Journal of Applied Ecology. Part 2 of the assignment should be presented in this style.
+* Don’t be tempted to use multivariate techniques to analyse the effects of weather on productivity – use only the analytical approaches covered so far (i.e. up to week 7) in this module.
+
+Put your responses to __Part 1__ and __Part 2__ in a word document. You will be able to submit your work through the BIO-7056A page on Blackboard.
+
+## The Data
+
+| Wild birds $^1$| Captive-bred birds $^1$ |	BO MO $^2$ |	B1 MO $^2$ |	B0 M1 $^2$ |	B1 M1 $^2$ |	Jan Rain (cm) $^3$ |	Feb Rain (cm) $^3$ |	Sept Temp (°C) $^4$ |	Oct Temp (°C) $^4$ | Breeding Period	(Standardised) $^5$ |
+|:------:|:------:|:------:|:------:|:------:|:------:|:------:|:------:|:------:|:------:|:------:|:------:|	
+| 0.54 |	0.04 |	0.54 |	0.73 |	0.56 |	0.73 |	2.30 |	2.30 |	15.05	| 18 |	-0.52 |	
+| 0.55	| 0.02	| 0.53	| 0.64	| 0.54	| 0.68	| 2.40	| 2.10	| 16.1	| 17.55	| 0.13	
+| 0.58	| 0.04	| 0.61	| 0.71	| 0.61	| 0.72	| 1.90	| 1.10	| 17.4	| 17.5	| 0.39	
+| 0.50	| 0.02	| 0.49	| 0.64	| 0.51	| 0.71	| 2.20	| 3.50	| 16.55	| 18.35	| -0.02	
+| 0.49	| 0.02	| 0.45	| 0.52	| 0.48	| 0.60	| 2.20	| 1.90	| 13.05	| 17.5	| -0.17	
+| 0.41	| 0.06	| 0.32	| 0.34	| 0.33	| 0.38	| 1.50	| 1.40	| 13.1	| 14.85	| -1.72	
+| 0.32	| 0.03	| 0.45	| 0.46	| 0.48	| 0.63	| 1.10	| 1.70	| 14.65	| 17.4	| -0.37	
+| 0.33	| 0.50	| 0.44	| 0.52	| 0.51	| 0.57	| 1.10	| 0.80	| 16.85	| 18.05	| 0.08	
+| 0.54	| 0.33	| 0.54	| 0.62	| 0.57	| 0.63	| 1.50	| 0.80	| 16.45	| 17	| 0.29	
+| 0.35	| 0.62	| 0.36	| 0.46	| 0.40	| 0.52	| 1.10	| 2.50	| 15.65	| 18.15	| 0.42	
+| 0.26	| 0.10	| 0.29	| 0.35	| 0.33	| 0.42	| 0.60	| 0.40	| 14.45	| 18.1	| -1.57	
+| 0.38	| 0.01	| 0.35	| 0.38	| 0.45	| 0.46	| 0.90	| 0.70	| 14.6	| 17.95	| -0.02	
+| 0.22	| 0.02	| 0.41	| 0.50	| 0.47	| 0.60	| 0.20	| 4.20	| 16.75	| 17.1	| -0.77	
+| 0.46	| 0.08	| 0.31	| 0.58	| 0.34	| 0.60	| 1.80	| 1.80	| 16.65	| 16.3	| 0.34	
+| 0.43	| 0.13	| 0.43	| 0.56	| 0.46	| 0.63	| 0.50	| 2.00	| 14.65	| 17.9	| -0.97	
+| 0.57	| 0.81	| 0.41	| 0.52	| 0.42	| 0.68	| 2.10	| 1.10	| 14.9	| 18.45	| 0.03	
+| 0.40	| 0.06	| 0.50	| 0.64	| 0.52	| 0.62	| 1.50	| 1.00	| 18	| 17.45	| -0.12	
+| 0.53	| 0.09	| 0.51	| 0.60	| 0.59	| 0.80	| 0.80	| 1.60	| 16.1	| 18.35	| -1.17	
+| 0.36	| 0.09	| 0.36	| 0.37	| 0.58	| 0.46	| 1.10	| 0.30	| 16.4	| 17.1	| -1.72	
+| 0.38	| 0.03	| 0.35	| 0.48	| 0.42	| 0.46	| 0.50	| 1.40	| 14.5	| 17.35	| -1.67	
+| 0.45	| 0.16	| 0.59	| 0.55	| 0.59	| 0.67	| 1.30	| 1.60	| 14.6	| 18.65	| 0.49	
+| 0.51	| 0.01	| 0.54	| 0.68	| 0.59	| 0.71	| 2.10	| 2.80	| 15	| 16.2	| 0.89	
+| 0.65	| 0.05	| 0.45	| 0.77	| 0.41	| 0.67	| 2.30	| 3.50	| 13.5	| 20.3	| 0.54	
+| 0.63	| 0.03	| 0.55	| 0.84	| 0.58	| 0.97	| 2.70	| 1.60	| 16	| 18.2	| 1.44	
+| 0.58	| 0.01	| 0.59	| 0.57	| 0.71	| 0.77	| 1.20	| 1.20	| 17.8	| 16.4	| 1.74	
+| 0.52	| 0.02	| 0.56	| 0.61	| 0.53	| 0.57	| 0.70	| 0.90	| 18.45	| 18.3	| 1.79	
+| 0.44	| 0.02	| 0.45	| 0.51	| 0.56	| 0.56	| 0.90	| 1.00	| 17.95	| 17.85	| 1.04	
+| 0.53	| 0.05	| 0.55	| 0.66	| 0.63	| 0.79	| 1.60	| 1.80	| 17.4	| 18.7	| 0.69	
+| 0.69	| 0.07	| 0.50	| 0.82	| 0.51	| 0.77	| 2.70	| 1.80	| 16.6	| 19.9	| 1.34	
+											
+$^1$ Mean no. of chicks per pair of wild and captive birds each year (1980 onwards) <br />
+$^2$ Chick no’s per pair in each of the four food treatments (banana supplement (B1), mango supplement (M1) and no supplement (B0 and M0)) in each year <br />
+$^3$ Total rainfall in January and February of each year <br />
+$^4$ Mean temperature in September and October of each year <br />
+$^5$ Standardised length of the breeding season (difference from long-term average) <br />

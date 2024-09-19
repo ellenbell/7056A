@@ -1,0 +1,435 @@
+# Workshop 11/12  A Very Introductory Introduction to Generalised Linear Models
+
+This chapter will run in Workshops 11 and 12 of Weeks 9 & 10.
+
+## Introduction
+
+This week we will start to explore the world of generalised linear models (GLMs), not to be confused with general linear models (that have underpinned all of the statistical techniques we have studies so far). 
+
+### What is a Generalised Linear Model and why are they useful?
+
+We have so far spent a lot of time thinking about the general linear model family (including regressions, ANOVAs and ANCOVAs). We have also spent some time dealing with assumptions. All of these models make certain assumptions about the data they are dealing with and some of these assumptions are held in common within the general linear model family.
+
+Of the dependent/response variable they all assume;
+
+* A continuous variable that can have both positive and negative values as well as fractions
+* That the data are unbounded (although this is somewhat loosely applied, size, for example, cannot be negative)
+* Equal variance  
+* A normal distribution
+
+You will have checked the distribution and equality of variance for all of our previous analyses and where these assumptions were violated we either transformed the data or performed non-parametric alternative tests. 
+
+However often in the biological sciences you will be collecting data that is not appropriate for use in general linear models. For example your response variable may be count data (so bounded, counts cannot go below 0) or binary (e.g. presence/absence, denoted by 1s and 0s), or another type of categorical data. Here a general linear model would be inappropriate and this is where GLMs really come into their own. 
+
+These workshops will be, in no way, a definitive guide to the minutia of GLMs, but we will cover a couple of common usages and have a think about what you need to look out for to ensure your model is an appropriate fit for your data. If you use this family of models on your own data (which, if you continue in the field of ecology, you almost certainly will) you will need to do additional reading and also, probably, spend quite a lot of time playing with different model structures to become proficient. 
+
+### Key parts of a GLM
+
+The implementation of GLMs in R is quite different to the other models we have previously constructed. There are three additional components to be aware of; 
+
+* **Linear Predictor** - this sounds scarier then it is. You have all already used linear predictors. This is an equation which describes how the predictor variables affect the response variable. With our linear models an example of this was;
+
+$$
+y = mx + c
+$$
+
+* **Family** - also known as the error structure. This is the probability distribution that describes the response variable and that will underpin how your GLM treats your data.
+* **Link Function** - this accompanies your family argument and provides a link between the linear predictor and the probability distribution.
+
+### Different famlies and their link functions
+
+The family (or error structure) you select for your GLM will depend on how your data look, but the most common ones are listed below. 
+
+| Data Distribution | Family |	Default Link Function |	Link Function |	R code |
+|:------:|:------:|:------:|:------:|:------:|:------:|	
+| Normal | Gaussian | Identity | $gμ = μ$ | `gausian(link="identity")` |
+| Poisson | Poisson | Log | $g(μ) = log(μ)$ | `poisson(link="log")` |
+| Binomial | Binomial | Logit | $g(μ)= log(\frac{μ}{1-μ})$ | `binomial(link="logit")` |
+| Gamma | Gamma | Inverse | $g(μ)= \frac{1}{μ}$ | `gamma(link="inverse")` |
+
+These are just a few of the more commonly used GLM error structures and their default link functions that you are likely to come across. We will explore two of these in more depth over the course of this week. 
+
+### GLMs with a Poisson Error Structure 
+
+As ecologists you will frequently find that the data you are collecting is count data. Count data is inherently tricky to analyse using general linear model approaches. For a start it breaks the assumption that the data are unbounded (it cant go below 0) and often it cannot form fractions (often we count in whole numbers only), so really its discrete data. These two factors mean that count data are unlikely to conform to a normal distribution, which works with continuous data and allows for negative values (neither of which are permitted by count data). In addition, normal distributions are symetrical, with half of the data points falling on either side of the mean. Count data (often but not always) has a greater number of data points towards the lower end of the x axis. So it will be positively skewed and follow a Poisson distribution. 
+
+If we come across data like this, we could try doing some log transformations and that might fix the issue or it might not. Or if we only want to build a simple model we could explore non-parametric alternatives to our general linear models. But sometimes we want to build a more complex model with several independent variables and sometimes log transformations just don't cut it anymore. So here we may consider performing a GLM with a poisson error structure and log link function. 
+
+So our model would look something like this;
+
+$$
+y = log_e^{mx+c}
+$$
+
+### GLMs with a Binomial Error Structure
+
+You may also end up designing your experiment in such a way that your response/dependent variable is categorical and/or binary. For example, commonly ecologists use binary data to measure the presence or absence of a species. When we have a categorical or binary response variable we will automatically be breaking several of the assumptions of the general linear models (i.e. the response is not continuous, it is bounded and it wont conform to a normal distribution). This is where GLMs with a binomial error structure come in super handy (they essentially perform something akin to a logistic regression, you may see these refereed to in the literature). 
+
+When we construct a model with a binary (or categorical) dependent variable, such as presence or absence, we are essentially asking which independent variables make it more or less probable that we will detect the presence of a species. This can be expressed mathematically like this;
+
+$$
+P(Y) = \frac{e^z}{(1+e^z)}
+$$
+
+Where $P(Y)$ is the probability of a given Y value (e.g. present or absent), $e$ is the base of natural logarithms and $z$ is the linear regression equation ($m_1x_1+m_2x_2+m_3x_3+...c$). The above equation can then be rearranged to;
+
+$$
+log_e(\frac{P(Y)}{1-P(Y)}) = m_1x_1 + m_2x_2+m_3x_3 +... c
+$$
+So, this equation is the (natural logarithm of) the probability of being in one group (e.g. present) divided by the probability of being in the other group (e.g. absent). The predictor coefficients (slope (m) and intercept (c)) are used in the same way as in regression, but instead of predicting an actual value of Y, they predict the probability of Y being in one group or the other. Neat right???
+
+## Practical 11 - GLMs 
+
+This week we will be working through three data sets;
+
+* Sheep
+* Frogs
+* The return of the Kooki bird
+
+I have created a new Classroom in Posit cloud for you to work from this week. Follow the link [here](https://posit.cloud/spaces/451048/join?access_code=SiQlhHzulmeBkbO4NcMfueUek8iqroLUiJnPLxJU). Please note, to hopefully fix the issues around crashes last week, I have installed all of the packages in advance, you can see this in the script called `startup.R` saved in the workspace. The package installations are hashed out, you will still need to load `tidyverse`, `performance`, `pscl`, `lme4`, `Matrix` and `MASS` with the `library()` function but you WONT need to run `install.packages()` at all.
+
+## A Poisson GLM on some beautifully behaved data
+
+Our first workshop mirrors an excellent workshop taken from Beckerman et al., 2017. The data were collected from the Soay sheep population on the island of Hirta (Scotland). Scientists wanted to know if lifetime reproductive success (number of live young produced over the course of a lifetime) increased with the average body mass of female sheep (ewes). This data set is very neat, quite simple and beautifully well behaved so makes for a great starting point with your first GLM. I also highly recommend this publication if you wish for further reading. 
+
+* `SoaySheepFitness.csv` data file
+
+This data file contains the following data;
+
+* fitness - the number of offspring produced over a ewes lifetime
+* body.size - the average body mass of each ewe
+
+### Task 1 - Check the data
+
+Load the data set `SoaySheepFitness.csv` into your workspace under the object name `sheep` and try performing some routine checks to make sure R has interpreted the variables correctly and all expected data is present and accounted for. You can use some of the functions explored in Chapter \@ref(checking-the-data) if you need some help with this. 
+
+### Task 2 - Exploring the data
+
+As always, its a really good idea to explore your data set before you start launching into more advanced analyses. 
+
+> * Build a histogram for `fitness` what does the distribution of the data look like?
+> * Is a mean going to be a fair reflection for this data distribution?
+> * Build a scatter plot with `body.size` on the x axis and `fitness` on the y axis, how would you interpret this plot, what shape is it?
+
+Try adding the following line to the code for your scatter plot;
+
+```{r}
+geom_smooth(method = "lm", se = FALSE)
+```
+
+> * Does this regression line fairly reflect the data?
+
+Spoilers, no not really, a curve would be a much better fit for these data. Try adding this additional line to your scatter plot code;
+
+```{r}
+geom_smooth(span = 1, colour = "red", se = FALSE)
+```
+
+> * Hopefully you have two lines on your scatter plot, which one is a better fit, blue or red?
+
+These kinds of patterns are classic for poisson distributions. We could try and build a linear model with these data and R would let you, but the model fit would be terrible and you would run the risk of producing a nonsensical analysis.
+
+Instead lets try fitting a generalised linear model with a poisson error structure. 
+
+### Task 3 - Fitting a GLM
+
+So our first GLM. There is a nice simple function for fitting this model, try running the following;
+
+```{r}
+# Running a GLM with poisson error structure and log link function
+sheep_glm <- glm(fitness ~ body.size, data = sheep, family = poisson(link=log))
+```
+
+Right lets have a look at this model. Try running the following;
+
+```{r}
+# Summary for our sheep_glm 
+summary(sheep_glm)
+
+# Produce an analysis of deviance table for our sheep_glm
+anova(sheep_glm, test = "Chisq")
+```
+
+Take a look at the `summary()` function output. This output should look fairly familiar, it bares a is a fairly close resemblance to the `summary()` we produced for our `lm()` functions. 
+
+* **Call** - This is just a reminder of the model that were looking at
+* **Coefficients** - Once again we have a intercept and a slope, we are still just modeling a line, and each of these comes with an standard error value. We also have a z value which, along with our p-values, allow us to work out the probability of our coefficients being 0.
+* **Dispersion parameter** - gives an indication of acceptable levels of dispersion for your model. 
+* **Null deviance** - this is a measure for all of the variation in the data.
+* **Residual deviance** - this is a measure for the variation left over after the model has been fitted. So if there is a big difference between Residual and Null deviance then more of the variation is explained by the model. 
+* **AIC** - Akaike information criterion - we wont go into this in any depth but you can use this score to compare the fit of different models which may be useful to you. 
+* **Fisher scoring iterations** - Again we wont really worry about this, its a way R expresses how hard it was to find a model of best fit. 
+
+So if we apply our old practices of, for a given value of x, trying to calculate y based on our `summary()` outputs. 
+
+> * Take a look at the intercept, what does this tell you? Does it match what you might expect from the first scatter plot we produced?
+> * See if you can use $y=mx+c$ to calculate y for sheep that weighs 5kg. Again take a look at your figure, do these support each other?  
+
+Hopefully you recognise that our plot does not support a negative intercept and a 5kg ewe producing, on average, 0.3 lambs over her lifetime seems a little on the low side. 
+
+> * Take a look at the equations above that describe GLMs with a Poisson error structure and log link function. Do you notice anything? 
+
+Bingo - our model equation is log transformed. So we need to undo that if we want to get meaningful predictions out of our `summary()`.
+
+Try running the following;
+
+```{r}
+exp(5 * 0.54087 + -2.4)
+```
+
+The `exp()` function is essentially undoing the effects of the $log_e$ transformation. So we can see that a 5kg ewe, would on average, be expected to produce 1.35 lambs over her lifetime. 
+
+We can also see that both slope and intercept in this model are significantly different to zero. 
+
+Now try running the above `anova()` function. Note this does not perform an ANOVA. In this context it is producing an analysis of deviance table. You will note that the term **Deviance** comes up a lot here, this is essentially a measure of the fitted GLM with respect to a perfect model. So here we have the total deviance in the data (fitness) = 85.081 and the deviance explained by body size = 37.041. So almost half of the deviance here is explained by body size. We then have a p-value, but you might have noticed that when you ran the `anova()` function you had to specify `Chisq`. When we run GLMs we have to specify which distribution table to use. We are **NOT** running a $X^2$ test here, but we are using the $X^2$ distribution table to find out p-value. So here our test statistic would be $X^2$ = 37.04, df = 1 and p < 0.001.
+
+The statistical theory that underpins all of this is related to likelihood tests which we wont be going into any more depth with here. You are welcome to read around these though if you want to further your understanding. 
+
+### Task 4 - Checking the model
+
+Really, if I was running this analysis for reals, I would do the model check before leaping into interp, but for teaching purposes its good for you to get familiar with model outputs first. But now we really can't put this off any further, its time to check out model and see if its any good. Thankfully, there is a nice function that does a lot of the work for us here (you can also use this on your linear models as well btw).
+
+Try running the following;
+
+```{r}
+# Checking out models
+performance::check_model(sheep_glm)
+```
+
+Hopefully R has built you a series of 5 plots. The nice thing about performance, is it gives you clues to what we are looking for in a good model fit and then also shows you where our model is on that scale. But lets break this down a little further;
+
+1) **Posterior predictive check** - this simply compares mean simulated replicated data under the fitted model (blue) with the observed data points (green).
+2) **Overdispersion and zero inflation** - this compares observed variance to the variance of a theoretical model, it estimates that variance should be roughly equal to the mean, it its much higher then you have evidence of overdispersion.
+3) **Homogeneity of Variance** - rather like the fitted vs residuals plots we produced before for our linear models this plot checks the assumption of homoscedasicity. We're looking for a nice even distribution of points above and below the line
+4) **Influential observations** - We have calculated leverage values for our data points before, this plot is a nice way of quickly checking them. Points should be within the contours, if they fall outside, you may have outliers present. 
+5) **Normality of residuals** -  This checks to see if the residuals from the model are normally distributed. If points follow the line then they follow a normal distribution. Quite frequently, you will see some deviation from the line at the top or tail of the residuals. This would indicate that the model doesn't predict the outcome for points in that range very well. 
+
+A note on overdispersion and zero inflated data <- this is the thorn in the side of almost every ecologist I know. It's a total pain in the bum and it happens a lot. But what really is it? In real terms, overdispersion is talking about extra variation that is not accounted for in your model. It could come from an experimental design that doesn't account for every single source of variation (very likely in biological studies), it can also come from non-independence in your data set or it could come from zero-inflation, which is when we have more zeros relative to the number expected for the distribution we are using.
+
+All of these sources of overdispersion are common in the biological sciences and you need to take note if your model is overdispersed because it plays havoc with your p-values (I know, not the p-values!!!). Overdispersion makes your p-values less conservative so you are more likely to get a false positive, which as a scientist, this is right up there in the top 5 worst nightmares (after the one where you're trying to run away from the thing you cant quite see and then you fall over). 
+
+Alongside our output from the `check_model()` function, we can also check for overdispersion ourselves by dividing the  residual deviance by the residual degrees of freedom. In a perfect model, this would be 1 as indicated by our dispersion parameter. If the result of dividing residual deviance by residual degrees of freedom is much more then 1 (the rule of thumb is if its greater then 2) its our data is overdispersed, and if its much less then our data are underdispersed. 
+
+So what do we do if we have evidence of overdispersion? Well we tinker with the model, there are lots of variants of the GLM so it maybe a new error structure of link function will allow you to account for the overdispersion. A common alternative for the poisson error structure is the quasipoisson error structure. All the quasipoisson error structure does is estimates the dispersion index and then R adjusts your p-values accordingly (making them more conservative).
+
+You can try it out if you like, try running the following;
+
+```{r}
+# Fitting a GLM with a quasipoisson error structure
+sheep_glm <- glm(fitness ~ body.size, data = sheep, family = quasipoisson(link=log))
+summary(sheep_glm)
+anova(sheep_glm, test = "F")
+```
+
+Note that when we call the `anova()` function, we have changed from `Chisq` to `F`, this is just telling R to run an F ratio test rather then a likelihood ratio test. Its just a nuance of using a different model structure. 
+
+### Task 5 - Plotting our model
+
+Right, that's an absolute tone of theory, lets do something fun and make a plot with a good regression line.
+
+Try running the following;
+
+```{r}
+ggplot(data = sheep, aes(x= body.size, y = fitness)) +
+  geom_point() +
+  geom_smooth(method = "glm", method.args = list(family=poisson), se = TRUE)
+```
+
+Doesn't that look better! Feel free to do some tinkering to see if you can make this plot as beautiful as it deserves to be!
+
+## A Binomial GLM
+
+In this data set were going to have a look at tackling another commonly occurring issue in ecological data. Having a binary dependent variable. 
+
+We will explore the effect of water depth, vegetation height and aquatic vegetation type on the presence or absence of frogs across 76 pools. We wish to know whether the presence or absence of frogs can be predicted from these parameters. Previous analyses have shown that water depth and vegetation height can both influence frog distribution but the impact of dominant aquatic plant type is as yet unknown.
+
+*	`frogs.csv` data file
+
+This data file contains the following data;
+
+* frogs - frog presence (1)/absence (0)	
+* water - Mean water depth (cm)
+* veght - Mean vegetation height (cm)
+* distance - Distance to nearest path (m)
+* planttype - Dominant aquatic plant type (species)
+
+Take note - in this data set water depth, vegetation height and distance to paths are all continuous measurements, whereas planttype is categorical.
+
+### Task 6 - Check the data
+
+Load the data set `frogs.csv` into your workspace under the object name `frogs` and try performing some routine checks to make sure R has interpreted the variables correctly and all expected data is present and accounted for. You can use some of the functions explored in Chapter \@ref(checking-the-data) if you need some help with this. 
+
+### Task 7 - Explore the data
+
+As always its good to spend some time exploring the data, our dependent variable here is binary so that reduces the number of checks we can do at this stage. However we can make some plots, try running the following;
+
+```{r}
+ggplot(data = frogs, aes(x=water, y = frogs)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
+> * What is this plot telling you about the relationship between frog prescence and water depth?
+> * Is the regression line a good fit?
+> * Produce similar plots for the other variables in the data set. When you get to plotting `planttype` on the x axis you may want to add `position="jitter"` to the `geom_point()` function and colour the points by `frogs`. 
+> * Look at each of these plots in turn, do you think any of these independent variables might help us predict presence of frogs?
+> * Finally, before we start fitting some models produce a matrix scatter plot for all of our variables, see Chapter \@ref(c11t4) if you need a little help with this. 
+
+### Task 8 - Fitting a GLM
+
+Right so we are ready to start fitting some models. We will use the Enter method, as we did with our linear models in Chapter 11. We will begin by including all relevant variables and removing them one at a time. We know we have a binary dependent variable so we are going to need to run a GLM with a binomial error structure, the default link function for this family is logit. So we have all the basic elements for our first GLM. Try running the following;
+
+```{r}
+# Fitting a glm with binomial error structure
+frog_glm1 <- glm(frogs ~ water * veght * distance * planttype,
+                 family = binomial(link="logit"),
+                 data = frogs)
+```
+
+Notice we got a little warning message about convergence, so we know we might have a bit of an issue with this model. Try running; `performance::check_model()`, `summary()` and `anova()` for this GLM (remember for `anova()` you will need to specify `test = "Chisq"`).
+
+> * What do these outputs tell you?
+
+Yup this model is a bit of a mess, `check.model()` will almost certainly have failed to produce an output. That is because we have far too many variables and interactions going on and not enough data. Ok, lets try again.
+
+> * Run the above model again and save it under `frog_glm2` but change the interaction terms to additive ones. Take a look at the `performance::check_model()`, `anova()` and `summary()` outputs. What are these telling you? Note you will have a few additional plots from `check_model()`, see if you can work out how to interpret them. Ask for help if needed.
+
+You might have seen we have some evidence of collinearity in our data. This is never a good think when fitting models. Take a look at the variables flagged and select one to exclude in the next iteration of model fitting. 
+
+> * Fit a new model but with one of the collinear variabled removed. Take a look at the `performance::check_model()`, `anova()` and `summary()` outputs. What are these telling you?
+> * You might have noticed that an additional variable has now been identified as significant. Why do you think this is?
+> * Run the model again, removing one variable at a time (starting with the least significant), until only significant vairables remain. Take a look at the `performance::check_model()`, `anova()` and `summary()` outputs each time. What are these telling you?
+
+So now we have our minimal model, we can start thinking about what it all means in real terms. 
+
+### Task 9 - Interpretation and plotting
+
+Interpreting models that have a binomial error distribution can be a little bit of a brain teaser, binary data isn't something we have spent much time thinking about and the theory is a little bit different to that we have considered before.
+
+Lets have a look at your `summary()` output. This can be interpreted in a very similar way to our interpretation of our GLM with a poisson error structure (above). The key difference is when we look at the estimates for our coefficients. For both of the variables in our minimal model, `Estimate` still refers to slope but what does that mean when we have binary data? Lets go back to our linear model equation;
+
+$$
+y = mx + c
+$$
+
+We have used this equation lots of times to work out how $y$ might be expected to change per unit change in $x$. We can apply a similar logic here, essentially our GLM with a binomial error structure is trying to calculate the probability of detecting $y$ (our frogs) per unit change in $x$ (our water and vegetation height variables). Lets just look at these slopes, run;
+
+```{r}
+frog_glm4$coefficient[2:3]
+```
+
+Now these values doesn't really make sense, negative water depth? What? Remember our model is running another one of those pesky $log_e$ transformations. Ok so try this;
+```{r}
+exp(frog_glm4$coefficient[2:3])
+```
+
+You should get an out put that looks something like this;
+
+```
+> exp(frog_glm4$coefficient[2:3])
+    water     veght 
+0.9751004 1.9345468 
+```
+
+So, we can think of these exponentials as giving us the odds that frogs will be present. This is slightly easier when values are above 1. So we will look at `veght` first. Our value of `1.94` suggests that for every cm increase in vegetation height we increase the likelihood of finding a frog by 1.94. You will see this also referred to as an odds ratio if you do any further reading. 
+
+Lets turn our attention to water depth. When your odds value is less then one, that marks negative relationship between your response and predictor variable, when your odds value is greater then 1 this relationship is positive. If your confidence intervals include zero the relationship is not significant. 
+
+For water depth, we have an odds value of 0.98, so we know our relationship between frog presence and water depth will be negative. We also need to do a little maths trick to interpret this value as we did for vegetation height. We have to calculate the inverse value (1 divided by the odds). Do this now. 
+
+```
+1/0.98 = 1.020408
+```
+
+Hopefully you have an answer like the one above. This means that for every cm increase in water depth the likelihood of finding a frog decreases by 1.02. 
+
+Finally lets have a think about our intercept. Once again we will need to work out the exponential for our intercept, if we wish to interpret it in real terms. Our intercept is the probability of finding frogs when both water depth and vegetation height are set to zero. 
+
+> * See if you can work out what this is from the `summary()` output of our model. 
+
+We wont go through the Analysis of Deviance table called by your `anova()` function here, the interpretation is much the same as before, when we were looking at GLMs with a poisson error structure. 
+
+Finally, it would be great to get some decent regression lines plotted on our figures, again `ggolot()` does a lot of the leg work for you here. Try running the following;
+
+```{r}
+# Plotting binary data
+ggplot(frogs, aes(x = veght, y = frogs)) + 
+  geom_point() +
+  geom_smooth(method = "glm", method.args = list(family=binomial), se = TRUE)
+```
+
+> * Take a look at this plot, does it support the conclusions drawn from our `summary()` output? 
+> * Build a similar plot for water depth, what does this plot tell you? 
+
+## A Poisson Mixed Effects GLM 
+
+Finally we are going to see whats going on with our lovely kooki bird population. Your aim is to build a model to expore which factors influence kooki bird abundance within patches of forest. You have a data set that contains the following survey data from 50 forest patches;
+
+* kooki.csv - data file
+
+This file contains the following data;
+
+* site - coded 1 to 5
+* Kooki_count - kooki bird abundance
+* fruit_trees - presence or absence of fruiting trees
+* distance_river - distance to teh nearest river (m)
+* canopy_cover - canopy cover (%)
+
+### Task 10 - Check the data
+
+Load the data set `kooki.csv` into your workspace under the object name `kooki` and try performing some routine checks to make sure R has interpreted the variables correctly and all expected data is present and accounted for. You can use some of the functions explored in Chapter \@ref(checking-the-data) if you need some help with this. 
+
+### Task 11 - Explore the data
+
+Start by exploring the data, build some histograms and other exploratory plots. You may find it helpful to build a matrix scatter plot as well. 
+
+> * How are these data distributed? What does that mean for the type of model you may wish to fit? 
+
+As you know, count data are very often left-skewed (i.e. lots of small counts and few large counts), and of course they cannot be negative (i.e. bounded at zero). Consequently, the normal distribution is very often a poor fit to count data.
+
+> * Do your other data explorations tell you anything else? How do you think our other variables are affecting kooki bird abundance?
+
+### Task 12 - Fitting a GLM
+
+Try running a GLM, with a Poisson distribution and log link function. Add `kooki_count` as your response variable and add `fruit_trees`, `distance_river` and `canopy_cover` as predictors. Follow the enter method until you have constructed a minimal model. Remember to keep using`performance::check_model()` to check each model you produce. 
+
+> * Do any of the predictors explain a significant amount of the variation in kooki bird abundance?
+> * Which variables are retained in your minimum model?
+> * Are there any features of the study design that should be considered in your model?
+> * What do your model diagnostics tell you? 
+
+The 50 survey locations for which you have data were spread across 5 sites, with between 6 and 14 survey locations per site. As survey locations from the same site are not independent of one another (and especially as the number of surveys per site is not equal), it is possible that some sites are contributing disproportionately to the model and influencing the results. You therefore need to include Site in the model, but including it as a fixed effect will use up a lot of the power in your model. You can, however, include Site as a random effect, if you build a Generalised Linear Mixed Model. For this we will need to use a new function. Try running the following code;
+
+```{r}
+# Building a generalised mixed effects model
+kooki_glmer <- glmer(kooki_count~ fruit_trees + canopy_cover + distance_river + (1|site), family=poisson(link=log), data=kooki)
+```
+
+Rather like our linear mixed effects models, here we have incorporated `site` as a random factor. Take a look at the model outputs and diagnostics. 
+
+> * How would you interpret the outputs from this model?
+> * Why might including site as a random effect have altered the significance of some predictors? A matrix plot of all the variables will help here.
+> * Which model do think is the most robust at identifying factors contributing to variation in kooki bird abundance?
+> * How do your model diagnostics look? 
+
+If you think these data are highly overdispersed, congratulations buy yourself a treat, you have won at statistics. These data are overdisperded any guesses as to why? 
+
+> * Go back to your initial histogram, why do you think we have signatures of overdispersion?
+
+If you answered, zero inflation, you are on a roll. Yes these data are full of zeros. Which is not uncommon in ecology. There are several things you can try to do to improve model fit when you have zero inflation. You can try quasi Poisson or negative binomial error structures or even mixture and hurdle models. There are packages that can be used to fit all of these. You are welcome to try and improve the model fit for the kooki bird data set in class with our good old friend Google or we can leave it there if you have reached stats saturation point. 
+
+## Conclusions
+
+This concludes my teaching on this module. We have played with lots of types of multivariate linear models and a few different types of generalised linear models. Over the next two weeks Dr Richard Davies will be taking over and introducing you to principal components analysis (PCA) as well as multivariate community analysis. 
+
+You can find the summative coursework for BIO-7025A in the next chapter. However, I would recommend completing Richards materials on PCA and multivariate community analysis before beginning the assignment.
+
+## Before you leave!
+
+Make sure you save your script and download it if you would like to keep a local copy.
+
+Please log out of posit Cloud!
+
+## References
+
+Beckerman, A.P., Childs, D. & Petchey, O.L., 2017. Getting Started with R; an Introduction for Biologists. Oxford University Press. Oxford, UK. 

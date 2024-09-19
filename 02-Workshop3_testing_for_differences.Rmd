@@ -1,0 +1,283 @@
+# Workshop 3 - Sampling Distributions and Testing for Differences
+
+## Introduction
+
+In the lecture last week we noted that one of the most important applications for statistical analyses is assessing whether differences exist between groups. In the next two sessions, we are going to concentrate on a series of statistical analyses that allow us to determine whether there are differences between groups of data. 
+In developing an understanding of this form of statistical analysis, we have to be clear about two statistical concepts. These are the ideas of sampling and of probability. 
+
+### Sampling {-}
+
+What is the density of trees in the Amazon? We cannot measure this density precisely – we have to estimate from samples. When presented with a large number of units that we could potentially measure, we can only usually measure a subset. In statistical language, this larger number is known as the population, which is the collection of units to which we want to generalise a set of findings. The subset taken from this population is termed a sample, and is defined as any portion of the population selected for study. This distinction is important, and is emphasised by using different symbols for the population and sample parameters (mean and standard deviation in particular). Importantly, if we calculate a statistic, then we are trying to estimate a population parameter. 
+
+### Sampling error {-}
+
+The key goal in sampling is to select a portion of the population that displays all of the characteristics of the population. For example, if we take a sample of 100 British women, then we would expect measurements taken from these (height, weight etc.) to be representative of the population of British women. Critically, however, this sample would not have exactly the same mean, standard deviation etc. There is always some error in such estimates. Statistical analysis is designed to cope with such error. 
+
+### Probability {-}
+
+In a sample, individuals (e.g. tall women, dense forest patches) that are more abundant will be encountered more frequently. The frequency distributions we looked at last week effectively represent the probability distribution of our observations. The height of a bar represents the probability of observing that class. 
+
+The normal distribution was introduced last week, as well as the standard deviation that measures the spread of this distribution. 
+
+### Variance {-}
+
+$$
+S^2 = \frac{\sum (x - \bar x)^2}{(n-1)}
+$$
+Variance (S$^2$) is calculated as the sum of squared deviations from the mean. The standard deviation (S) is then calculated as the square root of variance. It is easy to see how these both measure the spread in the data: the variance is the difference of each data point from the mean, squared (to remove the sign) and averaged. Square-rooting variance to give standard deviation allows this number to be presented in the correct units.
+
+### Standard Deviation {-}
+
+$$
+SD= \sqrt{\frac{\sum (x - \bar x)^2}{(n-1)}} 
+$$
+
+The standard deviation (usually abbreviated to SD or S) defines some important probabilities for the normal distribution, as shown in the graph on the left. For example, 95% of the data lie within the range given by ±1.96 standard deviations (an approximation of ± 2 standard deviations can therefore often be used as a rough guide to where 95% of the data lie).
+
+We noted earlier that if we take a sample of a given size from a large population then we will not get the same estimate of the mean and SD each time. If we wanted to test a hypothesis about the mean then this could be a problem: how do we know whether variations between groups are due to chance variations or real differences? Luckily we have a way of assessing this: if we estimate a mean from a sample of a population, then the mean and variance can be used to estimate how variable we would expect the sample mean to be, on average. This depends on:
+
+1) The sample size: low sample sizes give more variable estimates of the population mean.
+
+2) The variability in the population: the more variable the population, the
+more variable the sample mean will be.
+
+### Standard Error of the Mean {-}
+
+$$
+SEM = \frac{SD}{\sqrt{n}}
+$$
+
+Standard error of the mean of standard error (SEM or SE) is the parameter which measures how well the sample mean is likely to reflect the population mean. It does this by dividing sample SD (the spread in the data) by the size of the sample (bigger samples are more likely to provide accurate estimates of the mean). Large SE’s can therefore result from widely spread data, small sample sizes, or both. A large sample from a narrow distribution will give a small SE, indicating that the sample mean is very likely to be close to the population mean.
+
+### Confidence Intervals {-}
+
+$$
+CI =\bar{x} ± (t * SEM)
+$$
+If we have estimates of the mean and SD of a population, we can state the probability that the population mean is a given value. This is estimated by the t-distribution, which accounts for error in the estimates of the mean and the population SD. A good example of how this works is the estimation of confidence intervals. If, from a sample size of 20, we estimate a mean of 50, and a SEM of 5, then the t distribution can be used to calculate where we would expect the true population mean to be 95% of the time (which turns out to be between 40 and 60, i.e. the difference between the population and sample mean would be greater than 10 only 5% of the time).
+
+This is a powerful statement: from the sample data we can calculate the probability with which we would expect the population mean to be greater or less than a given value. Two things are important here:
+
+1) Sample size: this is used to calculate the SEM and in selecting the appropriate value of t. For a sample size of n, the value of t has n-1 degrees of freedom (d.f.). All statistical tests use either d.f. or sample size to account for the likely accuracy of estimates.
+
+2) Probability: in statistical analysis we say that an event is unlikely, and hence likely to be of significance, if there is less than a one in twenty probability of the result arising by chance (i.e. the probability of the event is 5% or less). Note that this means that if the probability of an event is <0.05, then this result can have arisen by chance one in twenty times.
+
+### T-tests {-}
+
+__One sample t-test__
+
+$$
+t = \frac{\bar x - \mu}{SEM}
+$$
+
+The one-sample t-test is a simple form of the t-test. It compares a sample of data to a pre-defined value. If the probability of the sample mean ($\bar{x}$) being the same as the pre-defined value ($\mu$) is <0.05, then we can state that there is a statistically significant difference between our sample mean and that value.
+
+__Two sample t-test__
+
+2-sample t-statistic
+$$
+t = \frac{\bar x_1 -\bar x_2}{SE}
+$$
+Pooled estimate of variance
+$$
+s^2 = \frac{\sum(x_1 - \bar x_1)^2 + \sum(x_2 - \bar x_2)^2}{(n_1 -1)+(n_2 -1)}
+$$
+Pooled SE
+$$
+SE = \frac{SD}{\sqrt n_1 +n_2}
+$$
+The most common use of the t-statistic is in comparing two samples to assess whether they are drawn from the same distribution, i.e. whether or not they are different. To do this, the 2-sample t-test first compares the means of the two samples; a small difference between these means makes it more likely that they are from the same distribution, however, this will also depend on the spread of the data. The t-test therefore also calculates a pooled estimate of the variance by taking an average of the squared deviations of the two samples. This pooled estimate of variance is then used to calculate the pooled standard error for the difference in the means. The t-statistic is then the difference between the means divided by the pooled SE.
+
+Both the one- and two-sample t-tests have some very important assumptions:
+
+1) The data are drawn from a normal distribution.
+2) In the two-sample analysis, it is assumed that the two samples are drawn from distributions with the same variances.
+
+Violation of either of these assumptions __could__ lead to invalid results.
+
+But don’t panic - we will cover how to check these assumptions very straightforward.
+
+## Some key terms for todays practical 
+
+* **Standard deviation:** the standard deviation is a measure of the spread of the data. It is calculated from the variance, which is defined as the average squared deviation from the mean. Importantly, and in contrast with the standard error, the standard deviation is unaffected by the sample size. 
+
+* **Standard error:** the standard error is a function of the sample size, and is defined as the standard deviation divided by the square root of the sample size. Whilst the standard deviation measures the spread of the data, the standard error measures how the combination of the spread of the data and the number of measurements in our sample affect how well we are likely to have estimated the mean, i.e. it measures error in our estimate of the mean. 
+
+* **Degrees of freedom:** in most parametric statistical tests we need to account for sample size, because larger samples will generally give better estimates of the mean and variance. Most statistical tests use Degrees of Freedom (df) to represent sample size. The df for an estimate is the sample size minus the number of additional parameters (e.g. mean, SD) estimated for that calculation. As we estimate more parameters, the available degrees of freedom decrease. It can also be thought of as the number of observations (values) which are freely available to vary given the additional parameters estimated. 
+
+* **Statistical significance:** When we do a statistical test we cannot state categorically that a hypothesis is true or false - rather, we have to state the probability that the hypothesis is true. For example, in the one-sample t-test that we look at below, we calculate a difference between our sample mean and another value. Then, based on the combination of the size of this difference, the variability within our data and the sample size, we calculate the probability that this difference is zero (i.e. that our mean is not different from the value we specified). When we do this we need some cut-off value to be able to say if our probability is big enough to regard as important - and Fisher decided that this would be a probability of P < 0.05, that is a less than one-in-twenty probability that such a large difference would arise by chance alone.
+
+## Practical 3 - Sampling and Testing for Differences
+
+Most data are collected as samples from larger collections or populations. The basis for all statistical analyses is attempting to infer population parameters (e.g. the population mean, variance, standard deviation etc.) from the sample data. This week’s practical is intended as an introduction to analysing data using simple tests on samples from populations.
+
+The importance of exploratory analyses of data was stressed last week: today we will apply some of these ideas in analysing data from a field study.
+
+### The Data
+
+As many of you are new to Norfolk, we are going to analyse some data on the yields of sugar beet, which is something of a Norfolk specialty. Sugar beet is a root crop which is grown across East Anglia and into the Midlands. It is sown in March-April and then harvested in October. The roots are then used to make sugar. Being sown in April, the crop is rather vulnerable to attack by pests. In particular, plants are attacked by aphids, which transmit viruses to the crop. The main symptom of these viruses is a yellowing of the crop, and the viruses have the potential to reduce yields by up to 40%. However, sometimes the crop does not succumb to the virus and yields can be unaffected. <br />
+These data were taken from 56 fields in Norfolk & Suffolk, half of which were determined to have viral infection, half of which did not. The data report the dry weight of sugar beet processed from each field at the same factory. The investigators wished to ask 2 questions of the data:
+
+1) Did yields in this year deviate from the long-term average yields for the region?
+2) Did the presence of viruses affect the yield of sugar beet in this year?
+
+Before starting, answer the following questions:
+
+> * __Stop to think__
+> * What constitutes the population(s) in this study?
+> * What hypotheses correspond to the two questions posed above (remember a good hypothesis should make a prediction)?
+> * What statistical tests would you use to test these hypotheses?
+
+The data are stored in a .csv file called `sugar_beet_virus.csv` and can be found in this classroom workspace on posit Cloud in the `data` folder. For each field, we have a measure of yield and whether or not it was infected by virus.
+
+### Task 1 - Setting up your workspace
+
+Go to the classroom workspace in posit Cloud and go to the __Workshop_3__ workspace, open up a __New__ script, give this script a sensible name and save it in your `scripts` folder. You will need to make sure the packages `tidyverse` and `car` are installed and loaded to complete todays workshop, check Chapter \@ref(workspace-setup) and Chapter \@ref(script-setup) if you are unsure how to do this. 
+
+### Task 2 - Checking the data
+
+This week the data can be found in the __data__ folder so all you need to do is load it into an object named `sugar_beet_virus`. Once this is done you can then try performing some routine checks to make sure R has interpreted the data variables correctly and all expected data is present and accounted for. You can use some of the functions we explored in Chapter \@ref(checking-the-data) if you need some help with this. 
+
+The data consist of measures of yields per field and then an indicator of whether the field was infected by virus or not. 
+
+> * __Test Yourself__
+> * How would you describe these the data types in these two variables?
+
+### Task 3 - Making some basic plots
+
+We will now use the `filter()` and `ggplot` functions to split the data sets and make some histograms. Try using the following chunk to look at yields of sugar been from fields infected with virus;
+
+```{r}
+sugar_beet_virus %>% # pipe our data set into the filter function
+  filter(virus =="v") %>% # filter out data from virus infected fields
+  ggplot(., aes(x=yield)) + # note that there is a . here instead of a data set. This is because we are piping our filtered data set straight into ggplot and then telling it that the yield variable will be on our x axis
+  geom_histogram(bins = 6) # plots a histogram with 6 bins
+```
+
+You might notice that we haven't assigned any of this to an object. We are also doing a lot of piping here. As you get more confident with code you will find that for quick explorations of the data, this method of analysis is much cleaner and a little faster. Now see if you can manipulate the above code to report a histogram for fields that aren't infected with virus. 
+
+> * __Stop to think__
+> * Are the data approximately normally distributed?
+
+### Task 4 - Produce some descriptive statistics 
+
+Try to calculate the mean, standard deviation and standard error of the mean for yields from virus infected fields and fields without virus detected in them. Try using the `group_by()` and `summarise()` functions to do this, the code from Chapter \@ref(descriptive-statistics) will help you with two of these. See if you can figure out how to manipulate this code to give you the standard error of the mean. The equation for the standard error of the mean is given above. 
+
+> * __Stop to think__
+> * Is there any preliminary evidence that the virus has affected the yields?
+
+It is incredibly important to begin all statistical analyses with a visual inspection of your data, to assess the extent of any differences or associations and, __critically__, to assess whether the assumptions of particular tests are met. In parametric tests of differences, data should be approximately normally distributed. If the data are skewed, you can explore whether the skew is influencing the outcome of the test, by comparing tests with and without datapoints driving the skew and/or comparing parametric and non-paramteric tests (we will cover these later in the course).
+
+Parametric statistical tests make certain assumptions about the shape and distribution of the data. Specifically, in the case of the one-sample t-test, our data should ideally be normally distributed. You will sometimes see the “Kolmogorov-Smirnov” test used to explore the assumption of normality. The null hypothesis is that the data are drawn from a normal distribution, so p<0.05 means that the data are statistically significantly different from a normal distribution. However, the real question is, are your data sufficiently different from a normal distribution to make a parametric test result unreliable? There is no test for this, you have to explore your data and try different approaches.
+
+### Task 5 - Answering Question 1 
+
+__Did yields in this year deviate from the long-term average yields for the region?__ 
+
+You should have answered above that in order to answer this question we require the “one-sample t-test”. This test allows us to look at whether the mean of a sample is statistically significantly different from a pre-specified value. In this case, we are using the test to ask whether the mean yield from our sample of fields is different from the long-term average yield. The basis for the t-test is the existence of sampling error. The data we have are from a sample, not from the whole population. In this example we have 56 fields (the sample) from all the fields of sugar beet grown in Britain (the population). We want to use the sample to infer something about the population. We know (hope!) that the sample will be representative of the population, but we also know that our estimates of population parameters (mean, variance) will not be exactly the same as those of the population. The t-test is derived from statistical sampling theory and allows us to specify, based on the sample size how likely it is (the statistical probability) that we have over- or under-estimated the population mean by a given amount. 
+
+> * __Analysis time__
+> * Given that the value of the t-distribution for a sample size of 28 (i.e. each half of the data) is 2.052, calculate the 95% confidence intervals (CIs) for the means of the two groups. You can use R to do this, or manipulate your earlier `summarise()` function to add the upper and lower CI it to your summary table. 
+> * How many “degrees of freedom” are there?
+
+The long-term average yield for the region is 10.7 tonnes.
+
+> * Do the 95% confidence intervals for the two groups include 10.7?
+
+Now we are ready to try running a one sample t-test. Try running the following;
+
+```{r}
+# One-sample t-test
+one_sided_t <- t.test(sugar_beet_virus$yield, mu = 10.7)
+# mu here is our test mean, this is the mean known yield of the population as a whole
+
+# Printing the results
+one_sided_t 
+```
+
+> * __Stop to think__
+> * What does the one-sample t-test indicate about whether the mean yields of the pooled virus and non-virus affected fields differ from the long-term average?
+> * If you separate the yields into virus and non virus affected fields and rerun the one sided t-test on each, what the results tell you?
+
+Note that the output in the one-sample t-test includes the 95% Confidence Interval of the Difference. This is calculated from the difference between the sample mean and the hypothesised mean, and so is different from the 95% CIs that you calculated previously.
+
+### Task 6 - Answering Question 2 {#levene-test}
+
+__Did the presence of viruses affect the yield of sugar beet in this year?__ 
+
+This time we need the two-sample t-test. The two sample t-test assesses whether the means of two samples are different from each other. It is therefore more commonly used than the one-sample test. The principle of the test is very similar to the one-sample test, but in the two-sample test we look at the standard error and confidence intervals for the difference between the means of the two samples. Specifically, we calculate a standard error for the difference between the two means, and then use this to generate a t-statistic. The assumptions of two-sample t-test are that the data for both samples are normally distributed and that the variances of the two groups are similar. To test this second assumption we can use a test called Levene’s test for Equality of Variances.
+
+Try running the following;
+
+```{r}
+# Using leveneTest()
+leveneTest(yield ~ virus, sugar_beet_virus)
+# Be careful with which variable you place on which side of the tilde (~). You want your dependent (response) variable to be before the tilde and the independent (predictor) variable to be after the tilde.
+```
+
+The null hypothesis for Levene’s test predicts that the variances of the two groups are equal. 
+
+> * __Stop to think__
+> * Is this hypothesis rejected?
+
+If the Levene’s test is not significant (p>0.05), you assume that variances are equal. If the Levene’s test is significant (p<0.05), then you can not assume that variances are equal. In this second scenario we can still use two sample t-tests but we will need to include a correction to do that. 
+
+> * __Stop to think__
+> * Can we assume that variances are equal in this data set?
+
+Try running the following;
+
+```{r}
+# Two sample t test
+t.test(yield ~ virus, data = sugar_beet_virus, alternative = "two.sided", var.equal = TRUE)
+# Once again the tilde is used to denote dependent and independent variables
+# We also specify which type of t-test we wish to perform and identify (based on our earlier Levene's test) that variances are equal (using the var.equal = TRUE expression), you can state that they are not equal by specifying FALSE here, R will then perform a correction without the assumption of equal variance and report Welch's two sample t-test.
+```
+
+You should see a reported output from our two sample t-test and it should look something like this; 
+
+```
+	Two Sample t-test
+
+data:  yield by virus
+t = 1.3987, df = 54, p-value = 0.1676
+alternative hypothesis: true difference in means between group NV and group V is not equal to 0
+95 percent confidence interval:
+ -0.3030355  1.7016069
+sample estimates:
+mean in group NV  mean in group V 
+       10.053571         9.354286 
+
+```
+
+The output that you are given has 3 major components;
+
+1) The test statistic (t), degrees of freedom (df) and p-value.
+2) The 95% confidence intervals based on the standard error of the difference (we will cover this more in the next lecture).
+3) The means for the two groups.
+
+> * __Stop to think__
+> * Is there evidence that the means of the two groups are different?
+> * Write a summary of this analysis, including the statistics you have calculated.
+
+There was no significant difference between the yields of the two groups, despite the fact that the virus-infected fields had significantly lower yields than the long-term average. Thus, comparison of the viral fields’ yields with the long-term average suggested that viral fields produced lower yields, but the difference between the viral and non-viral fields’ yields in this one year was not statistically significant.
+
+> * __Stop to think__
+> * Why might viral fields have significantly lower yields than the long-term average but viral and non-viral fields have similar yields in this year?
+> * How would you confirm these differences in the future?
+
+## Conclusion
+
+We have begun to explore some inferential statistics, beginning with two variations of the t-test. Next week we will extend some of these ideas of analysing differences between groups to the analysis and design of experiments. 
+
+## Before you leave!
+
+Make sure you save your script and download it if you would like to keep a local copy. 
+
+Please log out of posit Cloud!
+
+## References
+
+Wickham, H., Averick, M., Bryan, J., Chang, W., D’Agostino McGowan, L., François, R., Grolemund, G., et al., 2019. “Welcome to the tidyverse.” Journal of Open Source Software 4 (43): 1686. https://doi.org/10.21105/joss.01686. <br />
+
+
