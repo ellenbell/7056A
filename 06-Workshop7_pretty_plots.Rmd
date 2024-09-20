@@ -13,7 +13,7 @@ Hopefully you have been saving the code from former workshops in a sensible plac
 rm(list = ls())
 ```
 
-Now load your script from Practical 2, Chapter \@ref(differences), load the `tidyverse` package and create a `chickens` object containing the `pecking_rates.csv`. 
+Now load your script from Practical 4, Chapter 4, load the `tidyverse` package and create a `chickens` object containing the `pecking_rates.csv`. 
 
 To get an idea of how ggplot works we are going to go back over some code you have already run. Try running the following, what happens?
 

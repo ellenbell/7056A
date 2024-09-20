@@ -180,7 +180,7 @@
 \contentsline {subsection}{\numberline {12.1.4}GLMs with a Poisson Error Structure}{129}{subsection.12.1.4}%
 \contentsline {subsection}{\numberline {12.1.5}GLMs with a Binomial Error Structure}{129}{subsection.12.1.5}%
 \contentsline {section}{\numberline {12.2}Practical 11 - GLMs}{130}{section.12.2}%
-\contentsline {section}{\numberline {12.3}A Poisson GLM on some beautifully behaved data}{131}{section.12.3}%
+\contentsline {section}{\numberline {12.3}A Poisson GLM on some beautifully behaved data}{130}{section.12.3}%
 \contentsline {subsection}{\numberline {12.3.1}Task 1 - Check the data}{131}{subsection.12.3.1}%
 \contentsline {subsection}{\numberline {12.3.2}Task 2 - Exploring the data}{131}{subsection.12.3.2}%
 \contentsline {subsection}{\numberline {12.3.3}Task 3 - Fitting a GLM}{132}{subsection.12.3.3}%
@@ -194,7 +194,7 @@
 \contentsline {section}{\numberline {12.5}A Poisson Mixed Effects GLM}{140}{section.12.5}%
 \contentsline {subsection}{\numberline {12.5.1}Task 10 - Check the data}{140}{subsection.12.5.1}%
 \contentsline {subsection}{\numberline {12.5.2}Task 11 - Explore the data}{140}{subsection.12.5.2}%
-\contentsline {subsection}{\numberline {12.5.3}Task 12 - Fitting a GLM}{140}{subsection.12.5.3}%
+\contentsline {subsection}{\numberline {12.5.3}Task 12 - Fitting a GLM}{141}{subsection.12.5.3}%
 \contentsline {section}{\numberline {12.6}Conclusions}{142}{section.12.6}%
 \contentsline {section}{\numberline {12.7}Before you leave!}{142}{section.12.7}%
 \contentsline {section}{\numberline {12.8}References}{142}{section.12.8}%

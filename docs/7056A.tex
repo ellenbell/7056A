@@ -2881,7 +2881,7 @@ Hopefully you have been saving the code from former workshops in a sensible plac
 \end{Highlighting}
 \end{Shaded}
 
-Now load your script from Practical 2, Chapter \ref{differences}, load the \texttt{tidyverse} package and create a \texttt{chickens} object containing the \texttt{pecking\_rates.csv}.
+Now load your script from Practical 4, Chapter 4, load the \texttt{tidyverse} package and create a \texttt{chickens} object containing the \texttt{pecking\_rates.csv}.
 
 To get an idea of how ggplot works we are going to go back over some code you have already run. Try running the following, what happens?
 
@@ -4613,7 +4613,7 @@ This chapter will run in Workshops 11 and 12 of Weeks 9 \& 10.
 
 \section{Introduction}\label{introduction-9}
 
-This week we will start to explore the world of generalised linear models (GLMs), not to be confused with general linear models (that have underpinned all of the statistical techniques we have studies so far).
+In this chapter we will start to explore the world of generalised linear models (GLMs), not to be confused with general linear models (that have underpinned all of the statistical techniques we have studies so far).
 
 \subsection{What is a Generalised Linear Model and why are they useful?}\label{what-is-a-generalised-linear-model-and-why-are-they-useful}
 
@@ -4637,7 +4637,7 @@ You will have checked the distribution and equality of variance for all of our p
 
 However often in the biological sciences you will be collecting data that is not appropriate for use in general linear models. For example your response variable may be count data (so bounded, counts cannot go below 0) or binary (e.g.~presence/absence, denoted by 1s and 0s), or another type of categorical data. Here a general linear model would be inappropriate and this is where GLMs really come into their own.
 
-These workshops will be, in no way, a definitive guide to the minutia of GLMs, but we will cover a couple of common usages and have a think about what you need to look out for to ensure your model is an appropriate fit for your data. If you use this family of models on your own data (which, if you continue in the field of ecology, you almost certainly will) you will need to do additional reading and also, probably, spend quite a lot of time playing with different model structures to become proficient.
+These workshops will be, in no way, a definitive guide to the minutia of GLMs, but we will cover a couple of common usages and have a think about what you need to look out for to ensure your model is an appropriate fit for your data. If you use this family of models on your own data (which, if you continue in the field of ecology or data science, you almost certainly will) you will need to do additional reading and also, probably, spend quite a lot of time playing with different model structures to become proficient.
 
 \subsection{Key parts of a GLM}\label{key-parts-of-a-glm}
 
@@ -4695,11 +4695,11 @@ Binomial & Binomial & Logit & \(g(μ)= log(\frac{μ}{1-μ})\) & \texttt{binomial
 Gamma & Gamma & Inverse & \(g(μ)= \frac{1}{μ}\) & \texttt{gamma(link="inverse")} & \\
 \end{longtable}
 
-These are just a few of the more commonly used GLM error structures and their default link functions that you are likely to come across. We will explore two of these in more depth over the course of this week.
+These are just a few of the more commonly used GLM error structures and their default link functions that you are likely to come across. We will explore two of these in more depth over the course of the next two workshops.
 
 \subsection{GLMs with a Poisson Error Structure}\label{glms-with-a-poisson-error-structure}
 
-As ecologists you will frequently find that the data you are collecting is count data. Count data is inherently tricky to analyse using general linear model approaches. For a start it breaks the assumption that the data are unbounded (it cant go below 0) and often it cannot form fractions (often we count in whole numbers only), so really its discrete data. These two factors mean that count data are unlikely to conform to a normal distribution, which works with continuous data and allows for negative values (neither of which are permitted by count data). In addition, normal distributions are symetrical, with half of the data points falling on either side of the mean. Count data (often but not always) has a greater number of data points towards the lower end of the x axis. So it will be positively skewed and follow a Poisson distribution.
+As ecologists you will frequently find that the data you are collecting is count data and as data scientists you will often be presented with count data that someone else has gathered. Count data is inherently tricky to analyse using general linear model approaches. For a start it breaks the assumption that the data are unbounded (it cant go below 0) and often it cannot form fractions (often we count in whole numbers only), so really its discrete data. These two factors mean that count data are unlikely to conform to a normal distribution, which works with continuous data and allows for negative values (neither of which are permitted by count data). In addition, normal distributions are symetrical, with half of the data points falling on either side of the mean. Count data (often but not always) has a greater number of data points towards the lower end of the x axis. So it will be positively skewed and follow a Poisson distribution.
 
 If we come across data like this, we could try doing some log transformations and that might fix the issue or it might not. Or if we only want to build a simple model we could explore non-parametric alternatives to our general linear models. But sometimes we want to build a more complex model with several independent variables and sometimes log transformations just don't cut it anymore. So here we may consider performing a GLM with a poisson error structure and log link function.
 
@@ -4740,7 +4740,7 @@ This week we will be working through three data sets;
   The return of the Kooki bird
 \end{itemize}
 
-I have created a new Classroom in Posit cloud for you to work from this week. Follow the link \href{https://posit.cloud/spaces/451048/join?access_code=SiQlhHzulmeBkbO4NcMfueUek8iqroLUiJnPLxJU}{here}. Please note, to hopefully fix the issues around crashes last week, I have installed all of the packages in advance, you can see this in the script called \texttt{startup.R} saved in the workspace. The package installations are hashed out, you will still need to load \texttt{tidyverse}, \texttt{performance}, \texttt{pscl}, \texttt{lme4}, \texttt{Matrix} and \texttt{MASS} with the \texttt{library()} function but you WONT need to run \texttt{install.packages()} at all.
+Log into posit Cloud and return to the classroom work space, open the project called \textbf{Workshop\_11\_12}. Set up your script and install and load the following packages; \texttt{tidyverse}, \texttt{performance}, \texttt{pscl}, \texttt{lme4}, \texttt{Matrix} and \texttt{MASS}.
 
 \section{A Poisson GLM on some beautifully behaved data}\label{a-poisson-glm-on-some-beautifully-behaved-data}
 
@@ -4749,7 +4749,7 @@ Our first workshop mirrors an excellent workshop taken from Beckerman et al., 20
 \begin{itemize}
 \tightlist
 \item
-  \texttt{SoaySheepFitness.csv} data file
+  \texttt{soay\_sheep\_fitness.csv} data file
 \end{itemize}
 
 This data file contains the following data;
@@ -4764,7 +4764,7 @@ This data file contains the following data;
 
 \subsection{Task 1 - Check the data}\label{task-1---check-the-data}
 
-Load the data set \texttt{SoaySheepFitness.csv} into your workspace under the object name \texttt{sheep} and try performing some routine checks to make sure R has interpreted the variables correctly and all expected data is present and accounted for. You can use some of the functions explored in Chapter \ref{checking-the-data} if you need some help with this.
+Load the data set \texttt{soay\_sheep\_fitness.csv} into your workspace under the object name \texttt{sheep} and try performing some routine checks to make sure R has interpreted the variables correctly and all expected data is present and accounted for. You can use some of the functions explored in Chapter \ref{checking-the-data} if you need some help with this.
 
 \subsection{Task 2 - Exploring the data}\label{task-2---exploring-the-data-3}
 
@@ -4773,6 +4773,8 @@ As always, its a really good idea to explore your data set before you start laun
 \begin{quote}
 \begin{itemize}
 \tightlist
+\item
+  \textbf{Analysis time}
 \item
   Build a histogram for \texttt{fitness} what does the distribution of the data look like?
 \item
@@ -4794,6 +4796,8 @@ Try adding the following line to the code for your scatter plot;
 \begin{itemize}
 \tightlist
 \item
+  \textbf{Stop to think}
+\item
   Does this regression line fairly reflect the data?
 \end{itemize}
 \end{quote}
@@ -4809,6 +4813,8 @@ Spoilers, no not really, a curve would be a much better fit for these data. Try 
 \begin{quote}
 \begin{itemize}
 \tightlist
+\item
+  \textbf{Stop to think}
 \item
   Hopefully you have two lines on your scatter plot, which one is a better fit, blue or red?
 \end{itemize}
@@ -4841,7 +4847,7 @@ Right lets have a look at this model. Try running the following;
 \end{Highlighting}
 \end{Shaded}
 
-Take a look at the \texttt{summary()} function output. This output should look fairly familiar, it bares a is a fairly close resemblance to the \texttt{summary()} we produced for our \texttt{lm()} functions.
+Take a look at the \texttt{summary()} function output. This output should look fairly familiar, it bares a fairly close resemblance to the \texttt{summary()} we produced for our \texttt{lm()} functions.
 
 \begin{itemize}
 \tightlist
@@ -4867,6 +4873,8 @@ So if we apply our old practices of, for a given value of x, trying to calculate
 \begin{itemize}
 \tightlist
 \item
+  \textbf{Stop to think}
+\item
   Take a look at the intercept, what does this tell you? Does it match what you might expect from the first scatter plot we produced?
 \item
   See if you can use \(y=mx+c\) to calculate y for sheep that weighs 5kg. Again take a look at your figure, do these support each other?
@@ -4878,6 +4886,8 @@ Hopefully you recognise that our plot does not support a negative intercept and 
 \begin{quote}
 \begin{itemize}
 \tightlist
+\item
+  \textbf{Stop to think}
 \item
   Take a look at the equations above that describe GLMs with a Poisson error structure and log link function. Do you notice anything?
 \end{itemize}
@@ -4931,11 +4941,11 @@ Hopefully R has built you a series of 5 plots. The nice thing about performance,
   \textbf{Normality of residuals} - This checks to see if the residuals from the model are normally distributed. If points follow the line then they follow a normal distribution. Quite frequently, you will see some deviation from the line at the top or tail of the residuals. This would indicate that the model doesn't predict the outcome for points in that range very well.
 \end{enumerate}
 
-A note on overdispersion and zero inflated data \textless- this is the thorn in the side of almost every ecologist I know. It's a total pain in the bum and it happens a lot. But what really is it? In real terms, overdispersion is talking about extra variation that is not accounted for in your model. It could come from an experimental design that doesn't account for every single source of variation (very likely in biological studies), it can also come from non-independence in your data set or it could come from zero-inflation, which is when we have more zeros relative to the number expected for the distribution we are using.
+A note on overdispersion and zero inflated data \textless- this is the thorn in the side of almost every ecologist I know and I would expect data scientists will run in to this often as well. It's a total pain in the bum and it happens a lot. But what really is it? In real terms, overdispersion is talking about extra variation that is not accounted for in your model. It could come from an experimental design that doesn't account for every single source of variation (very likely in biological studies), it can also come from non-independence in your data set or it could come from zero-inflation, which is when we have more zeros relative to the number expected for the distribution we are using.
 
 All of these sources of overdispersion are common in the biological sciences and you need to take note if your model is overdispersed because it plays havoc with your p-values (I know, not the p-values!!!). Overdispersion makes your p-values less conservative so you are more likely to get a false positive, which as a scientist, this is right up there in the top 5 worst nightmares (after the one where you're trying to run away from the thing you cant quite see and then you fall over).
 
-Alongside our output from the \texttt{check\_model()} function, we can also check for overdispersion ourselves by dividing the residual deviance by the residual degrees of freedom. In a perfect model, this would be 1 as indicated by our dispersion parameter. If the result of dividing residual deviance by residual degrees of freedom is much more then 1 (the rule of thumb is if its greater then 2) its our data is overdispersed, and if its much less then our data are underdispersed.
+Alongside our output from the \texttt{check\_model()} function, we can also check for overdispersion ourselves by dividing the residual deviance by the residual degrees of freedom. In a perfect model, this would be 1 as indicated by our dispersion parameter. If the result of dividing residual deviance by residual degrees of freedom is much more then 1 (the rule of thumb is if its greater then 2) our data is overdispersed, and if its much less then our data are underdispersed.
 
 So what do we do if we have evidence of overdispersion? Well we tinker with the model, there are lots of variants of the GLM so it maybe a new error structure of link function will allow you to account for the overdispersion. A common alternative for the poisson error structure is the quasipoisson error structure. All the quasipoisson error structure does is estimates the dispersion index and then R adjusts your p-values accordingly (making them more conservative).
 
@@ -4970,14 +4980,14 @@ Doesn't that look better! Feel free to do some tinkering to see if you can make 
 
 \section{A Binomial GLM}\label{a-binomial-glm}
 
-In this data set were going to have a look at tackling another commonly occurring issue in ecological data. Having a binary dependent variable.
+In this data set were going to have a look at tackling another commonly occurring issue with biological data. Having a binary dependent variable.
 
-We will explore the effect of water depth, vegetation height and aquatic vegetation type on the presence or absence of frogs across 76 pools. We wish to know whether the presence or absence of frogs can be predicted from these parameters. Previous analyses have shown that water depth and vegetation height can both influence frog distribution but the impact of dominant aquatic plant type is as yet unknown.
+We will explore the effect of water depth, vegetation height and aquatic vegetation type on the presence or absence of frogs across 76 pools. We wish to know whether the presence or absence of frogs can be predicted from these parameters. Previous analyses have shown that water depth and vegetation height can both influence frog distribution but the impact of dominant aquatic plant type is as yet unknown. The next data set is called;
 
 \begin{itemize}
 \tightlist
 \item
-  \texttt{frogs.csv} data file
+  \texttt{frogs.csv}
 \end{itemize}
 
 This data file contains the following data;
@@ -4996,7 +5006,7 @@ This data file contains the following data;
   planttype - Dominant aquatic plant type (species)
 \end{itemize}
 
-Take note - in this data set water depth, vegetation height and distance to paths are all continuous measurements, whereas planttype is categorical.
+\textbf{Take note} - in this data set water depth, vegetation height and distance to paths are all continuous measurements, whereas planttype is categorical.
 
 \subsection{Task 6 - Check the data}\label{task-6---check-the-data}
 
@@ -5018,6 +5028,8 @@ As always its good to spend some time exploring the data, our dependent variable
 \begin{itemize}
 \tightlist
 \item
+  \textbf{Stop to think}
+\item
   What is this plot telling you about the relationship between frog prescence and water depth?
 \item
   Is the regression line a good fit?
@@ -5032,7 +5044,7 @@ As always its good to spend some time exploring the data, our dependent variable
 
 \subsection{Task 8 - Fitting a GLM}\label{task-8---fitting-a-glm}
 
-Right so we are ready to start fitting some models. We will use the Enter method, as we did with our linear models in Chapter 11. We will begin by including all relevant variables and removing them one at a time. We know we have a binary dependent variable so we are going to need to run a GLM with a binomial error structure, the default link function for this family is logit. So we have all the basic elements for our first GLM. Try running the following;
+Right so we are ready to start fitting some models. We will use the Enter method, as we did with our linear models in Chapter 9. We will begin by including all relevant variables and removing them one at a time. We know we have a binary dependent variable so we are going to need to run a GLM with a binomial error structure, the default link function for this family is logit. So we have all the basic elements for our first GLM. Try running the following;
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5049,6 +5061,8 @@ Notice we got a little warning message about convergence, so we know we might ha
 \begin{itemize}
 \tightlist
 \item
+  \textbf{Stop to think}
+\item
   What do these outputs tell you?
 \end{itemize}
 \end{quote}
@@ -5059,6 +5073,8 @@ Yup this model is a bit of a mess, \texttt{check.model()} will almost certainly 
 \begin{itemize}
 \tightlist
 \item
+  \textbf{Analysis time}
+\item
   Run the above model again and save it under \texttt{frog\_glm2} but change the interaction terms to additive ones. Take a look at the \texttt{performance::check\_model()}, \texttt{anova()} and \texttt{summary()} outputs. What are these telling you? Note you will have a few additional plots from \texttt{check\_model()}, see if you can work out how to interpret them. Ask for help if needed.
 \end{itemize}
 \end{quote}
@@ -5068,6 +5084,8 @@ You might have seen we have some evidence of collinearity in our data. This is n
 \begin{quote}
 \begin{itemize}
 \tightlist
+\item
+  \textbf{Analysis time}
 \item
   Fit a new model but with one of the collinear variabled removed. Take a look at the \texttt{performance::check\_model()}, \texttt{anova()} and \texttt{summary()} outputs. What are these telling you?
 \item
@@ -5115,7 +5133,7 @@ You should get an out put that looks something like this;
 
 So, we can think of these exponentials as giving us the odds that frogs will be present. This is slightly easier when values are above 1. So we will look at \texttt{veght} first. Our value of \texttt{1.94} suggests that for every cm increase in vegetation height we increase the likelihood of finding a frog by 1.94. You will see this also referred to as an odds ratio if you do any further reading.
 
-Lets turn our attention to water depth. When your odds value is less then one, that marks negative relationship between your response and predictor variable, when your odds value is greater then 1 this relationship is positive. If your confidence intervals include zero the relationship is not significant.
+Lets turn our attention to water depth. When your odds value is less then one, that marks a negative relationship between your response and predictor variable, when your odds value is greater then 1 this relationship is positive. If your confidence intervals include zero the relationship is not significant.
 
 For water depth, we have an odds value of 0.98, so we know our relationship between frog presence and water depth will be negative. We also need to do a little maths trick to interpret this value as we did for vegetation height. We have to calculate the inverse value (1 divided by the odds). Do this now.
 
@@ -5130,6 +5148,8 @@ Finally lets have a think about our intercept. Once again we will need to work o
 \begin{quote}
 \begin{itemize}
 \tightlist
+\item
+  \textbf{Stop to think}
 \item
   See if you can work out what this is from the \texttt{summary()} output of our model.
 \end{itemize}
@@ -5151,6 +5171,8 @@ Finally, it would be great to get some decent regression lines plotted on our fi
 \begin{quote}
 \begin{itemize}
 \tightlist
+\item
+  \textbf{Stop to think}
 \item
   Take a look at this plot, does it support the conclusions drawn from our \texttt{summary()} output?
 \item
@@ -5196,6 +5218,8 @@ Start by exploring the data, build some histograms and other exploratory plots. 
 \begin{itemize}
 \tightlist
 \item
+  \textbf{Stop to think}
+\item
   How are these data distributed? What does that mean for the type of model you may wish to fit?
 \end{itemize}
 \end{quote}
@@ -5205,6 +5229,8 @@ As you know, count data are very often left-skewed (i.e.~lots of small counts an
 \begin{quote}
 \begin{itemize}
 \tightlist
+\item
+  \textbf{Stop to think}
 \item
   Do your other data explorations tell you anything else? How do you think our other variables are affecting kooki bird abundance?
 \end{itemize}
@@ -5217,6 +5243,8 @@ Try running a GLM, with a Poisson distribution and log link function. Add \textt
 \begin{quote}
 \begin{itemize}
 \tightlist
+\item
+  \textbf{Stop to think}
 \item
   Do any of the predictors explain a significant amount of the variation in kooki bird abundance?
 \item
@@ -5243,6 +5271,8 @@ Rather like our linear mixed effects models, here we have incorporated \texttt{s
 \begin{itemize}
 \tightlist
 \item
+  \textbf{Stop to think}
+\item
   How would you interpret the outputs from this model?
 \item
   Why might including site as a random effect have altered the significance of some predictors? A matrix plot of all the variables will help here.
@@ -5259,17 +5289,19 @@ If you think these data are highly overdispersed, congratulations buy yourself a
 \begin{itemize}
 \tightlist
 \item
+  \textbf{Stop to think}
+\item
   Go back to your initial histogram, why do you think we have signatures of overdispersion?
 \end{itemize}
 \end{quote}
 
-If you answered, zero inflation, you are on a roll. Yes these data are full of zeros. Which is not uncommon in ecology. There are several things you can try to do to improve model fit when you have zero inflation. You can try quasi Poisson or negative binomial error structures or even mixture and hurdle models. There are packages that can be used to fit all of these. You are welcome to try and improve the model fit for the kooki bird data set in class with our good old friend Google or we can leave it there if you have reached stats saturation point.
+If you answered, zero inflation, you are on a roll. Yes these data are full of zeros. Which is not uncommon in biology. There are several things you can try to do to improve model fit when you have zero inflation. You can try quasi Poisson or negative binomial error structures or even mixture and hurdle models. There are packages that can be used to fit all of these. You are welcome to try and improve the model fit for the kooki bird data set in class with our good old friend Google or we can leave it there if you have reached stats saturation point.
 
 \section{Conclusions}\label{conclusions-2}
 
-This concludes my teaching on this module. We have played with lots of types of multivariate linear models and a few different types of generalised linear models. Over the next two weeks Dr Richard Davies will be taking over and introducing you to principal components analysis (PCA) as well as multivariate community analysis.
+This concludes my teaching on this module. We have played with lots of types of linear models and a few different types of generalised linear models. Over the next two weeks Dr Richard Davies will be taking over and introducing you to principal components analysis (PCA) as well as multivariate community analysis.
 
-You can find the summative coursework for BIO-7025A in the next chapter. However, I would recommend completing Richards materials on PCA and multivariate community analysis before beginning the assignment.
+You can find the summative coursework for BIO-7056A in the next chapter. However, I would recommend completing Richards materials on PCA and multivariate community analysis before beginning the assignment.
 
 \section{Before you leave!}\label{before-you-leave-10}
 

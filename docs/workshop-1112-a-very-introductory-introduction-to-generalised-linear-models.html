@@ -431,7 +431,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>This chapter will run in Workshops 11 and 12 of Weeks 9 &amp; 10.</p>
 <div id="introduction-9" class="section level2 hasAnchor" number="12.1">
 <h2><span class="header-section-number">12.1</span> Introduction<a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#introduction-9" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>This week we will start to explore the world of generalised linear models (GLMs), not to be confused with general linear models (that have underpinned all of the statistical techniques we have studies so far).</p>
+<p>In this chapter we will start to explore the world of generalised linear models (GLMs), not to be confused with general linear models (that have underpinned all of the statistical techniques we have studies so far).</p>
 <div id="what-is-a-generalised-linear-model-and-why-are-they-useful" class="section level3 hasAnchor" number="12.1.1">
 <h3><span class="header-section-number">12.1.1</span> What is a Generalised Linear Model and why are they useful?<a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#what-is-a-generalised-linear-model-and-why-are-they-useful" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We have so far spent a lot of time thinking about the general linear model family (including regressions, ANOVAs and ANCOVAs). We have also spent some time dealing with assumptions. All of these models make certain assumptions about the data they are dealing with and some of these assumptions are held in common within the general linear model family.</p>
@@ -445,7 +445,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>You will have checked the distribution and equality of variance for all of our previous analyses and where these assumptions were violated we either transformed the data or performed non-parametric alternative tests.</p>
 <p>However often in the biological sciences you will be collecting data that is not appropriate for use in general linear models. For example your response variable may be count data (so bounded, counts cannot go below 0) or binary (e.g. presence/absence, denoted by 1s and 0s), or another type of categorical data. Here a general linear model would be inappropriate and this is where GLMs really come into their own.</p>
-<p>These workshops will be, in no way, a definitive guide to the minutia of GLMs, but we will cover a couple of common usages and have a think about what you need to look out for to ensure your model is an appropriate fit for your data. If you use this family of models on your own data (which, if you continue in the field of ecology, you almost certainly will) you will need to do additional reading and also, probably, spend quite a lot of time playing with different model structures to become proficient.</p>
+<p>These workshops will be, in no way, a definitive guide to the minutia of GLMs, but we will cover a couple of common usages and have a think about what you need to look out for to ensure your model is an appropriate fit for your data. If you use this family of models on your own data (which, if you continue in the field of ecology or data science, you almost certainly will) you will need to do additional reading and also, probably, spend quite a lot of time playing with different model structures to become proficient.</p>
 </div>
 <div id="key-parts-of-a-glm" class="section level3 hasAnchor" number="12.1.2">
 <h3><span class="header-section-number">12.1.2</span> Key parts of a GLM<a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#key-parts-of-a-glm" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -518,11 +518,11 @@ y = mx + c
 </tr>
 </tbody>
 </table>
-<p>These are just a few of the more commonly used GLM error structures and their default link functions that you are likely to come across. We will explore two of these in more depth over the course of this week.</p>
+<p>These are just a few of the more commonly used GLM error structures and their default link functions that you are likely to come across. We will explore two of these in more depth over the course of the next two workshops.</p>
 </div>
 <div id="glms-with-a-poisson-error-structure" class="section level3 hasAnchor" number="12.1.4">
 <h3><span class="header-section-number">12.1.4</span> GLMs with a Poisson Error Structure<a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#glms-with-a-poisson-error-structure" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>As ecologists you will frequently find that the data you are collecting is count data. Count data is inherently tricky to analyse using general linear model approaches. For a start it breaks the assumption that the data are unbounded (it cant go below 0) and often it cannot form fractions (often we count in whole numbers only), so really its discrete data. These two factors mean that count data are unlikely to conform to a normal distribution, which works with continuous data and allows for negative values (neither of which are permitted by count data). In addition, normal distributions are symetrical, with half of the data points falling on either side of the mean. Count data (often but not always) has a greater number of data points towards the lower end of the x axis. So it will be positively skewed and follow a Poisson distribution.</p>
+<p>As ecologists you will frequently find that the data you are collecting is count data and as data scientists you will often be presented with count data that someone else has gathered. Count data is inherently tricky to analyse using general linear model approaches. For a start it breaks the assumption that the data are unbounded (it cant go below 0) and often it cannot form fractions (often we count in whole numbers only), so really its discrete data. These two factors mean that count data are unlikely to conform to a normal distribution, which works with continuous data and allows for negative values (neither of which are permitted by count data). In addition, normal distributions are symetrical, with half of the data points falling on either side of the mean. Count data (often but not always) has a greater number of data points towards the lower end of the x axis. So it will be positively skewed and follow a Poisson distribution.</p>
 <p>If we come across data like this, we could try doing some log transformations and that might fix the issue or it might not. Or if we only want to build a simple model we could explore non-parametric alternatives to our general linear models. But sometimes we want to build a more complex model with several independent variables and sometimes log transformations just don’t cut it anymore. So here we may consider performing a GLM with a poisson error structure and log link function.</p>
 <p>So our model would look something like this;</p>
 <p><span class="math display">\[
@@ -551,13 +551,13 @@ So, this equation is the (natural logarithm of) the probability of being in one 
 <li>Frogs</li>
 <li>The return of the Kooki bird</li>
 </ul>
-<p>I have created a new Classroom in Posit cloud for you to work from this week. Follow the link <a href="https://posit.cloud/spaces/451048/join?access_code=SiQlhHzulmeBkbO4NcMfueUek8iqroLUiJnPLxJU">here</a>. Please note, to hopefully fix the issues around crashes last week, I have installed all of the packages in advance, you can see this in the script called <code>startup.R</code> saved in the workspace. The package installations are hashed out, you will still need to load <code>tidyverse</code>, <code>performance</code>, <code>pscl</code>, <code>lme4</code>, <code>Matrix</code> and <code>MASS</code> with the <code>library()</code> function but you WONT need to run <code>install.packages()</code> at all.</p>
+<p>Log into posit Cloud and return to the classroom work space, open the project called <strong>Workshop_11_12</strong>. Set up your script and install and load the following packages; <code>tidyverse</code>, <code>performance</code>, <code>pscl</code>, <code>lme4</code>, <code>Matrix</code> and <code>MASS</code>.</p>
 </div>
 <div id="a-poisson-glm-on-some-beautifully-behaved-data" class="section level2 hasAnchor" number="12.3">
 <h2><span class="header-section-number">12.3</span> A Poisson GLM on some beautifully behaved data<a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#a-poisson-glm-on-some-beautifully-behaved-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Our first workshop mirrors an excellent workshop taken from Beckerman et al., 2017. The data were collected from the Soay sheep population on the island of Hirta (Scotland). Scientists wanted to know if lifetime reproductive success (number of live young produced over the course of a lifetime) increased with the average body mass of female sheep (ewes). This data set is very neat, quite simple and beautifully well behaved so makes for a great starting point with your first GLM. I also highly recommend this publication if you wish for further reading.</p>
 <ul>
-<li><code>SoaySheepFitness.csv</code> data file</li>
+<li><code>soay_sheep_fitness.csv</code> data file</li>
 </ul>
 <p>This data file contains the following data;</p>
 <ul>
@@ -566,13 +566,14 @@ So, this equation is the (natural logarithm of) the probability of being in one 
 </ul>
 <div id="task-1---check-the-data" class="section level3 hasAnchor" number="12.3.1">
 <h3><span class="header-section-number">12.3.1</span> Task 1 - Check the data<a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#task-1---check-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Load the data set <code>SoaySheepFitness.csv</code> into your workspace under the object name <code>sheep</code> and try performing some routine checks to make sure R has interpreted the variables correctly and all expected data is present and accounted for. You can use some of the functions explored in Chapter <a href="workshop-2---explorartory-data-analysis.html#checking-the-data">2.2.3</a> if you need some help with this.</p>
+<p>Load the data set <code>soay_sheep_fitness.csv</code> into your workspace under the object name <code>sheep</code> and try performing some routine checks to make sure R has interpreted the variables correctly and all expected data is present and accounted for. You can use some of the functions explored in Chapter <a href="workshop-2---explorartory-data-analysis.html#checking-the-data">2.2.3</a> if you need some help with this.</p>
 </div>
 <div id="task-2---exploring-the-data-3" class="section level3 hasAnchor" number="12.3.2">
 <h3><span class="header-section-number">12.3.2</span> Task 2 - Exploring the data<a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#task-2---exploring-the-data-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>As always, its a really good idea to explore your data set before you start launching into more advanced analyses.</p>
 <blockquote>
 <ul>
+<li><strong>Analysis time</strong></li>
 <li>Build a histogram for <code>fitness</code> what does the distribution of the data look like?</li>
 <li>Is a mean going to be a fair reflection for this data distribution?</li>
 <li>Build a scatter plot with <code>body.size</code> on the x axis and <code>fitness</code> on the y axis, how would you interpret this plot, what shape is it?</li>
@@ -582,6 +583,7 @@ So, this equation is the (natural logarithm of) the probability of being in one 
 <div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb104-1" tabindex="-1"></a><span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <blockquote>
 <ul>
+<li><strong>Stop to think</strong></li>
 <li>Does this regression line fairly reflect the data?</li>
 </ul>
 </blockquote>
@@ -589,6 +591,7 @@ So, this equation is the (natural logarithm of) the probability of being in one 
 <div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb105-1" tabindex="-1"></a><span class="fu">geom_smooth</span>(<span class="at">span =</span> <span class="dv">1</span>, <span class="at">colour =</span> <span class="st">&quot;red&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <blockquote>
 <ul>
+<li><strong>Stop to think</strong></li>
 <li>Hopefully you have two lines on your scatter plot, which one is a better fit, blue or red?</li>
 </ul>
 </blockquote>
@@ -606,7 +609,7 @@ So, this equation is the (natural logarithm of) the probability of being in one 
 <span id="cb107-3"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb107-3" tabindex="-1"></a></span>
 <span id="cb107-4"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb107-4" tabindex="-1"></a><span class="co"># Produce an analysis of deviance table for our sheep_glm</span></span>
 <span id="cb107-5"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb107-5" tabindex="-1"></a><span class="fu">anova</span>(sheep_glm, <span class="at">test =</span> <span class="st">&quot;Chisq&quot;</span>)</span></code></pre></div>
-<p>Take a look at the <code>summary()</code> function output. This output should look fairly familiar, it bares a is a fairly close resemblance to the <code>summary()</code> we produced for our <code>lm()</code> functions.</p>
+<p>Take a look at the <code>summary()</code> function output. This output should look fairly familiar, it bares a fairly close resemblance to the <code>summary()</code> we produced for our <code>lm()</code> functions.</p>
 <ul>
 <li><strong>Call</strong> - This is just a reminder of the model that were looking at</li>
 <li><strong>Coefficients</strong> - Once again we have a intercept and a slope, we are still just modeling a line, and each of these comes with an standard error value. We also have a z value which, along with our p-values, allow us to work out the probability of our coefficients being 0.</li>
@@ -619,6 +622,7 @@ So, this equation is the (natural logarithm of) the probability of being in one 
 <p>So if we apply our old practices of, for a given value of x, trying to calculate y based on our <code>summary()</code> outputs.</p>
 <blockquote>
 <ul>
+<li><strong>Stop to think</strong></li>
 <li>Take a look at the intercept, what does this tell you? Does it match what you might expect from the first scatter plot we produced?</li>
 <li>See if you can use <span class="math inline">\(y=mx+c\)</span> to calculate y for sheep that weighs 5kg. Again take a look at your figure, do these support each other?</li>
 </ul>
@@ -626,6 +630,7 @@ So, this equation is the (natural logarithm of) the probability of being in one 
 <p>Hopefully you recognise that our plot does not support a negative intercept and a 5kg ewe producing, on average, 0.3 lambs over her lifetime seems a little on the low side.</p>
 <blockquote>
 <ul>
+<li><strong>Stop to think</strong></li>
 <li>Take a look at the equations above that describe GLMs with a Poisson error structure and log link function. Do you notice anything?</li>
 </ul>
 </blockquote>
@@ -651,9 +656,9 @@ So, this equation is the (natural logarithm of) the probability of being in one 
 <li><strong>Influential observations</strong> - We have calculated leverage values for our data points before, this plot is a nice way of quickly checking them. Points should be within the contours, if they fall outside, you may have outliers present.</li>
 <li><strong>Normality of residuals</strong> - This checks to see if the residuals from the model are normally distributed. If points follow the line then they follow a normal distribution. Quite frequently, you will see some deviation from the line at the top or tail of the residuals. This would indicate that the model doesn’t predict the outcome for points in that range very well.</li>
 </ol>
-<p>A note on overdispersion and zero inflated data &lt;- this is the thorn in the side of almost every ecologist I know. It’s a total pain in the bum and it happens a lot. But what really is it? In real terms, overdispersion is talking about extra variation that is not accounted for in your model. It could come from an experimental design that doesn’t account for every single source of variation (very likely in biological studies), it can also come from non-independence in your data set or it could come from zero-inflation, which is when we have more zeros relative to the number expected for the distribution we are using.</p>
+<p>A note on overdispersion and zero inflated data &lt;- this is the thorn in the side of almost every ecologist I know and I would expect data scientists will run in to this often as well. It’s a total pain in the bum and it happens a lot. But what really is it? In real terms, overdispersion is talking about extra variation that is not accounted for in your model. It could come from an experimental design that doesn’t account for every single source of variation (very likely in biological studies), it can also come from non-independence in your data set or it could come from zero-inflation, which is when we have more zeros relative to the number expected for the distribution we are using.</p>
 <p>All of these sources of overdispersion are common in the biological sciences and you need to take note if your model is overdispersed because it plays havoc with your p-values (I know, not the p-values!!!). Overdispersion makes your p-values less conservative so you are more likely to get a false positive, which as a scientist, this is right up there in the top 5 worst nightmares (after the one where you’re trying to run away from the thing you cant quite see and then you fall over).</p>
-<p>Alongside our output from the <code>check_model()</code> function, we can also check for overdispersion ourselves by dividing the residual deviance by the residual degrees of freedom. In a perfect model, this would be 1 as indicated by our dispersion parameter. If the result of dividing residual deviance by residual degrees of freedom is much more then 1 (the rule of thumb is if its greater then 2) its our data is overdispersed, and if its much less then our data are underdispersed.</p>
+<p>Alongside our output from the <code>check_model()</code> function, we can also check for overdispersion ourselves by dividing the residual deviance by the residual degrees of freedom. In a perfect model, this would be 1 as indicated by our dispersion parameter. If the result of dividing residual deviance by residual degrees of freedom is much more then 1 (the rule of thumb is if its greater then 2) our data is overdispersed, and if its much less then our data are underdispersed.</p>
 <p>So what do we do if we have evidence of overdispersion? Well we tinker with the model, there are lots of variants of the GLM so it maybe a new error structure of link function will allow you to account for the overdispersion. A common alternative for the poisson error structure is the quasipoisson error structure. All the quasipoisson error structure does is estimates the dispersion index and then R adjusts your p-values accordingly (making them more conservative).</p>
 <p>You can try it out if you like, try running the following;</p>
 <div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb110-1" tabindex="-1"></a><span class="co"># Fitting a GLM with a quasipoisson error structure</span></span>
@@ -674,10 +679,10 @@ So, this equation is the (natural logarithm of) the probability of being in one 
 </div>
 <div id="a-binomial-glm" class="section level2 hasAnchor" number="12.4">
 <h2><span class="header-section-number">12.4</span> A Binomial GLM<a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#a-binomial-glm" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>In this data set were going to have a look at tackling another commonly occurring issue in ecological data. Having a binary dependent variable.</p>
-<p>We will explore the effect of water depth, vegetation height and aquatic vegetation type on the presence or absence of frogs across 76 pools. We wish to know whether the presence or absence of frogs can be predicted from these parameters. Previous analyses have shown that water depth and vegetation height can both influence frog distribution but the impact of dominant aquatic plant type is as yet unknown.</p>
+<p>In this data set were going to have a look at tackling another commonly occurring issue with biological data. Having a binary dependent variable.</p>
+<p>We will explore the effect of water depth, vegetation height and aquatic vegetation type on the presence or absence of frogs across 76 pools. We wish to know whether the presence or absence of frogs can be predicted from these parameters. Previous analyses have shown that water depth and vegetation height can both influence frog distribution but the impact of dominant aquatic plant type is as yet unknown. The next data set is called;</p>
 <ul>
-<li><code>frogs.csv</code> data file</li>
+<li><code>frogs.csv</code></li>
 </ul>
 <p>This data file contains the following data;</p>
 <ul>
@@ -687,7 +692,7 @@ So, this equation is the (natural logarithm of) the probability of being in one 
 <li>distance - Distance to nearest path (m)</li>
 <li>planttype - Dominant aquatic plant type (species)</li>
 </ul>
-<p>Take note - in this data set water depth, vegetation height and distance to paths are all continuous measurements, whereas planttype is categorical.</p>
+<p><strong>Take note</strong> - in this data set water depth, vegetation height and distance to paths are all continuous measurements, whereas planttype is categorical.</p>
 <div id="task-6---check-the-data" class="section level3 hasAnchor" number="12.4.1">
 <h3><span class="header-section-number">12.4.1</span> Task 6 - Check the data<a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#task-6---check-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Load the data set <code>frogs.csv</code> into your workspace under the object name <code>frogs</code> and try performing some routine checks to make sure R has interpreted the variables correctly and all expected data is present and accounted for. You can use some of the functions explored in Chapter <a href="workshop-2---explorartory-data-analysis.html#checking-the-data">2.2.3</a> if you need some help with this.</p>
@@ -700,6 +705,7 @@ So, this equation is the (natural logarithm of) the probability of being in one 
 <span id="cb112-3"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb112-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
 <blockquote>
 <ul>
+<li><strong>Stop to think</strong></li>
 <li>What is this plot telling you about the relationship between frog prescence and water depth?</li>
 <li>Is the regression line a good fit?</li>
 <li>Produce similar plots for the other variables in the data set. When you get to plotting <code>planttype</code> on the x axis you may want to add <code>position="jitter"</code> to the <code>geom_point()</code> function and colour the points by <code>frogs</code>.</li>
@@ -710,7 +716,7 @@ So, this equation is the (natural logarithm of) the probability of being in one 
 </div>
 <div id="task-8---fitting-a-glm" class="section level3 hasAnchor" number="12.4.3">
 <h3><span class="header-section-number">12.4.3</span> Task 8 - Fitting a GLM<a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#task-8---fitting-a-glm" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Right so we are ready to start fitting some models. We will use the Enter method, as we did with our linear models in Chapter 11. We will begin by including all relevant variables and removing them one at a time. We know we have a binary dependent variable so we are going to need to run a GLM with a binomial error structure, the default link function for this family is logit. So we have all the basic elements for our first GLM. Try running the following;</p>
+<p>Right so we are ready to start fitting some models. We will use the Enter method, as we did with our linear models in Chapter 9. We will begin by including all relevant variables and removing them one at a time. We know we have a binary dependent variable so we are going to need to run a GLM with a binomial error structure, the default link function for this family is logit. So we have all the basic elements for our first GLM. Try running the following;</p>
 <div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb113-1" tabindex="-1"></a><span class="co"># Fitting a glm with binomial error structure</span></span>
 <span id="cb113-2"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb113-2" tabindex="-1"></a>frog_glm1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(frogs <span class="sc">~</span> water <span class="sc">*</span> veght <span class="sc">*</span> distance <span class="sc">*</span> planttype,</span>
 <span id="cb113-3"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb113-3" tabindex="-1"></a>                 <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link=</span><span class="st">&quot;logit&quot;</span>),</span>
@@ -718,18 +724,21 @@ So, this equation is the (natural logarithm of) the probability of being in one 
 <p>Notice we got a little warning message about convergence, so we know we might have a bit of an issue with this model. Try running; <code>performance::check_model()</code>, <code>summary()</code> and <code>anova()</code> for this GLM (remember for <code>anova()</code> you will need to specify <code>test = "Chisq"</code>).</p>
 <blockquote>
 <ul>
+<li><strong>Stop to think</strong></li>
 <li>What do these outputs tell you?</li>
 </ul>
 </blockquote>
 <p>Yup this model is a bit of a mess, <code>check.model()</code> will almost certainly have failed to produce an output. That is because we have far too many variables and interactions going on and not enough data. Ok, lets try again.</p>
 <blockquote>
 <ul>
+<li><strong>Analysis time</strong></li>
 <li>Run the above model again and save it under <code>frog_glm2</code> but change the interaction terms to additive ones. Take a look at the <code>performance::check_model()</code>, <code>anova()</code> and <code>summary()</code> outputs. What are these telling you? Note you will have a few additional plots from <code>check_model()</code>, see if you can work out how to interpret them. Ask for help if needed.</li>
 </ul>
 </blockquote>
 <p>You might have seen we have some evidence of collinearity in our data. This is never a good think when fitting models. Take a look at the variables flagged and select one to exclude in the next iteration of model fitting.</p>
 <blockquote>
 <ul>
+<li><strong>Analysis time</strong></li>
 <li>Fit a new model but with one of the collinear variabled removed. Take a look at the <code>performance::check_model()</code>, <code>anova()</code> and <code>summary()</code> outputs. What are these telling you?</li>
 <li>You might have noticed that an additional variable has now been identified as significant. Why do you think this is?</li>
 <li>Run the model again, removing one variable at a time (starting with the least significant), until only significant vairables remain. Take a look at the <code>performance::check_model()</code>, <code>anova()</code> and <code>summary()</code> outputs each time. What are these telling you?</li>
@@ -753,13 +762,14 @@ y = mx + c
     water     veght 
 0.9751004 1.9345468 </code></pre>
 <p>So, we can think of these exponentials as giving us the odds that frogs will be present. This is slightly easier when values are above 1. So we will look at <code>veght</code> first. Our value of <code>1.94</code> suggests that for every cm increase in vegetation height we increase the likelihood of finding a frog by 1.94. You will see this also referred to as an odds ratio if you do any further reading.</p>
-<p>Lets turn our attention to water depth. When your odds value is less then one, that marks negative relationship between your response and predictor variable, when your odds value is greater then 1 this relationship is positive. If your confidence intervals include zero the relationship is not significant.</p>
+<p>Lets turn our attention to water depth. When your odds value is less then one, that marks a negative relationship between your response and predictor variable, when your odds value is greater then 1 this relationship is positive. If your confidence intervals include zero the relationship is not significant.</p>
 <p>For water depth, we have an odds value of 0.98, so we know our relationship between frog presence and water depth will be negative. We also need to do a little maths trick to interpret this value as we did for vegetation height. We have to calculate the inverse value (1 divided by the odds). Do this now.</p>
 <pre><code>1/0.98 = 1.020408</code></pre>
 <p>Hopefully you have an answer like the one above. This means that for every cm increase in water depth the likelihood of finding a frog decreases by 1.02.</p>
 <p>Finally lets have a think about our intercept. Once again we will need to work out the exponential for our intercept, if we wish to interpret it in real terms. Our intercept is the probability of finding frogs when both water depth and vegetation height are set to zero.</p>
 <blockquote>
 <ul>
+<li><strong>Stop to think</strong></li>
 <li>See if you can work out what this is from the <code>summary()</code> output of our model.</li>
 </ul>
 </blockquote>
@@ -771,6 +781,7 @@ y = mx + c
 <span id="cb118-4"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb118-4" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;glm&quot;</span>, <span class="at">method.args =</span> <span class="fu">list</span>(<span class="at">family=</span>binomial), <span class="at">se =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <blockquote>
 <ul>
+<li><strong>Stop to think</strong></li>
 <li>Take a look at this plot, does it support the conclusions drawn from our <code>summary()</code> output?</li>
 <li>Build a similar plot for water depth, what does this plot tell you?</li>
 </ul>
@@ -800,12 +811,14 @@ y = mx + c
 <p>Start by exploring the data, build some histograms and other exploratory plots. You may find it helpful to build a matrix scatter plot as well.</p>
 <blockquote>
 <ul>
+<li><strong>Stop to think</strong></li>
 <li>How are these data distributed? What does that mean for the type of model you may wish to fit?</li>
 </ul>
 </blockquote>
 <p>As you know, count data are very often left-skewed (i.e. lots of small counts and few large counts), and of course they cannot be negative (i.e. bounded at zero). Consequently, the normal distribution is very often a poor fit to count data.</p>
 <blockquote>
 <ul>
+<li><strong>Stop to think</strong></li>
 <li>Do your other data explorations tell you anything else? How do you think our other variables are affecting kooki bird abundance?</li>
 </ul>
 </blockquote>
@@ -815,6 +828,7 @@ y = mx + c
 <p>Try running a GLM, with a Poisson distribution and log link function. Add <code>kooki_count</code> as your response variable and add <code>fruit_trees</code>, <code>distance_river</code> and <code>canopy_cover</code> as predictors. Follow the enter method until you have constructed a minimal model. Remember to keep using<code>performance::check_model()</code> to check each model you produce.</p>
 <blockquote>
 <ul>
+<li><strong>Stop to think</strong></li>
 <li>Do any of the predictors explain a significant amount of the variation in kooki bird abundance?</li>
 <li>Which variables are retained in your minimum model?</li>
 <li>Are there any features of the study design that should be considered in your model?</li>
@@ -827,6 +841,7 @@ y = mx + c
 <p>Rather like our linear mixed effects models, here we have incorporated <code>site</code> as a random factor. Take a look at the model outputs and diagnostics.</p>
 <blockquote>
 <ul>
+<li><strong>Stop to think</strong></li>
 <li>How would you interpret the outputs from this model?</li>
 <li>Why might including site as a random effect have altered the significance of some predictors? A matrix plot of all the variables will help here.</li>
 <li>Which model do think is the most robust at identifying factors contributing to variation in kooki bird abundance?</li>
@@ -836,16 +851,17 @@ y = mx + c
 <p>If you think these data are highly overdispersed, congratulations buy yourself a treat, you have won at statistics. These data are overdisperded any guesses as to why?</p>
 <blockquote>
 <ul>
+<li><strong>Stop to think</strong></li>
 <li>Go back to your initial histogram, why do you think we have signatures of overdispersion?</li>
 </ul>
 </blockquote>
-<p>If you answered, zero inflation, you are on a roll. Yes these data are full of zeros. Which is not uncommon in ecology. There are several things you can try to do to improve model fit when you have zero inflation. You can try quasi Poisson or negative binomial error structures or even mixture and hurdle models. There are packages that can be used to fit all of these. You are welcome to try and improve the model fit for the kooki bird data set in class with our good old friend Google or we can leave it there if you have reached stats saturation point.</p>
+<p>If you answered, zero inflation, you are on a roll. Yes these data are full of zeros. Which is not uncommon in biology. There are several things you can try to do to improve model fit when you have zero inflation. You can try quasi Poisson or negative binomial error structures or even mixture and hurdle models. There are packages that can be used to fit all of these. You are welcome to try and improve the model fit for the kooki bird data set in class with our good old friend Google or we can leave it there if you have reached stats saturation point.</p>
 </div>
 </div>
 <div id="conclusions-2" class="section level2 hasAnchor" number="12.6">
 <h2><span class="header-section-number">12.6</span> Conclusions<a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#conclusions-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>This concludes my teaching on this module. We have played with lots of types of multivariate linear models and a few different types of generalised linear models. Over the next two weeks Dr Richard Davies will be taking over and introducing you to principal components analysis (PCA) as well as multivariate community analysis.</p>
-<p>You can find the summative coursework for BIO-7025A in the next chapter. However, I would recommend completing Richards materials on PCA and multivariate community analysis before beginning the assignment.</p>
+<p>This concludes my teaching on this module. We have played with lots of types of linear models and a few different types of generalised linear models. Over the next two weeks Dr Richard Davies will be taking over and introducing you to principal components analysis (PCA) as well as multivariate community analysis.</p>
+<p>You can find the summative coursework for BIO-7056A in the next chapter. However, I would recommend completing Richards materials on PCA and multivariate community analysis before beginning the assignment.</p>
 </div>
 <div id="before-you-leave-10" class="section level2 hasAnchor" number="12.7">
 <h2><span class="header-section-number">12.7</span> Before you leave!<a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#before-you-leave-10" class="anchor-section" aria-label="Anchor link to header"></a></h2>
