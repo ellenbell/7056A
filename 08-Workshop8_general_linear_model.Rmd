@@ -1,4 +1,4 @@
-# Multivariate Linear Modelling
+# Workshop 8 - Multivariate Linear Modelling
 
 ## Introduction
 

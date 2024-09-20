@@ -37,6 +37,6 @@ Discussions will be limited to 20 minutes.
 
 You may wish to wait until after you have covered PCA and multivariate community analysis with Richard before beginning this assignment. The final workshop session of week 12 will be a help session to help you get started on the analysis for this assignment.
 
-The data for this can be found alongside the assessment briefs on the blackboard course page under Assessment Briefs > godwit data. Clicking on this should download a file called `assignment_godwit_data.csv`.  
+The data for this can be found alongside the assessment briefs on the blackboard course page under Summative Assessment > Godwit Data > assignment_godwit_data.csv. Clicking on this should download a file called `assignment_godwit_data.csv`.  
 
 Have a good Christmas break!

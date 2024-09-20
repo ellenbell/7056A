@@ -122,7 +122,7 @@
 \contentsline {section}{\numberline {8.1}The exercise}{93}{section.8.1}%
 \contentsline {section}{\numberline {8.2}The Problem}{93}{section.8.2}%
 \contentsline {section}{\numberline {8.3}The Data}{94}{section.8.3}%
-\contentsline {chapter}{\numberline {9}Multivariate Linear Modelling}{97}{chapter.9}%
+\contentsline {chapter}{\numberline {9}Workshop 8 - Multivariate Linear Modelling}{97}{chapter.9}%
 \contentsline {section}{\numberline {9.1}Introduction}{97}{section.9.1}%
 \contentsline {section}{\numberline {9.2}Practical 8 - Multiple Linear Models}{98}{section.9.2}%
 \contentsline {section}{\numberline {9.3}Data set 1: Africa}{98}{section.9.3}%

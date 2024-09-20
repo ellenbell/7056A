@@ -8,7 +8,7 @@ When we are exploring the effect of different treatments on a dependent variable
 
 In this session we will be working with two data sets. First of all we have `activity.csv` which measures sweat produced in 10 individuals during a bout of intense activity. We will then move onto `metabolism.csv` which measures metabolism in a migrant bird species under different conditions, so we will look at how we can implement repeated measures design in a two-way ANOVA.
 
-Log into the Posit cloud classroom and install and load the following packages; `tidyverse`and `rstatix`.
+Log into posit Cloud and return to the classroom work space, open the project called __Workshop_10__. Set up your script and install and load the following packages; `tidyverse`and `rstatix`.
 
 ## Data set 1 - Activity
 
@@ -35,6 +35,7 @@ individual <- c(1:10)
 activity <- cbind(activity,individual)
 ```
 
+> * __Stop to think__
 > * Make sure you understand how the above piece of code works. 
 > * Is our data frame in a wide or a long format? Which format do you think it should be in?
 
@@ -47,6 +48,7 @@ activity <- activity %>%
                values_to = "response")
 ```
 
+> * __Analysis time__
 > * Now use `glimpse()` to check how R has categorised the different data types for each variable? 
 > * Really we need `individual` and `time_point` to be categorised as factors. See if you can use `as.factor()` to convert these variables to factors. 
 
@@ -54,12 +56,14 @@ activity <- activity %>%
 
 Now that we have our data in a sensible format we can start to do some data exploration. 
 
+> * __Analysis time__
 > * Start by calculating the means and SE for each of the three time periods.
 > * Write down what this tells you about the effect of activity on sweat production.
 > * Do you think that these groups are likely to differ significantly from one another?
 
 Lets try to make a data visualisation to help with this last point
 
+> * __Analysis time__
 > * See if you can make a boxplot with `time_point` on the x axis and `response` on the y axis. 
 > * Draw histograms to check the assumption of normally distributed data.
 > * Is this assumption met for all three groups?
@@ -83,6 +87,7 @@ Very conveniently, get_anova_table() does a lot of the work for you. It automati
 
 Take a look at the output from the `get_anova_table()` function. This output is a little different from other ANOVA outputs we've seen so far. DFn and DFd represent the degrees of freedom for  treatment (T-1) and error ((T-1)(n-1)) respectively. The F statistic, represents the ratio of the variance between groups to the variance within groups and the p value which gives the probability of seeing the test statistic if the null hypothesis were true. Finally the `ges` gives a general effect size, i.e. the amount of variability due to the within subject factor. 
 
+> * __Stop to think__
 > * Write down a few lines interpreting the output of this analysis
 > * Does this match what you might think from the boxplot?
 
@@ -97,6 +102,7 @@ pwc <- activity %>%
 pwc
 ```
 
+> * __Stop to think__
 > * Take a look at the output, how would you interpret this?
 > * What does this output tell you about the differences among treatments? 
 
@@ -123,6 +129,7 @@ The data in this file is as follows;
 
 Load the data set `metabolism.csv` into your workspace under the object name `metabolism` and try performing some routine checks to make sure R has interpreted the variables correctly and all expected data is present and accounted for. You can use some of the functions explored in Chapter \@ref(checking-the-data) if you need some help with this. 
 
+> * __Stop to think__
 > * Which variables are you going to include as fixed factors. Has R interpreted these variables as factors?
 > * Is this data set in a wide or a long format? Does it need to be converted?
 
@@ -132,10 +139,12 @@ Both `temp` and `para` are categorical and need to be identified as factors and 
 
 Now that we have our data in a sensible format we can start to do some data exploration. 
 
+> * __Analysis time__
 > * Start by calculating the means and SE for each of the different time points
 
 Lets try to make some data visualisation to help explore this data set. 
 
+> * __Analysis time__
 > * See if you can make a boxplot with time point on the x axis and metabolism on the y axis. Colour your boxes by `temp`
 > * Now create another boxplot but try colouring the boxes by `para`
 > * What do these box plots tell you about the effects of time, temperature and parasites on metabolism?
@@ -154,6 +163,7 @@ met_aov <- anova_test(
 get_anova_table(met_aov)
 ```
 
+> * __Stop to think__
 > * What does the output tell you about the variation in metabolism over the three time periods?
 > * What do the interactions with time rows tell you?
 > * What do the tests between subject variables tell you about the effects of parasite load and temperature on metabolism? 
