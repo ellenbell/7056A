@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 Workshop 4 - Introduction to Design and Analysis of Experiments | Statistics for Biologists</title>
   <meta name="description" content="This is the coursebook for BIO-7056A Statistics for Biologists" />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 Workshop 4 - Introduction to Design and Analysis of Experiments | Statistics for Biologists" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Dr Ellen Bell" />
 
 
-<meta name="date" content="2024-09-20" />
+<meta name="date" content="2024-10-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -56,7 +56,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -119,6 +119,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -540,10 +544,10 @@ Figure 4.5: Blocked design
 <div id="c5t3" class="section level3 hasAnchor" number="4.2.5">
 <h3><span class="header-section-number">4.2.5</span> Task 3 - Making some basic plots<a href="workshop-4---introduction-to-design-and-analysis-of-experiments.html#c5t3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Now we can start to explore the data. Here we have four different varieties of carrot, we could use the <code>filter()</code> function to look at the distribution of each category separately but because we have four categories, this isn’t terribly efficient. Instead the below code uses the <code>facet_wrap()</code> function, this splits your data plots according to a given variable (in this case Variety). Have a go at running the below code;</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="workshop-4---introduction-to-design-and-analysis-of-experiments.html#cb40-1" tabindex="-1"></a>carrot_yields <span class="sc">%&gt;%</span> <span class="co"># pipe your data set into ggplot</span></span>
-<span id="cb40-2"><a href="workshop-4---introduction-to-design-and-analysis-of-experiments.html#cb40-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">x =</span> Yields)) <span class="sc">+</span> <span class="co"># Tell ggplot which variable is mapped onto the x axis</span></span>
-<span id="cb40-3"><a href="workshop-4---introduction-to-design-and-analysis-of-experiments.html#cb40-3" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">10</span>) <span class="sc">+</span> <span class="co"># Plot a histogram with 10 bins</span></span>
-<span id="cb40-4"><a href="workshop-4---introduction-to-design-and-analysis-of-experiments.html#cb40-4" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(Variety)) <span class="co"># Facet wrap the plot so that each variety is in its own panel</span></span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="workshop-4---introduction-to-design-and-analysis-of-experiments.html#cb40-1" aria-hidden="true" tabindex="-1"></a>carrot_yields <span class="sc">%&gt;%</span> <span class="co"># pipe your data set into ggplot</span></span>
+<span id="cb40-2"><a href="workshop-4---introduction-to-design-and-analysis-of-experiments.html#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">x =</span> Yields)) <span class="sc">+</span> <span class="co"># Tell ggplot which variable is mapped onto the x axis</span></span>
+<span id="cb40-3"><a href="workshop-4---introduction-to-design-and-analysis-of-experiments.html#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">10</span>) <span class="sc">+</span> <span class="co"># Plot a histogram with 10 bins</span></span>
+<span id="cb40-4"><a href="workshop-4---introduction-to-design-and-analysis-of-experiments.html#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(Variety)) <span class="co"># Facet wrap the plot so that each variety is in its own panel</span></span></code></pre></div>
 <blockquote>
 <ul>
 <li><strong>Analysis time</strong></li>
@@ -551,9 +555,9 @@ Figure 4.5: Blocked design
 </ul>
 </blockquote>
 <p>When you don’t have many observations per category it can also be helpful to visualise the data a little differently. If we plot the data as point data for each variety we can sometimes get a better idea of the spread of the data. Try using the following;</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="workshop-4---introduction-to-design-and-analysis-of-experiments.html#cb41-1" tabindex="-1"></a>carrot_yields <span class="sc">%&gt;%</span> <span class="co"># pipe your data set into ggplot</span></span>
-<span id="cb41-2"><a href="workshop-4---introduction-to-design-and-analysis-of-experiments.html#cb41-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">x =</span> Variety, <span class="at">y =</span> Yields)) <span class="sc">+</span> <span class="co"># Tell ggplot which variable is mapped onto the each axis</span></span>
-<span id="cb41-3"><a href="workshop-4---introduction-to-design-and-analysis-of-experiments.html#cb41-3" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="co"># Plot a scatter plot</span></span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="workshop-4---introduction-to-design-and-analysis-of-experiments.html#cb41-1" aria-hidden="true" tabindex="-1"></a>carrot_yields <span class="sc">%&gt;%</span> <span class="co"># pipe your data set into ggplot</span></span>
+<span id="cb41-2"><a href="workshop-4---introduction-to-design-and-analysis-of-experiments.html#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">x =</span> Variety, <span class="at">y =</span> Yields)) <span class="sc">+</span> <span class="co"># Tell ggplot which variable is mapped onto the each axis</span></span>
+<span id="cb41-3"><a href="workshop-4---introduction-to-design-and-analysis-of-experiments.html#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="co"># Plot a scatter plot</span></span></code></pre></div>
 <blockquote>
 <ul>
 <li><strong>Stop to think</strong></li>
@@ -590,12 +594,12 @@ Figure 4.5: Blocked design
 </ul>
 </blockquote>
 <p>Now we can run our ANOVA</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="workshop-4---introduction-to-design-and-analysis-of-experiments.html#cb42-1" tabindex="-1"></a>lsmodel01 <span class="ot">&lt;-</span> <span class="fu">aov</span>(Yields <span class="sc">~</span> Variety, <span class="at">data =</span> carrot_yields)</span>
-<span id="cb42-2"><a href="workshop-4---introduction-to-design-and-analysis-of-experiments.html#cb42-2" tabindex="-1"></a><span class="co"># Here we are creating an object to store our model in </span></span>
-<span id="cb42-3"><a href="workshop-4---introduction-to-design-and-analysis-of-experiments.html#cb42-3" tabindex="-1"></a><span class="co"># the aov() function will perform our ANOVA and we are identifying our predictor and response variables on by placement on either side of the tilde </span></span>
-<span id="cb42-4"><a href="workshop-4---introduction-to-design-and-analysis-of-experiments.html#cb42-4" tabindex="-1"></a><span class="co"># As in earlier chapters your dependent (response) variable needs to be before the tilde and the independent (predictor) variable needs to be after the tilde.</span></span>
-<span id="cb42-5"><a href="workshop-4---introduction-to-design-and-analysis-of-experiments.html#cb42-5" tabindex="-1"></a><span class="fu">summary</span>(lsmodel01)</span>
-<span id="cb42-6"><a href="workshop-4---introduction-to-design-and-analysis-of-experiments.html#cb42-6" tabindex="-1"></a><span class="co"># Summarises the results of your model stored in lsmodel01</span></span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="workshop-4---introduction-to-design-and-analysis-of-experiments.html#cb42-1" aria-hidden="true" tabindex="-1"></a>lsmodel01 <span class="ot">&lt;-</span> <span class="fu">aov</span>(Yields <span class="sc">~</span> Variety, <span class="at">data =</span> carrot_yields)</span>
+<span id="cb42-2"><a href="workshop-4---introduction-to-design-and-analysis-of-experiments.html#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Here we are creating an object to store our model in </span></span>
+<span id="cb42-3"><a href="workshop-4---introduction-to-design-and-analysis-of-experiments.html#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="co"># the aov() function will perform our ANOVA and we are identifying our predictor and response variables on by placement on either side of the tilde </span></span>
+<span id="cb42-4"><a href="workshop-4---introduction-to-design-and-analysis-of-experiments.html#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="co"># As in earlier chapters your dependent (response) variable needs to be before the tilde and the independent (predictor) variable needs to be after the tilde.</span></span>
+<span id="cb42-5"><a href="workshop-4---introduction-to-design-and-analysis-of-experiments.html#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lsmodel01)</span>
+<span id="cb42-6"><a href="workshop-4---introduction-to-design-and-analysis-of-experiments.html#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Summarises the results of your model stored in lsmodel01</span></span></code></pre></div>
 <p>The results should looks something like this;</p>
 <pre><code>&gt; summary(lsmodel01)
             Df Sum Sq Mean Sq F value   Pr(&gt;F)    
@@ -613,8 +617,8 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
 </ul>
 </blockquote>
 <p>The analysis indicates that there are some differences between the varieties of the groups but we do not know where these differences lie. To find this out, we are going to use a post hoc test. These operate like a series of pair-wise comparisons of the treatments, and will identify where significant differences exist between the means of the different varieties. To do this we will perform a Tuckey test, this is the most commonly reported post-hot test for ANOVA. Try running the following;</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="workshop-4---introduction-to-design-and-analysis-of-experiments.html#cb44-1" tabindex="-1"></a><span class="fu">TukeyHSD</span>(lsmodel01, <span class="at">conf.level=</span>.<span class="dv">95</span>) </span>
-<span id="cb44-2"><a href="workshop-4---introduction-to-design-and-analysis-of-experiments.html#cb44-2" tabindex="-1"></a><span class="co"># Perform a d Tuckey test on our ANOVA, stored in lsmodel01 with confidence levels of 95%.</span></span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="workshop-4---introduction-to-design-and-analysis-of-experiments.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">TukeyHSD</span>(lsmodel01, <span class="at">conf.level=</span>.<span class="dv">95</span>) </span>
+<span id="cb44-2"><a href="workshop-4---introduction-to-design-and-analysis-of-experiments.html#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform a d Tuckey test on our ANOVA, stored in lsmodel01 with confidence levels of 95%.</span></span></code></pre></div>
 <p>The output table indicates which pairs of treatment means are significantly different from one another. The <code>diff</code> collumn gives the difference in means between the two varieties, the <code>lwr</code> and <code>upr</code> columns give the upper and lower bounds for the 95% confidence interval for the difference and the <code>p adj</code> shows whether there is a significant difference between comparisons.</p>
 <blockquote>
 <ul>
@@ -625,8 +629,8 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
 </ul>
 </blockquote>
 <p>When we want to look at differences, a box plot or bar chart is often a good option. We can use <code>ggplot()</code> to do this, try running the following;</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="workshop-4---introduction-to-design-and-analysis-of-experiments.html#cb45-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> carrot_yields, <span class="fu">aes</span>(<span class="at">x =</span> Variety, <span class="at">y =</span> Yields)) <span class="sc">+</span></span>
-<span id="cb45-2"><a href="workshop-4---introduction-to-design-and-analysis-of-experiments.html#cb45-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="workshop-4---introduction-to-design-and-analysis-of-experiments.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> carrot_yields, <span class="fu">aes</span>(<span class="at">x =</span> Variety, <span class="at">y =</span> Yields)) <span class="sc">+</span></span>
+<span id="cb45-2"><a href="workshop-4---introduction-to-design-and-analysis-of-experiments.html#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
 <blockquote>
 <ul>
 <li><strong>Stop to think</strong></li>
@@ -639,8 +643,8 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
 <p>The analysis of Experiment 2 requires a two-way ANOVA since there are two factors in the experiment: light colour and sex. Note that you can have more than two factors in a multi-way ANOVA (although the more you have, the harder it can be to interpret the results).</p>
 <p>Run through <strong>Task 2</strong> (<a href="workshop-4---introduction-to-design-and-analysis-of-experiments.html#c5t2">4.2.4</a>) and load the <code>pecking_rates.csv</code> file into your workspace, naming the object <code>chickens</code>. Run through some standard data checks, and explore the data using plots and descriptives statistics (as described in <strong>Tasks 2-4</strong>, <a href="workshop-4---introduction-to-design-and-analysis-of-experiments.html#c5t2">4.2.4</a>, <a href="workshop-4---introduction-to-design-and-analysis-of-experiments.html#c5t3">4.2.5</a>, <a href="workshop-4---introduction-to-design-and-analysis-of-experiments.html#c5t4">4.2.6</a>).</p>
 <p>Now try making a box plot to visualise these differences with the following code;</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="workshop-4---introduction-to-design-and-analysis-of-experiments.html#cb46-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> chickens, <span class="fu">aes</span>(<span class="at">x =</span> light, <span class="at">y =</span> pecking_rates, <span class="at">fill =</span> sex)) <span class="sc">+</span></span>
-<span id="cb46-2"><a href="workshop-4---introduction-to-design-and-analysis-of-experiments.html#cb46-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="workshop-4---introduction-to-design-and-analysis-of-experiments.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> chickens, <span class="fu">aes</span>(<span class="at">x =</span> light, <span class="at">y =</span> pecking_rates, <span class="at">fill =</span> sex)) <span class="sc">+</span></span>
+<span id="cb46-2"><a href="workshop-4---introduction-to-design-and-analysis-of-experiments.html#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
 <blockquote>
 <ul>
 <li><strong>Stop to think</strong></li>
@@ -650,7 +654,7 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
 </blockquote>
 <p>Hopefully you made some histograms when you were exploring the data, but if we are going to think about applying an ANOVA to these data we also need to check the other major ANOVA assumption.</p>
 <p>Try running the following to check the assumption of equal variance;</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="workshop-4---introduction-to-design-and-analysis-of-experiments.html#cb47-1" tabindex="-1"></a><span class="fu">leveneTest</span>(pecking_rates <span class="sc">~</span> light <span class="sc">*</span> sex, <span class="at">data =</span> chickens)</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="workshop-4---introduction-to-design-and-analysis-of-experiments.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">leveneTest</span>(pecking_rates <span class="sc">~</span> light <span class="sc">*</span> sex, <span class="at">data =</span> chickens)</span></code></pre></div>
 <blockquote>
 <ul>
 <li>What do you notice about the above code? Add comments to your script where appropriate.</li>
@@ -658,8 +662,8 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
 </ul>
 </blockquote>
 <p>So lets try running a 2-way ANOVA, we can do this in a very similar way to before, but we are adding an additional factor plus an interaction <code>light:sex</code>. Try running the following;</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="workshop-4---introduction-to-design-and-analysis-of-experiments.html#cb48-1" tabindex="-1"></a>lsmodel02 <span class="ot">&lt;-</span> <span class="fu">aov</span>(<span class="at">formula =</span> pecking_rates <span class="sc">~</span> light <span class="sc">+</span> sex <span class="sc">+</span> light<span class="sc">:</span>sex, <span class="at">data =</span> chickens)</span>
-<span id="cb48-2"><a href="workshop-4---introduction-to-design-and-analysis-of-experiments.html#cb48-2" tabindex="-1"></a><span class="fu">summary</span>(lsmodel02)</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="workshop-4---introduction-to-design-and-analysis-of-experiments.html#cb48-1" aria-hidden="true" tabindex="-1"></a>lsmodel02 <span class="ot">&lt;-</span> <span class="fu">aov</span>(<span class="at">formula =</span> pecking_rates <span class="sc">~</span> light <span class="sc">+</span> sex <span class="sc">+</span> light<span class="sc">:</span>sex, <span class="at">data =</span> chickens)</span>
+<span id="cb48-2"><a href="workshop-4---introduction-to-design-and-analysis-of-experiments.html#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lsmodel02)</span></code></pre></div>
 <p>The output looks more complex than the previous ANOVA output with a row for each factor plus a row for the interaction between factors.</p>
 <blockquote>
 <ul>
@@ -754,7 +758,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

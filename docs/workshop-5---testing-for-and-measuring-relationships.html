@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 5 Workshop 5 - Testing for and Measuring Relationships | Statistics for Biologists</title>
   <meta name="description" content="This is the coursebook for BIO-7056A Statistics for Biologists" />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 5 Workshop 5 - Testing for and Measuring Relationships | Statistics for Biologists" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Dr Ellen Bell" />
 
 
-<meta name="date" content="2024-09-20" />
+<meta name="date" content="2024-10-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -56,7 +56,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -119,6 +119,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -516,10 +520,10 @@ If these CIs do not overlap zero, then there is a greater than 95% probability t
 <p>You will need to make sure the packages <code>tidyverse</code>, <code>performance</code> and <code>moderndive</code> are installed and loaded to complete todays workshop, check Chapter <a href="index.html#workspace-setup">1.2.9.3</a> and Chapter <a href="index.html#script-setup">1.2.9.4</a> if you are unsure how to do this.</p>
 <p>As previously mentioned, the data set for this part of practical is relatively small, so we can enter it into R manually (this also gives you a chance to learn a little more code).</p>
 <p>First of all we need to create a new object for each variable, and store our data accordingly. Try running the following;</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="workshop-5---testing-for-and-measuring-relationships.html#cb49-1" tabindex="-1"></a>exposure <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">8.3</span>, <span class="fl">6.4</span>, <span class="fl">3.4</span>, <span class="fl">3.8</span>, <span class="fl">2.6</span>, <span class="fl">11.6</span>, <span class="fl">1.2</span>, <span class="fl">2.5</span>, <span class="fl">1.6</span>)</span>
-<span id="cb49-2"><a href="workshop-5---testing-for-and-measuring-relationships.html#cb49-2" tabindex="-1"></a>cancer <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">210</span>, <span class="dv">180</span>, <span class="dv">130</span>, <span class="dv">170</span>, <span class="dv">130</span>, <span class="dv">210</span>, <span class="dv">120</span>, <span class="dv">150</span>, <span class="dv">140</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="workshop-5---testing-for-and-measuring-relationships.html#cb49-1" aria-hidden="true" tabindex="-1"></a>exposure <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">8.3</span>, <span class="fl">6.4</span>, <span class="fl">3.4</span>, <span class="fl">3.8</span>, <span class="fl">2.6</span>, <span class="fl">11.6</span>, <span class="fl">1.2</span>, <span class="fl">2.5</span>, <span class="fl">1.6</span>)</span>
+<span id="cb49-2"><a href="workshop-5---testing-for-and-measuring-relationships.html#cb49-2" aria-hidden="true" tabindex="-1"></a>cancer <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">210</span>, <span class="dv">180</span>, <span class="dv">130</span>, <span class="dv">170</span>, <span class="dv">130</span>, <span class="dv">210</span>, <span class="dv">120</span>, <span class="dv">150</span>, <span class="dv">140</span>)</span></code></pre></div>
 <p>Now we need to combine our individual variables into a single data frame, to do this we can use the function <code>tibble()</code>. Try running the following;</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="workshop-5---testing-for-and-measuring-relationships.html#cb50-1" tabindex="-1"></a>exposure_cancer <span class="ot">&lt;-</span> <span class="fu">tibble</span>(exposure, cancer)</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="workshop-5---testing-for-and-measuring-relationships.html#cb50-1" aria-hidden="true" tabindex="-1"></a>exposure_cancer <span class="ot">&lt;-</span> <span class="fu">tibble</span>(exposure, cancer)</span></code></pre></div>
 <blockquote>
 <ul>
 <li><strong>Analysis time</strong></li>
@@ -531,9 +535,9 @@ If these CIs do not overlap zero, then there is a greater than 95% probability t
 <div id="c6t2" class="section level3 hasAnchor" number="5.2.3">
 <h3><span class="header-section-number">5.2.3</span> Task 2 - Making some basic plots<a href="workshop-5---testing-for-and-measuring-relationships.html#c6t2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Lets start by taking a look at how your data are spread. We can do this by making a scatter plot. Last week we used <code>ggplot()</code> to make some boxplots and histograms, we can also use this function to make scatter plots. Try running the following;</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="workshop-5---testing-for-and-measuring-relationships.html#cb51-1" tabindex="-1"></a><span class="co"># Create a scatter plot to look at the relationship between radiation </span></span>
-<span id="cb51-2"><a href="workshop-5---testing-for-and-measuring-relationships.html#cb51-2" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span> exposure_cancer, <span class="fu">aes</span>(<span class="at">x =</span> exposure, <span class="at">y =</span> cancer)) <span class="sc">+</span></span>
-<span id="cb51-3"><a href="workshop-5---testing-for-and-measuring-relationships.html#cb51-3" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="workshop-5---testing-for-and-measuring-relationships.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a scatter plot to look at the relationship between radiation </span></span>
+<span id="cb51-2"><a href="workshop-5---testing-for-and-measuring-relationships.html#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span> exposure_cancer, <span class="fu">aes</span>(<span class="at">x =</span> exposure, <span class="at">y =</span> cancer)) <span class="sc">+</span></span>
+<span id="cb51-3"><a href="workshop-5---testing-for-and-measuring-relationships.html#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
 <p>Hopefully R has produced a scatter plot in your plots panel exploring the relationship between radiation exposure and cancer mortality.</p>
 <blockquote>
 <ul>
@@ -547,8 +551,8 @@ If these CIs do not overlap zero, then there is a greater than 95% probability t
 <h3><span class="header-section-number">5.2.4</span> Task 3 - Regression analysis<a href="workshop-5---testing-for-and-measuring-relationships.html#c6t3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>On the basis of medical evidence, we have strong reasons to suspect that elevated radiation can cause increased cancer mortality. As this hypothesis specifies a cause-effect relationship, we can use a regression analysis to assess the extent to which this radioactive leak can explain the observed cancer mortality rates.</p>
 <p>We can modify the scatter plot you made in Task 2 to fit a regression line or line of best fit to your plot. Try adding the following line to your scatter plot code (dont forget to add a <code>+</code> to pipe to your new line of code);</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="workshop-5---testing-for-and-measuring-relationships.html#cb52-1" tabindex="-1"></a> <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&#39;lm&#39;</span>)</span>
-<span id="cb52-2"><a href="workshop-5---testing-for-and-measuring-relationships.html#cb52-2" tabindex="-1"></a><span class="co"># here we are instructing R to fit a line using the method `lm` which is an abbreviation of linear model</span></span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="workshop-5---testing-for-and-measuring-relationships.html#cb52-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&#39;lm&#39;</span>)</span>
+<span id="cb52-2"><a href="workshop-5---testing-for-and-measuring-relationships.html#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="co"># here we are instructing R to fit a line using the method `lm` which is an abbreviation of linear model</span></span></code></pre></div>
 <p>There are, of course, some assumptions about the data that must be checked before relying on the outputs from a regression analysis. The two key assumptions of linear regression are;</p>
 <ol style="list-style-type: decimal">
 <li>The deviations of points from the line (residuals) must be evenly distributed along the line.</li>
@@ -556,18 +560,18 @@ If these CIs do not overlap zero, then there is a greater than 95% probability t
 </ol>
 <p>You can often assess these assumptions with visual inspection of the graphs, and it can also help to plot the residuals (difference between the actual value of y and the value predicted from the equation) against the predicted values (values of y predicted from the equation for each value of x). Positive residuals indicate actual values that are greater than predicted values (i.e. points that lie above the line), and negative residuals are less than the predicted values (i.e. points lying below the line). If the regression assumptions are met, then a plot of residuals against predicted values should give a random scatter of points with no systematic pattern or bias. A positive or negative trend in this plot would indicate heteroscedasticity, a wedge-shape would indicate a greater spread of data at one end of the line and a U-shape would indicate a non-linear relationship.</p>
 <p>First of all, lets build our model, try running the following;</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="workshop-5---testing-for-and-measuring-relationships.html#cb53-1" tabindex="-1"></a>model01 <span class="ot">&lt;-</span> <span class="fu">lm</span>(cancer <span class="sc">~</span> exposure, <span class="at">data =</span> exposure_cancer)</span>
-<span id="cb53-2"><a href="workshop-5---testing-for-and-measuring-relationships.html#cb53-2" tabindex="-1"></a><span class="co"># Here we are creating a new object called model01</span></span>
-<span id="cb53-3"><a href="workshop-5---testing-for-and-measuring-relationships.html#cb53-3" tabindex="-1"></a><span class="co"># In this object we are placing a linear model as described by the lm() function</span></span>
-<span id="cb53-4"><a href="workshop-5---testing-for-and-measuring-relationships.html#cb53-4" tabindex="-1"></a><span class="co"># We are then specifying that we want to analyse cancer (our response variable) as a function of exposure (our predictor variable) using tilde (~). We then just tell R which data frame we are using with the data = exposure_cancer argument. </span></span>
-<span id="cb53-5"><a href="workshop-5---testing-for-and-measuring-relationships.html#cb53-5" tabindex="-1"></a><span class="fu">summary</span>(model01)</span>
-<span id="cb53-6"><a href="workshop-5---testing-for-and-measuring-relationships.html#cb53-6" tabindex="-1"></a><span class="co"># Summary() will just print out a summary of our model for us to interpret.</span></span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="workshop-5---testing-for-and-measuring-relationships.html#cb53-1" aria-hidden="true" tabindex="-1"></a>model01 <span class="ot">&lt;-</span> <span class="fu">lm</span>(cancer <span class="sc">~</span> exposure, <span class="at">data =</span> exposure_cancer)</span>
+<span id="cb53-2"><a href="workshop-5---testing-for-and-measuring-relationships.html#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Here we are creating a new object called model01</span></span>
+<span id="cb53-3"><a href="workshop-5---testing-for-and-measuring-relationships.html#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="co"># In this object we are placing a linear model as described by the lm() function</span></span>
+<span id="cb53-4"><a href="workshop-5---testing-for-and-measuring-relationships.html#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="co"># We are then specifying that we want to analyse cancer (our response variable) as a function of exposure (our predictor variable) using tilde (~). We then just tell R which data frame we are using with the data = exposure_cancer argument. </span></span>
+<span id="cb53-5"><a href="workshop-5---testing-for-and-measuring-relationships.html#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model01)</span>
+<span id="cb53-6"><a href="workshop-5---testing-for-and-measuring-relationships.html#cb53-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Summary() will just print out a summary of our model for us to interpret.</span></span></code></pre></div>
 <p>Don’t worry too much about interpreting the summary table yet, first lets check some of our assumptions. We can plot out our residuals against our predicted values to check their distribution and homoscedasticity using the following piece of code, try running it now;</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="workshop-5---testing-for-and-measuring-relationships.html#cb54-1" tabindex="-1"></a><span class="fu">ggplot</span>(model01, <span class="fu">aes</span>(<span class="at">x =</span> .fitted, <span class="at">y =</span> .resid)) <span class="sc">+</span></span>
-<span id="cb54-2"><a href="workshop-5---testing-for-and-measuring-relationships.html#cb54-2" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="workshop-5---testing-for-and-measuring-relationships.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(model01, <span class="fu">aes</span>(<span class="at">x =</span> .fitted, <span class="at">y =</span> .resid)) <span class="sc">+</span></span>
+<span id="cb54-2"><a href="workshop-5---testing-for-and-measuring-relationships.html#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
 <p>You can also check to see where these data points have come from with the following;</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="workshop-5---testing-for-and-measuring-relationships.html#cb55-1" tabindex="-1"></a><span class="fu">get_regression_points</span>(model01)</span>
-<span id="cb55-2"><a href="workshop-5---testing-for-and-measuring-relationships.html#cb55-2" tabindex="-1"></a><span class="co"># export regression points in a table of outcome/response variable, all explanatory/predictor variables, the fitted/predicted value, and residuals.</span></span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="workshop-5---testing-for-and-measuring-relationships.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_regression_points</span>(model01)</span>
+<span id="cb55-2"><a href="workshop-5---testing-for-and-measuring-relationships.html#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="co"># export regression points in a table of outcome/response variable, all explanatory/predictor variables, the fitted/predicted value, and residuals.</span></span></code></pre></div>
 <p>By looking at these latest two outputs (your residuals vs predicted values plot and regression points table) try to answer the following;</p>
 <blockquote>
 <ul>
@@ -682,10 +686,10 @@ For 95% CIs, there is a 5% chance of the true value being outside these limits, 
 </ul>
 </blockquote>
 <p>Now we can calculate the Pearson (or product-moment) coefficient of correlation, using the command;</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="workshop-5---testing-for-and-measuring-relationships.html#cb62-1" tabindex="-1"></a>correlation01 <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(cod_biomass<span class="sc">$</span>year, cod_biomass<span class="sc">$</span>cod_biomass, <span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>) </span>
-<span id="cb62-2"><a href="workshop-5---testing-for-and-measuring-relationships.html#cb62-2" tabindex="-1"></a><span class="co"># perform a correlation test on year and cod_biomass in the cod_biomass data set using Pearson&#39;s correlation coefficient. </span></span>
-<span id="cb62-3"><a href="workshop-5---testing-for-and-measuring-relationships.html#cb62-3" tabindex="-1"></a>correlation01</span>
-<span id="cb62-4"><a href="workshop-5---testing-for-and-measuring-relationships.html#cb62-4" tabindex="-1"></a><span class="co"># print the information stored in correlation 01</span></span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="workshop-5---testing-for-and-measuring-relationships.html#cb62-1" aria-hidden="true" tabindex="-1"></a>correlation01 <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(cod_biomass<span class="sc">$</span>year, cod_biomass<span class="sc">$</span>cod_biomass, <span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>) </span>
+<span id="cb62-2"><a href="workshop-5---testing-for-and-measuring-relationships.html#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="co"># perform a correlation test on year and cod_biomass in the cod_biomass data set using Pearson&#39;s correlation coefficient. </span></span>
+<span id="cb62-3"><a href="workshop-5---testing-for-and-measuring-relationships.html#cb62-3" aria-hidden="true" tabindex="-1"></a>correlation01</span>
+<span id="cb62-4"><a href="workshop-5---testing-for-and-measuring-relationships.html#cb62-4" aria-hidden="true" tabindex="-1"></a><span class="co"># print the information stored in correlation 01</span></span></code></pre></div>
 <blockquote>
 <ul>
 <li><strong>Stop to think</strong></li>
@@ -777,7 +781,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

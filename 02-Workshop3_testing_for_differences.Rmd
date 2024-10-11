@@ -199,8 +199,6 @@ one_sided_t
 > * What does the one-sample t-test indicate about whether the mean yields of the pooled virus and non-virus affected fields differ from the long-term average?
 > * If you separate the yields into virus and non virus affected fields and rerun the one sided t-test on each, what the results tell you?
 
-Note that the output in the one-sample t-test includes the 95% Confidence Interval of the Difference. This is calculated from the difference between the sample mean and the hypothesised mean, and so is different from the 95% CIs that you calculated previously.
-
 ### Task 6 - Answering Question 2 {#levene-test}
 
 __Did the presence of viruses affect the yield of sugar beet in this year?__ 
