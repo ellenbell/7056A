@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Statistics for Biologists</title>
   <meta name="description" content="This is the coursebook for BIO-7056A Statistics for Biologists" />
-  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Statistics for Biologists" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Dr Ellen Bell" />
 
 
-<meta name="date" content="2024-10-11" />
+<meta name="date" content="2024-10-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -56,7 +56,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -119,10 +119,6 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<style type="text/css">
-  
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -433,7 +429,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Statistics for Biologists</h1>
 <p class="author"><em>Dr Ellen Bell</em></p>
-<p class="date"><em>2024-10-11</em></p>
+<p class="date"><em>2024-10-15</em></p>
 </div>
 <div id="c1" class="section level1 hasAnchor" number="1">
 <h1><span class="header-section-number">Chapter 1</span> Welcome to the Statistics Coursebook<a href="index.html#c1" class="anchor-section" aria-label="Anchor link to header"></a></h1>
@@ -540,16 +536,16 @@ Figure 1.5: How to make your project more efficient
 <h3><span class="header-section-number">1.2.4</span> Task 2; Some fundamentals to effective use of R<a href="index.html#c2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>If you are already familiar with R the rest of this chapter will be a very swift refresher, you should still work through it though, it will also provide a good overview of posit Cloud usage.</p>
 <p>Lets start by playing with some commands in the console. Type or copy and paste the simple calculation (or command) shown below, into the console. Your text should appear next to the <code>&gt;</code> symbol. Press <code>Enter</code> on your keyboard, this will instruct R to run the command.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="sc">+</span> <span class="dv">9</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" tabindex="-1"></a><span class="dv">5</span> <span class="sc">+</span> <span class="dv">9</span></span></code></pre></div>
 <p>The two final lines of your output should look like this:</p>
 <pre><code>&gt; 5 + 9
 [1] 14</code></pre>
 <p>So… your initial command <code>5 + 9</code> is shown after the <code>&gt;</code>, symbol and the resulting output from R is shown after <code>[1]</code>. Don’t worry too much about the syntax of <code>&gt;</code> and <code>[1]</code> here. You can think of <code>&gt;</code> as meaning that R is ready to receive a command and <code>[1]</code> as R telling you that the answer to the first part of your question is here (in this case <code>14</code>).</p>
 <p>Try out some other commands… What happens when you input the following?</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="index.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dv">362</span> <span class="sc">*</span> <span class="dv">12</span></span></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="index.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dv">55</span> <span class="sc">/</span> <span class="dv">5</span></span></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="index.html#cb5-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">40</span> <span class="sc">/</span> <span class="dv">990</span>) <span class="sc">*</span> <span class="dv">100</span></span></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="index.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span><span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="index.html#cb3-1" tabindex="-1"></a><span class="dv">362</span> <span class="sc">*</span> <span class="dv">12</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="index.html#cb4-1" tabindex="-1"></a><span class="dv">55</span> <span class="sc">/</span> <span class="dv">5</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="index.html#cb5-1" tabindex="-1"></a>(<span class="dv">40</span> <span class="sc">/</span> <span class="dv">990</span>) <span class="sc">*</span> <span class="dv">100</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="index.html#cb6-1" tabindex="-1"></a><span class="dv">4</span><span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
 <p>See if you can work out what 30% of 735 is using the R console</p>
 </div>
 <div id="using-an-r-script" class="section level3 hasAnchor" number="1.2.5">
@@ -569,13 +565,13 @@ Figure 1.7: The four panels of an R Studio workspace
 </p>
 </div>
 <p>This new panel is essentially a text file where you can write your commands into a script and then send them down to the console when you want to run them. Lets have a play. Copy the below into your new R script.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="index.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dv">362</span> <span class="sc">*</span> <span class="dv">12</span></span>
-<span id="cb7-2"><a href="index.html#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="index.html#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="dv">55</span> <span class="sc">/</span> <span class="dv">5</span></span>
-<span id="cb7-4"><a href="index.html#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="index.html#cb7-5" aria-hidden="true" tabindex="-1"></a>(<span class="dv">40</span> <span class="sc">/</span> <span class="dv">990</span>) <span class="sc">*</span> <span class="dv">100</span></span>
-<span id="cb7-6"><a href="index.html#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-7"><a href="index.html#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span><span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="index.html#cb7-1" tabindex="-1"></a><span class="dv">362</span> <span class="sc">*</span> <span class="dv">12</span></span>
+<span id="cb7-2"><a href="index.html#cb7-2" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="index.html#cb7-3" tabindex="-1"></a><span class="dv">55</span> <span class="sc">/</span> <span class="dv">5</span></span>
+<span id="cb7-4"><a href="index.html#cb7-4" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="index.html#cb7-5" tabindex="-1"></a>(<span class="dv">40</span> <span class="sc">/</span> <span class="dv">990</span>) <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb7-6"><a href="index.html#cb7-6" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="index.html#cb7-7" tabindex="-1"></a><span class="dv">4</span><span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
 <p>These are all commands you have run before but now if you save your script you will have a text based document with your progress saved. It doesn’t make a huge amount of sense to do this now because these are just a un-associated set of calculations and we are just playing with the interface, but you could if you wanted to.</p>
 <p>Ok, so now we are ready to execute our commands. You can do this with each calculation individually, line by line, or you can run the whole script.</p>
 <p>To run your script line by line, place your cursor on the line you wish to run and you can either;</p>
@@ -593,39 +589,39 @@ Figure 1.7: The four panels of an R Studio workspace
 <h3><span class="header-section-number">1.2.6</span> Task 4; Creating objects<a href="index.html#task-4-creating-objects" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>As we have just seen, R can be used to perform calculations. However, we can use R to perform tasks that are much more complex. In order to do this we are going to have to learn about objects.</p>
 <p>Create a new R script in your current and save it under the name <code>objects</code>. You should see it appear as <code>object.R</code> under the <strong>Files</strong> tab in the bottom right panel. Run the following command using your script.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="index.html#cb8-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="dv">50</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="index.html#cb8-1" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="dv">50</span></span></code></pre></div>
 <p>What you have essentially done here, is told R to create an object called <code>A</code> and to store the number <code>50</code> inside it using the syntax <code>&lt;-</code>. After running the command you should see your object <code>A</code> and <code>50</code> pop up under <strong>Environment</strong> and <strong>Values</strong> in the top right hand panel, so you can see that <code>50</code> has been stored in <code>A</code>.</p>
 <p>Lets create some more objects;</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="index.html#cb9-1" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="dv">6</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="index.html#cb9-1" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="dv">6</span></span></code></pre></div>
 <p>Now see what happens if you run the following command;</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="index.html#cb10-1" aria-hidden="true" tabindex="-1"></a>A <span class="sc">*</span> b</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="index.html#cb10-1" tabindex="-1"></a>A <span class="sc">*</span> b</span></code></pre></div>
 <p>Oh dear… we have an error…</p>
 <pre><code>&gt; A * b
 Error: object &#39;b&#39; not found</code></pre>
 <p>This is because R has absolutely no flexibility with typos. It is looking for an object called <code>b</code> when there is no object called <code>b</code> in your environment. There is an object called <code>B</code>, but to R, <code>B</code> and <code>b</code> are completely different things. Try running this instead;</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="index.html#cb12-1" aria-hidden="true" tabindex="-1"></a>A <span class="sc">*</span> B</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="index.html#cb12-1" tabindex="-1"></a>A <span class="sc">*</span> B</span></code></pre></div>
 <p>Hopefully you should now have an output that looks like this</p>
 <pre><code>&gt; A * B
 [1] 300</code></pre>
 <p>This is a very simple example. But lets try to demonstrate why saving values within objects may be useful. Lets say you are interested in looking at the number of students who get freshers flu in Week 1 of teaching at UEA. You have a class size of 200 students and 15 of them report that they have contracted freshers flu. Use the following script to calculate the percentage of students with freshers flu.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="index.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create two objects, one for your total class and one for those that have flu</span></span>
-<span id="cb14-2"><a href="index.html#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Notice that neither of my object names contain spaces</span></span>
-<span id="cb14-3"><a href="index.html#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># If you need a space always use an underscore or full stop</span></span>
-<span id="cb14-4"><a href="index.html#cb14-4" aria-hidden="true" tabindex="-1"></a>total_class <span class="ot">&lt;-</span> <span class="dv">200</span></span>
-<span id="cb14-5"><a href="index.html#cb14-5" aria-hidden="true" tabindex="-1"></a>with_flu <span class="ot">&lt;-</span> <span class="dv">15</span></span>
-<span id="cb14-6"><a href="index.html#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-7"><a href="index.html#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the percentage of students with flu in week 1</span></span>
-<span id="cb14-8"><a href="index.html#cb14-8" aria-hidden="true" tabindex="-1"></a>percentage_with_flu <span class="ot">&lt;-</span> (with_flu<span class="sc">/</span>total_class)<span class="sc">*</span><span class="dv">100</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="index.html#cb14-1" tabindex="-1"></a><span class="co"># Create two objects, one for your total class and one for those that have flu</span></span>
+<span id="cb14-2"><a href="index.html#cb14-2" tabindex="-1"></a><span class="co"># Notice that neither of my object names contain spaces</span></span>
+<span id="cb14-3"><a href="index.html#cb14-3" tabindex="-1"></a><span class="co"># If you need a space always use an underscore or full stop</span></span>
+<span id="cb14-4"><a href="index.html#cb14-4" tabindex="-1"></a>total_class <span class="ot">&lt;-</span> <span class="dv">200</span></span>
+<span id="cb14-5"><a href="index.html#cb14-5" tabindex="-1"></a>with_flu <span class="ot">&lt;-</span> <span class="dv">15</span></span>
+<span id="cb14-6"><a href="index.html#cb14-6" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="index.html#cb14-7" tabindex="-1"></a><span class="co"># Calculate the percentage of students with flu in week 1</span></span>
+<span id="cb14-8"><a href="index.html#cb14-8" tabindex="-1"></a>percentage_with_flu <span class="ot">&lt;-</span> (with_flu<span class="sc">/</span>total_class)<span class="sc">*</span><span class="dv">100</span></span></code></pre></div>
 <p>If you look in your Environment in the top right panel you should see the percentage of students with flu calculated and stored under <code>percentage_with_flu</code>. You can use the following command to see it printed in the console.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="index.html#cb15-1" aria-hidden="true" tabindex="-1"></a>percentage_with_flu</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="index.html#cb15-1" tabindex="-1"></a>percentage_with_flu</span></code></pre></div>
 <p>Some students have been late in reporting their symptoms. A week later you hear that <code>7</code> more students also had freshers flu in Week 1. If you had been typing into the console and not using objects you would have to type this script out all over again. But you don’t need to. You just need to change your entry for <code>with_flu</code> from <code>15</code> to <code>22</code> or <code>15 + 7</code>. Do that now and re-run the script. By editing the <code>15</code>, R will overwrite the object <code>with_flu</code> to represent the new value of <code>22</code>. If you run the last line of code then the percentage of students with flu will also update.</p>
 <blockquote>
 <p><strong>Test Yourself:</strong>
 Lets try and read some code and work out what it will report. If you were to run the following, what would be the output in the R console?</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="index.html#cb16-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">18</span> <span class="sc">+</span> <span class="dv">33</span></span>
-<span id="cb16-2"><a href="index.html#cb16-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb16-3"><a href="index.html#cb16-3" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> a<span class="sc">/</span>b<span class="sc">*</span><span class="dv">100</span></span>
-<span id="cb16-4"><a href="index.html#cb16-4" aria-hidden="true" tabindex="-1"></a>c</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="index.html#cb16-1" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">18</span> <span class="sc">+</span> <span class="dv">33</span></span>
+<span id="cb16-2"><a href="index.html#cb16-2" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb16-3"><a href="index.html#cb16-3" tabindex="-1"></a>c <span class="ot">&lt;-</span> a<span class="sc">/</span>b<span class="sc">*</span><span class="dv">100</span></span>
+<span id="cb16-4"><a href="index.html#cb16-4" tabindex="-1"></a>c</span></code></pre></div>
 <p>See if you can work this out for yourself, then copy over the code to posit Cloud and see if you got it right…</p>
 </blockquote>
 <p>These may seem like a very simple examples, and they are, but we are still building up your knowledge of R so you will have to take my word for it that objects will be very helpful to you as we progress :). You will also see, that objects can contain a range of different types of data. We will cover some of these in lectures, but for now lets leave objects and have a think about functions and packages.</p>
@@ -635,16 +631,16 @@ Lets try and read some code and work out what it will report. If you were to run
 <p>If you have the coding skills it is possible to do pretty much whatever you like with your data in R. However, why reinvent the wheel trying to write your own complex scripts, when a lot of very clever coders have already written lots of functional bits of code, known as <strong>functions</strong>, for general use. Functions can be thought of as a piece of code that is designed to perform a set task. R comes with lots of functions already built in, but there are also lots of additional functions that are stored in <strong>packages</strong>.</p>
 <p>Packages are containers that can hold sets of functions or data and as the course progresses you will use a range of packages that contain useful functions and data. For example the data visualisation package (which you will become very familiar with later on) <code>ggplot2</code> contains ranges of functions which allow you to define how your plot or graph will look, for example <code>geom_bar</code> is a function within the <code>ggplot2</code> package that contains the instructions required to build a bar chart.</p>
 <p>Lets have a go at using a function.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="index.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First of all we need some data</span></span>
-<span id="cb17-2"><a href="index.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Notice the syntax, by using c() I have told R to prepare for a list of values</span></span>
-<span id="cb17-3"><a href="index.html#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Each value is separated by a comma</span></span>
-<span id="cb17-4"><a href="index.html#cb17-4" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">8</span>,<span class="dv">10</span>,<span class="dv">12</span>,<span class="dv">14</span>,<span class="dv">16</span>,<span class="dv">18</span>,<span class="dv">20</span>)</span>
-<span id="cb17-5"><a href="index.html#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-6"><a href="index.html#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Now I want to know what the total value of data is if I add all the values stored within it together</span></span>
-<span id="cb17-7"><a href="index.html#cb17-7" aria-hidden="true" tabindex="-1"></a>total <span class="ot">&lt;-</span> <span class="fu">sum</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="index.html#cb17-1" tabindex="-1"></a><span class="co"># First of all we need some data</span></span>
+<span id="cb17-2"><a href="index.html#cb17-2" tabindex="-1"></a><span class="co"># Notice the syntax, by using c() I have told R to prepare for a list of values</span></span>
+<span id="cb17-3"><a href="index.html#cb17-3" tabindex="-1"></a><span class="co"># Each value is separated by a comma</span></span>
+<span id="cb17-4"><a href="index.html#cb17-4" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">8</span>,<span class="dv">10</span>,<span class="dv">12</span>,<span class="dv">14</span>,<span class="dv">16</span>,<span class="dv">18</span>,<span class="dv">20</span>)</span>
+<span id="cb17-5"><a href="index.html#cb17-5" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="index.html#cb17-6" tabindex="-1"></a><span class="co"># Now I want to know what the total value of data is if I add all the values stored within it together</span></span>
+<span id="cb17-7"><a href="index.html#cb17-7" tabindex="-1"></a>total <span class="ot">&lt;-</span> <span class="fu">sum</span>(data)</span></code></pre></div>
 <p>In the above piece of code we have created some data, as a list of values, and stored them under the object name data. We have then used the function <code>sum()</code>. We have essentially told R that we wish it to perform the function <code>sum()</code> on everything contained within the object <code>data</code> and store it in another object called <code>total</code>. You can see the value within <code>total</code> in your environment, can you work out how to get R to print the value of <code>total</code> out?</p>
 <p>If you ever need help working out how to use a function you can use another function <code>help()</code>. Try inputing the code below into your console.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="index.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(sum)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="index.html#cb18-1" tabindex="-1"></a><span class="fu">help</span>(sum)</span></code></pre></div>
 <p>This should bring up a help file in your bottom right hand panel that describes and explains the use of the function <code>sum()</code>.</p>
 <blockquote>
 <p><strong>Warning</strong> I actually dont find the <code>help()</code> function very helpful most of the time, if I want to understand a function, I will normally use <code>help()</code> first and then if (normally when) I dont understand the output, I go to Google, there are a lot of great resources out there for understanding functions and their implementation.</p>
@@ -655,20 +651,20 @@ Lets try and read some code and work out what it will report. If you were to run
 <p>The <code>sum</code> function is part of the base R package that comes with any R installation. However there are lots of other useful functions that are held in additional packages. In order to use these functions, you must have the necessary packages installed in your work space. I already mentioned that we would be using a package called <code>ggplot2</code>, lets try installing and loading it in your work space.</p>
 <p>With any package you wish to use in posit Cloud you will need to go through a two step process, first of all you need to <strong>install</strong> the package using the <code>install.packages()</code> function (see below for usage and then you will need to <strong>load</strong> it using the <code>library()</code> function. We only need to install and load a package once per posit Cloud project but I would generally keep the commands for installing and loading packages at the top of the script I’m working on.</p>
 <p>Try copying and running the following lines in your script;</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="index.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>) <span class="co"># Install the ggplot package</span></span>
-<span id="cb19-2"><a href="index.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) <span class="co"># Load the ggplot package</span></span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="index.html#cb19-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>) <span class="co"># Install the ggplot package</span></span>
+<span id="cb19-2"><a href="index.html#cb19-2" tabindex="-1"></a><span class="fu">library</span>(ggplot2) <span class="co"># Load the ggplot package</span></span></code></pre></div>
 <p>Now we can try to make a simple plot using some functions from the <code>ggplot2</code> package and using an example data set called <code>iris</code> that is stored in the base R <code>datasets</code> package.</p>
 <p>Copy the following command into your script and run it</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="index.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First load the base R datasets in your workspace</span></span>
-<span id="cb20-2"><a href="index.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;datasets&quot;</span>)</span>
-<span id="cb20-3"><a href="index.html#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-4"><a href="index.html#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Then call the ggplot function and tell it that the data set you wish to use is called iris</span></span>
-<span id="cb20-5"><a href="index.html#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co"># We then need to tell ggplot how to map our variables</span></span>
-<span id="cb20-6"><a href="index.html#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co"># The aes function is an aesthetic tool that allows us to define variables for the x and y axes</span></span>
-<span id="cb20-7"><a href="index.html#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co"># We then use the geom_point function to instruct R to built a scatter plot</span></span>
-<span id="cb20-8"><a href="index.html#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="co"># A second use of the aes function tells R to color points by species</span></span>
-<span id="cb20-9"><a href="index.html#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> iris,<span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Sepal.Width)) <span class="sc">+</span> </span>
-<span id="cb20-10"><a href="index.html#cb20-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour=</span>Species)) </span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="index.html#cb20-1" tabindex="-1"></a><span class="co"># First load the base R datasets in your workspace</span></span>
+<span id="cb20-2"><a href="index.html#cb20-2" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;datasets&quot;</span>)</span>
+<span id="cb20-3"><a href="index.html#cb20-3" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="index.html#cb20-4" tabindex="-1"></a><span class="co"># Then call the ggplot function and tell it that the data set you wish to use is called iris</span></span>
+<span id="cb20-5"><a href="index.html#cb20-5" tabindex="-1"></a><span class="co"># We then need to tell ggplot how to map our variables</span></span>
+<span id="cb20-6"><a href="index.html#cb20-6" tabindex="-1"></a><span class="co"># The aes function is an aesthetic tool that allows us to define variables for the x and y axes</span></span>
+<span id="cb20-7"><a href="index.html#cb20-7" tabindex="-1"></a><span class="co"># We then use the geom_point function to instruct R to built a scatter plot</span></span>
+<span id="cb20-8"><a href="index.html#cb20-8" tabindex="-1"></a><span class="co"># A second use of the aes function tells R to color points by species</span></span>
+<span id="cb20-9"><a href="index.html#cb20-9" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> iris,<span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Sepal.Width)) <span class="sc">+</span> </span>
+<span id="cb20-10"><a href="index.html#cb20-10" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour=</span>Species)) </span></code></pre></div>
 <p>Those sharped eyed among you may have noticed that the short script defining our plot goes over two lines and contains a <code>+</code> and an indentation on the second line. The <code>+</code> and indentation is essentially allowing you to pipe one line of code into the next. This allows you to add more detailed instructions on how you would like your graph to be built and linking together multiple functions. Don’t worry if this is a lot to take in at this stage, as we progress with <code>ggplot2</code> we will revisit this in more detail.</p>
 </div>
 <div id="analysis-hygiene" class="section level3 hasAnchor" number="1.2.9">
@@ -727,27 +723,27 @@ From Figure 2.3, you’re working in the home directory, create a relative and a
 <h4><span class="header-section-number">1.2.9.4</span> Script set up<a href="index.html#script-setup" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Having a uniform script set up can also help you in the future, especially if you are working with multiple scripts. Lets have a go at setting up a clean and tidy script.
 Create a new R script by clicking on the icon with a little green plus (as you did in Chapter <a href="index.html#using-an-r-script">1.2.5</a>), below <strong>File</strong> in the top left of the posit Cloud window and select <strong>R Script</strong>. Call your new script <code>script_hygene</code>. Its always good to add a few lines of description at the start of your script, this tells your future self and anyone else what the script is doing. Copy over the following.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="index.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># An example of a lovely clean script that will help me build excellent data hygiene habits</span></span>
-<span id="cb21-2"><a href="index.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Your name</span></span>
-<span id="cb21-3"><a href="index.html#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Date</span></span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="index.html#cb21-1" tabindex="-1"></a><span class="co"># An example of a lovely clean script that will help me build excellent data hygiene habits</span></span>
+<span id="cb21-2"><a href="index.html#cb21-2" tabindex="-1"></a><span class="co"># Your name</span></span>
+<span id="cb21-3"><a href="index.html#cb21-3" tabindex="-1"></a><span class="co"># Date</span></span></code></pre></div>
 <p>Then we need to install and load any packages that we might want to use, copy over the following as an example;</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="index.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
-<span id="cb22-2"><a href="index.html#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;janitor&quot;</span>)</span>
-<span id="cb22-3"><a href="index.html#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># Load the tidyverse package</span></span>
-<span id="cb22-4"><a href="index.html#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor) <span class="co"># Load the janitor package</span></span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="index.html#cb22-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
+<span id="cb22-2"><a href="index.html#cb22-2" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;janitor&quot;</span>)</span>
+<span id="cb22-3"><a href="index.html#cb22-3" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># Load the tidyverse package</span></span>
+<span id="cb22-4"><a href="index.html#cb22-4" tabindex="-1"></a><span class="fu">library</span>(janitor) <span class="co"># Load the janitor package</span></span></code></pre></div>
 <p>You’re script is now ready for you to import some data and start analysing with the packages <code>tidyverse</code> and <code>janitor</code>.</p>
 </div>
 <div id="comment-on-your-work" class="section level4 hasAnchor" number="1.2.9.5">
 <h4><span class="header-section-number">1.2.9.5</span> Comment on your work<a href="index.html#comment-on-your-work" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>When you are writing a script you can leave notes for yourself. This can be extremely useful if you need reminding on what a particular piece of script is doing. This is a good learning tool while you are still learning how to use R, but its also a good habit to get into for later. As you progress with R you will inevitably start constructing quite intricate scripts, leaving good notes on what each part of the script is doing is very useful for you and for anyone else who may later come to use your script. You can leave notes or comments in scripts if you precede them with <code>#</code>. If R sees <code>#</code> it will ignore all text on that line that comes after it. For example, copy and paste the following into your script and try running it line by line.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="index.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Four squared can be calculated with the following command</span></span>
-<span id="cb23-2"><a href="index.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span><span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="index.html#cb23-1" tabindex="-1"></a><span class="co"># Four squared can be calculated with the following command</span></span>
+<span id="cb23-2"><a href="index.html#cb23-2" tabindex="-1"></a><span class="dv">4</span><span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
 <p>In this case I have reminded myself how to calculate 4 squared, everything after the <code>#</code> will be ignored by R when you try to run the line.</p>
 <p>Comments are also super useful if you only need to use a line of code once. Like when you install packages. for example in your script set up, once you have installed your packages you may see the following;</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="index.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(&quot;tidyverse&quot;)</span></span>
-<span id="cb24-2"><a href="index.html#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(&quot;janitor&quot;)</span></span>
-<span id="cb24-3"><a href="index.html#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># Load the tidyverse package</span></span>
-<span id="cb24-4"><a href="index.html#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor) <span class="co"># Load the janitor package</span></span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="index.html#cb24-1" tabindex="-1"></a><span class="co">#install.packages(&quot;tidyverse&quot;)</span></span>
+<span id="cb24-2"><a href="index.html#cb24-2" tabindex="-1"></a><span class="co">#install.packages(&quot;janitor&quot;)</span></span>
+<span id="cb24-3"><a href="index.html#cb24-3" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># Load the tidyverse package</span></span>
+<span id="cb24-4"><a href="index.html#cb24-4" tabindex="-1"></a><span class="fu">library</span>(janitor) <span class="co"># Load the janitor package</span></span></code></pre></div>
 <p>Notice that their is a <code>#</code> at the beginning of the <code>install.packages</code> line. This is called commenting out. And we do it because you only need to install a package once in your RStudio project but it is useful to have a record of what packages have been installed. You may also need to reload packages after installation, hence why the <code>library</code> function hasn’t been commented out.</p>
 </div>
 </div>
@@ -847,7 +843,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

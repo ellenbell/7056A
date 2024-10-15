@@ -20,7 +20,7 @@ To get an idea of how ggplot works we are going to go back over some code you ha
 ```{r}
 # Making a box plot and saving it in an object
 # Call the ggplot function and direct it to your data, define your x axis and y axis and colour your plots by sex
-pecking_rates_box <- ggplot(data = chickens,aesdata = chickens, aes(x = light, y = pecking_rates, fill = sex)) 
+pecking_rates_box <- ggplot(data = chickens, aes(x = light, y = pecking_rates, fill = sex)) 
 print(pecking_rates_box) # Print the object your plot is stored in to view it
 ```
 
@@ -35,7 +35,7 @@ Now modify the script so that it looks like this...
 ```{r}
 # Making a box plot and saving it in an object
 # Call the ggplot function and direct it to your data, define your x axis and y axis and colour your plots by sex
-pecking_rates_box <- ggplot(data = chickens,aesdata = chickens, aes(x = light, y = pecking_rates, fill = sex)) +
+pecking_rates_box <- ggplot(data = chickens, aes(x = light, y = pecking_rates, fill = sex)) +
   geom_boxplot() # Tell ggplot that you want it to build a box plot
 print(pecking_rates_box) # Print the object your plot is stored in to view it
 ```
@@ -68,7 +68,7 @@ In our current plot both our x and y axis could do with some relabeling, just be
 ```{r}
 # Making a box plot and saving it in an object
 # Call the ggplot function and direct it to your data, define your x axis and y axis and colour your plots by sex
-pecking_rates_box <- ggplot(data = chickens,aesdata = chickens, aes(x = light, y = pecking_rates, fill = sex)) +
+pecking_rates_box <- ggplot(data = chickens, aes(x = light, y = pecking_rates, fill = sex)) +
   geom_boxplot() + # Tell ggplot that you want it to build a box plot
   labs(x = "Light Colour", y = "Number of Pecks (per 15 minutes) \n") # Adjust your x and y axis labels
 print(pecking_rates_box) # Print the object your plot is stored in to view it
@@ -84,7 +84,7 @@ Our labels still aren't quite right, I don't like the abbreviations on the x axi
 ```{r}
 # Making a box plot and saving it in an object
 # Call the ggplot function and direct it to your data, define your x axis and y axis and colour your plots by sex
-pecking_rates_box <- ggplot(data = chickens,aesdata = chickens, aes(x = light, y = pecking_rates, fill = sex)) +
+pecking_rates_box <- ggplot(data = chickens, aes(x = light, y = pecking_rates, fill = sex)) +
   geom_boxplot() + # Tell ggplot that you want it to build a box plot
   labs(x = "Light Colour", y = "Number of Pecks (per 15 minutes) \n", fill = "Sex") + # Adjust your x and y axis labels as well as your key heading
   scale_x_discrete(labels = c("Red","White")) + # Rename the categories on the x axis 

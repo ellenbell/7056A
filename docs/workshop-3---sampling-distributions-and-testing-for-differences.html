@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 3 Workshop 3 - Sampling Distributions and Testing for Differences | Statistics for Biologists</title>
   <meta name="description" content="This is the coursebook for BIO-7056A Statistics for Biologists" />
-  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 3 Workshop 3 - Sampling Distributions and Testing for Differences | Statistics for Biologists" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Dr Ellen Bell" />
 
 
-<meta name="date" content="2024-10-11" />
+<meta name="date" content="2024-10-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -56,7 +56,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -119,10 +119,6 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<style type="text/css">
-  
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -568,10 +564,10 @@ These data were taken from 56 fields in Norfolk &amp; Suffolk, half of which wer
 <div id="task-3---making-some-basic-plots" class="section level3 hasAnchor" number="3.3.4">
 <h3><span class="header-section-number">3.3.4</span> Task 3 - Making some basic plots<a href="workshop-3---sampling-distributions-and-testing-for-differences.html#task-3---making-some-basic-plots" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We will now use the <code>filter()</code> and <code>ggplot</code> functions to split the data sets and make some histograms. Try using the following chunk to look at yields of sugar been from fields infected with virus;</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="workshop-3---sampling-distributions-and-testing-for-differences.html#cb35-1" aria-hidden="true" tabindex="-1"></a>sugar_beet_virus <span class="sc">%&gt;%</span> <span class="co"># pipe our data set into the filter function</span></span>
-<span id="cb35-2"><a href="workshop-3---sampling-distributions-and-testing-for-differences.html#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(virus <span class="sc">==</span><span class="st">&quot;v&quot;</span>) <span class="sc">%&gt;%</span> <span class="co"># filter out data from virus infected fields</span></span>
-<span id="cb35-3"><a href="workshop-3---sampling-distributions-and-testing-for-differences.html#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">x=</span>yield)) <span class="sc">+</span> <span class="co"># note that there is a . here instead of a data set. This is because we are piping our filtered data set straight into ggplot and then telling it that the yield variable will be on our x axis</span></span>
-<span id="cb35-4"><a href="workshop-3---sampling-distributions-and-testing-for-differences.html#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">6</span>) <span class="co"># plots a histogram with 6 bins</span></span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="workshop-3---sampling-distributions-and-testing-for-differences.html#cb35-1" tabindex="-1"></a>sugar_beet_virus <span class="sc">%&gt;%</span> <span class="co"># pipe our data set into the filter function</span></span>
+<span id="cb35-2"><a href="workshop-3---sampling-distributions-and-testing-for-differences.html#cb35-2" tabindex="-1"></a>  <span class="fu">filter</span>(virus <span class="sc">==</span><span class="st">&quot;v&quot;</span>) <span class="sc">%&gt;%</span> <span class="co"># filter out data from virus infected fields</span></span>
+<span id="cb35-3"><a href="workshop-3---sampling-distributions-and-testing-for-differences.html#cb35-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">x=</span>yield)) <span class="sc">+</span> <span class="co"># note that there is a . here instead of a data set. This is because we are piping our filtered data set straight into ggplot and then telling it that the yield variable will be on our x axis</span></span>
+<span id="cb35-4"><a href="workshop-3---sampling-distributions-and-testing-for-differences.html#cb35-4" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">6</span>) <span class="co"># plots a histogram with 6 bins</span></span></code></pre></div>
 <p>You might notice that we haven’t assigned any of this to an object. We are also doing a lot of piping here. As you get more confident with code you will find that for quick explorations of the data, this method of analysis is much cleaner and a little faster. Now see if you can manipulate the above code to report a histogram for fields that aren’t infected with virus.</p>
 <blockquote>
 <ul>
@@ -610,12 +606,12 @@ These data were taken from 56 fields in Norfolk &amp; Suffolk, half of which wer
 </ul>
 </blockquote>
 <p>Now we are ready to try running a one sample t-test. Try running the following;</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="workshop-3---sampling-distributions-and-testing-for-differences.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># One-sample t-test</span></span>
-<span id="cb36-2"><a href="workshop-3---sampling-distributions-and-testing-for-differences.html#cb36-2" aria-hidden="true" tabindex="-1"></a>one_sided_t <span class="ot">&lt;-</span> <span class="fu">t.test</span>(sugar_beet_virus<span class="sc">$</span>yield, <span class="at">mu =</span> <span class="fl">10.7</span>)</span>
-<span id="cb36-3"><a href="workshop-3---sampling-distributions-and-testing-for-differences.html#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="co"># mu here is our test mean, this is the mean known yield of the population as a whole</span></span>
-<span id="cb36-4"><a href="workshop-3---sampling-distributions-and-testing-for-differences.html#cb36-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-5"><a href="workshop-3---sampling-distributions-and-testing-for-differences.html#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Printing the results</span></span>
-<span id="cb36-6"><a href="workshop-3---sampling-distributions-and-testing-for-differences.html#cb36-6" aria-hidden="true" tabindex="-1"></a>one_sided_t </span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="workshop-3---sampling-distributions-and-testing-for-differences.html#cb36-1" tabindex="-1"></a><span class="co"># One-sample t-test</span></span>
+<span id="cb36-2"><a href="workshop-3---sampling-distributions-and-testing-for-differences.html#cb36-2" tabindex="-1"></a>one_sided_t <span class="ot">&lt;-</span> <span class="fu">t.test</span>(sugar_beet_virus<span class="sc">$</span>yield, <span class="at">mu =</span> <span class="fl">10.7</span>)</span>
+<span id="cb36-3"><a href="workshop-3---sampling-distributions-and-testing-for-differences.html#cb36-3" tabindex="-1"></a><span class="co"># mu here is our test mean, this is the mean known yield of the population as a whole</span></span>
+<span id="cb36-4"><a href="workshop-3---sampling-distributions-and-testing-for-differences.html#cb36-4" tabindex="-1"></a></span>
+<span id="cb36-5"><a href="workshop-3---sampling-distributions-and-testing-for-differences.html#cb36-5" tabindex="-1"></a><span class="co"># Printing the results</span></span>
+<span id="cb36-6"><a href="workshop-3---sampling-distributions-and-testing-for-differences.html#cb36-6" tabindex="-1"></a>one_sided_t </span></code></pre></div>
 <blockquote>
 <ul>
 <li><strong>Stop to think</strong></li>
@@ -629,9 +625,9 @@ These data were taken from 56 fields in Norfolk &amp; Suffolk, half of which wer
 <p><strong>Did the presence of viruses affect the yield of sugar beet in this year?</strong></p>
 <p>This time we need the two-sample t-test. The two sample t-test assesses whether the means of two samples are different from each other. It is therefore more commonly used than the one-sample test. The principle of the test is very similar to the one-sample test, but in the two-sample test we look at the standard error and confidence intervals for the difference between the means of the two samples. Specifically, we calculate a standard error for the difference between the two means, and then use this to generate a t-statistic. The assumptions of two-sample t-test are that the data for both samples are normally distributed and that the variances of the two groups are similar. To test this second assumption we can use a test called Levene’s test for Equality of Variances.</p>
 <p>Try running the following;</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="workshop-3---sampling-distributions-and-testing-for-differences.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using leveneTest()</span></span>
-<span id="cb37-2"><a href="workshop-3---sampling-distributions-and-testing-for-differences.html#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">leveneTest</span>(yield <span class="sc">~</span> virus, sugar_beet_virus)</span>
-<span id="cb37-3"><a href="workshop-3---sampling-distributions-and-testing-for-differences.html#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Be careful with which variable you place on which side of the tilde (~). You want your dependent (response) variable to be before the tilde and the independent (predictor) variable to be after the tilde.</span></span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="workshop-3---sampling-distributions-and-testing-for-differences.html#cb37-1" tabindex="-1"></a><span class="co"># Using leveneTest()</span></span>
+<span id="cb37-2"><a href="workshop-3---sampling-distributions-and-testing-for-differences.html#cb37-2" tabindex="-1"></a><span class="fu">leveneTest</span>(yield <span class="sc">~</span> virus, sugar_beet_virus)</span>
+<span id="cb37-3"><a href="workshop-3---sampling-distributions-and-testing-for-differences.html#cb37-3" tabindex="-1"></a><span class="co"># Be careful with which variable you place on which side of the tilde (~). You want your dependent (response) variable to be before the tilde and the independent (predictor) variable to be after the tilde.</span></span></code></pre></div>
 <p>The null hypothesis for Levene’s test predicts that the variances of the two groups are equal.</p>
 <blockquote>
 <ul>
@@ -647,10 +643,10 @@ These data were taken from 56 fields in Norfolk &amp; Suffolk, half of which wer
 </ul>
 </blockquote>
 <p>Try running the following;</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="workshop-3---sampling-distributions-and-testing-for-differences.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Two sample t test</span></span>
-<span id="cb38-2"><a href="workshop-3---sampling-distributions-and-testing-for-differences.html#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(yield <span class="sc">~</span> virus, <span class="at">data =</span> sugar_beet_virus, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb38-3"><a href="workshop-3---sampling-distributions-and-testing-for-differences.html#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Once again the tilde is used to denote dependent and independent variables</span></span>
-<span id="cb38-4"><a href="workshop-3---sampling-distributions-and-testing-for-differences.html#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="co"># We also specify which type of t-test we wish to perform and identify (based on our earlier Levene&#39;s test) that variances are equal (using the var.equal = TRUE expression), you can state that they are not equal by specifying FALSE here, R will then perform a correction without the assumption of equal variance and report Welch&#39;s two sample t-test.</span></span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="workshop-3---sampling-distributions-and-testing-for-differences.html#cb38-1" tabindex="-1"></a><span class="co"># Two sample t test</span></span>
+<span id="cb38-2"><a href="workshop-3---sampling-distributions-and-testing-for-differences.html#cb38-2" tabindex="-1"></a><span class="fu">t.test</span>(yield <span class="sc">~</span> virus, <span class="at">data =</span> sugar_beet_virus, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb38-3"><a href="workshop-3---sampling-distributions-and-testing-for-differences.html#cb38-3" tabindex="-1"></a><span class="co"># Once again the tilde is used to denote dependent and independent variables</span></span>
+<span id="cb38-4"><a href="workshop-3---sampling-distributions-and-testing-for-differences.html#cb38-4" tabindex="-1"></a><span class="co"># We also specify which type of t-test we wish to perform and identify (based on our earlier Levene&#39;s test) that variances are equal (using the var.equal = TRUE expression), you can state that they are not equal by specifying FALSE here, R will then perform a correction without the assumption of equal variance and report Welch&#39;s two sample t-test.</span></span></code></pre></div>
 <p>You should see a reported output from our two sample t-test and it should look something like this;</p>
 <pre><code>    Two Sample t-test
 
@@ -767,7 +763,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');
