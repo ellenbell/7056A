@@ -21,7 +21,7 @@ To get an idea of how ggplot works we are going to go back over some code you ha
 # Making a box plot and saving it in an object
 # Call the ggplot function and direct it to your data, define your x axis and y axis and colour your plots by sex
 pecking_rates_box <- ggplot(data = chickens, aes(x = light, y = pecking_rates, fill = sex)) 
-print(pecking_rates_box) # Print the object your plot is stored in to view it
+pecking_rates_box # Print the object your plot is stored in to view it
 ```
 
 So you have given ggplot your data set and specified the axes. But you haven't told it how you would like the data to be visualised. So you should see something like this...
@@ -37,7 +37,7 @@ Now modify the script so that it looks like this...
 # Call the ggplot function and direct it to your data, define your x axis and y axis and colour your plots by sex
 pecking_rates_box <- ggplot(data = chickens, aes(x = light, y = pecking_rates, fill = sex)) +
   geom_boxplot() # Tell ggplot that you want it to build a box plot
-print(pecking_rates_box) # Print the object your plot is stored in to view it
+pecking_rates_box # Print the object your plot is stored in to view it
 ```
 
 Note the `+`, this is essentially another way of piping information from one function into the next. You could also have added `fill = sex` to an `aes()` function within the `geom_boxplot()` function.
@@ -71,7 +71,7 @@ In our current plot both our x and y axis could do with some relabeling, just be
 pecking_rates_box <- ggplot(data = chickens, aes(x = light, y = pecking_rates, fill = sex)) +
   geom_boxplot() + # Tell ggplot that you want it to build a box plot
   labs(x = "Light Colour", y = "Number of Pecks (per 15 minutes) \n") # Adjust your x and y axis labels
-print(pecking_rates_box) # Print the object your plot is stored in to view it
+pecking_rates_box # Print the object your plot is stored in to view it
 
 ```
 
@@ -89,7 +89,7 @@ pecking_rates_box <- ggplot(data = chickens, aes(x = light, y = pecking_rates, f
   labs(x = "Light Colour", y = "Number of Pecks (per 15 minutes) \n", fill = "Sex") + # Adjust your x and y axis labels as well as your key heading
   scale_x_discrete(labels = c("Red","White")) + # Rename the categories on the x axis 
   scale_fill_manual(labels = c("Female", "Male")) # Rename your key labels
-print(pecking_rates_box) # Print the object your plot is stored in to view it
+pecking_rates_box # Print the object your plot is stored in to view it
 ```
 
 Note that the `scale x discrete` and `scale_fill_manual` functions simply rename things in the same order as you present them, make sure you label your categories accurately or this can make a big mess later on.

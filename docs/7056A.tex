@@ -2888,7 +2888,7 @@ To get an idea of how ggplot works we are going to go back over some code you ha
 \CommentTok{\# Making a box plot and saving it in an object}
 \CommentTok{\# Call the ggplot function and direct it to your data, define your x axis and y axis and colour your plots by sex}
 \NormalTok{pecking\_rates\_box }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ chickens, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ light, }\AttributeTok{y =}\NormalTok{ pecking\_rates, }\AttributeTok{fill =}\NormalTok{ sex)) }
-\FunctionTok{print}\NormalTok{(pecking\_rates\_box) }\CommentTok{\# Print the object your plot is stored in to view it}
+\NormalTok{pecking\_rates\_box }\CommentTok{\# Print the object your plot is stored in to view it}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2906,7 +2906,7 @@ Now modify the script so that it looks like this\ldots{}
 \CommentTok{\# Call the ggplot function and direct it to your data, define your x axis and y axis and colour your plots by sex}
 \NormalTok{pecking\_rates\_box }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ chickens, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ light, }\AttributeTok{y =}\NormalTok{ pecking\_rates, }\AttributeTok{fill =}\NormalTok{ sex)) }\SpecialCharTok{+}
   \FunctionTok{geom\_boxplot}\NormalTok{() }\CommentTok{\# Tell ggplot that you want it to build a box plot}
-\FunctionTok{print}\NormalTok{(pecking\_rates\_box) }\CommentTok{\# Print the object your plot is stored in to view it}
+\NormalTok{pecking\_rates\_box }\CommentTok{\# Print the object your plot is stored in to view it}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2949,7 +2949,7 @@ In our current plot both our x and y axis could do with some relabeling, just be
 \NormalTok{pecking\_rates\_box }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ chickens, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ light, }\AttributeTok{y =}\NormalTok{ pecking\_rates, }\AttributeTok{fill =}\NormalTok{ sex)) }\SpecialCharTok{+}
   \FunctionTok{geom\_boxplot}\NormalTok{() }\SpecialCharTok{+} \CommentTok{\# Tell ggplot that you want it to build a box plot}
   \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Light Colour"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Number of Pecks (per 15 minutes) }\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{) }\CommentTok{\# Adjust your x and y axis labels}
-\FunctionTok{print}\NormalTok{(pecking\_rates\_box) }\CommentTok{\# Print the object your plot is stored in to view it}
+\NormalTok{pecking\_rates\_box }\CommentTok{\# Print the object your plot is stored in to view it}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2968,7 +2968,7 @@ Our labels still aren't quite right, I don't like the abbreviations on the x axi
   \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Light Colour"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Number of Pecks (per 15 minutes) }\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, }\AttributeTok{fill =} \StringTok{"Sex"}\NormalTok{) }\SpecialCharTok{+} \CommentTok{\# Adjust your x and y axis labels as well as your key heading}
   \FunctionTok{scale\_x\_discrete}\NormalTok{(}\AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"Red"}\NormalTok{,}\StringTok{"White"}\NormalTok{)) }\SpecialCharTok{+} \CommentTok{\# Rename the categories on the x axis }
   \FunctionTok{scale\_fill\_manual}\NormalTok{(}\AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"Female"}\NormalTok{, }\StringTok{"Male"}\NormalTok{)) }\CommentTok{\# Rename your key labels}
-\FunctionTok{print}\NormalTok{(pecking\_rates\_box) }\CommentTok{\# Print the object your plot is stored in to view it}
+\NormalTok{pecking\_rates\_box }\CommentTok{\# Print the object your plot is stored in to view it}
 \end{Highlighting}
 \end{Shaded}
 
