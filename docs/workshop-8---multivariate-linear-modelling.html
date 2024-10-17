@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 9 Workshop 8 - Multivariate Linear Modelling | Statistics for Biologists</title>
   <meta name="description" content="This is the coursebook for BIO-7056A Statistics for Biologists" />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 9 Workshop 8 - Multivariate Linear Modelling | Statistics for Biologists" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Dr Ellen Bell" />
 
 
-<meta name="date" content="2024-10-15" />
+<meta name="date" content="2024-10-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -56,7 +56,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -119,6 +119,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -511,9 +515,9 @@ y = m_1x_1+m_2x_2+m_3x_3...+c
 </ul>
 </blockquote>
 <p>We can also calculate leverage values, this measures the influence of each point on the fit of the regression and can range from 0: no influence to 1: complete influence. Try running the following;</p>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="workshop-8---multivariate-linear-modelling.html#cb81-1" tabindex="-1"></a><span class="co"># Checking the leverage </span></span>
-<span id="cb81-2"><a href="workshop-8---multivariate-linear-modelling.html#cb81-2" tabindex="-1"></a>africa <span class="ot">&lt;-</span> africa <span class="sc">%&gt;%</span></span>
-<span id="cb81-3"><a href="workshop-8---multivariate-linear-modelling.html#cb81-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">leverage =</span> <span class="fu">hatvalues</span>(daycal_gnp_lm_1))</span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="workshop-8---multivariate-linear-modelling.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking the leverage </span></span>
+<span id="cb81-2"><a href="workshop-8---multivariate-linear-modelling.html#cb81-2" aria-hidden="true" tabindex="-1"></a>africa <span class="ot">&lt;-</span> africa <span class="sc">%&gt;%</span></span>
+<span id="cb81-3"><a href="workshop-8---multivariate-linear-modelling.html#cb81-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">leverage =</span> <span class="fu">hatvalues</span>(daycal_gnp_lm_1))</span></code></pre></div>
 <blockquote>
 <ul>
 <li><strong>Stop to think</strong></li>
@@ -529,11 +533,11 @@ y = m_1x_1+m_2x_2+m_3x_3...+c
 </ul>
 </blockquote>
 <p>Have a look at the leverage values and the residuals for your new model. Country 11 (Gabon) still has something of a disproportionate effect on the fit of the regression line (large-ish leverage), even in the model with log (GNP). Use the following command to temporarily exclude this country from our scatter plot (note we are not deleting the data completely). This will allow you to explore the influence of Gabon.</p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="workshop-8---multivariate-linear-modelling.html#cb82-1" tabindex="-1"></a>africa <span class="sc">%&gt;%</span></span>
-<span id="cb82-2"><a href="workshop-8---multivariate-linear-modelling.html#cb82-2" tabindex="-1"></a>  <span class="fu">filter</span>(name <span class="sc">!=</span> <span class="st">&quot;Gabon&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb82-3"><a href="workshop-8---multivariate-linear-modelling.html#cb82-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> ., <span class="fu">aes</span>(<span class="at">x =</span> gnp, <span class="at">y =</span> daycal)) <span class="sc">+</span></span>
-<span id="cb82-4"><a href="workshop-8---multivariate-linear-modelling.html#cb82-4" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb82-5"><a href="workshop-8---multivariate-linear-modelling.html#cb82-5" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm)</span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="workshop-8---multivariate-linear-modelling.html#cb82-1" aria-hidden="true" tabindex="-1"></a>africa <span class="sc">%&gt;%</span></span>
+<span id="cb82-2"><a href="workshop-8---multivariate-linear-modelling.html#cb82-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(name <span class="sc">!=</span> <span class="st">&quot;Gabon&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb82-3"><a href="workshop-8---multivariate-linear-modelling.html#cb82-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> ., <span class="fu">aes</span>(<span class="at">x =</span> gnp, <span class="at">y =</span> daycal)) <span class="sc">+</span></span>
+<span id="cb82-4"><a href="workshop-8---multivariate-linear-modelling.html#cb82-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb82-5"><a href="workshop-8---multivariate-linear-modelling.html#cb82-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm)</span></code></pre></div>
 <p>Now use the same temporary exclusion method to re-run your regression model with Gabon temporarily excluded.</p>
 <blockquote>
 <ul>
@@ -547,9 +551,9 @@ y = m_1x_1+m_2x_2+m_3x_3...+c
 <h3><span class="header-section-number">9.3.4</span> Task 4 - Multivariate linear regression analysis<a href="workshop-8---multivariate-linear-modelling.html#c11t4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We are now going to build a multivariate regression model using the Enter method, in which we begin by including all predictor variables in our regression. We then remove from our regression the variable that has the least (statistically non-significant) effect to produce a better model. We repeat this until we are left with a regression containing the best sub-set of predictors. At each stage it is important to consider the impact of removing that predictor on the model.
 First we will draw a matrix plot to compare all of the relationships between <code>daycal</code> and all four predictor variables (use your logged gnp variable to reduce difficulties with Gabon). Try using the following command;</p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="workshop-8---multivariate-linear-modelling.html#cb83-1" tabindex="-1"></a><span class="co"># Scatter matrix</span></span>
-<span id="cb83-2"><a href="workshop-8---multivariate-linear-modelling.html#cb83-2" tabindex="-1"></a><span class="fu">pairs</span>(africa[,<span class="fu">c</span>(<span class="dv">3</span><span class="sc">:</span><span class="dv">7</span>,<span class="dv">9</span>)])</span>
-<span id="cb83-3"><a href="workshop-8---multivariate-linear-modelling.html#cb83-3" tabindex="-1"></a><span class="co"># Note the numbers c(3:7,9) refer to column numbers for daycal, femlit, under15, deforest and log10_gnp they may be different in your data set</span></span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="workshop-8---multivariate-linear-modelling.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatter matrix</span></span>
+<span id="cb83-2"><a href="workshop-8---multivariate-linear-modelling.html#cb83-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(africa[,<span class="fu">c</span>(<span class="dv">3</span><span class="sc">:</span><span class="dv">7</span>,<span class="dv">9</span>)])</span>
+<span id="cb83-3"><a href="workshop-8---multivariate-linear-modelling.html#cb83-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Note the numbers c(3:7,9) refer to column numbers for daycal, femlit, under15, deforest and log10_gnp they may be different in your data set</span></span></code></pre></div>
 <blockquote>
 <ul>
 <li><strong>Stop to think</strong></li>
@@ -558,9 +562,9 @@ First we will draw a matrix plot to compare all of the relationships between <co
 </ul>
 </blockquote>
 <p>Now we can try fitting the full multiple regression by adding the other three predictors as independent variables with Enter as the data entry method. Try running the following;</p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="workshop-8---multivariate-linear-modelling.html#cb84-1" tabindex="-1"></a><span class="co"># multiple regression</span></span>
-<span id="cb84-2"><a href="workshop-8---multivariate-linear-modelling.html#cb84-2" tabindex="-1"></a>daycal_multi_lm_1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(daycal<span class="sc">~</span>gnp<span class="sc">+</span>deforest<span class="sc">+</span>under15<span class="sc">+</span>femlit, <span class="at">data =</span> africa)</span>
-<span id="cb84-3"><a href="workshop-8---multivariate-linear-modelling.html#cb84-3" tabindex="-1"></a><span class="fu">summary</span>(daycal_multi_lm_1)</span></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="workshop-8---multivariate-linear-modelling.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="co"># multiple regression</span></span>
+<span id="cb84-2"><a href="workshop-8---multivariate-linear-modelling.html#cb84-2" aria-hidden="true" tabindex="-1"></a>daycal_multi_lm_1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(daycal<span class="sc">~</span>gnp<span class="sc">+</span>deforest<span class="sc">+</span>under15<span class="sc">+</span>femlit, <span class="at">data =</span> africa)</span>
+<span id="cb84-3"><a href="workshop-8---multivariate-linear-modelling.html#cb84-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(daycal_multi_lm_1)</span></code></pre></div>
 <blockquote>
 <ul>
 <li><strong>Stop to think</strong><br />
@@ -588,12 +592,12 @@ First we will draw a matrix plot to compare all of the relationships between <co
 </ul>
 </blockquote>
 <p>R has a function called <code>predict()</code> which can be used to predict values of y based on your model. Try runnign the following;</p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="workshop-8---multivariate-linear-modelling.html#cb85-1" tabindex="-1"></a>new <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">gnp =</span><span class="dv">975</span>, <span class="at">femlit =</span><span class="dv">45</span>, <span class="at">deforest=</span> <span class="sc">-</span><span class="dv">2</span>)</span>
-<span id="cb85-2"><a href="workshop-8---multivariate-linear-modelling.html#cb85-2" tabindex="-1"></a><span class="co"># Create a new data frame called `new` and specify your independent variable values</span></span>
-<span id="cb85-3"><a href="workshop-8---multivariate-linear-modelling.html#cb85-3" tabindex="-1"></a></span>
-<span id="cb85-4"><a href="workshop-8---multivariate-linear-modelling.html#cb85-4" tabindex="-1"></a><span class="fu">predict</span>(enter_your_final_model_here, <span class="at">newdata=</span>new, <span class="at">interval =</span> <span class="st">&#39;confidence&#39;</span>)</span>
-<span id="cb85-5"><a href="workshop-8---multivariate-linear-modelling.html#cb85-5" tabindex="-1"></a><span class="co"># Call the predict function to use your final multivariate linear model to predict the daycal value in a country with the independent variable values specified in your data frame called `new`</span></span>
-<span id="cb85-6"><a href="workshop-8---multivariate-linear-modelling.html#cb85-6" tabindex="-1"></a><span class="co"># By including interval = &#39;confidence&#39; the output will include 95% confidence intervals.</span></span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="workshop-8---multivariate-linear-modelling.html#cb85-1" aria-hidden="true" tabindex="-1"></a>new <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">gnp =</span><span class="dv">975</span>, <span class="at">femlit =</span><span class="dv">45</span>, <span class="at">deforest=</span> <span class="sc">-</span><span class="dv">2</span>)</span>
+<span id="cb85-2"><a href="workshop-8---multivariate-linear-modelling.html#cb85-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new data frame called `new` and specify your independent variable values</span></span>
+<span id="cb85-3"><a href="workshop-8---multivariate-linear-modelling.html#cb85-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb85-4"><a href="workshop-8---multivariate-linear-modelling.html#cb85-4" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(enter_your_final_model_here, <span class="at">newdata=</span>new, <span class="at">interval =</span> <span class="st">&#39;confidence&#39;</span>)</span>
+<span id="cb85-5"><a href="workshop-8---multivariate-linear-modelling.html#cb85-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Call the predict function to use your final multivariate linear model to predict the daycal value in a country with the independent variable values specified in your data frame called `new`</span></span>
+<span id="cb85-6"><a href="workshop-8---multivariate-linear-modelling.html#cb85-6" aria-hidden="true" tabindex="-1"></a><span class="co"># By including interval = &#39;confidence&#39; the output will include 95% confidence intervals.</span></span></code></pre></div>
 <blockquote>
 <ul>
 <li><strong>Stop to think</strong></li>
@@ -602,8 +606,8 @@ First we will draw a matrix plot to compare all of the relationships between <co
 </ul>
 </blockquote>
 <p>You can also specify interactions to test using the <code>lm()</code> function by using a <code>*</code> between two variables with a potential interaction, as seen here;</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="workshop-8---multivariate-linear-modelling.html#cb86-1" tabindex="-1"></a>daycal_multilog_lm_2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(daycal<span class="sc">~</span>log10_gnp<span class="sc">+</span>deforest<span class="sc">*</span>femlit, <span class="at">data =</span> africa)</span>
-<span id="cb86-2"><a href="workshop-8---multivariate-linear-modelling.html#cb86-2" tabindex="-1"></a><span class="fu">summary</span>(daycal_multilog_lm_2)</span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="workshop-8---multivariate-linear-modelling.html#cb86-1" aria-hidden="true" tabindex="-1"></a>daycal_multilog_lm_2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(daycal<span class="sc">~</span>log10_gnp<span class="sc">+</span>deforest<span class="sc">*</span>femlit, <span class="at">data =</span> africa)</span>
+<span id="cb86-2"><a href="workshop-8---multivariate-linear-modelling.html#cb86-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(daycal_multilog_lm_2)</span></code></pre></div>
 <blockquote>
 <ul>
 <li><strong>Anaysis time</strong></li>
@@ -707,8 +711,8 @@ First we will draw a matrix plot to compare all of the relationships between <co
 <h3><span class="header-section-number">9.5.1</span> Task 1 - Checking the data<a href="workshop-8---multivariate-linear-modelling.html#c11t1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Load the dataset <code>beetle.csv</code> into your workspace under the object name <code>beetle</code> and try performing some routine checks to make sure R has interpreted the variables correctly and all expected data is present and accounted for. You can use some of the functions explored in Chapter <a href="workshop-2---explorartory-data-analysis.html#checking-the-data">2.2.3</a> if you need some help with this.</p>
 <p>You should note that R has misidentified your categorical variables as continuous. You will need to convert these variables to factors in order to correctly build your models. Try running the following line;</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="workshop-8---multivariate-linear-modelling.html#cb87-1" tabindex="-1"></a>beetle<span class="sc">$</span>landscape_type <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(beetle<span class="sc">$</span>landscape_type)</span>
-<span id="cb87-2"><a href="workshop-8---multivariate-linear-modelling.html#cb87-2" tabindex="-1"></a><span class="co"># Convert the variable landscape_type to a factor rather then a continuous variable</span></span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="workshop-8---multivariate-linear-modelling.html#cb87-1" aria-hidden="true" tabindex="-1"></a>beetle<span class="sc">$</span>landscape_type <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(beetle<span class="sc">$</span>landscape_type)</span>
+<span id="cb87-2"><a href="workshop-8---multivariate-linear-modelling.html#cb87-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the variable landscape_type to a factor rather then a continuous variable</span></span></code></pre></div>
 <p>Try running the <code>as.factor()</code> function on your other categorical variables (<code>patch_age</code> and <code>veg_density</code>).</p>
 </div>
 <div id="task-2---multiple-regression-analysis" class="section level3 hasAnchor" number="9.5.2">
@@ -854,7 +858,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

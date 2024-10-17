@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 11 Workshop 10 - Repeated Measures Linear Models | Statistics for Biologists</title>
   <meta name="description" content="This is the coursebook for BIO-7056A Statistics for Biologists" />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 11 Workshop 10 - Repeated Measures Linear Models | Statistics for Biologists" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Dr Ellen Bell" />
 
 
-<meta name="date" content="2024-10-15" />
+<meta name="date" content="2024-10-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -56,7 +56,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -119,6 +119,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -453,10 +457,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">11.3.1</span> Task 1 - Checking the data<a href="workshop-10---repeated-measures-linear-models.html#task-1---checking-the-data-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Load the data set <code>activity.csv</code> into your workspace under the object name <code>activity</code> and try performing some routine checks to make sure R has interpreted the variables correctly and all expected data is present and accounted for. You can use some of the functions explored in Chapter <a href="workshop-2---explorartory-data-analysis.html#checking-the-data">2.2.3</a> if you need some help with this.</p>
 <p>We are going to have to do some data wrangling before we can continue this analysis. We really need an individual identifier here so we can relate individual participants back to their scores at each time point. Try running the following;</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="workshop-10---repeated-measures-linear-models.html#cb99-1" tabindex="-1"></a><span class="co"># Create an object with individual identifiers (1 to 10)</span></span>
-<span id="cb99-2"><a href="workshop-10---repeated-measures-linear-models.html#cb99-2" tabindex="-1"></a>individual <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
-<span id="cb99-3"><a href="workshop-10---repeated-measures-linear-models.html#cb99-3" tabindex="-1"></a><span class="co"># Bind our `individual` object as a column to our `activity` data frame</span></span>
-<span id="cb99-4"><a href="workshop-10---repeated-measures-linear-models.html#cb99-4" tabindex="-1"></a>activity <span class="ot">&lt;-</span> <span class="fu">cbind</span>(activity,individual)</span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="workshop-10---repeated-measures-linear-models.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an object with individual identifiers (1 to 10)</span></span>
+<span id="cb99-2"><a href="workshop-10---repeated-measures-linear-models.html#cb99-2" aria-hidden="true" tabindex="-1"></a>individual <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
+<span id="cb99-3"><a href="workshop-10---repeated-measures-linear-models.html#cb99-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Bind our `individual` object as a column to our `activity` data frame</span></span>
+<span id="cb99-4"><a href="workshop-10---repeated-measures-linear-models.html#cb99-4" aria-hidden="true" tabindex="-1"></a>activity <span class="ot">&lt;-</span> <span class="fu">cbind</span>(activity,individual)</span></code></pre></div>
 <blockquote>
 <ul>
 <li><strong>Stop to think</strong></li>
@@ -465,10 +469,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </blockquote>
 <p>Make sure your data is in a long format, try running the following to put your time columns into a long format;</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="workshop-10---repeated-measures-linear-models.html#cb100-1" tabindex="-1"></a>activity <span class="ot">&lt;-</span> activity <span class="sc">%&gt;%</span></span>
-<span id="cb100-2"><a href="workshop-10---repeated-measures-linear-models.html#cb100-2" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> time0<span class="sc">:</span>time2,</span>
-<span id="cb100-3"><a href="workshop-10---repeated-measures-linear-models.html#cb100-3" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;time_point&quot;</span>, </span>
-<span id="cb100-4"><a href="workshop-10---repeated-measures-linear-models.html#cb100-4" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;response&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="workshop-10---repeated-measures-linear-models.html#cb100-1" aria-hidden="true" tabindex="-1"></a>activity <span class="ot">&lt;-</span> activity <span class="sc">%&gt;%</span></span>
+<span id="cb100-2"><a href="workshop-10---repeated-measures-linear-models.html#cb100-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> time0<span class="sc">:</span>time2,</span>
+<span id="cb100-3"><a href="workshop-10---repeated-measures-linear-models.html#cb100-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;time_point&quot;</span>, </span>
+<span id="cb100-4"><a href="workshop-10---repeated-measures-linear-models.html#cb100-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;response&quot;</span>)</span></code></pre></div>
 <blockquote>
 <ul>
 <li><strong>Analysis time</strong></li>
@@ -502,10 +506,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">11.3.3</span> Task 3 - Playing with some statistics<a href="workshop-10---repeated-measures-linear-models.html#task-3---playing-with-some-statistics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>You could explore the difference between the sweating rates of individuals before, during or after activity by running a one-way ANOVA (i.e. a linear model with sweat production as the dependent variable and the three time periods as predictors). However, as the same 10 people took part in all three treatments, a more powerful analysis is a Repeated Measures ANOVA…</p>
 <p>To run this model we are going to start using a new ANOVA function. Here we need to define a subject identifier, within subject factor (or grouping variable) and our dependent variable. Try running the following;</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="workshop-10---repeated-measures-linear-models.html#cb101-1" tabindex="-1"></a><span class="co"># Run a repeated measures ANOVA comparing response (dependent variable) between different time points (within subject variable) across individuals (subject identifier)</span></span>
-<span id="cb101-2"><a href="workshop-10---repeated-measures-linear-models.html#cb101-2" tabindex="-1"></a>repeated_aov <span class="ot">&lt;-</span> <span class="fu">anova_test</span>(<span class="at">data =</span> activity, <span class="at">dv =</span> response, <span class="at">wid =</span> individual, <span class="at">within =</span> time_point)</span>
-<span id="cb101-3"><a href="workshop-10---repeated-measures-linear-models.html#cb101-3" tabindex="-1"></a><span class="co"># Call the ANOVA table for our model</span></span>
-<span id="cb101-4"><a href="workshop-10---repeated-measures-linear-models.html#cb101-4" tabindex="-1"></a><span class="fu">get_anova_table</span>(repeated_aov)</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="workshop-10---repeated-measures-linear-models.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run a repeated measures ANOVA comparing response (dependent variable) between different time points (within subject variable) across individuals (subject identifier)</span></span>
+<span id="cb101-2"><a href="workshop-10---repeated-measures-linear-models.html#cb101-2" aria-hidden="true" tabindex="-1"></a>repeated_aov <span class="ot">&lt;-</span> <span class="fu">anova_test</span>(<span class="at">data =</span> activity, <span class="at">dv =</span> response, <span class="at">wid =</span> individual, <span class="at">within =</span> time_point)</span>
+<span id="cb101-3"><a href="workshop-10---repeated-measures-linear-models.html#cb101-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Call the ANOVA table for our model</span></span>
+<span id="cb101-4"><a href="workshop-10---repeated-measures-linear-models.html#cb101-4" aria-hidden="true" tabindex="-1"></a><span class="fu">get_anova_table</span>(repeated_aov)</span></code></pre></div>
 <p>You will be aware that ANOVAs make a range of assumtions of the input data. The repeated measures ANOVA has an additional assumption - sphericity. Sphericity is a test of the assumption of equality of variance among treatments. Generally a Mauchley’s test is applied to test for this and if p &gt; 0.05, then there is no significant differences between the variances of the treatments, and the assumption is met. If p &lt; 0.05, then the variances between your treatments are significantly different and the test assumption is violated.</p>
 <p>Very conveniently, get_anova_table() does a lot of the work for you. It automatically checks the sphericity assumption using Mauchley’s test and if the sphericity assumption is violated then it will automatically apply a correction (the Greenhouse_Geisser sphericity correction) to within subject factors that are in violation of the sphericity assumption. Applying the correction essentially reduces the degrees of freedom to make the test more conservative.</p>
 <p>Take a look at the output from the <code>get_anova_table()</code> function. This output is a little different from other ANOVA outputs we’ve seen so far. DFn and DFd represent the degrees of freedom for treatment (T-1) and error ((T-1)(n-1)) respectively. The F statistic, represents the ratio of the variance between groups to the variance within groups and the p value which gives the probability of seeing the test statistic if the null hypothesis were true. Finally the <code>ges</code> gives a general effect size, i.e. the amount of variability due to the within subject factor.</p>
@@ -517,12 +521,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </blockquote>
 <p>A post-hoc test would be helpful here to add some direction to the differences we are seeing. With repeated measures ANOVA, Bonferroni post-hoc test is the recommended test. We can perform this using the following piece of code;</p>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="workshop-10---repeated-measures-linear-models.html#cb102-1" tabindex="-1"></a>pwc <span class="ot">&lt;-</span> activity <span class="sc">%&gt;%</span></span>
-<span id="cb102-2"><a href="workshop-10---repeated-measures-linear-models.html#cb102-2" tabindex="-1"></a>  <span class="fu">pairwise_t_test</span>(</span>
-<span id="cb102-3"><a href="workshop-10---repeated-measures-linear-models.html#cb102-3" tabindex="-1"></a>    response <span class="sc">~</span> time_point, <span class="at">paired =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb102-4"><a href="workshop-10---repeated-measures-linear-models.html#cb102-4" tabindex="-1"></a>    <span class="at">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span></span>
-<span id="cb102-5"><a href="workshop-10---repeated-measures-linear-models.html#cb102-5" tabindex="-1"></a>  )</span>
-<span id="cb102-6"><a href="workshop-10---repeated-measures-linear-models.html#cb102-6" tabindex="-1"></a>pwc</span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="workshop-10---repeated-measures-linear-models.html#cb102-1" aria-hidden="true" tabindex="-1"></a>pwc <span class="ot">&lt;-</span> activity <span class="sc">%&gt;%</span></span>
+<span id="cb102-2"><a href="workshop-10---repeated-measures-linear-models.html#cb102-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pairwise_t_test</span>(</span>
+<span id="cb102-3"><a href="workshop-10---repeated-measures-linear-models.html#cb102-3" aria-hidden="true" tabindex="-1"></a>    response <span class="sc">~</span> time_point, <span class="at">paired =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb102-4"><a href="workshop-10---repeated-measures-linear-models.html#cb102-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span></span>
+<span id="cb102-5"><a href="workshop-10---repeated-measures-linear-models.html#cb102-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb102-6"><a href="workshop-10---repeated-measures-linear-models.html#cb102-6" aria-hidden="true" tabindex="-1"></a>pwc</span></code></pre></div>
 <blockquote>
 <ul>
 <li><strong>Stop to think</strong></li>
@@ -583,11 +587,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="task-6---playing-with-some-statistics" class="section level3 hasAnchor" number="11.4.3">
 <h3><span class="header-section-number">11.4.3</span> Task 6 - Playing with some statistics<a href="workshop-10---repeated-measures-linear-models.html#task-6---playing-with-some-statistics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Now we are ready to start playing with some statistics.</p>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="workshop-10---repeated-measures-linear-models.html#cb103-1" tabindex="-1"></a><span class="co"># Fun a repeated measures ANOVA with metabolism as the dependent variable, individul as the subject identifier, time as the within subject variable and temp and para as between subject variables.</span></span>
-<span id="cb103-2"><a href="workshop-10---repeated-measures-linear-models.html#cb103-2" tabindex="-1"></a>met_aov <span class="ot">&lt;-</span> <span class="fu">anova_test</span>(</span>
-<span id="cb103-3"><a href="workshop-10---repeated-measures-linear-models.html#cb103-3" tabindex="-1"></a>  <span class="at">data =</span> metabolism, <span class="at">dv =</span> metabolism, <span class="at">wid =</span> individual,</span>
-<span id="cb103-4"><a href="workshop-10---repeated-measures-linear-models.html#cb103-4" tabindex="-1"></a>  <span class="at">within =</span>  time, <span class="at">between =</span> <span class="fu">c</span>(temp,para))</span>
-<span id="cb103-5"><a href="workshop-10---repeated-measures-linear-models.html#cb103-5" tabindex="-1"></a><span class="fu">get_anova_table</span>(met_aov)</span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="workshop-10---repeated-measures-linear-models.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fun a repeated measures ANOVA with metabolism as the dependent variable, individul as the subject identifier, time as the within subject variable and temp and para as between subject variables.</span></span>
+<span id="cb103-2"><a href="workshop-10---repeated-measures-linear-models.html#cb103-2" aria-hidden="true" tabindex="-1"></a>met_aov <span class="ot">&lt;-</span> <span class="fu">anova_test</span>(</span>
+<span id="cb103-3"><a href="workshop-10---repeated-measures-linear-models.html#cb103-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> metabolism, <span class="at">dv =</span> metabolism, <span class="at">wid =</span> individual,</span>
+<span id="cb103-4"><a href="workshop-10---repeated-measures-linear-models.html#cb103-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">within =</span>  time, <span class="at">between =</span> <span class="fu">c</span>(temp,para))</span>
+<span id="cb103-5"><a href="workshop-10---repeated-measures-linear-models.html#cb103-5" aria-hidden="true" tabindex="-1"></a><span class="fu">get_anova_table</span>(met_aov)</span></code></pre></div>
 <blockquote>
 <ul>
 <li><strong>Stop to think</strong></li>
@@ -677,7 +681,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

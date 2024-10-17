@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 10 Workshop 9 - Model Structure | Statistics for Biologists</title>
   <meta name="description" content="This is the coursebook for BIO-7056A Statistics for Biologists" />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 10 Workshop 9 - Model Structure | Statistics for Biologists" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Dr Ellen Bell" />
 
 
-<meta name="date" content="2024-10-15" />
+<meta name="date" content="2024-10-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -56,7 +56,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -119,6 +119,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -481,29 +485,29 @@ Look at each of your variables, are any of them categorical? Has R characterised
 Do some of these need to be changed? Remember you can use the <code>as.factor()</code> function to alter these (see Chapter <a href="workshop-8---multivariate-linear-modelling.html#c11t1">9.5.1</a>).</p>
 </blockquote>
 <p>Sometimes we want R to order the different categories within a factor in a specific way (R works alphabetically by default). Lets see how R has ordered our <code>treatment</code> variable. Run the following;</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="workshop-9---model-structure.html#cb88-1" tabindex="-1"></a><span class="co"># Report levels within the treatment variable </span></span>
-<span id="cb88-2"><a href="workshop-9---model-structure.html#cb88-2" tabindex="-1"></a><span class="fu">levels</span>(nepal<span class="sc">$</span>treatment)</span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="workshop-9---model-structure.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Report levels within the treatment variable </span></span>
+<span id="cb88-2"><a href="workshop-9---model-structure.html#cb88-2" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(nepal<span class="sc">$</span>treatment)</span></code></pre></div>
 <p>You should get an output that looks a little like this;</p>
 <pre><code>&gt; levels(nepal$treatment)
 [1] &quot;b&quot;       &quot;c&quot;       &quot;cb&quot;      &quot;control&quot;</code></pre>
 <p>Really it would be great if we could have <code>control</code> as the reference to compare other treatments to, so it would be good if we could reorder this. Try running the following;</p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="workshop-9---model-structure.html#cb90-1" tabindex="-1"></a><span class="co"># Set control as the reference level within treatment</span></span>
-<span id="cb90-2"><a href="workshop-9---model-structure.html#cb90-2" tabindex="-1"></a>nepal <span class="ot">&lt;-</span> <span class="fu">mutate</span>(nepal, <span class="at">treatment =</span> <span class="fu">relevel</span>(treatment, <span class="at">ref=</span><span class="st">&quot;control&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="workshop-9---model-structure.html#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set control as the reference level within treatment</span></span>
+<span id="cb90-2"><a href="workshop-9---model-structure.html#cb90-2" aria-hidden="true" tabindex="-1"></a>nepal <span class="ot">&lt;-</span> <span class="fu">mutate</span>(nepal, <span class="at">treatment =</span> <span class="fu">relevel</span>(treatment, <span class="at">ref=</span><span class="st">&quot;control&quot;</span>))</span></code></pre></div>
 <p>Rerun the <code>levels()</code> function, can you see what we have done here? This will be helpful for later analyses.</p>
 </div>
 <div id="task-2---exploring-the-data-1" class="section level3 hasAnchor" number="10.3.2">
 <h3><span class="header-section-number">10.3.2</span> Task 2 - Exploring the data<a href="workshop-9---model-structure.html#task-2---exploring-the-data-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Draw some histograms for each of the three dependent variables (% cover), and explore the assumption of data normality. You may find it most efficient to manipulate the data to a long form format and then use <code>facet_wrap()</code> to combine your plots, as below;</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="workshop-9---model-structure.html#cb91-1" tabindex="-1"></a><span class="co"># Rearrange the Nepal data set into a long format</span></span>
-<span id="cb91-2"><a href="workshop-9---model-structure.html#cb91-2" tabindex="-1"></a>nepal2 <span class="ot">&lt;-</span> nepal <span class="sc">%&gt;%</span></span>
-<span id="cb91-3"><a href="workshop-9---model-structure.html#cb91-3" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> year1994<span class="sc">:</span>year1996,</span>
-<span id="cb91-4"><a href="workshop-9---model-structure.html#cb91-4" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;year&quot;</span>, </span>
-<span id="cb91-5"><a href="workshop-9---model-structure.html#cb91-5" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;perc_cover&quot;</span>)</span>
-<span id="cb91-6"><a href="workshop-9---model-structure.html#cb91-6" tabindex="-1"></a></span>
-<span id="cb91-7"><a href="workshop-9---model-structure.html#cb91-7" tabindex="-1"></a><span class="co"># Plot histograms for percentage cover and split plots by year</span></span>
-<span id="cb91-8"><a href="workshop-9---model-structure.html#cb91-8" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> nepal2, <span class="fu">aes</span>(<span class="at">x =</span> perc_cover)) <span class="sc">+</span></span>
-<span id="cb91-9"><a href="workshop-9---model-structure.html#cb91-9" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
-<span id="cb91-10"><a href="workshop-9---model-structure.html#cb91-10" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(year))</span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="workshop-9---model-structure.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rearrange the Nepal data set into a long format</span></span>
+<span id="cb91-2"><a href="workshop-9---model-structure.html#cb91-2" aria-hidden="true" tabindex="-1"></a>nepal2 <span class="ot">&lt;-</span> nepal <span class="sc">%&gt;%</span></span>
+<span id="cb91-3"><a href="workshop-9---model-structure.html#cb91-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> year1994<span class="sc">:</span>year1996,</span>
+<span id="cb91-4"><a href="workshop-9---model-structure.html#cb91-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;year&quot;</span>, </span>
+<span id="cb91-5"><a href="workshop-9---model-structure.html#cb91-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;perc_cover&quot;</span>)</span>
+<span id="cb91-6"><a href="workshop-9---model-structure.html#cb91-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-7"><a href="workshop-9---model-structure.html#cb91-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot histograms for percentage cover and split plots by year</span></span>
+<span id="cb91-8"><a href="workshop-9---model-structure.html#cb91-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> nepal2, <span class="fu">aes</span>(<span class="at">x =</span> perc_cover)) <span class="sc">+</span></span>
+<span id="cb91-9"><a href="workshop-9---model-structure.html#cb91-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
+<span id="cb91-10"><a href="workshop-9---model-structure.html#cb91-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(year))</span></code></pre></div>
 <blockquote>
 <ul>
 <li><strong>Stop to think</strong></li>
@@ -530,9 +534,9 @@ Do some of these need to be changed? Remember you can use the <code>as.factor()<
 </blockquote>
 <p>The basic differences between this design and the fully randomised design are that Block is not replicated (there is only one block 1, one block 2 etc) and all plots within each block occur next to each other. Consequently, we cannot analyse the experiment as if it were a fully randomised factoral design.</p>
 <p>To illustrate the problem with analysing this experiment as if it were a fully factorial design (even though it is not fully factorial), we will try constructing a model from our first <code>nepal</code> dataset with year1994 as the dependent variable, and treatment and block as interacting factors. Try running the following;</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="workshop-9---model-structure.html#cb92-1" tabindex="-1"></a><span class="co"># Construct our first linear model exploring how much variation in percentage cover in the year 1994 is explained by treatment and block variables</span></span>
-<span id="cb92-2"><a href="workshop-9---model-structure.html#cb92-2" tabindex="-1"></a>lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(year1994 <span class="sc">~</span> treatment <span class="sc">*</span> block, <span class="at">data =</span> nepal)</span>
-<span id="cb92-3"><a href="workshop-9---model-structure.html#cb92-3" tabindex="-1"></a><span class="fu">summary</span>(lm1)</span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="workshop-9---model-structure.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Construct our first linear model exploring how much variation in percentage cover in the year 1994 is explained by treatment and block variables</span></span>
+<span id="cb92-2"><a href="workshop-9---model-structure.html#cb92-2" aria-hidden="true" tabindex="-1"></a>lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(year1994 <span class="sc">~</span> treatment <span class="sc">*</span> block, <span class="at">data =</span> nepal)</span>
+<span id="cb92-3"><a href="workshop-9---model-structure.html#cb92-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm1)</span></code></pre></div>
 <blockquote>
 <ul>
 <li><strong>Stop to think</strong></li>
@@ -546,9 +550,9 @@ Do some of these need to be changed? Remember you can use the <code>as.factor()<
 <h3><span class="header-section-number">10.3.4</span> Task 4 - Approaches to our model<a href="workshop-9---model-structure.html#task-4---approaches-to-our-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>There are two ways we could approach this model. Use <code>glimpse()</code> to examine your initial <code>nepal</code> data frame again. You will notice we have three columns that define the different treatments each segment in each block was exposed to (i.e. control, cut, burn and cut &amp; burn). These are described in two different ways, we have the <code>cut</code> and <code>burn</code> columns that have either a 0 (to signify that this treatment was not used on this segment) or a 1 (to signify that this treatment was used on this segment) and the combination of 0’s and 1’s indicated each of the four possible combinations. We then have our <code>treatment</code> column which summarises the <code>cut</code> and <code>burn</code> columns with characters (control = control, c = cut, b = burn and cb = cut &amp; burn). So how do these different notations effect our analysis?</p>
 <p>We could run our analysis (as we did above) to include effects of the <code>treatment</code> and <code>block</code> factors and ignore the <code>cut</code> and <code>burn</code> factors. If we use <code>treatment</code> as one of our fixed factors in this way we will essentially be performing a one-way ANOVA with four levels (corresponding to the four treatments). Lets ignore <code>block</code> for now and think about what this means. Run the following;</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="workshop-9---model-structure.html#cb93-1" tabindex="-1"></a><span class="co"># Construct a linear model exploring how much variation in percentage cover in the year 1994 is explained by treatment alone </span></span>
-<span id="cb93-2"><a href="workshop-9---model-structure.html#cb93-2" tabindex="-1"></a>lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(year1994 <span class="sc">~</span> treatment, <span class="at">data =</span> nepal)</span>
-<span id="cb93-3"><a href="workshop-9---model-structure.html#cb93-3" tabindex="-1"></a><span class="fu">summary</span>(lm1)</span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="workshop-9---model-structure.html#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Construct a linear model exploring how much variation in percentage cover in the year 1994 is explained by treatment alone </span></span>
+<span id="cb93-2"><a href="workshop-9---model-structure.html#cb93-2" aria-hidden="true" tabindex="-1"></a>lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(year1994 <span class="sc">~</span> treatment, <span class="at">data =</span> nepal)</span>
+<span id="cb93-3"><a href="workshop-9---model-structure.html#cb93-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm1)</span></code></pre></div>
 <blockquote>
 <ul>
 <li><strong>Stop to think</strong></li>
@@ -570,9 +574,9 @@ Figure 10.1: Additive vs interactive effects, A; shows an additive effect where 
 </ul>
 </blockquote>
 <p>Looking at the medians here, I would guess that an interactive effect between cut and burn treatments is unlikely. But we might like to test this interpretation. This is where having our data in a factorial lay out may be helpful. Try running the following;</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="workshop-9---model-structure.html#cb94-1" tabindex="-1"></a><span class="co"># Construct a linear model exploring how much variation in percentage cover in the year 1994 is explained by additive and interactive effects of cut and burn treatments and additive effects of block variables</span></span>
-<span id="cb94-2"><a href="workshop-9---model-structure.html#cb94-2" tabindex="-1"></a>lm2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(year1994 <span class="sc">~</span> cut <span class="sc">*</span>burn <span class="sc">+</span> block, <span class="at">data =</span> nepal)</span>
-<span id="cb94-3"><a href="workshop-9---model-structure.html#cb94-3" tabindex="-1"></a><span class="fu">summary</span>(lm2)</span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="workshop-9---model-structure.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Construct a linear model exploring how much variation in percentage cover in the year 1994 is explained by additive and interactive effects of cut and burn treatments and additive effects of block variables</span></span>
+<span id="cb94-2"><a href="workshop-9---model-structure.html#cb94-2" aria-hidden="true" tabindex="-1"></a>lm2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(year1994 <span class="sc">~</span> cut <span class="sc">*</span>burn <span class="sc">+</span> block, <span class="at">data =</span> nepal)</span>
+<span id="cb94-3"><a href="workshop-9---model-structure.html#cb94-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm2)</span></code></pre></div>
 <p>Remember from Chapter <a href="workshop-9---model-structure.html#c12t3">10.3.3</a> we ascertained that we couldn’t look for interactions with block because block isn’t replicated, so here we have simply requested it be included only in an additive capacity. However we can now explore potential interactions between cut and burn treatments.</p>
 <blockquote>
 <ul>
@@ -581,8 +585,8 @@ Figure 10.1: Additive vs interactive effects, A; shows an additive effect where 
 </ul>
 </blockquote>
 <p>When incorporating fixed factors with more then two levels it can also be helpful to produce the ANOVA table for your model, this will tell you the overall amount of variation explained by each factor as a whole, try running;</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="workshop-9---model-structure.html#cb95-1" tabindex="-1"></a><span class="co"># Produce the ANOVA table for lm2</span></span>
-<span id="cb95-2"><a href="workshop-9---model-structure.html#cb95-2" tabindex="-1"></a><span class="fu">anova</span>(lm2)</span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="workshop-9---model-structure.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Produce the ANOVA table for lm2</span></span>
+<span id="cb95-2"><a href="workshop-9---model-structure.html#cb95-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(lm2)</span></code></pre></div>
 <p>The variation explained by each factor is captured by the Mean sq column of this output table. The F value is then calculated by dividing the Mean sq of each line by the residual Mean sq.</p>
 <blockquote>
 <ul>
@@ -594,11 +598,11 @@ Figure 10.1: Additive vs interactive effects, A; shows an additive effect where 
 <div id="exploring-the-model" class="section level3 hasAnchor" number="10.3.5">
 <h3><span class="header-section-number">10.3.5</span> Exploring the model<a href="workshop-9---model-structure.html#exploring-the-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Lets unpack our <code>lm2</code> model a little bit more. The <code>GGally</code> package has a super useful function called <code>ggcoef_model</code> that produces a plot of the estimated mean difference with estimated 95% confidence intervals. Try running the following;</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="workshop-9---model-structure.html#cb96-1" tabindex="-1"></a><span class="co"># Produce plots for coefficients with 95% confidence intervals</span></span>
-<span id="cb96-2"><a href="workshop-9---model-structure.html#cb96-2" tabindex="-1"></a><span class="fu">ggcoef_model</span>(lm1,</span>
-<span id="cb96-3"><a href="workshop-9---model-structure.html#cb96-3" tabindex="-1"></a>             <span class="at">show_p_values=</span><span class="cn">FALSE</span>,</span>
-<span id="cb96-4"><a href="workshop-9---model-structure.html#cb96-4" tabindex="-1"></a>             <span class="at">signif_stars =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb96-5"><a href="workshop-9---model-structure.html#cb96-5" tabindex="-1"></a>             <span class="at">conf.level=</span><span class="fl">0.95</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="workshop-9---model-structure.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Produce plots for coefficients with 95% confidence intervals</span></span>
+<span id="cb96-2"><a href="workshop-9---model-structure.html#cb96-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggcoef_model</span>(lm1,</span>
+<span id="cb96-3"><a href="workshop-9---model-structure.html#cb96-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">show_p_values=</span><span class="cn">FALSE</span>,</span>
+<span id="cb96-4"><a href="workshop-9---model-structure.html#cb96-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">signif_stars =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb96-5"><a href="workshop-9---model-structure.html#cb96-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">conf.level=</span><span class="fl">0.95</span>)</span></code></pre></div>
 <p>And then run the above code again for <code>lm2</code>.</p>
 <blockquote>
 <ul>
@@ -609,9 +613,9 @@ Figure 10.1: Additive vs interactive effects, A; shows an additive effect where 
 </ul>
 </blockquote>
 <p>These plots allow you to plot the estimated means and examine the interaction between treatments. Something seems to be going on with Block 3 which we may wish to investigate in more detail. We may wish to perform a Tukey test to examine these differences in more detail. To do this we will need to use the <code>aov()</code> function on our <code>lm()</code> and then perform the Tukey test on that. See below;</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="workshop-9---model-structure.html#cb97-1" tabindex="-1"></a><span class="co"># Run a post hoc Tukey test for lm2</span></span>
-<span id="cb97-2"><a href="workshop-9---model-structure.html#cb97-2" tabindex="-1"></a>lm2_aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(lm2)</span>
-<span id="cb97-3"><a href="workshop-9---model-structure.html#cb97-3" tabindex="-1"></a><span class="fu">TukeyHSD</span>(lm2_aov, <span class="at">conf.level=</span>.<span class="dv">95</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="workshop-9---model-structure.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run a post hoc Tukey test for lm2</span></span>
+<span id="cb97-2"><a href="workshop-9---model-structure.html#cb97-2" aria-hidden="true" tabindex="-1"></a>lm2_aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(lm2)</span>
+<span id="cb97-3"><a href="workshop-9---model-structure.html#cb97-3" aria-hidden="true" tabindex="-1"></a><span class="fu">TukeyHSD</span>(lm2_aov, <span class="at">conf.level=</span>.<span class="dv">95</span>)</span></code></pre></div>
 <blockquote>
 <ul>
 <li><strong>Stop to think</strong></li>
@@ -679,8 +683,8 @@ Do some of these need to be changed? Remember you can use the <code>as.factor()<
 <p>We will see if how this works now, with our <code>tulip.csv</code> data set.</p>
 <p>Previously, we constructed a customised linear model to analyse these data but an alternative would be to construct a mixed model and account for the non-independence of plants from the same flowerbed by including <code>bed</code> as a random factor. This will mean that the model accounts for the variation that can be attributed to bed but will not statistically compare the three flowerbeds.</p>
 <p>To construct a mixed effects model we will be making use of the function <code>lmer</code> from the <code>lmerTest</code> package. Try running the following;</p>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="workshop-9---model-structure.html#cb98-1" tabindex="-1"></a><span class="co"># Run a mixed effects linear model</span></span>
-<span id="cb98-2"><a href="workshop-9---model-structure.html#cb98-2" tabindex="-1"></a>mixed_model <span class="ot">&lt;-</span> <span class="fu">lmer</span>(blooms <span class="sc">~</span> water<span class="sc">*</span>shade <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>bed), <span class="at">data =</span> tulip)</span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="workshop-9---model-structure.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run a mixed effects linear model</span></span>
+<span id="cb98-2"><a href="workshop-9---model-structure.html#cb98-2" aria-hidden="true" tabindex="-1"></a>mixed_model <span class="ot">&lt;-</span> <span class="fu">lmer</span>(blooms <span class="sc">~</span> water<span class="sc">*</span>shade <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>bed), <span class="at">data =</span> tulip)</span></code></pre></div>
 <p>And then check out the output by using <code>summary()</code> and <code>anova()</code> functions.</p>
 <blockquote>
 <ul>
@@ -770,7 +774,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

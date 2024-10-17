@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 Workshop 2 - Explorartory Data Analysis | Statistics for Biologists</title>
   <meta name="description" content="This is the coursebook for BIO-7056A Statistics for Biologists" />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 Workshop 2 - Explorartory Data Analysis | Statistics for Biologists" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Dr Ellen Bell" />
 
 
-<meta name="date" content="2024-10-15" />
+<meta name="date" content="2024-10-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -56,7 +56,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -119,6 +119,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -494,7 +498,7 @@ There are two things to look out for:</p>
 <p>You can download our data set <a href="https://drive.google.com/uc?export=download&amp;id=1qgIqvW56dSHb0dq07ZMU43POA0jkjuuR">here</a>. Or by downloading it from blackboard.</p>
 <p>Once you have downloaded the data you will then need to upload it to your <code>data</code> folder in posit Cloud. To do this, go to the project you have just set up in posit Cloud. Under the files tab in the the bottom right panel you will see a little icon with a yellow upwards pointing arrow. If you click on this icon you will be given the option to select and upload a file from your home computer. Do this and file your data within your <code>data</code> directory.</p>
 <p>Now we can load the data, try running the following chunk;</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="workshop-2---explorartory-data-analysis.html#cb25-1" tabindex="-1"></a>weedy <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/weedy.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="workshop-2---explorartory-data-analysis.html#cb25-1" aria-hidden="true" tabindex="-1"></a>weedy <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/weedy.csv&quot;</span>)</span></code></pre></div>
 <blockquote>
 <ul>
 <li><strong>Test Yourself</strong></li>
@@ -516,16 +520,16 @@ dbl (1): yield
 <div id="checking-the-data" class="section level3 hasAnchor" number="2.2.3">
 <h3><span class="header-section-number">2.2.3</span> Task 3: Checking the data<a href="workshop-2---explorartory-data-analysis.html#checking-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Whenever we start analysis on a new data set we need to start by checking the data. This is to make sure that we are aware of any missing data, any anomalous data points (that could be errors) and that R has interpreted the kind of data we have entered correctly. At some point whatever data set you are working on will almost certainly have been entered manually into a spreadsheet. This creates space for errors to be introduced even if the orrigional data sheets are correct. Try running the following functions, use the <code>#</code> to note down what each of these functions does in your script.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="workshop-2---explorartory-data-analysis.html#cb27-1" tabindex="-1"></a><span class="co"># Some functions to play with</span></span>
-<span id="cb27-2"><a href="workshop-2---explorartory-data-analysis.html#cb27-2" tabindex="-1"></a><span class="fu">nrow</span>(weedy)</span>
-<span id="cb27-3"><a href="workshop-2---explorartory-data-analysis.html#cb27-3" tabindex="-1"></a><span class="fu">ncol</span>(weedy)</span>
-<span id="cb27-4"><a href="workshop-2---explorartory-data-analysis.html#cb27-4" tabindex="-1"></a><span class="fu">colnames</span>(weedy)</span>
-<span id="cb27-5"><a href="workshop-2---explorartory-data-analysis.html#cb27-5" tabindex="-1"></a><span class="fu">str</span>(weedy)</span>
-<span id="cb27-6"><a href="workshop-2---explorartory-data-analysis.html#cb27-6" tabindex="-1"></a><span class="fu">head</span>(weedy)</span>
-<span id="cb27-7"><a href="workshop-2---explorartory-data-analysis.html#cb27-7" tabindex="-1"></a><span class="fu">tail</span>(weedy)</span>
-<span id="cb27-8"><a href="workshop-2---explorartory-data-analysis.html#cb27-8" tabindex="-1"></a><span class="fu">view</span>(weedy)</span>
-<span id="cb27-9"><a href="workshop-2---explorartory-data-analysis.html#cb27-9" tabindex="-1"></a><span class="fu">glimpse</span>(weedy)</span>
-<span id="cb27-10"><a href="workshop-2---explorartory-data-analysis.html#cb27-10" tabindex="-1"></a><span class="fu">tabyl</span>(weedy,treatment)</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="workshop-2---explorartory-data-analysis.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Some functions to play with</span></span>
+<span id="cb27-2"><a href="workshop-2---explorartory-data-analysis.html#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(weedy)</span>
+<span id="cb27-3"><a href="workshop-2---explorartory-data-analysis.html#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(weedy)</span>
+<span id="cb27-4"><a href="workshop-2---explorartory-data-analysis.html#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(weedy)</span>
+<span id="cb27-5"><a href="workshop-2---explorartory-data-analysis.html#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(weedy)</span>
+<span id="cb27-6"><a href="workshop-2---explorartory-data-analysis.html#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(weedy)</span>
+<span id="cb27-7"><a href="workshop-2---explorartory-data-analysis.html#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(weedy)</span>
+<span id="cb27-8"><a href="workshop-2---explorartory-data-analysis.html#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="fu">view</span>(weedy)</span>
+<span id="cb27-9"><a href="workshop-2---explorartory-data-analysis.html#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(weedy)</span>
+<span id="cb27-10"><a href="workshop-2---explorartory-data-analysis.html#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="fu">tabyl</span>(weedy,treatment)</span></code></pre></div>
 <blockquote>
 <ul>
 <li><strong>Stop to think</strong></li>
@@ -546,15 +550,15 @@ dbl (1): yield
 <h3><span class="header-section-number">2.2.4</span> Task 4: When in doubt - make a histogram<a href="workshop-2---explorartory-data-analysis.html#histogram" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The shape of the frequency distribution of the data is a key element in determining how we analyse data. We need to determine (i) whether the data are distributed symmetrically; and (ii) whether there are any extreme values in the data. To do this we are going to create a frequency distribution of the data and display this as a histogram. To recap, a frequency distribution is obtained by grouping the data into intervals and counting the number or proportion of observations that fall within each interval.
 So how do we make histograms in R? When you used the <code>tabyl()</code> function above you might have noticed that there are four categories listed under treatment (your experimental treatments). For now we only want to work with one of these treatments so run the following chunk;</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="workshop-2---explorartory-data-analysis.html#cb28-1" tabindex="-1"></a>weedfree1 <span class="ot">&lt;-</span> weedy <span class="sc">%&gt;%</span> <span class="co"># pipe the weedy data frame into the next function </span></span>
-<span id="cb28-2"><a href="workshop-2---explorartory-data-analysis.html#cb28-2" tabindex="-1"></a>  <span class="fu">filter</span>(treatment <span class="sc">==</span> <span class="st">&quot;weedfree1&quot;</span>) <span class="co"># filter the piped data frame and only keep treatment weedfree 1</span></span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="workshop-2---explorartory-data-analysis.html#cb28-1" aria-hidden="true" tabindex="-1"></a>weedfree1 <span class="ot">&lt;-</span> weedy <span class="sc">%&gt;%</span> <span class="co"># pipe the weedy data frame into the next function </span></span>
+<span id="cb28-2"><a href="workshop-2---explorartory-data-analysis.html#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(treatment <span class="sc">==</span> <span class="st">&quot;weedfree1&quot;</span>) <span class="co"># filter the piped data frame and only keep treatment weedfree 1</span></span></code></pre></div>
 <blockquote>
 <p><strong>A note on syntax:</strong> you might have noticed the %&gt;% syntax here. This is a piping variable. This is essentially performing the same function as the <code>+</code> that we used when using ggplot in Chapter <a href="index.html#installing-packages">1.2.8</a>. This allows you to take an object and to add more detailed instructions on the job you would like performed, this is a very simple use of a pipe but we will be building more complex examples later on.</p>
 </blockquote>
 <p>Try using some of the data checking functions that we used earlier to check your new data frame <code>weedfree1</code>. Are you happy that you have filtered out one of the four treatments from the <code>weedy</code> data frame?</p>
 <p>Now we are ready to make our first histogram. For this we will call on some functions within the <code>ggplot2</code> package. We had a quick play with ggplot in the last chapter so this wont be completely unfamiliar to you. Try running the next chunk;</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="workshop-2---explorartory-data-analysis.html#cb29-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> weedfree1, <span class="fu">aes</span>(<span class="at">x=</span>yield)) <span class="sc">+</span></span>
-<span id="cb29-2"><a href="workshop-2---explorartory-data-analysis.html#cb29-2" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">6</span>, <span class="at">fill=</span><span class="st">&quot;cornflowerblue&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="workshop-2---explorartory-data-analysis.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> weedfree1, <span class="fu">aes</span>(<span class="at">x=</span>yield)) <span class="sc">+</span></span>
+<span id="cb29-2"><a href="workshop-2---explorartory-data-analysis.html#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">6</span>, <span class="at">fill=</span><span class="st">&quot;cornflowerblue&quot;</span>)</span></code></pre></div>
 <blockquote>
 <ul>
 <li><strong>Stop to think</strong></li>
@@ -590,11 +594,11 @@ So how do we make histograms in R? When you used the <code>tabyl()</code> functi
 <h3><span class="header-section-number">2.3.1</span> Task 5: Descriptive statistics<a href="workshop-2---explorartory-data-analysis.html#descriptive-statistics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We are going to use some functions from within the <code>tidyverse</code> package to summarise our yeild data, using descriptive statistics.</p>
 <p>Try running the following chunk;</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="workshop-2---explorartory-data-analysis.html#cb30-1" tabindex="-1"></a>weedy_summary <span class="ot">&lt;-</span> weedy <span class="sc">%&gt;%</span> </span>
-<span id="cb30-2"><a href="workshop-2---explorartory-data-analysis.html#cb30-2" tabindex="-1"></a>  <span class="fu">group_by</span>(treatment) <span class="sc">%&gt;%</span> </span>
-<span id="cb30-3"><a href="workshop-2---explorartory-data-analysis.html#cb30-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n=</span><span class="fu">n</span>(),</span>
-<span id="cb30-4"><a href="workshop-2---explorartory-data-analysis.html#cb30-4" tabindex="-1"></a>            <span class="at">mean=</span><span class="fu">mean</span>(yield))</span>
-<span id="cb30-5"><a href="workshop-2---explorartory-data-analysis.html#cb30-5" tabindex="-1"></a>weedy_summary</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="workshop-2---explorartory-data-analysis.html#cb30-1" aria-hidden="true" tabindex="-1"></a>weedy_summary <span class="ot">&lt;-</span> weedy <span class="sc">%&gt;%</span> </span>
+<span id="cb30-2"><a href="workshop-2---explorartory-data-analysis.html#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(treatment) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-3"><a href="workshop-2---explorartory-data-analysis.html#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n=</span><span class="fu">n</span>(),</span>
+<span id="cb30-4"><a href="workshop-2---explorartory-data-analysis.html#cb30-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean=</span><span class="fu">mean</span>(yield))</span>
+<span id="cb30-5"><a href="workshop-2---explorartory-data-analysis.html#cb30-5" aria-hidden="true" tabindex="-1"></a>weedy_summary</span></code></pre></div>
 <blockquote>
 <ul>
 <li><strong>Test Yourself</strong></li>
@@ -602,36 +606,36 @@ So how do we make histograms in R? When you used the <code>tabyl()</code> functi
 </ul>
 </blockquote>
 <p>So we have a mean for our data, but we can produce many more descriptive statistics in one place. Try editing your script so that it reads as follows;</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="workshop-2---explorartory-data-analysis.html#cb31-1" tabindex="-1"></a>weedy_summary <span class="ot">&lt;-</span> weedy <span class="sc">%&gt;%</span> </span>
-<span id="cb31-2"><a href="workshop-2---explorartory-data-analysis.html#cb31-2" tabindex="-1"></a>  <span class="fu">group_by</span>(treatment) <span class="sc">%&gt;%</span> </span>
-<span id="cb31-3"><a href="workshop-2---explorartory-data-analysis.html#cb31-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n=</span><span class="fu">n</span>(),</span>
-<span id="cb31-4"><a href="workshop-2---explorartory-data-analysis.html#cb31-4" tabindex="-1"></a>            <span class="at">mean=</span><span class="fu">mean</span>(yield),</span>
-<span id="cb31-5"><a href="workshop-2---explorartory-data-analysis.html#cb31-5" tabindex="-1"></a>            <span class="at">sd=</span><span class="fu">sd</span>(yield))</span>
-<span id="cb31-6"><a href="workshop-2---explorartory-data-analysis.html#cb31-6" tabindex="-1"></a>weedy_summary</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="workshop-2---explorartory-data-analysis.html#cb31-1" aria-hidden="true" tabindex="-1"></a>weedy_summary <span class="ot">&lt;-</span> weedy <span class="sc">%&gt;%</span> </span>
+<span id="cb31-2"><a href="workshop-2---explorartory-data-analysis.html#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(treatment) <span class="sc">%&gt;%</span> </span>
+<span id="cb31-3"><a href="workshop-2---explorartory-data-analysis.html#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n=</span><span class="fu">n</span>(),</span>
+<span id="cb31-4"><a href="workshop-2---explorartory-data-analysis.html#cb31-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean=</span><span class="fu">mean</span>(yield),</span>
+<span id="cb31-5"><a href="workshop-2---explorartory-data-analysis.html#cb31-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd=</span><span class="fu">sd</span>(yield))</span>
+<span id="cb31-6"><a href="workshop-2---explorartory-data-analysis.html#cb31-6" aria-hidden="true" tabindex="-1"></a>weedy_summary</span></code></pre></div>
 <p>Hopefully you can see we now have a standard deviation (sd) of the yield. Now modify your code with the following self explanatory functions; <code>median()</code> and <code>skewness()</code>.</p>
 </div>
 <div id="task-6-finding-the-range-and-the-mode" class="section level3 hasAnchor" number="2.3.2">
 <h3><span class="header-section-number">2.3.2</span> Task 6: Finding the range and the mode<a href="workshop-2---explorartory-data-analysis.html#task-6-finding-the-range-and-the-mode" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Finding the range and the mode in R is slightly more complex then using a single function.</p>
 <p>We can find the range by adding the following line to the <code>summarise()</code> function above;</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="workshop-2---explorartory-data-analysis.html#cb32-1" tabindex="-1"></a>range<span class="ot">=</span><span class="fu">max</span>(yield)<span class="sc">-</span><span class="fu">min</span>(yield) <span class="co"># subtracting the smallest yield value from the largest yield value to give the range</span></span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="workshop-2---explorartory-data-analysis.html#cb32-1" aria-hidden="true" tabindex="-1"></a>range<span class="ot">=</span><span class="fu">max</span>(yield)<span class="sc">-</span><span class="fu">min</span>(yield) <span class="co"># subtracting the smallest yield value from the largest yield value to give the range</span></span></code></pre></div>
 <p>To calculate the mode we will have to create our own function (R doesnt have a base function to calculate the mode). Don’t worry if you dont ‘get’ this right away.</p>
 <p>If you run the following chunk of code independently to the above <code>summarise()</code> function, you will create your own function called <code>mode()</code> in base R that calculates the mode;</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="workshop-2---explorartory-data-analysis.html#cb33-1" tabindex="-1"></a>mode <span class="ot">&lt;-</span> <span class="cf">function</span>(v) {</span>
-<span id="cb33-2"><a href="workshop-2---explorartory-data-analysis.html#cb33-2" tabindex="-1"></a>  uniqv <span class="ot">&lt;-</span> <span class="fu">unique</span>(v)</span>
-<span id="cb33-3"><a href="workshop-2---explorartory-data-analysis.html#cb33-3" tabindex="-1"></a>  uniqv[<span class="fu">which.max</span>(<span class="fu">tabulate</span>(<span class="fu">match</span>(v, uniqv)))]</span>
-<span id="cb33-4"><a href="workshop-2---explorartory-data-analysis.html#cb33-4" tabindex="-1"></a>}</span>
-<span id="cb33-5"><a href="workshop-2---explorartory-data-analysis.html#cb33-5" tabindex="-1"></a></span>
-<span id="cb33-6"><a href="workshop-2---explorartory-data-analysis.html#cb33-6" tabindex="-1"></a><span class="co"># This is a stage by stage translation of the above code.</span></span>
-<span id="cb33-7"><a href="workshop-2---explorartory-data-analysis.html#cb33-7" tabindex="-1"></a><span class="co"># mode &lt;- function(v): First we define a function named mode that calculates the mode of a given vector v.</span></span>
-<span id="cb33-8"><a href="workshop-2---explorartory-data-analysis.html#cb33-8" tabindex="-1"></a><span class="co"># uniqv &lt;- unique(v): This line creates a new vector uniqv by removing duplicate values from the input vector v using the unique() function.</span></span>
-<span id="cb33-9"><a href="workshop-2---explorartory-data-analysis.html#cb33-9" tabindex="-1"></a><span class="co"># tabulate(match(v, uniqv)): The match() function is used to find the position of elements in the input vector v that match the values in the unique vector uniqv. The tabulate() function then counts the occurrences of each position, effectively counting the frequency of each unique value in the input vector.</span></span>
-<span id="cb33-10"><a href="workshop-2---explorartory-data-analysis.html#cb33-10" tabindex="-1"></a><span class="co"># which.max(...): This function is applied to the result of the previous step (the frequency count). It identifies the index of the first occurrence of the maximum value in the frequency count, which corresponds to the mode of the input vector.</span></span>
-<span id="cb33-11"><a href="workshop-2---explorartory-data-analysis.html#cb33-11" tabindex="-1"></a><span class="co"># uniqv[...]: Finally, the uniqv vector is indexed using the position of the mode (identified by which.max(...)) to extract and return the actual mode value.</span></span>
-<span id="cb33-12"><a href="workshop-2---explorartory-data-analysis.html#cb33-12" tabindex="-1"></a><span class="co"># So the mode function first finds the unique values in the input vector, then counts the frequency of each unique value, and finally identifies and returns the mode (the most frequent value).</span></span>
-<span id="cb33-13"><a href="workshop-2---explorartory-data-analysis.html#cb33-13" tabindex="-1"></a><span class="co"># A note of caution if there are multiple modes, this function will only return the first one it finds.</span></span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="workshop-2---explorartory-data-analysis.html#cb33-1" aria-hidden="true" tabindex="-1"></a>mode <span class="ot">&lt;-</span> <span class="cf">function</span>(v) {</span>
+<span id="cb33-2"><a href="workshop-2---explorartory-data-analysis.html#cb33-2" aria-hidden="true" tabindex="-1"></a>  uniqv <span class="ot">&lt;-</span> <span class="fu">unique</span>(v)</span>
+<span id="cb33-3"><a href="workshop-2---explorartory-data-analysis.html#cb33-3" aria-hidden="true" tabindex="-1"></a>  uniqv[<span class="fu">which.max</span>(<span class="fu">tabulate</span>(<span class="fu">match</span>(v, uniqv)))]</span>
+<span id="cb33-4"><a href="workshop-2---explorartory-data-analysis.html#cb33-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb33-5"><a href="workshop-2---explorartory-data-analysis.html#cb33-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-6"><a href="workshop-2---explorartory-data-analysis.html#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="co"># This is a stage by stage translation of the above code.</span></span>
+<span id="cb33-7"><a href="workshop-2---explorartory-data-analysis.html#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="co"># mode &lt;- function(v): First we define a function named mode that calculates the mode of a given vector v.</span></span>
+<span id="cb33-8"><a href="workshop-2---explorartory-data-analysis.html#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="co"># uniqv &lt;- unique(v): This line creates a new vector uniqv by removing duplicate values from the input vector v using the unique() function.</span></span>
+<span id="cb33-9"><a href="workshop-2---explorartory-data-analysis.html#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="co"># tabulate(match(v, uniqv)): The match() function is used to find the position of elements in the input vector v that match the values in the unique vector uniqv. The tabulate() function then counts the occurrences of each position, effectively counting the frequency of each unique value in the input vector.</span></span>
+<span id="cb33-10"><a href="workshop-2---explorartory-data-analysis.html#cb33-10" aria-hidden="true" tabindex="-1"></a><span class="co"># which.max(...): This function is applied to the result of the previous step (the frequency count). It identifies the index of the first occurrence of the maximum value in the frequency count, which corresponds to the mode of the input vector.</span></span>
+<span id="cb33-11"><a href="workshop-2---explorartory-data-analysis.html#cb33-11" aria-hidden="true" tabindex="-1"></a><span class="co"># uniqv[...]: Finally, the uniqv vector is indexed using the position of the mode (identified by which.max(...)) to extract and return the actual mode value.</span></span>
+<span id="cb33-12"><a href="workshop-2---explorartory-data-analysis.html#cb33-12" aria-hidden="true" tabindex="-1"></a><span class="co"># So the mode function first finds the unique values in the input vector, then counts the frequency of each unique value, and finally identifies and returns the mode (the most frequent value).</span></span>
+<span id="cb33-13"><a href="workshop-2---explorartory-data-analysis.html#cb33-13" aria-hidden="true" tabindex="-1"></a><span class="co"># A note of caution if there are multiple modes, this function will only return the first one it finds.</span></span></code></pre></div>
 <p>With the above function, we can now compute the mode of our dataset. Try incorporating the following into your <code>summarise()</code> function.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="workshop-2---explorartory-data-analysis.html#cb34-1" tabindex="-1"></a>mode<span class="ot">=</span><span class="fu">mode</span>(yield)</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="workshop-2---explorartory-data-analysis.html#cb34-1" aria-hidden="true" tabindex="-1"></a>mode<span class="ot">=</span><span class="fu">mode</span>(yield)</span></code></pre></div>
 </div>
 <div id="task-7-interpretation" class="section level3 hasAnchor" number="2.3.3">
 <h3><span class="header-section-number">2.3.3</span> Task 7: Interpretation<a href="workshop-2---explorartory-data-analysis.html#task-7-interpretation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -742,7 +746,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

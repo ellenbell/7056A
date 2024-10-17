@@ -46,6 +46,7 @@ The null hypothesis in an ANOVA is that samples from different treatments are dr
 If the means of the treatments vary but the variance within the treatments is similar to the variance between treatments, then it will be unlikely that significant differences between the treatments can be identified. By contrast, if the within-treatment variance is small relative to the between-treatment variance, then it is more likely that statistically significant differences between the means will exist. We therefore need to be able to compare within- and between- treatment variances to determine whether the null hypothesis is likely to be true. This is done by calculating the ratio of these two variances, called the F-ratio. If the within and between treatment variance estimates are the same, then F = 1. If the between-treatment estimate of variance is greater than the within-treatment estimate of variance, then the value of F will be much bigger than 1. Clear differences between treatments therefore result in larger values of F. For a given value of F, and for a given number of treatments and replicates, we can then calculate the probability that the null hypothesis (no difference between treatment means) is true: again this critical level is 1 in 20, or p<0.05. There is a standard way of presenting the results of an ANOVA in a table, it looks something like this:
 
 _Table 4.1_ Example ANOVA summary results
+
 | Source | DF | Sum of Squares | Mean Square | F-Ratio | Probability |
 |:------:|:--:|:--------------:|:-----------:|:-------:|:-----------:|
 | Between | 2 | 634.08 | 317.04 | 42.44 | 0.000 |
@@ -75,6 +76,7 @@ Out of these treatments, 1. and 2. are termed Main Effects: these are the basic 
 We may find that increasing the level of either N or P on their own increases yields. However, these effects may not be independent. When combined, high levels of both N & P may increase yields by more than the sum of their individual effects (synergistic) or by less than the sum of their individual effects (antagonistic). Interaction effects are tested in exactly the same way as main effects, using an F-ratio. The ANOVA table is slightly modified:
 
 _Table 4.1_ An example of summary results from a more complex ANOVA 
+
 | Source | DF | Sum of Squares | Mean Square | F-Ratio | Probability |
 |:------:|:--:|:--------------:|:-----------:|:-------:|:-----------:|
 | Nitrogen | 1 | 376.04 | 376.04 | 108.74 | 0.000 |
