@@ -186,13 +186,13 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
 > * Can you see how this compares to the ANOVA tables shown above?
 > * Can you explain how the value of the F-ratio in this table is calculated?
 > * What would an F-ratio close to 1 indicate?
-> * What does the probability attached to the F-ratio indicate about the mean yields of the varieties?
+> * What does the probability attached to the F-ratio indicate about the mean yields of the varieties.
 
-The analysis indicates that there are some differences between the varieties of the groups but we do not know where these differences lie. To find this out, we are going to use a post hoc test. These operate like a series of pair-wise comparisons of the treatments, and will identify where significant differences exist between the means of the different varieties. To do this we will perform a Tuckey test, this is the most commonly reported post-hot test for ANOVA. Try running the following;
+The analysis indicates that there are some differences between the varieties of the groups but we do not know where these differences lie. To find this out, we are going to use a post hoc test. These operate like a series of pair-wise comparisons of the treatments, and will identify where significant differences exist between the means of the different varieties. To do this we will perform a Tukey test, this is the most commonly reported post-hot test for ANOVA. Try running the following;
 
 ```{r}
 TukeyHSD(lsmodel01, conf.level=.95) 
-# Perform a d Tuckey test on our ANOVA, stored in lsmodel01 with confidence levels of 95%.
+# Perform a d Tukey test on our ANOVA, stored in lsmodel01 with confidence levels of 95%.
 ```
 
 The output table indicates which pairs of treatment means are significantly different from one another. The `diff` collumn gives the difference in means between the two varieties, the `lwr` and `upr` columns give the upper and lower bounds for the 95% confidence interval for the difference and the `p adj` shows whether there is a significant difference between comparisons. 
@@ -210,7 +210,7 @@ ggplot(data = carrot_yields, aes(x = Variety, y = Yields)) +
 ```
 
 > * __Stop to think__
-> * Does the plot you just produced match the conclusions you drew from performing an ANOVA and Tuckey test?
+> * Does the plot you just produced match the conclusions you drew from performing an ANOVA and Tukey test?
 
 ### Task 6 - Experiment 2 - Two-way ANOVA {#first-boxplot}
 
@@ -251,7 +251,7 @@ The output looks more complex than the previous ANOVA output with a row for each
 
 > * __Stop to think__
 > * Do either or both of the main effects significantly influence the pecking rate?
-> * Is there evidence of a significant interaction between Colour and Sex?
+> * Is there evidence of a significant interaction between Light and Sex?
 > * What does this interaction tell you about chicken pecking rates?
 > * What would a non-significant interaction indicate?
 > * Write down a short summary of the analysis.

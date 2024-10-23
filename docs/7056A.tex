@@ -5,16 +5,19 @@
 \documentclass[
 ]{book}
 \usepackage{amsmath,amssymb}
-\usepackage{lmodern}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
-  \usepackage{unicode-math}
+  \usepackage{unicode-math} % this also loads fontspec
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -44,13 +47,13 @@
 \newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
 \newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
 \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
 \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
 \newcommand{\BuiltInTok}[1]{#1}
 \newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
 \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
 \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
 \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
@@ -58,7 +61,7 @@
 \newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
 \newcommand{\ExtensionTok}[1]{#1}
 \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
 \newcommand{\ImportTok}[1]{#1}
 \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
@@ -67,7 +70,7 @@
 \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
 \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
 \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
@@ -167,9 +170,9 @@
 \fi
 \usepackage[]{natbib}
 \bibliographystyle{apalike}
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\urlstyle{same} % disable monospaced font for URLs
+\urlstyle{same}
 \hypersetup{
   pdftitle={Statistics for Biologists},
   pdfauthor={Dr Ellen Bell},
@@ -178,7 +181,7 @@
 
 \title{Statistics for Biologists}
 \author{Dr Ellen Bell}
-\date{2024-10-17}
+\date{2024-10-23}
 
 \begin{document}
 \maketitle
@@ -187,20 +190,17 @@
 \setcounter{tocdepth}{1}
 \tableofcontents
 }
-\hypertarget{c1}{%
-\chapter{Welcome to the Statistics Coursebook}\label{c1}}
+\chapter{Welcome to the Statistics Coursebook}\label{c1}
 
 The aim of this course is to give a basic introduction to key ideas and techniques for statistical analysis. Most people find statistics difficult to learn - statistical analyses, however, play a central role in experimental biology, and a thorough knowledge of statistical techniques is essential in most areas of research. In order to conduct these analyses we will be learning and using the coding language R on the posit Cloud platform (more about this in a bit).
 
 The key to success with statistics is practice. Whilst practical classes and lectures are useful in demonstrating how statistical analyses work and the kinds of problems that can be tackled, it is only with experience that much of statistics becomes understandable. The more you do the easier it will become.
 
-\hypertarget{introduction}{%
-\section{Introduction}\label{introduction}}
+\section{Introduction}\label{introduction}
 
 Before we get going, lets take a quick look at the learning objectives and general teaching layout for this module.
 
-\hypertarget{learning-objectives}{%
-\subsection{Learning Objectives}\label{learning-objectives}}
+\subsection{Learning Objectives}\label{learning-objectives}
 
 \begin{itemize}
 \tightlist
@@ -220,8 +220,7 @@ Before we get going, lets take a quick look at the learning objectives and gener
   Learn how to implement these tests using the coding language R
 \end{itemize}
 
-\hypertarget{teaching-layout}{%
-\subsection{Teaching Layout}\label{teaching-layout}}
+\subsection{Teaching Layout}\label{teaching-layout}
 
 This is a 20 credit module which will run from Weeks 1 - 12
 
@@ -233,15 +232,13 @@ This is a 20 credit module which will run from Weeks 1 - 12
   Initially a single 3 hour practical session will run in weeks 1 - 7 and then from weeks 8 - 12 you will have two 3 hour practical sessions a week. These give you a chance to explore some data sets, visualise data and conduct some statistical analyses in R. These are where you will be getting some real hands on experience of data management and analysis.
 \end{itemize}
 
-\hypertarget{how-to-use-this-workbook}{%
-\subsection{How to use this workbook}\label{how-to-use-this-workbook}}
+\subsection{How to use this workbook}\label{how-to-use-this-workbook}
 
 This workbook contains all of the information you require for the practical sessions (it was originally written by Rob Freckleton before being modified by Jenny Gill and then by myself).
 
 The practical sessions have been designed so that the data sets are small, tidy and fairly easy to manage. Should you wish to revisit these data sets, I highly recommend that you download them from the server based platform that we will be using (posit Cloud) and save them locally on your own devise.
 
-\hypertarget{why-are-we-learning-r}{%
-\subsection{Why are we learning R}\label{why-are-we-learning-r}}
+\subsection{Why are we learning R}\label{why-are-we-learning-r}
 
 It is a common misconception, that to be a good biologist you need to `know' the mechanics of how life works. Questions like; ``How does a cell undergo respiration?'', ``How do kidneys filter blood?'', ``How do some plants fix nitrogen?'' and ``How do honey bees communicate the location and quantity of resources to each other?'', spring to mind. While these questions are important, they are also, now, fairly well understood. But how did biologists come to their understanding of these mechanisms? The answer to this lies in data.
 
@@ -253,8 +250,7 @@ To some of you, the use of programming languages, such as R, will be new. Howeve
 
 In terms of the use of R for data handling and analysis, you may notice that the term \textbf{reproducible} reoccurs throughout this workbook. In the same way that your methods of data collection should be conducted and recorded in such a way that they may be reproduced by others, your data manipulation and analysis must also be conducted and recorded so as to be reproducible. Using R within the posit Cloud interface makes it easy to record your data manipulation and analysis workflow and, if done well, makes it very easy for others to see and repeat what you have done.
 
-\hypertarget{intro-to-posit}{%
-\section{Practical 1 - Introduction to posit Cloud}\label{intro-to-posit}}
+\section{Practical 1 - Introduction to posit Cloud}\label{intro-to-posit}
 
 So what really is R and what is the difference between R and posit Cloud?
 
@@ -262,13 +258,11 @@ Essentially R is a programming language that is commonly used in statistical com
 
 We are using the posit cloud rather then RStudio because it means that no one has to worry about installing extra software on their own computers and everyone will be working with the same software versions. You will all need to create your own free accounts on posit Cloud, but first have a look at the short video below introducing you to the interface.
 
-\hypertarget{task-1-create-your-own-posit-cloud-account}{%
-\subsection{Task 1; Create your own posit Cloud account}\label{task-1-create-your-own-posit-cloud-account}}
+\subsection{Task 1; Create your own posit Cloud account}\label{task-1-create-your-own-posit-cloud-account}
 
 First of all you will need to create your own Free posit Cloud account \href{https://login.rstudio.cloud/login?redirect=\%2Foauth\%2Fauthorize\%3Fredirect_uri\%3Dhttps\%253A\%252F\%252Frstudio.cloud\%252Flogin\%26client_id\%3Drstudio-cloud\%26response_type\%3Dcode\%26show_auth\%3D0\%26show_login\%3D1}{here}.
 
-\hypertarget{creating-your-first-posit-cloud-project}{%
-\subsection{Creating your first posit Cloud Project}\label{creating-your-first-posit-cloud-project}}
+\subsection{Creating your first posit Cloud Project}\label{creating-your-first-posit-cloud-project}
 
 Once you have created an posit Cloud account you should be presented with this window
 
@@ -294,8 +288,7 @@ You will see that your new project has three panels with tabs showing the Consol
 \includegraphics[width=0.9\linewidth]{figures/posit4} \caption{The three basic panels of an R Studio workspace}\label{fig:unnamed-chunk-4}
 \end{figure}
 
-\hypertarget{a-warning-on-managing-your-work-flow}{%
-\subsection{A warning on managing your work flow}\label{a-warning-on-managing-your-work-flow}}
+\subsection{A warning on managing your work flow}\label{a-warning-on-managing-your-work-flow}
 
 Your free posit Cloud account comes with some restrictions which you should be aware of. These are;
 
@@ -311,8 +304,7 @@ Your free posit Cloud account comes with some restrictions which you should be a
 
 For the purposes of our work here these restrictions should not be a problem, in class you will largely be working out of shared class workspaces, which use my posit Cloud subscription, so project hours aren't really a problem. That said, I strongly suggest you don't leave your coursework to the last minute, hopefully you won't be doing that anyway. If you do run out of project hours, there are some options you can try, you could install RStudio on your desktop for example, or you could open a new free posit Cloud account with a different email address and copy your script over, or you could move your files over to our class workspace and work there. With these options we run the risk of things getting complicated, moving files around can become problematic. Lets avoid that where we can! There are some ways you can increase the efficiency of your workspace which are documented below in Chapter \ref{efficiency}.
 
-\hypertarget{efficiency}{%
-\subsubsection{Maximising the efficiency of your workspace}\label{efficiency}}
+\subsubsection{Maximising the efficiency of your workspace}\label{efficiency}
 
 We know there are limited project hours on our free posit Cloud accounts. But equally we will only be working with very small data sets, so we can tinker with resource usage. To reduce your resource usage. In your project, go to settings (the cogwheel sign), Resources, and drag all of the sliders down to the minimum setting, apply the changes, this will mean the project has to restart. This will mean that running the project for 1 hour will consume 0.5 project hours. We wont be doing anything particularly computationally intensive so there is no need for RAM of CPUs to be higher.
 
@@ -320,8 +312,7 @@ We know there are limited project hours on our free posit Cloud accounts. But eq
 \includegraphics[width=0.9\linewidth]{figures/posit5} \caption{How to make your project more efficient}\label{fig:unnamed-chunk-5}
 \end{figure}
 
-\hypertarget{c2}{%
-\subsection{Task 2; Some fundamentals to effective use of R}\label{c2}}
+\subsection{Task 2; Some fundamentals to effective use of R}\label{c2}
 
 If you are already familiar with R the rest of this chapter will be a very swift refresher, you should still work through it though, it will also provide a good overview of posit Cloud usage.
 
@@ -370,8 +361,7 @@ Try out some other commands\ldots{} What happens when you input the following?
 
 See if you can work out what 30\% of 735 is using the R console
 
-\hypertarget{using-an-r-script}{%
-\subsection{Task 3; Using an R script}\label{using-an-r-script}}
+\subsection{Task 3; Using an R script}\label{using-an-r-script}
 
 I have already mentioned the \textbf{reproducibility} factor as an advantage of using posit Cloud. This is because you can record and run all of your commands from an R script within posit Cloud. This means that you have a written record of your analysis workflow, what you did to your data at which stage, and you can do all of this without altering the original data files! This is super important because it means that if you revisit your work in a few weeks/months/years you can see exactly what you did AND if someone else needs to rerun any of your analysis or use your workflow on some other data, they can!
 
@@ -423,8 +413,7 @@ Or if you wish to run the entire script you can either;
   Press \textbf{ctrl + A} (or \textbf{Command + A} on mac) and then click the run button or press \textbf{ctrl + Enter} (or \textbf{Command + Enter} on mac)
 \end{itemize}
 
-\hypertarget{task-4-creating-objects}{%
-\subsection{Task 4; Creating objects}\label{task-4-creating-objects}}
+\subsection{Task 4; Creating objects}\label{task-4-creating-objects}
 
 As we have just seen, R can be used to perform calculations. However, we can use R to perform tasks that are much more complex. In order to do this we are going to have to learn about objects.
 
@@ -519,8 +508,7 @@ See if you can work this out for yourself, then copy over the code to posit Clou
 
 These may seem like a very simple examples, and they are, but we are still building up your knowledge of R so you will have to take my word for it that objects will be very helpful to you as we progress :). You will also see, that objects can contain a range of different types of data. We will cover some of these in lectures, but for now lets leave objects and have a think about functions and packages.
 
-\hypertarget{task-5-using-functions}{%
-\subsection{Task 5; Using functions}\label{task-5-using-functions}}
+\subsection{Task 5; Using functions}\label{task-5-using-functions}
 
 If you have the coding skills it is possible to do pretty much whatever you like with your data in R. However, why reinvent the wheel trying to write your own complex scripts, when a lot of very clever coders have already written lots of functional bits of code, known as \textbf{functions}, for general use. Functions can be thought of as a piece of code that is designed to perform a set task. R comes with lots of functions already built in, but there are also lots of additional functions that are stored in \textbf{packages}.
 
@@ -556,8 +544,7 @@ This should bring up a help file in your bottom right hand panel that describes 
 \textbf{Warning} I actually dont find the \texttt{help()} function very helpful most of the time, if I want to understand a function, I will normally use \texttt{help()} first and then if (normally when) I dont understand the output, I go to Google, there are a lot of great resources out there for understanding functions and their implementation.
 \end{quote}
 
-\hypertarget{installing-packages}{%
-\subsection{Task 6; Playing with packages}\label{installing-packages}}
+\subsection{Task 6; Playing with packages}\label{installing-packages}
 
 The \texttt{sum} function is part of the base R package that comes with any R installation. However there are lots of other useful functions that are held in additional packages. In order to use these functions, you must have the necessary packages installed in your work space. I already mentioned that we would be using a package called \texttt{ggplot2}, lets try installing and loading it in your work space.
 
@@ -593,13 +580,11 @@ Copy the following command into your script and run it
 
 Those sharped eyed among you may have noticed that the short script defining our plot goes over two lines and contains a \texttt{+} and an indentation on the second line. The \texttt{+} and indentation is essentially allowing you to pipe one line of code into the next. This allows you to add more detailed instructions on how you would like your graph to be built and linking together multiple functions. Don't worry if this is a lot to take in at this stage, as we progress with \texttt{ggplot2} we will revisit this in more detail.
 
-\hypertarget{analysis-hygiene}{%
-\subsection{Analysis hygiene}\label{analysis-hygiene}}
+\subsection{Analysis hygiene}\label{analysis-hygiene}
 
 Hopefully you can see how having a script could make your work all the more reproducible. There are a few good ``hygienic'' practices that, if you can get into the habit of using, you're future self will thank you.
 
-\hypertarget{whats-in-a-name}{%
-\subsubsection{What's in a name?}\label{whats-in-a-name}}
+\subsubsection{What's in a name?}\label{whats-in-a-name}
 
 While you're running analyses you will find youself naming lots of things, including; variables, files, objects, etc. I am going to take a moment to go over a few good rules to follow.
 
@@ -616,8 +601,7 @@ While you're running analyses you will find youself naming lots of things, inclu
   Abide by the rules for R - R does have some rules of its own for naming. Names must \textbf{not} start with a number, but numbers may be used provided the first character is a letter. You can also use \texttt{.} or \texttt{\_}, but avoid spaces at all costs. You may use upper or lower case letters, but remember R is case sensitive so will see \texttt{Elephant} and \texttt{elephant} as different. I try to keep to a lower case and use \texttt{\_} instead of spaces, it keeps everything uniform and saves me time (this style is known as snake\_case).
 \end{itemize}
 
-\hypertarget{directories-and-their-structure}{%
-\subsubsection{Directories and their structure}\label{directories-and-their-structure}}
+\subsubsection{Directories and their structure}\label{directories-and-their-structure}
 
 Working with text based interfaces like R, where you are writing and running commands, means that we need to have some understanding of the underlying computer architecture. You need to have some appreciation for how files are organised within folders/directories and why its important to know which directory you are working from with R.
 
@@ -642,8 +626,7 @@ From Figure 2.3, you're working in the home directory, create a relative and abs
 
 Here we will only be dealing with \textbf{relative} paths because you will always be working from within your R project directory. So for example if you wish to access a file in your \texttt{data} folder in the R project you would need to provide the path \texttt{("data/any\_sub\_folders\_you\_may\_have\_made/the\_file\_you\_wish\_to\_access")}. We will do this in the next step so don't worry if you don't quite get it yet.
 
-\hypertarget{workspace-setup}{%
-\subsubsection{Workspace set up}\label{workspace-setup}}
+\subsubsection{Workspace set up}\label{workspace-setup}
 
 Its always good to keep a clean, well organised and tidy workspace, generally I will start a new project in posit Cloud if I am working on a new series of questions with a new data set or sets.
 
@@ -675,8 +658,7 @@ Whenever you create a new RStudio Project, under \textbf{Files} in the bottom ri
 
 A tidy workspace will help you find the things you need when you need them and will reduce the risk of loosing things.
 
-\hypertarget{script-setup}{%
-\subsubsection{Script set up}\label{script-setup}}
+\subsubsection{Script set up}\label{script-setup}
 
 Having a uniform script set up can also help you in the future, especially if you are working with multiple scripts. Lets have a go at setting up a clean and tidy script.
 Create a new R script by clicking on the icon with a little green plus (as you did in Chapter \ref{using-an-r-script}), below \textbf{File} in the top left of the posit Cloud window and select \textbf{R Script}. Call your new script \texttt{script\_hygene}. Its always good to add a few lines of description at the start of your script, this tells your future self and anyone else what the script is doing. Copy over the following.
@@ -702,8 +684,7 @@ Then we need to install and load any packages that we might want to use, copy ov
 
 You're script is now ready for you to import some data and start analysing with the packages \texttt{tidyverse} and \texttt{janitor}.
 
-\hypertarget{comment-on-your-work}{%
-\subsubsection{Comment on your work}\label{comment-on-your-work}}
+\subsubsection{Comment on your work}\label{comment-on-your-work}
 
 When you are writing a script you can leave notes for yourself. This can be extremely useful if you need reminding on what a particular piece of script is doing. This is a good learning tool while you are still learning how to use R, but its also a good habit to get into for later. As you progress with R you will inevitably start constructing quite intricate scripts, leaving good notes on what each part of the script is doing is very useful for you and for anyone else who may later come to use your script. You can leave notes or comments in scripts if you precede them with \texttt{\#}. If R sees \texttt{\#} it will ignore all text on that line that comes after it. For example, copy and paste the following into your script and try running it line by line.
 
@@ -729,8 +710,7 @@ Comments are also super useful if you only need to use a line of code once. Like
 
 Notice that their is a \texttt{\#} at the beginning of the \texttt{install.packages} line. This is called commenting out. And we do it because you only need to install a package once in your RStudio project but it is useful to have a record of what packages have been installed. You may also need to reload packages after installation, hence why the \texttt{library} function hasn't been commented out.
 
-\hypertarget{what-do-i-do-if-i-get-an-error-message}{%
-\subsection{What do I do if I get an error message?}\label{what-do-i-do-if-i-get-an-error-message}}
+\subsection{What do I do if I get an error message?}\label{what-do-i-do-if-i-get-an-error-message}
 
 Error messages are almost guaranteed when working regularly with R, they are super common, don't panic when you eventually run into one. In fact you may remember that we already encountered one earlier in this chapter, that particular error was caused by a typo. Generally the most common causes of error messages are;
 
@@ -748,18 +728,15 @@ This is by no means an exhaustive list but when I run into errors its normally b
 
 Well done everyone. I hope you have enjoyed this weeks session. Next week is our first workshop and we will start to use some of these new found skills in tandem and start to look at using them on some new data.
 
-\hypertarget{conclusion}{%
-\section{Conclusion}\label{conclusion}}
+\section{Conclusion}\label{conclusion}
 
 Today we have started to explore posit Cloud, learned some very basic uses of the console, and begun to think about the uses of objects, functions and packages in R. We have also covered a few simple rules for good analysis hygene, which you should try and build into your analyses going forward.
 
-\hypertarget{before-you-leave}{%
-\section{Before you leave!}\label{before-you-leave}}
+\section{Before you leave!}\label{before-you-leave}
 
 Log out of posit Cloud and make sure you save your script(s)!
 
-\hypertarget{references}{%
-\section{References}\label{references}}
+\section{References}\label{references}
 
 Firke, S., 2021. Janitor: Simple Tools for Examining and Cleaning Dirty Data. \url{https://github.com/sfirke/janitor}.
 Wickham, H., Averick, M., Bryan, J., Chang, W., D'Agostino McGowan, L., François, R., Grolemund, G., et al., 2019. ``Welcome to the tidyverse.'' Journal of Open Source Software 4 (43): 1686. \url{https://doi.org/10.21105/joss.01686}.
@@ -767,13 +744,11 @@ Wickham, H., Chang W., Henry, L., Pedersen, T.L., Takahashi, K., Wilke, C., Woo,
 Wickham, H., François, R., Henry, L., and Müller, K., 2021. Dplyr: A Grammar of Data Manipulation. \url{https://CRAN.R-project.org/package=dplyr}.
 Wickham, H., Hester, J., and Bryan, J., 2021. Readr: Read Rectangular Text Data. \url{https://CRAN.R-project.org/package=readr}.
 
-\hypertarget{workshop-2---explorartory-data-analysis}{%
-\chapter{Workshop 2 - Explorartory Data Analysis}\label{workshop-2---explorartory-data-analysis}}
+\chapter{Workshop 2 - Explorartory Data Analysis}\label{workshop-2---explorartory-data-analysis}
 
 Welcome to the second practical session in this module. Going forward, these sessions will all begin with an introduction summarising the statistics theory covered in lectures and then the introduction of a practical session and accompanying data set. Hopefully you have all already read over and completed Chapter \ref{c1}, if not do that now before moving on to the rest of this chapter.
 
-\hypertarget{introduction-1}{%
-\section{Introduction}\label{introduction-1}}
+\section{Introduction}\label{introduction-1}
 
 Statistics are necessary because of the inherent variability between biological objects. For example, people vary in height, plants within a field vary in weight, the lottery numbers are not the same from one week to the next etc. This variation is termed natural variation. A second source of variation is errors that we make in making measurements, termed measurement error e.g.~inaccuracies in weighing or taking length measurements.
 
@@ -858,13 +833,11 @@ This practical is intended to serve as an introduction to data exploration, we w
   To introduce simple methods for exploring and describing data, preliminary to more detailed statistical analysis.
 \end{enumerate}
 
-\hypertarget{practical-2---exploring-distributions-in-r}{%
-\section{Practical 2 - Exploring distributions in R}\label{practical-2---exploring-distributions-in-r}}
+\section{Practical 2 - Exploring distributions in R}\label{practical-2---exploring-distributions-in-r}
 
 In terms of statistical analysis, the basic message to take home from today's session is that all forms of data analysis, no matter how complex, should begin with a graphical visual inspection. There are a number of reasons for this, including checking whether the data you have collected are consistent (i.e.~are there any extreme values and if so, are these correct), checking the spread of the data (i.e.~is the frequency distribution of measured values skewed one way or the other), and checking whether, on inspection, you can see possible differences in the average values for different groups of data or treatments (i.e.~that may later be tested by statistical analysis). Checks like this are therefore important for ensuring the validity of assumptions made in later analyses (e.g.~concerning the spread of data), and making sure that the results of analyses relate to what you actually observe in the data.
 
-\hypertarget{task-1-setting-up-our-workspace-and-script}{%
-\subsection{Task 1: Setting up our workspace and script}\label{task-1-setting-up-our-workspace-and-script}}
+\subsection{Task 1: Setting up our workspace and script}\label{task-1-setting-up-our-workspace-and-script}
 
 I have created a virtual classroom in posit Cloud for all of our workshops, to join the classroom, you will need to have a free posit Cloud account already set up and then go into blackboard and join the virtual posit Cloud classroom. You will be asked if you would like to join the space, click \texttt{Yes}. In the left hand panel you will see your workspace and then below that a space called \texttt{BIO-7056A}, click on this. You will then see a project set up called \textbf{Workshop\_2}. This is essentially the classroom/workspace were we will be working today. This is set up on UEAs educators licence so has no usage limits for you to worry about. Over the coming weeks you will see other workshops appearing in this workspace.
 
@@ -878,12 +851,11 @@ I strongly recommend that you create a new script every time you begin a new ana
 
 If you work through each workshop sequentially you will find that there are chunks of code that can be copied over to your script and, if copied and annotated in an ordered way, will make up the script you need for each analysis. Sometimes you will need to modify the chunk or rerun the chunk after its been modified, but much of the code you will need will be presented to you in each workshop (some later workshops may require you to flip back to former chapters).
 
-\hypertarget{task-2-importing-the-data}{%
-\subsection{Task 2: Importing the data}\label{task-2-importing-the-data}}
+\subsection{Task 2: Importing the data}\label{task-2-importing-the-data}
 
 Today we will be working with crop data collected from dry weights of wheat plants from plots with or without weeds. The data were collected over two years by dividing a field sown with a crop of winter wheat into 140 plots. The plots were then either left to grow normally, or a mixture of three species of weeds (poppies, sterile brome and cleavers) was sown at the same time as the crop. At the end of the growing season, the wheat was harvested from an area of 0.75m x 0.75m within each plot. The table records the dry weight of wheat removed from each plot in year 1 or year 2 from the weedy or non-weedy plots.
 
-You can download our data set \href{https://drive.google.com/uc?export=download\&id=1qgIqvW56dSHb0dq07ZMU43POA0jkjuuR}{here}. Or by downloading it from blackboard.
+You can download our data set \href{https://drive.google.com/uc?export=download&id=1qgIqvW56dSHb0dq07ZMU43POA0jkjuuR}{here}. Or by downloading it from blackboard.
 
 Once you have downloaded the data you will then need to upload it to your \texttt{data} folder in posit Cloud. To do this, go to the project you have just set up in posit Cloud. Under the files tab in the the bottom right panel you will see a little icon with a yellow upwards pointing arrow. If you click on this icon you will be given the option to select and upload a file from your home computer. Do this and file your data within your \texttt{data} directory.
 
@@ -921,8 +893,7 @@ dbl (1): yield
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 \end{verbatim}
 
-\hypertarget{checking-the-data}{%
-\subsection{Task 3: Checking the data}\label{checking-the-data}}
+\subsection{Task 3: Checking the data}\label{checking-the-data}
 
 Whenever we start analysis on a new data set we need to start by checking the data. This is to make sure that we are aware of any missing data, any anomalous data points (that could be errors) and that R has interpreted the kind of data we have entered correctly. At some point whatever data set you are working on will almost certainly have been entered manually into a spreadsheet. This creates space for errors to be introduced even if the orrigional data sheets are correct. Try running the following functions, use the \texttt{\#} to note down what each of these functions does in your script.
 
@@ -967,8 +938,7 @@ Now that we have explored some super useful functions to check the data, lets ac
 \end{itemize}
 \end{quote}
 
-\hypertarget{histogram}{%
-\subsection{Task 4: When in doubt - make a histogram}\label{histogram}}
+\subsection{Task 4: When in doubt - make a histogram}\label{histogram}
 
 The shape of the frequency distribution of the data is a key element in determining how we analyse data. We need to determine (i) whether the data are distributed symmetrically; and (ii) whether there are any extreme values in the data. To do this we are going to create a frequency distribution of the data and display this as a histogram. To recap, a frequency distribution is obtained by grouping the data into intervals and counting the number or proportion of observations that fall within each interval.
 So how do we make histograms in R? When you used the \texttt{tabyl()} function above you might have noticed that there are four categories listed under treatment (your experimental treatments). For now we only want to work with one of these treatments so run the following chunk;
@@ -1029,8 +999,7 @@ Now we have looked at the code we can start to ask questions about the distribut
 \end{itemize}
 \end{quote}
 
-\hypertarget{descriptive-statistics-in-r}{%
-\section{Descriptive statistics in R}\label{descriptive-statistics-in-r}}
+\section{Descriptive statistics in R}\label{descriptive-statistics-in-r}
 
 We discussed a range of measures of central tendency and spread in lectures. Here we will learn how to derive some of these quickly and easily in R. But first just to recap;
 
@@ -1048,8 +1017,7 @@ We discussed a range of measures of central tendency and spread in lectures. Her
   \textbf{Mode:} This is the most frequently occurring value in the dataset.
 \end{itemize}
 
-\hypertarget{descriptive-statistics}{%
-\subsection{Task 5: Descriptive statistics}\label{descriptive-statistics}}
+\subsection{Task 5: Descriptive statistics}\label{descriptive-statistics}
 
 We are going to use some functions from within the \texttt{tidyverse} package to summarise our yeild data, using descriptive statistics.
 
@@ -1090,8 +1058,7 @@ So we have a mean for our data, but we can produce many more descriptive statist
 
 Hopefully you can see we now have a standard deviation (sd) of the yield. Now modify your code with the following self explanatory functions; \texttt{median()} and \texttt{skewness()}.
 
-\hypertarget{task-6-finding-the-range-and-the-mode}{%
-\subsection{Task 6: Finding the range and the mode}\label{task-6-finding-the-range-and-the-mode}}
+\subsection{Task 6: Finding the range and the mode}\label{task-6-finding-the-range-and-the-mode}
 
 Finding the range and the mode in R is slightly more complex then using a single function.
 
@@ -1133,8 +1100,7 @@ With the above function, we can now compute the mode of our dataset. Try incorpo
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{task-7-interpretation}{%
-\subsection{Task 7: Interpretation}\label{task-7-interpretation}}
+\subsection{Task 7: Interpretation}\label{task-7-interpretation}
 
 We have done quite a lot of data exploration today, now we need to finish up by checking our interpretation.
 
@@ -1180,54 +1146,45 @@ Having completed some interpretation of the data on the weed free plots from yea
 \end{itemize}
 \end{quote}
 
-\hypertarget{conclusion-1}{%
-\section{Conclusion}\label{conclusion-1}}
+\section{Conclusion}\label{conclusion-1}
 
 Exploring the distribution of your data helps you to both understand the data and select the correct statistical tests. In analysing your own data, you should repeat the procedures that we have gone through here so that you know the shape of the frequency distribution for each variable, as well the mean and the standard deviation of the data. In next week's practical the importance of checking these characteristics will become apparent.
 
-\hypertarget{before-you-leave-1}{%
-\section{Before you leave!}\label{before-you-leave-1}}
+\section{Before you leave!}\label{before-you-leave-1}
 
 You may wish to keep your script for personal reference. You should see your script saved in the appropriate folder in the \texttt{Files} panel, it will have a \texttt{.R} suffix. If you tick the box next to your \texttt{.R} file you can then click \texttt{More}, \texttt{Export} and \texttt{Download} to download your script to your local machine. You can then save this somewhere sensible and use it in your own posit Cloud space or RStudio space if you want to revisit the material. I highly recommend doing this as the posit Cloud workspaces will only remain open for this academic year.
 
 Please remember to log out of posit Cloud!
 
-\hypertarget{references-1}{%
-\section{References}\label{references-1}}
+\section{References}\label{references-1}
 
 Wickham, H., Averick, M., Bryan, J., Chang, W., D'Agostino McGowan, L., François, R., Grolemund, G., et al., 2019. ``Welcome to the tidyverse.'' Journal of Open Source Software 4 (43): 1686. \url{https://doi.org/10.21105/joss.01686}.
 
-\hypertarget{workshop-3---sampling-distributions-and-testing-for-differences}{%
-\chapter{Workshop 3 - Sampling Distributions and Testing for Differences}\label{workshop-3---sampling-distributions-and-testing-for-differences}}
+\chapter{Workshop 3 - Sampling Distributions and Testing for Differences}\label{workshop-3---sampling-distributions-and-testing-for-differences}
 
-\hypertarget{introduction-2}{%
-\section{Introduction}\label{introduction-2}}
+\section{Introduction}\label{introduction-2}
 
 In the lecture last week we noted that one of the most important applications for statistical analyses is assessing whether differences exist between groups. In the next two sessions, we are going to concentrate on a series of statistical analyses that allow us to determine whether there are differences between groups of data.
 In developing an understanding of this form of statistical analysis, we have to be clear about two statistical concepts. These are the ideas of sampling and of probability.
 
-\hypertarget{sampling}{%
-\subsection*{Sampling}\label{sampling}}
+\subsection*{Sampling}\label{sampling}
 \addcontentsline{toc}{subsection}{Sampling}
 
 What is the density of trees in the Amazon? We cannot measure this density precisely -- we have to estimate from samples. When presented with a large number of units that we could potentially measure, we can only usually measure a subset. In statistical language, this larger number is known as the population, which is the collection of units to which we want to generalise a set of findings. The subset taken from this population is termed a sample, and is defined as any portion of the population selected for study. This distinction is important, and is emphasised by using different symbols for the population and sample parameters (mean and standard deviation in particular). Importantly, if we calculate a statistic, then we are trying to estimate a population parameter.
 
-\hypertarget{sampling-error}{%
-\subsection*{Sampling error}\label{sampling-error}}
+\subsection*{Sampling error}\label{sampling-error}
 \addcontentsline{toc}{subsection}{Sampling error}
 
 The key goal in sampling is to select a portion of the population that displays all of the characteristics of the population. For example, if we take a sample of 100 British women, then we would expect measurements taken from these (height, weight etc.) to be representative of the population of British women. Critically, however, this sample would not have exactly the same mean, standard deviation etc. There is always some error in such estimates. Statistical analysis is designed to cope with such error.
 
-\hypertarget{probability}{%
-\subsection*{Probability}\label{probability}}
+\subsection*{Probability}\label{probability}
 \addcontentsline{toc}{subsection}{Probability}
 
 In a sample, individuals (e.g.~tall women, dense forest patches) that are more abundant will be encountered more frequently. The frequency distributions we looked at last week effectively represent the probability distribution of our observations. The height of a bar represents the probability of observing that class.
 
 The normal distribution was introduced last week, as well as the standard deviation that measures the spread of this distribution.
 
-\hypertarget{variance}{%
-\subsection*{Variance}\label{variance}}
+\subsection*{Variance}\label{variance}
 \addcontentsline{toc}{subsection}{Variance}
 
 \[
@@ -1235,8 +1192,7 @@ S^2 = \frac{\sum (x - \bar x)^2}{(n-1)}
 \]
 Variance (S\(^2\)) is calculated as the sum of squared deviations from the mean. The standard deviation (S) is then calculated as the square root of variance. It is easy to see how these both measure the spread in the data: the variance is the difference of each data point from the mean, squared (to remove the sign) and averaged. Square-rooting variance to give standard deviation allows this number to be presented in the correct units.
 
-\hypertarget{standard-deviation}{%
-\subsection*{Standard Deviation}\label{standard-deviation}}
+\subsection*{Standard Deviation}\label{standard-deviation}
 \addcontentsline{toc}{subsection}{Standard Deviation}
 
 \[
@@ -1256,8 +1212,7 @@ We noted earlier that if we take a sample of a given size from a large populatio
   more variable the sample mean will be.
 \end{enumerate}
 
-\hypertarget{standard-error-of-the-mean}{%
-\subsection*{Standard Error of the Mean}\label{standard-error-of-the-mean}}
+\subsection*{Standard Error of the Mean}\label{standard-error-of-the-mean}
 \addcontentsline{toc}{subsection}{Standard Error of the Mean}
 
 \[
@@ -1266,8 +1221,7 @@ SEM = \frac{SD}{\sqrt{n}}
 
 Standard error of the mean of standard error (SEM or SE) is the parameter which measures how well the sample mean is likely to reflect the population mean. It does this by dividing sample SD (the spread in the data) by the size of the sample (bigger samples are more likely to provide accurate estimates of the mean). Large SE's can therefore result from widely spread data, small sample sizes, or both. A large sample from a narrow distribution will give a small SE, indicating that the sample mean is very likely to be close to the population mean.
 
-\hypertarget{confidence-intervals}{%
-\subsection*{Confidence Intervals}\label{confidence-intervals}}
+\subsection*{Confidence Intervals}\label{confidence-intervals}
 \addcontentsline{toc}{subsection}{Confidence Intervals}
 
 \[
@@ -1285,8 +1239,7 @@ This is a powerful statement: from the sample data we can calculate the probabil
   Probability: in statistical analysis we say that an event is unlikely, and hence likely to be of significance, if there is less than a one in twenty probability of the result arising by chance (i.e.~the probability of the event is 5\% or less). Note that this means that if the probability of an event is \textless0.05, then this result can have arisen by chance one in twenty times.
 \end{enumerate}
 
-\hypertarget{t-tests}{%
-\subsection*{T-tests}\label{t-tests}}
+\subsection*{T-tests}\label{t-tests}
 \addcontentsline{toc}{subsection}{T-tests}
 
 \textbf{One sample t-test}
@@ -1328,8 +1281,7 @@ Violation of either of these assumptions \textbf{could} lead to invalid results.
 
 But don't panic - we will cover how to check these assumptions very straightforward.
 
-\hypertarget{some-key-terms-for-todays-practical}{%
-\section{Some key terms for todays practical}\label{some-key-terms-for-todays-practical}}
+\section{Some key terms for todays practical}\label{some-key-terms-for-todays-practical}
 
 \begin{itemize}
 \item
@@ -1342,15 +1294,13 @@ But don't panic - we will cover how to check these assumptions very straightforw
   \textbf{Statistical significance:} When we do a statistical test we cannot state categorically that a hypothesis is true or false - rather, we have to state the probability that the hypothesis is true. For example, in the one-sample t-test that we look at below, we calculate a difference between our sample mean and another value. Then, based on the combination of the size of this difference, the variability within our data and the sample size, we calculate the probability that this difference is zero (i.e.~that our mean is not different from the value we specified). When we do this we need some cut-off value to be able to say if our probability is big enough to regard as important - and Fisher decided that this would be a probability of P \textless{} 0.05, that is a less than one-in-twenty probability that such a large difference would arise by chance alone.
 \end{itemize}
 
-\hypertarget{practical-3---sampling-and-testing-for-differences}{%
-\section{Practical 3 - Sampling and Testing for Differences}\label{practical-3---sampling-and-testing-for-differences}}
+\section{Practical 3 - Sampling and Testing for Differences}\label{practical-3---sampling-and-testing-for-differences}
 
 Most data are collected as samples from larger collections or populations. The basis for all statistical analyses is attempting to infer population parameters (e.g.~the population mean, variance, standard deviation etc.) from the sample data. This week's practical is intended as an introduction to analysing data using simple tests on samples from populations.
 
 The importance of exploratory analyses of data was stressed last week: today we will apply some of these ideas in analysing data from a field study.
 
-\hypertarget{the-data}{%
-\subsection{The Data}\label{the-data}}
+\subsection{The Data}\label{the-data}
 
 As many of you are new to Norfolk, we are going to analyse some data on the yields of sugar beet, which is something of a Norfolk specialty. Sugar beet is a root crop which is grown across East Anglia and into the Midlands. It is sown in March-April and then harvested in October. The roots are then used to make sugar. Being sown in April, the crop is rather vulnerable to attack by pests. In particular, plants are attacked by aphids, which transmit viruses to the crop. The main symptom of these viruses is a yellowing of the crop, and the viruses have the potential to reduce yields by up to 40\%. However, sometimes the crop does not succumb to the virus and yields can be unaffected.
 These data were taken from 56 fields in Norfolk \& Suffolk, half of which were determined to have viral infection, half of which did not. The data report the dry weight of sugar beet processed from each field at the same factory. The investigators wished to ask 2 questions of the data:
@@ -1382,13 +1332,11 @@ Before starting, answer the following questions:
 
 The data are stored in a .csv file called \texttt{sugar\_beet\_virus.csv} and can be found in this classroom workspace on posit Cloud in the \texttt{data} folder. For each field, we have a measure of yield and whether or not it was infected by virus.
 
-\hypertarget{task-1---setting-up-your-workspace}{%
-\subsection{Task 1 - Setting up your workspace}\label{task-1---setting-up-your-workspace}}
+\subsection{Task 1 - Setting up your workspace}\label{task-1---setting-up-your-workspace}
 
 Go to the classroom workspace in posit Cloud and go to the \textbf{Workshop\_3} workspace, open up a \textbf{New} script, give this script a sensible name and save it in your \texttt{scripts} folder. You will need to make sure the packages \texttt{tidyverse} and \texttt{car} are installed and loaded to complete todays workshop, check Chapter \ref{workspace-setup} and Chapter \ref{script-setup} if you are unsure how to do this.
 
-\hypertarget{task-2---checking-the-data}{%
-\subsection{Task 2 - Checking the data}\label{task-2---checking-the-data}}
+\subsection{Task 2 - Checking the data}\label{task-2---checking-the-data}
 
 This week the data can be found in the \textbf{data} folder so all you need to do is load it into an object named \texttt{sugar\_beet\_virus}. Once this is done you can then try performing some routine checks to make sure R has interpreted the data variables correctly and all expected data is present and accounted for. You can use some of the functions we explored in Chapter \ref{checking-the-data} if you need some help with this.
 
@@ -1404,8 +1352,7 @@ The data consist of measures of yields per field and then an indicator of whethe
 \end{itemize}
 \end{quote}
 
-\hypertarget{task-3---making-some-basic-plots}{%
-\subsection{Task 3 - Making some basic plots}\label{task-3---making-some-basic-plots}}
+\subsection{Task 3 - Making some basic plots}\label{task-3---making-some-basic-plots}
 
 We will now use the \texttt{filter()} and \texttt{ggplot} functions to split the data sets and make some histograms. Try using the following chunk to look at yields of sugar been from fields infected with virus;
 
@@ -1430,8 +1377,7 @@ You might notice that we haven't assigned any of this to an object. We are also 
 \end{itemize}
 \end{quote}
 
-\hypertarget{task-4---produce-some-descriptive-statistics}{%
-\subsection{Task 4 - Produce some descriptive statistics}\label{task-4---produce-some-descriptive-statistics}}
+\subsection{Task 4 - Produce some descriptive statistics}\label{task-4---produce-some-descriptive-statistics}
 
 Try to calculate the mean, standard deviation and standard error of the mean for yields from virus infected fields and fields without virus detected in them. Try using the \texttt{group\_by()} and \texttt{summarise()} functions to do this, the code from Chapter \ref{descriptive-statistics} will help you with two of these. See if you can figure out how to manipulate this code to give you the standard error of the mean. The equation for the standard error of the mean is given above.
 
@@ -1449,8 +1395,7 @@ It is incredibly important to begin all statistical analyses with a visual inspe
 
 Parametric statistical tests make certain assumptions about the shape and distribution of the data. Specifically, in the case of the one-sample t-test, our data should ideally be normally distributed. You will sometimes see the ``Kolmogorov-Smirnov'' test used to explore the assumption of normality. The null hypothesis is that the data are drawn from a normal distribution, so p\textless0.05 means that the data are statistically significantly different from a normal distribution. However, the real question is, are your data sufficiently different from a normal distribution to make a parametric test result unreliable? There is no test for this, you have to explore your data and try different approaches.
 
-\hypertarget{task-5---answering-question-1}{%
-\subsection{Task 5 - Answering Question 1}\label{task-5---answering-question-1}}
+\subsection{Task 5 - Answering Question 1}\label{task-5---answering-question-1}
 
 \textbf{Did yields in this year deviate from the long-term average yields for the region?}
 
@@ -1503,8 +1448,7 @@ Now we are ready to try running a one sample t-test. Try running the following;
 \end{itemize}
 \end{quote}
 
-\hypertarget{levene-test}{%
-\subsection{Task 6 - Answering Question 2}\label{levene-test}}
+\subsection{Task 6 - Answering Question 2}\label{levene-test}
 
 \textbf{Did the presence of viruses affect the yield of sugar beet in this year?}
 
@@ -1609,34 +1553,28 @@ There was no significant difference between the yields of the two groups, despit
 \end{itemize}
 \end{quote}
 
-\hypertarget{conclusion-2}{%
-\section{Conclusion}\label{conclusion-2}}
+\section{Conclusion}\label{conclusion-2}
 
 We have begun to explore some inferential statistics, beginning with two variations of the t-test. Next week we will extend some of these ideas of analysing differences between groups to the analysis and design of experiments.
 
-\hypertarget{before-you-leave-2}{%
-\section{Before you leave!}\label{before-you-leave-2}}
+\section{Before you leave!}\label{before-you-leave-2}
 
 Make sure you save your script and download it if you would like to keep a local copy.
 
 Please log out of posit Cloud!
 
-\hypertarget{references-2}{%
-\section{References}\label{references-2}}
+\section{References}\label{references-2}
 
 Wickham, H., Averick, M., Bryan, J., Chang, W., D'Agostino McGowan, L., François, R., Grolemund, G., et al., 2019. ``Welcome to the tidyverse.'' Journal of Open Source Software 4 (43): 1686. \url{https://doi.org/10.21105/joss.01686}.
 
-\hypertarget{workshop-4---introduction-to-design-and-analysis-of-experiments}{%
-\chapter{Workshop 4 - Introduction to Design and Analysis of Experiments}\label{workshop-4---introduction-to-design-and-analysis-of-experiments}}
+\chapter{Workshop 4 - Introduction to Design and Analysis of Experiments}\label{workshop-4---introduction-to-design-and-analysis-of-experiments}
 
-\hypertarget{introduction-3}{%
-\section{Introduction}\label{introduction-3}}
+\section{Introduction}\label{introduction-3}
 
 There are two simple requirements that should guide the design of experiments: randomisation and replication. Replication is necessary because biological systems are variable, and so we need multiple measurements to distinguish meaningful effects from random variations. As the number of replicates or measurements increases, the standard error of the mean of the data becomes smaller.
 The concept of randomisation is straightforward: if we set up an experiment to compare the behaviour of 2 species of lizard, for example, but place all our replicates for one species in one tank, and all our replicates for the other species in another tank, then we could not be certain whether the differences we observe are due to measurement error, or due to the differences between the tanks. Randomising an experiment can be done using tables of random numbers to allocate different treatments to your experimental units.
 
-\hypertarget{experimental-design}{%
-\subsection*{Experimental Design}\label{experimental-design}}
+\subsection*{Experimental Design}\label{experimental-design}
 \addcontentsline{toc}{subsection}{Experimental Design}
 
 The layout in Figure 4.1 is an example of a randomised design: we have two treatments (A \& B), with five replicates of each treatment. There are 10 plots in all, and the experiment was randomised. This type of arrangement is called a completely randomised design.
@@ -1666,8 +1604,7 @@ A multitude of different experimental designs exist: the examples above are the 
 
 When we take measurements from the same experimental unit (e.g.~if we measure the effects of a treatment on the growth of an animal at several points through its life) we repeatedly take observations from the same unit. This type of design is called a repeated measures design. Analysis of this type of design accounts for both the treatment effect and the temporal sequence of measurements.
 
-\hypertarget{analysis-of-variance}{%
-\subsection*{Analysis of Variance}\label{analysis-of-variance}}
+\subsection*{Analysis of Variance}\label{analysis-of-variance}
 \addcontentsline{toc}{subsection}{Analysis of Variance}
 
 Last week we saw that the difference between two groups can be analysed using a t-test. The t-test can only be used to compare two groups. When our experiment contains 3 or more groups, we use a technique called ANalysis Of VAriance or ANOVA for short.
@@ -1688,14 +1625,15 @@ If the means of the treatments vary but the variance within the treatments is si
 \emph{Table 4.1} Example ANOVA summary results
 
 \begin{longtable}[]{@{}cccccc@{}}
-\toprule()
+\toprule\noalign{}
 Source & DF & Sum of Squares & Mean Square & F-Ratio & Probability \\
-\midrule()
+\midrule\noalign{}
 \endhead
+\bottomrule\noalign{}
+\endlastfoot
 Between & 2 & 634.08 & 317.04 & 42.44 & 0.000 \\
 Within & 21 & 156.88 & 7.47 & & \\
 Total & 23 & 790.95 & & & \\
-\bottomrule()
 \end{longtable}
 
 There are four key things to look for;
@@ -1738,29 +1676,27 @@ We may find that increasing the level of either N or P on their own increases yi
 \emph{Table 4.1} An example of summary results from a more complex ANOVA
 
 \begin{longtable}[]{@{}cccccc@{}}
-\toprule()
+\toprule\noalign{}
 Source & DF & Sum of Squares & Mean Square & F-Ratio & Probability \\
-\midrule()
+\midrule\noalign{}
 \endhead
+\bottomrule\noalign{}
+\endlastfoot
 Nitrogen & 1 & 376.04 & 376.04 & 108.74 & 0.000 \\
 Phosphorus & 1 & 3.37 & 3.37 & 0.97 & 0.335 \\
 Nitrogen * Phosphorus & 1 & 84.37 & 84.37 & 24.39 & 0.000 \\
 Error & 20 & 69.19 & 3.45 & & \\
-\bottomrule()
 \end{longtable}
 
 In this example there is a significant effect of nitrogen on yields, but not phosphorus. In addition, the significant interaction term indicates that the response of yields to nitrogen varies depending on the level of phosphorus. ANOVA can tell us when there are significant differences between the means of treatments, but it cannot identify which treatment differs from which other treatments. Post hoc tests are used to find where differences lie. Tukey's Honest Significant Difference is a widely used post-hoc test. Post-hoc tests are briefly explored in the practical. We will go on to look at how to test for relationships among different variables, as opposed to differences between them.
 
-\hypertarget{practical-4---introduction-to-analysis-of-variance}{%
-\section{Practical 4 - Introduction to Analysis of Variance}\label{practical-4---introduction-to-analysis-of-variance}}
+\section{Practical 4 - Introduction to Analysis of Variance}\label{practical-4---introduction-to-analysis-of-variance}
 
-\hypertarget{aims}{%
-\subsection{Aims}\label{aims}}
+\subsection{Aims}\label{aims}
 
 The aim of this week's practical is to introduce the analysis of experimental data using one- and two- way analyses of variance (ANOVA). These analyses are used for testing for differences between treatments in fully randomised experiments. Note that other forms of experimental design, such as the randomised block and the Latin square require modified forms of ANOVA, although the basic ideas are the same.
 
-\hypertarget{the-data-1}{%
-\subsection{The Data}\label{the-data-1}}
+\subsection{The Data}\label{the-data-1}
 
 We will be continuing with the rather agricultural theme for todays practical, the data are from one of the previous module leaders (Rob Freckleton) and are very appropriate for demonstrating key points around ANOVA. As an historical aside, this is also rather appropriate, as ANOVA and many other statistical analyses were designed by R. A. Fisher whilst working on long-term crop yield studies at Rothamsted.
 
@@ -1774,22 +1710,19 @@ Today we are going to look at data from two experiments:
   \textbf{Experiment 2.} Effects of light and sex on feeding behaviour in chickens. This experiment aimed to determine the effect of light colour and sex on the rate at which chickens feed. Feeding rates were measured as the number of pecks made in a 15 minute period. There were 24 cages in total, half of which were illuminated with white light, and half with red light. Half of the 12 white-light cages were allocated a male chicken, and half a female chicken, and the same for the 12 red-light cages. The treatments were allocated to cages in a completely randomised manner.
 \end{itemize}
 
-\hypertarget{task-1---setting-up-your-workspace-1}{%
-\subsection{Task 1 - Setting up your workspace}\label{task-1---setting-up-your-workspace-1}}
+\subsection{Task 1 - Setting up your workspace}\label{task-1---setting-up-your-workspace-1}
 
 Log into posit Cloud, enter the classroom work space and open the project called \textbf{Workshop\_4}. Set up a new script in posit Cloud.
 
 You will need to ensure that the packages \texttt{tidyverse} and \texttt{car} are installed and loaded to complete todays workshop, check Chapter \ref{workspace-setup} and Chapter \ref{script-setup} if you are unsure how to do this.
 
-\hypertarget{c5t2}{%
-\subsection{Task 2 - Checking the data}\label{c5t2}}
+\subsection{Task 2 - Checking the data}\label{c5t2}
 
 To start with we will just be focusing on the \texttt{carrot\_yields.csv} data set, you can find this in the \texttt{data} folder of the workspace. Load it into your workspace, naming the object \texttt{carrot\_yields} and perform your routine checks to make sure its all there and that R has correctly interpreted the variables. You can use some of the functions we explored in Chapter \ref{checking-the-data} if you need some help with this.
 
 The data should consist on two columns, one column containing the dependent variable (carrot yields) and a second column containing the factor levels (varieties).
 
-\hypertarget{c5t3}{%
-\subsection{Task 3 - Making some basic plots}\label{c5t3}}
+\subsection{Task 3 - Making some basic plots}\label{c5t3}
 
 Now we can start to explore the data. Here we have four different varieties of carrot, we could use the \texttt{filter()} function to look at the distribution of each category separately but because we have four categories, this isn't terribly efficient. Instead the below code uses the \texttt{facet\_wrap()} function, this splits your data plots according to a given variable (in this case Variety). Have a go at running the below code;
 
@@ -1832,8 +1765,7 @@ When you don't have many observations per category it can also be helpful to vis
 \end{itemize}
 \end{quote}
 
-\hypertarget{c5t4}{%
-\subsection{Task 4 - Produce some descriptive statistics}\label{c5t4}}
+\subsection{Task 4 - Produce some descriptive statistics}\label{c5t4}
 
 Try using the \texttt{group\_by()} and \texttt{summarise()} functions to find the means and standard errors of the means for each of the yields of the four varieties.
 
@@ -1847,8 +1779,7 @@ Try using the \texttt{group\_by()} and \texttt{summarise()} functions to find th
 \end{itemize}
 \end{quote}
 
-\hypertarget{task-5---experiment-1---one-way-anova}{%
-\subsection{Task 5 - Experiment 1 - One-way ANOVA}\label{task-5---experiment-1---one-way-anova}}
+\subsection{Task 5 - Experiment 1 - One-way ANOVA}\label{task-5---experiment-1---one-way-anova}
 
 Now that we have explored the data, we can start to play with some ANOVAs. The null hypothesis for the one-way ANOVA is that all groups are drawn from populations with the same mean. Therefore, if the probability of the null hypothesis being true is small, then there is evidence that the samples are taken from populations with different means.
 
@@ -1914,16 +1845,16 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
 \item
   What would an F-ratio close to 1 indicate?
 \item
-  What does the probability attached to the F-ratio indicate about the mean yields of the varieties?
+  What does the probability attached to the F-ratio indicate about the mean yields of the varieties.
 \end{itemize}
 \end{quote}
 
-The analysis indicates that there are some differences between the varieties of the groups but we do not know where these differences lie. To find this out, we are going to use a post hoc test. These operate like a series of pair-wise comparisons of the treatments, and will identify where significant differences exist between the means of the different varieties. To do this we will perform a Tuckey test, this is the most commonly reported post-hot test for ANOVA. Try running the following;
+The analysis indicates that there are some differences between the varieties of the groups but we do not know where these differences lie. To find this out, we are going to use a post hoc test. These operate like a series of pair-wise comparisons of the treatments, and will identify where significant differences exist between the means of the different varieties. To do this we will perform a Tukey test, this is the most commonly reported post-hot test for ANOVA. Try running the following;
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{TukeyHSD}\NormalTok{(lsmodel01, }\AttributeTok{conf.level=}\NormalTok{.}\DecValTok{95}\NormalTok{) }
-\CommentTok{\# Perform a d Tuckey test on our ANOVA, stored in lsmodel01 with confidence levels of 95\%.}
+\CommentTok{\# Perform a d Tukey test on our ANOVA, stored in lsmodel01 with confidence levels of 95\%.}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1958,12 +1889,11 @@ When we want to look at differences, a box plot or bar chart is often a good opt
 \item
   \textbf{Stop to think}
 \item
-  Does the plot you just produced match the conclusions you drew from performing an ANOVA and Tuckey test?
+  Does the plot you just produced match the conclusions you drew from performing an ANOVA and Tukey test?
 \end{itemize}
 \end{quote}
 
-\hypertarget{first-boxplot}{%
-\subsection{Task 6 - Experiment 2 - Two-way ANOVA}\label{first-boxplot}}
+\subsection{Task 6 - Experiment 2 - Two-way ANOVA}\label{first-boxplot}
 
 The analysis of Experiment 2 requires a two-way ANOVA since there are two factors in the experiment: light colour and sex. Note that you can have more than two factors in a multi-way ANOVA (although the more you have, the harder it can be to interpret the results).
 
@@ -2029,7 +1959,7 @@ The output looks more complex than the previous ANOVA output with a row for each
 \item
   Do either or both of the main effects significantly influence the pecking rate?
 \item
-  Is there evidence of a significant interaction between Colour and Sex?
+  Is there evidence of a significant interaction between Light and Sex?
 \item
   What does this interaction tell you about chicken pecking rates?
 \item
@@ -2039,28 +1969,23 @@ The output looks more complex than the previous ANOVA output with a row for each
 \end{itemize}
 \end{quote}
 
-\hypertarget{conclusion-3}{%
-\section{Conclusion}\label{conclusion-3}}
+\section{Conclusion}\label{conclusion-3}
 
 This week we have looked at some different types of experimental design and explored how we can visualise differences in R and perform one and two-way ANOVAs.
 
-\hypertarget{before-you-leave-3}{%
-\section{Before you leave!}\label{before-you-leave-3}}
+\section{Before you leave!}\label{before-you-leave-3}
 
 Make sure you save your script and download it if you would like to keep a local copy.
 
 Please log out of posit Cloud!
 
-\hypertarget{references-3}{%
-\section{References}\label{references-3}}
+\section{References}\label{references-3}
 
 Wickham, H., Averick, M., Bryan, J., Chang, W., D'Agostino McGowan, L., François, R., Grolemund, G., et al., 2019. ``Welcome to the tidyverse.'' Journal of Open Source Software 4 (43): 1686. \url{https://doi.org/10.21105/joss.01686}.
 
-\hypertarget{workshop-5---testing-for-and-measuring-relationships}{%
-\chapter{Workshop 5 - Testing for and Measuring Relationships}\label{workshop-5---testing-for-and-measuring-relationships}}
+\chapter{Workshop 5 - Testing for and Measuring Relationships}\label{workshop-5---testing-for-and-measuring-relationships}
 
-\hypertarget{introduction-4}{%
-\section{Introduction}\label{introduction-4}}
+\section{Introduction}\label{introduction-4}
 
 In this week's practical we are going to test for relationships or associations between different variables. There are two basic methods for testing for associations:
 
@@ -2075,8 +2000,7 @@ In this week's practical we are going to test for relationships or associations 
 
 In regression analysis, we are interested in the effect of an independent variable on a dependent variable. In scatter plots, the independent variable is always plotted on the horizontal x-axis, whilst the dependent variable is always plotted on the vertical y-axis.
 
-\hypertarget{direction-of-associations}{%
-\subsection*{Direction of associations}\label{direction-of-associations}}
+\subsection*{Direction of associations}\label{direction-of-associations}
 \addcontentsline{toc}{subsection}{Direction of associations}
 
 Regressions or correlations can be positive (y-values increase as x- values increase), negative (y-values decrease as x-values increase) or there may be no relationship (no change in y-values as x-values increase). The commonest form of regression analysis is linear regression, which fits a straight line to the relationship. In linear regression analysis, there are three key steps:
@@ -2113,8 +2037,7 @@ y=mx+c
 \includegraphics[width=0.4\linewidth]{figures/regression} \caption{Linear regression}\label{fig:unnamed-chunk-56}
 \end{figure}
 
-\hypertarget{fitting-the-regression}{%
-\subsection*{Fitting the regression}\label{fitting-the-regression}}
+\subsection*{Fitting the regression}\label{fitting-the-regression}
 \addcontentsline{toc}{subsection}{Fitting the regression}
 
 Linear regression analysis basically works by finding the values of m and c that minimise the deviations of the observed data from the line (ie the distance of each point from the line). This is most commonly done using the least squares method, in which the squared deviations of the points from the line are minimised.
@@ -2141,8 +2064,7 @@ There are two ways to determine whether the relationship described by the fitted
 
 In fact these two tests are equivalent! The value of F is always the square of the value of t that we can estimate from the SE of the slope.
 
-\hypertarget{assumptions}{%
-\subsection*{Assumptions}\label{assumptions}}
+\subsection*{Assumptions}\label{assumptions}
 \addcontentsline{toc}{subsection}{Assumptions}
 
 There are 3 main assumptions, which are \textbf{different} from the assumptions of the tests for differences;
@@ -2158,8 +2080,7 @@ There are 3 main assumptions, which are \textbf{different} from the assumptions 
   The measurement error in the x-axis is zero (or at least negligible in comparison to the error in the y-axis).
 \end{enumerate}
 
-\hypertarget{correlation}{%
-\subsection*{Correlation}\label{correlation}}
+\subsection*{Correlation}\label{correlation}
 \addcontentsline{toc}{subsection}{Correlation}
 
 In some circumstances we are not attempting to measure the effect of one variable on another, we are just interested in the strength of association between two variables x and y, without inferring anything about the nature of cause and effect. The association between two variables is measured using the correlation coefficient, which measures the degree to which the joint variation in the data (the covariation) differs from the total variation in the data. This coefficient, denoted as r, is therefore a ratio that varies between -1 and 1, and measures the strength of the association between x and y;
@@ -2176,20 +2097,17 @@ In some circumstances we are not attempting to measure the effect of one variabl
 
 It is important to be aware that the existence of a high correlation between two variables does not imply a cause-effect relationship. Quoting correlation coefficients without an understanding of the underlying patterns of association between variables is therefore dangerous. The covariation between two variables may simply be due to the effects of a third, unmeasured variable. Regression analysis should, therefore, only be applied when the cause-effect mechanism that is assumed in the regression equation is valid.
 
-\hypertarget{practical-5---regression-correlation-introduction}{%
-\section{Practical 5 - Regression \& Correlation Introduction}\label{practical-5---regression-correlation-introduction}}
+\section{Practical 5 - Regression \& Correlation Introduction}\label{practical-5---regression-correlation-introduction}
 
 This week we are going to look at statistical techniques involved in testing for associations between variables.
 
-\hypertarget{the-data-2}{%
-\subsection{The Data}\label{the-data-2}}
+\subsection{The Data}\label{the-data-2}
 
 During the 1950s, radioactive waste leaked from a storage area into the Columbia River, Washington, USA. For nine counties downstream in Oregon, an index of exposure was calculated (based on distance from the leak site and average distance of the population from the river). The cancer mortality was also calculated for each county (deaths per 100,000 person-years, 1959-1964). Data were collected by Anderson and Sclove 1978.
 
 Because this data set is very small, we can enter this into R manually.
 
-\hypertarget{manual-data-entry}{%
-\subsection{Task 1 - Setting up your workspace}\label{manual-data-entry}}
+\subsection{Task 1 - Setting up your workspace}\label{manual-data-entry}
 
 Log into posit Cloud and return to the classroom work space, open the project called \textbf{Workshop\_5}. Set up a new script in posit Cloud.
 
@@ -2226,8 +2144,7 @@ Now we need to combine our individual variables into a single data frame, to do 
 \end{itemize}
 \end{quote}
 
-\hypertarget{c6t2}{%
-\subsection{Task 2 - Making some basic plots}\label{c6t2}}
+\subsection{Task 2 - Making some basic plots}\label{c6t2}
 
 Lets start by taking a look at how your data are spread. We can do this by making a scatter plot. Last week we used \texttt{ggplot()} to make some boxplots and histograms, we can also use this function to make scatter plots. Try running the following;
 
@@ -2253,8 +2170,7 @@ Hopefully R has produced a scatter plot in your plots panel exploring the relati
 \end{itemize}
 \end{quote}
 
-\hypertarget{c6t3}{%
-\subsection{Task 3 - Regression analysis}\label{c6t3}}
+\subsection{Task 3 - Regression analysis}\label{c6t3}
 
 On the basis of medical evidence, we have strong reasons to suspect that elevated radiation can cause increased cancer mortality. As this hypothesis specifies a cause-effect relationship, we can use a regression analysis to assess the extent to which this radioactive leak can explain the observed cancer mortality rates.
 
@@ -2483,8 +2399,7 @@ We often want to use fitted regressions to make predictions. These predictions c
 \end{itemize}
 \end{quote}
 
-\hypertarget{task-4---correlation-analysis}{%
-\subsection*{Task 4 - correlation analysis}\label{task-4---correlation-analysis}}
+\subsection*{Task 4 - correlation analysis}\label{task-4---correlation-analysis}
 \addcontentsline{toc}{subsection}{Task 4 - correlation analysis}
 
 In cases where there is no biological reason to expect a cause-effect relationship, we can still assess the degree of association between two variables, by measuring the extent to which they co-vary (i.e.~as one variable changes, so does the other). The data listed below report the annual biomass of North Sea cod (in '000 tonnes), from 1980 to 2006.
@@ -2528,28 +2443,23 @@ Now we can calculate the Pearson (or product-moment) coefficient of correlation,
 \end{itemize}
 \end{quote}
 
-\hypertarget{conclusion-4}{%
-\section{Conclusion}\label{conclusion-4}}
+\section{Conclusion}\label{conclusion-4}
 
 This week we have looked at how we can analyse and interpret relationships, either through regression analysis or through correlation analysis.
 
-\hypertarget{before-you-leave-4}{%
-\section{Before you leave!}\label{before-you-leave-4}}
+\section{Before you leave!}\label{before-you-leave-4}
 
 Make sure you save your script and download it if you would like to keep a local copy.
 
 Please log out of posit Cloud!
 
-\hypertarget{references-4}{%
-\section{References}\label{references-4}}
+\section{References}\label{references-4}
 
 Wickham, H., Averick, M., Bryan, J., Chang, W., D'Agostino McGowan, L., François, R., Grolemund, G., et al., 2019. ``Welcome to the tidyverse.'' Journal of Open Source Software 4 (43): 1686. \url{https://doi.org/10.21105/joss.01686}.
 
-\hypertarget{workshop-6---issues-with-probability-and-parametric-analysis}{%
-\chapter{Workshop 6 - Issues with Probability and Parametric Analysis}\label{workshop-6---issues-with-probability-and-parametric-analysis}}
+\chapter{Workshop 6 - Issues with Probability and Parametric Analysis}\label{workshop-6---issues-with-probability-and-parametric-analysis}
 
-\hypertarget{introduction-5}{%
-\section{Introduction}\label{introduction-5}}
+\section{Introduction}\label{introduction-5}
 
 Statistical analyses allow us to estimate the probability that a given effect will occur by chance alone. As a matter of convention, if the probability of a given effect occurring is less than 1 in 20 (i.e.~p\textless0.05), then this effect is considered to be so unlikely to arise by chance that we can reject the null hypothesis of no difference or relationship.
 
@@ -2568,8 +2478,7 @@ Both of these problems arise because we cannot state for certain whether two pop
 
 Ultimately, when we repeatedly test the same hypothesis, we cannot be completely certain that every effect we deem to be significant / non-significant is indeed so; we have to rely on an understanding of the system, and broad-scale patterns in our data, as much as rely on individual p values.
 
-\hypertarget{non-normal-data-homogeneity-of-variance}{%
-\subsection*{Non-normal data \& homogeneity of variance}\label{non-normal-data-homogeneity-of-variance}}
+\subsection*{Non-normal data \& homogeneity of variance}\label{non-normal-data-homogeneity-of-variance}
 \addcontentsline{toc}{subsection}{Non-normal data \& homogeneity of variance}
 
 The t and F distributions use information about the variance in estimates of population parameters, but they can only do this if a set of specific assumptions are met. All of the tests we have discussed so far rely on either data being normally distributed or residuals being evenly distributed. If this is not the case then all of the theory that predicts the likely behaviour of population parameters from our sampled estimates breaks down, and our tests are therefore invalid. This has been emphasised throughout, and we saw in an earlier practical how we could explore our data distribution using frequency histograms. Similarly, we saw that t-tests \& ANOVAs assume that the variances of all our groups are the same, whilst the regression analysis assumed that the variance in our dependent variable did not change with the value of our independent variable. We saw earlier how Levene's test could be used to test this assumption of homogeneity of variance.
@@ -2586,8 +2495,7 @@ Similarly, we can use a transformation of our data to meet the assumptions of re
 \includegraphics[width=0.4\linewidth]{figures/log_scatter} \caption{Impacts of log transformations - variance}\label{fig:unnamed-chunk-67}
 \end{figure}
 
-\hypertarget{transformations}{%
-\subsection*{Transformations}\label{transformations}}
+\subsection*{Transformations}\label{transformations}
 \addcontentsline{toc}{subsection}{Transformations}
 
 A number of useful transformations exist;
@@ -2607,8 +2515,7 @@ A number of useful transformations exist;
 
 Transformation of data is a powerful and very important technique for overcoming the problem of non-normality and heterogeneity of variances. It is important to note, however that transforming data can affect our interpretation: e.g.~if we compare the mean of untransformed data, and the back-transformed mean of our transformed data, then these will not be the same. This should be borne in mind in interpreting results.
 
-\hypertarget{non-parametric-methods}{%
-\subsection*{Non-parametric methods}\label{non-parametric-methods}}
+\subsection*{Non-parametric methods}\label{non-parametric-methods}
 \addcontentsline{toc}{subsection}{Non-parametric methods}
 
 In some cases it is not possible to transform data to a normal distribution. Data may also have been collected in ranks, or have measured an index of some variable we are interested in. To cope with these kinds of problems, a variety of statistical analyses have been developed that do not rely on assumptions about the distribution of data. They work somewhat differently, and in particular do not work by predicting the likely values of population parameters from statistics estimated from samples. In general, this is done in one of three ways;
@@ -2624,8 +2531,7 @@ In some cases it is not possible to transform data to a normal distribution. Dat
   \textbf{Patterns of deviation;} Or we can look at patterns of deviation, for example to say whether a prediction tends to systematically over- or under- predict on the basis of positive and negative differences, or whether higher than average scores (positive deviations) or one variable tend to be associated with higher than average scores in another.
 \end{enumerate}
 
-\hypertarget{non-parametric-tests-for-differences}{%
-\subsection*{Non-parametric tests for differences}\label{non-parametric-tests-for-differences}}
+\subsection*{Non-parametric tests for differences}\label{non-parametric-tests-for-differences}
 \addcontentsline{toc}{subsection}{Non-parametric tests for differences}
 
 The Mann-Whitney test is the non-parametric equivalent of the t- test. It is based on ranking data, and tests whether the location of one sample is different from that of another. This gives a statistic called U that, if greater than a critical value, indicates that there is a difference between the two groups.
@@ -2634,29 +2540,25 @@ The non-parametric equivalent to the one-way ANOVA (when we wish to test for dif
 
 The most common design of two-way ANOVA is randomised block design, and the non-parametric equivalent for this is called Friedman's method for randomised blocks. For a regular two-way ANOVA, the Schreirer-Ray-Hare extension to the Kruskal-Wallis test may be employed (see Sokal \& Rohlf 1995; pp446-447).
 
-\hypertarget{non-parametric-tests-for-association}{%
-\subsection*{Non-parametric tests for association}\label{non-parametric-tests-for-association}}
+\subsection*{Non-parametric tests for association}\label{non-parametric-tests-for-association}
 \addcontentsline{toc}{subsection}{Non-parametric tests for association}
 
 The most commonly employed non-parametric tests for association are Spearman's and Kendall's correlation coefficients, based again on ranking data. These both yield coefficients that are comparable to the correlation coefficient, and if greater in magnitude than a critical level indicate the existence of a significant correlation.
 
 For regression analysis, a technique called Kendall's robust line-fit method, details of which may also be found in Sokal \& Rohlf (1995).
 
-\hypertarget{pitfalls-of-non-parametric-tests}{%
-\subsection*{Pitfalls of non-parametric tests}\label{pitfalls-of-non-parametric-tests}}
+\subsection*{Pitfalls of non-parametric tests}\label{pitfalls-of-non-parametric-tests}
 \addcontentsline{toc}{subsection}{Pitfalls of non-parametric tests}
 
 Most of the tests mentioned above rely on ranking methods - they therefore have to be able to deal with the existence of ties in the data, i.e.~when two measurements have the same ranks. Often, when using these tests, you will see two outputs, one normal, and the other `corrected for ties'.
 
 As you can probably guess from the names of these non- parametric tests, many mathematicians have sought fame and fortune through designing a `distribution-free analysis'. There are, therefore, many tests that do more or less the same thing, and which give basically the same results. Those mentioned above are generally the most commonly used. There are also methods for constructing models in which you can define the structure of the data (called generalised linear models), which we will explore in the next module.
 
-\hypertarget{practical-6---transformations-non-parametric-tests---an-introduction}{%
-\section{Practical 6 - Transformations \& Non-parametric Tests - An Introduction}\label{practical-6---transformations-non-parametric-tests---an-introduction}}
+\section{Practical 6 - Transformations \& Non-parametric Tests - An Introduction}\label{practical-6---transformations-non-parametric-tests---an-introduction}
 
 The techniques we have so far used to test for differences and associations are all parametric tests, which estimate population parameters from samples in order to test hypotheses. As we have seen, however, these tests make some assumptions about data that, if violated, would lead to results being invalid. In the previous classes we saw how we could check the assumptions of our analyses in order to determine whether the results will be valid. In this practical we are going to introduce some techniques that can be used if we believe that the assumptions of our parametric analysis have been violated. In the first section we will show how it is possible to transform data in order to overcome problems with the shape or variance of our data. In the second section we will introduce two simple non-parametric analyses, for use when our data either cannot be normalised, or when we have data (e.g.~counts, scores, ranks) that would be inappropriate for analysis with parametric techniques.
 
-\hypertarget{task-1---setting-up-your-workspace-2}{%
-\subsection{Task 1 - Setting up your workspace}\label{task-1---setting-up-your-workspace-2}}
+\subsection{Task 1 - Setting up your workspace}\label{task-1---setting-up-your-workspace-2}
 
 Log into posit Cloud and return to the classroom work space, open the project called \textbf{Workshop\_6}. Set up a new script.
 
@@ -2709,8 +2611,7 @@ Hopefully you identified that the data in \texttt{seeds} are in a wide format an
 
 Now use the \texttt{view()} function on your new \texttt{seeds2} data frame, can you identify what the \texttt{pivot\_longer()} function has done?
 
-\hypertarget{c7t2}{%
-\subsection{Task 2 - Explore the data}\label{c7t2}}
+\subsection{Task 2 - Explore the data}\label{c7t2}
 
 Spend a little time exploring the data. Try using the \texttt{group\_by()} and \texttt{summarise()} functions to find the means, standard deviation and the standard error of the plant weights for each site (see Chapter \ref{descriptive-statistics} if you need help with this). Build some histograms to explore data distribution and maybe consider building a boxplot to explore differences between sites (see Chapter \ref{histogram} if you need help with this).
 
@@ -2742,8 +2643,7 @@ Now try comparing the two sites with a levenes and a two sample t-test (check Ch
 \end{itemize}
 \end{quote}
 
-\hypertarget{c7t3}{%
-\subsection{Task 3 - Data transformations}\label{c7t3}}
+\subsection{Task 3 - Data transformations}\label{c7t3}
 
 Basically there are two problems with these data;
 
@@ -2813,8 +2713,7 @@ Carry our a Levenes test and two sample t-test on the two log transformed groups
 
 The transformation of the data has basically achieved what we wanted: the variances of the two groups are now not statistically different, and the transformed data are considerably less skewed than the raw data. A t-test comparison of these data is more likely to yield robust results.
 
-\hypertarget{task-4---non-parametric-analysis-of-the-differences}{%
-\subsection{Task 4 - Non-parametric analysis of the differences}\label{task-4---non-parametric-analysis-of-the-differences}}
+\subsection{Task 4 - Non-parametric analysis of the differences}\label{task-4---non-parametric-analysis-of-the-differences}
 
 One of the most striking features of the original data is that most of the larger values are for the data for site 2, whilst most of the smallest values are for site 1. This is very clear if we sort the data into order, and give each pot a rank:
 
@@ -2859,8 +2758,7 @@ Although this is called a Wilcoxon test, if you run the test on two independent 
 
 The non-parametric test works very differently to the t-test - in particular it ignores any information on the mean and variance in the data. Note that strictly speaking, it tells us whether the location of the data from two groups is different, not whether the means are different.
 
-\hypertarget{task-5---non-parametric-test-for-associations}{%
-\subsection{Task 5 - Non-parametric test for associations}\label{task-5---non-parametric-test-for-associations}}
+\subsection{Task 5 - Non-parametric test for associations}\label{task-5---non-parametric-test-for-associations}
 
 Finally we are going to look at a non-parametric test that enables us to tell whether there is a significant association between two variables.
 
@@ -2964,32 +2862,27 @@ The coefficients that this analysis generates are structured in the same way as 
 \end{itemize}
 \end{quote}
 
-\hypertarget{conclusion-5}{%
-\section{Conclusion}\label{conclusion-5}}
+\section{Conclusion}\label{conclusion-5}
 
 Today we have explored how to deal with data that breaks the assumptions made by parametric tests. We have seen what the impact of log transformations and ranking data has on its structure and have played with a few non-parametric tests to test for differences and associations.
 
-\hypertarget{before-you-leave-5}{%
-\section{Before you leave!}\label{before-you-leave-5}}
+\section{Before you leave!}\label{before-you-leave-5}
 
 Make sure you save your script and download it if you would like to keep a local copy.
 
 Please log out of posit Cloud!
 
-\hypertarget{references-5}{%
-\section{References}\label{references-5}}
+\section{References}\label{references-5}
 
 Wickham, H., Averick, M., Bryan, J., Chang, W., D'Agostino McGowan, L., François, R., Grolemund, G., et al., 2019. ``Welcome to the tidyverse.'' Journal of Open Source Software 4 (43): 1686. \url{https://doi.org/10.21105/joss.01686}.
 
-\hypertarget{workshop-7---plot-beautification}{%
-\chapter{Workshop 7 - Plot Beautification!!!}\label{workshop-7---plot-beautification}}
+\chapter{Workshop 7 - Plot Beautification!!!}\label{workshop-7---plot-beautification}
 
 So far, in this workbook, we have used a number of different plots to explore our data. They have served their job well and given you a good overview of what the data look like. Which is absolutely fine, while you are tinkering and exploring with your data sets. However, that wont fly when it comes to sharing your analysis outputs; be that in a summative coursework piece, a presentation (verbal or poster) or a professional publication. Thankfully, \texttt{ggplot()} has some fantastic features for making plots look absolutely stunning, and we can quickly make a draft plot look absolutely fabulous very quickly.
 
 This is a crash course in plot beautification using \texttt{ggplot()}. It is by no means an exhaustive list of all the aesthetic parameters you can edit, but it will give you a good grounding.
 
-\hypertarget{deconstructing-ggplot}{%
-\section{Deconstructing ggplot}\label{deconstructing-ggplot}}
+\section{Deconstructing ggplot}\label{deconstructing-ggplot}
 
 Hopefully you have been saving the code from former workshops in a sensible place in the project spaces in our posit Cloud class room. Back in Chapter \ref{first-boxplot} we made a boxplot comparing the pecking rates between male and female chickens. Initially, we will work with this same plot. So log into posit Cloud and join the class room workspace, then return to your instance of \textbf{Workshop\_4}. You will see that the workspace has lots of stuff from last time in your \texttt{Environment}. Its best to try and start with a nice clean environment for todays workshop. Don't worry about loosing things from your environment, provided you have \textbf{saved your script} in your \texttt{script} folder and have the raw data .csv file you will be able to reproduce all of those analyses from before. If you run the following piece of code, everything stored in your environment will be removed, giving you a nice clean area to work in;
 
@@ -3057,8 +2950,7 @@ Here are some things I would change:
 
 We will look into how to edit these elements now.
 
-\hypertarget{labels}{%
-\section{Labels}\label{labels}}
+\section{Labels}\label{labels}
 
 Clear accurate labeling is essential in the sciences, be it when your in the lab labeling up your samples or creating data visualisations.
 
@@ -3106,8 +2998,7 @@ Run `rlang::last_trace()` to see where the error occurred.
 
 This is because \texttt{scale\_fill\_manual} is also expecting some instructions on how to colour your boxplot. You will need to complete Chapter \ref{colours} before you can successfully remake your boxplot.
 
-\hypertarget{colours}{%
-\section{Switching up colours}\label{colours}}
+\section{Switching up colours}\label{colours}
 
 The colours of your boxes are the default colours given by \texttt{ggplot()}. We can modify these to make our plot look a bit more pleasing. Try editing the \texttt{scale\_fill\_manual} function to this \texttt{scale\_fill\_manual(labels\ =\ c("Female",\ "Male"),\ values\ =\ c("cornflowerblue",\ "coral"))}. Run it and see what happens to your plot.
 
@@ -3115,17 +3006,15 @@ What do you think of your new plot now? Do you think the changes to labels and c
 
 R has lots of \href{https://www.datanovia.com/en/blog/awesome-list-of-657-r-color-names/}{colours}, take a look at the linked reference lists and have a play with changing up some of your colours.
 
-Colour can be a really useful tool to employ when making your plots visually appealing, however make sure you are mindful that some colour pallets can be difficult for some people to interpret. There are however, some really good \href{https://www.tableau.com/en-gb/about/blog/examining-data-viz-rules-dont-use-red-green-together\#:~:text=Use\%20a\%20colour\%2Dblind\%2Dfriendly\%20palette\%20when\%20appropriate\&text=For\%20example\%2C\%20blue\%2Forange\%20is,blue\%20to\%20someone\%20with\%20CVD}{tips} out there for making sure your figures are accessible to everyone.
+Colour can be a really useful tool to employ when making your plots visually appealing, however make sure you are mindful that some colour pallets can be difficult for some people to interpret. There are however, some really good \href{https://www.tableau.com/en-gb/about/blog/examining-data-viz-rules-dont-use-red-green-together\#:~:text=Use\%20a\%20colour\%2Dblind\%2Dfriendly\%20palette\%20when\%20appropriate&text=For\%20example\%2C\%20blue\%2Forange\%20is,blue\%20to\%20someone\%20with\%20CVD}{tips} out there for making sure your figures are accessible to everyone.
 
-\hypertarget{spacing}{%
-\section{Spacing}\label{spacing}}
+\section{Spacing}\label{spacing}
 
 Lets have a look at spacing. This is a box plot so we the main spacing option you are likely to want to play with is the width of your boxes. Here we can simply add an argument to the \texttt{geom\_boxplot()} function. Edit this function so that it reads \texttt{geom\_boxplot(width\ =\ 0.9)}. The width argument can be anything between 0.00 or 1.00. It changes the width of the boxes and this changes the spacing between them as well. Have a play with some values and see what happens.
 
 We will come back to spacing when we look at our scatter plots later.
 
-\hypertarget{themes}{%
-\section{Themes}\label{themes}}
+\section{Themes}\label{themes}
 
 Another aspect of aesthetics that we can look at is themes. We have a reasonably attractive graph now, but its still got a grey background and the grid lines are unnecessary. To remove the grey background and implement the classic black on white aesthetic we can simply add a function that defines a pre-made theme. Adjust your script so that it includes the function \texttt{theme\_bw()}, I suggest you add this as a new line, don't forget to pipe between your functions with a \texttt{+}. Run this chunk and print your new plot. How is that looking now?
 
@@ -3159,8 +3048,7 @@ Have a play with the different text sizes until you think they are optimal. You 
 
 Hopefully you now have a nice clean, clear and aesthetically pleasing plot and have some awareness of the commands and functions used to make it.
 
-\hypertarget{beautifying-scatter-plots}{%
-\section{Beautifying scatter plots}\label{beautifying-scatter-plots}}
+\section{Beautifying scatter plots}\label{beautifying-scatter-plots}
 
 In Chapter \ref{c6t2} and \ref{c6t3} we made a very simple scatter plot for radiation exposure against cancer mortality (deaths per 100,000 person-years, 1959-1964) across nine counties in the US. Reopen this project (\textbf{Workshop\_5}) and take a look at your script from this workshop, recreate the accompanying data frame and rebuild your \texttt{geom\_point()} plot.
 
@@ -3214,8 +3102,7 @@ Once you are happy with your points we can take a look at your regression line. 
 
 As before please do experiment and play with the settings described by each of these arguments.
 
-\hypertarget{exporting-your-plot-to-pdf}{%
-\section{Exporting your plot to pdf}\label{exporting-your-plot-to-pdf}}
+\section{Exporting your plot to pdf}\label{exporting-your-plot-to-pdf}
 
 Once you are happy with your new and beautiful plots make sure you save it to to the figures folder using a function called \texttt{ggsave()}. This will allow you to export your plots as \texttt{.pdf} files which you can then download and put in your reports/publications.
 
@@ -3236,26 +3123,22 @@ You will need to have your plots saved as an object (using the \texttt{\textless
 
 Note that if you remove the \texttt{device\ =} line \texttt{ggsave} will automatically create a \texttt{.png} file. You can also use \texttt{width\ =\ ,\ height\ =\ ,\ units\ =\ "cm"} arguments to specify the size of your figure in cm. You will need to adjust these by trial and error until the proportional sizing of your plot to axis and legend labels is pleasing. This chunk will save your plot to the \texttt{figures} folder. From here you can download your figures by checking the box besides the file, clicking \texttt{More} and then \texttt{Export...} and \texttt{Download}.
 
-\hypertarget{before-you-leave-6}{%
-\section{Before you leave!}\label{before-you-leave-6}}
+\section{Before you leave!}\label{before-you-leave-6}
 
 Make sure you save your script and download it if you would like to keep a local copy.
 
 Please log out of posit Cloud!
 
-\hypertarget{references-6}{%
-\section{References}\label{references-6}}
+\section{References}\label{references-6}
 
 Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D'Agostino McGowan, Romain François, Garrett Grolemund, et al.~2019. ``Welcome to the tidyverse.'' Journal of Open Source Software 4 (43): 1686. \url{https://doi.org/10.21105/joss.01686}.
 Wickham, Hadley, Winston Chang, Lionel Henry, Thomas Lin Pedersen, Kohske Takahashi, Claus Wilke, Kara Woo, Hiroaki Yutani, and Dewey Dunnington. 2021. Ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics. \url{https://CRAN.R-project.org/package=ggplot2}.
 
-\hypertarget{coursework-1-the-kooki-bird-summative-assignment}{%
-\chapter{Coursework 1; The Kooki Bird Summative Assignment}\label{coursework-1-the-kooki-bird-summative-assignment}}
+\chapter{Coursework 1; The Kooki Bird Summative Assignment}\label{coursework-1-the-kooki-bird-summative-assignment}
 
 Report Length: 2000 words (maximum)
 
-\hypertarget{the-exercise}{%
-\section{The exercise}\label{the-exercise}}
+\section{The exercise}\label{the-exercise}
 
 There are \textbf{two} separate parts to this assignment:
 
@@ -3267,8 +3150,7 @@ There are \textbf{two} separate parts to this assignment:
   \textbf{Part 2:} present the results of your analyses in the style of the results section of a scientific paper.
 \end{itemize}
 
-\hypertarget{the-problem}{%
-\section{The Problem}\label{the-problem}}
+\section{The Problem}\label{the-problem}
 
 The kooki bird is a very rare (fictional) species, which now exists only on a few islands. The birds are largely frugivorous, and natural fruit yield on the islands can vary with weather conditions. Since 1980, a captive breeding programme has been in place and chick productivity has been measured for both captive birds and birds breeding in the wild. Weather data have also been measured at a local meteorological station. The investigators are interested in assessing how maximum daytime temperatures during September and October and rainfall during January and February might affect wild chick productivity. The length of the breeding season was also recorded as the (standardised) number of days during which the temperature reached 15°C. The data table below gives the mean chick productivity for wild and captive birds, and the weather and breeding season length in each year.
 
@@ -3305,8 +3187,7 @@ Using whatever statistical analyses you feel appropriate, answer the following q
 
 Put your responses to \textbf{Part 1} and \textbf{Part 2} in a word document. You will be able to submit your work through the BIO-7056A page on Blackboard.
 
-\hypertarget{the-data-3}{%
-\section{The Data}\label{the-data-3}}
+\section{The Data}\label{the-data-3}
 
 \begin{longtable}[]{@{}
   >{\centering\arraybackslash}p{(\columnwidth - 22\tabcolsep) * \real{0.0833}}
@@ -3321,7 +3202,7 @@ Put your responses to \textbf{Part 1} and \textbf{Part 2} in a word document. Yo
   >{\centering\arraybackslash}p{(\columnwidth - 22\tabcolsep) * \real{0.0833}}
   >{\centering\arraybackslash}p{(\columnwidth - 22\tabcolsep) * \real{0.0833}}
   >{\centering\arraybackslash}p{(\columnwidth - 22\tabcolsep) * \real{0.0833}}@{}}
-\toprule()
+\toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\centering
 Wild birds \(^1\)
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
@@ -3346,8 +3227,10 @@ Oct Temp (°C) \(^4\)
 Breeding Period (Standardised) \(^5\)
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
 \end{minipage} \\
-\midrule()
+\midrule\noalign{}
 \endhead
+\bottomrule\noalign{}
+\endlastfoot
 0.54 & 0.04 & 0.54 & 0.73 & 0.56 & 0.73 & 2.30 & 2.30 & 15.05 & 18 & -0.52 & \\
 0.55 & 0.02 & 0.53 & 0.64 & 0.54 & 0.68 & 2.40 & 2.10 & 16.1 & 17.55 & 0.13 & \\
 0.58 & 0.04 & 0.61 & 0.71 & 0.61 & 0.72 & 1.90 & 1.10 & 17.4 & 17.5 & 0.39 & \\
@@ -3377,7 +3260,6 @@ Breeding Period (Standardised) \(^5\)
 0.44 & 0.02 & 0.45 & 0.51 & 0.56 & 0.56 & 0.90 & 1.00 & 17.95 & 17.85 & 1.04 & \\
 0.53 & 0.05 & 0.55 & 0.66 & 0.63 & 0.79 & 1.60 & 1.80 & 17.4 & 18.7 & 0.69 & \\
 0.69 & 0.07 & 0.50 & 0.82 & 0.51 & 0.77 & 2.70 & 1.80 & 16.6 & 19.9 & 1.34 & \\
-\bottomrule()
 \end{longtable}
 
 \(^1\) Mean no. of chicks per pair of wild and captive birds each year (1980 onwards)
@@ -3386,11 +3268,9 @@ Breeding Period (Standardised) \(^5\)
 \(^4\) Mean temperature in September and October of each year
 \(^5\) Standardised length of the breeding season (difference from long-term average)
 
-\hypertarget{workshop-8---multivariate-linear-modelling}{%
-\chapter{Workshop 8 - Multivariate Linear Modelling}\label{workshop-8---multivariate-linear-modelling}}
+\chapter{Workshop 8 - Multivariate Linear Modelling}\label{workshop-8---multivariate-linear-modelling}
 
-\hypertarget{introduction-6}{%
-\section{Introduction}\label{introduction-6}}
+\section{Introduction}\label{introduction-6}
 
 Multivariate linear modelling techniques are used when entering more than one predictor (independent variable) into an analysis of a dependent variable (also called response variable). The process and much of the output are very similar to those of simple linear regression, in which the effect of just one predictor is assessed. The aim is to explain the variance in the dependent variable, just as in simple regression, but with multiple predictor variables. Each of the predictor variables may explain a unique part of the variance in the dependent variable, but they may also share some of the variance that they explain.
 
@@ -3429,8 +3309,7 @@ In a linear model, you have three ways of entering a predictor variable:
 
 \textbf{You MUST NOT include both fixed and random effects in the same linear model -- for that you have to use a MIXED MODEL}
 
-\hypertarget{practical-8---multiple-linear-models}{%
-\section{Practical 8 - Multiple Linear Models}\label{practical-8---multiple-linear-models}}
+\section{Practical 8 - Multiple Linear Models}\label{practical-8---multiple-linear-models}
 
 This week we will be analysing three separate data sets; Africa, chaffinch and beetle. These data are already in this weeks project space. Log into posit Cloud and return to the classroom work space, open the project called \textbf{Workshop\_8}. Set up a new script.
 
@@ -3438,8 +3317,7 @@ During todays workshop, try to pay special attention to the data interpretation 
 
 Once you have joined the classroom, spend some time setting up your workspace and script as covered in Chapter \ref{workspace-setup} and Chapter \ref{script-setup}. You will need to install and load the packages \texttt{tidyverse} and \texttt{janitor} for this weeks session.
 
-\hypertarget{data-set-1-africa}{%
-\section{Data set 1: Africa}\label{data-set-1-africa}}
+\section{Data set 1: Africa}\label{data-set-1-africa}
 
 Here you will be analysing data from 34 sub-Saharan African nations, collected by the World Bank in 1985. The aim is to fit a model that can be used to predict per capita calorific intake rate and to examine, from a conservation perspective, how deforestation impacts on calorific intake.
 
@@ -3469,13 +3347,11 @@ Possible Predictor Variables:
 
 Theories have been suggested that poor diet, as represented by low calorific intake, is more serious in countries with poor economies, lower levels of education, a young population, and high levels of deforestation. In this practical, try to assess whether such relationships exist.
 
-\hypertarget{task-1---checking-the-data}{%
-\subsection{Task 1 - Checking the data}\label{task-1---checking-the-data}}
+\subsection{Task 1 - Checking the data}\label{task-1---checking-the-data}
 
 Load the dataset \texttt{africa.csv} into your workspace under the object name \texttt{africa} and try performing some routine checks to make sure R has interpreted the variables correctly and all expected data is present and accounted for. You can use some of the functions explored in Chapter \ref{checking-the-data} if you need some help with this.
 
-\hypertarget{task-2---exploring-the-data}{%
-\subsection{Task 2 - Exploring the data}\label{task-2---exploring-the-data}}
+\subsection{Task 2 - Exploring the data}\label{task-2---exploring-the-data}
 
 Start by exploring the univariate relationship between per capita daily calorific intake and gross national product.
 
@@ -3501,8 +3377,7 @@ Draw the scatterplot for the relationship between per capita daily calorific int
 \end{itemize}
 \end{quote}
 
-\hypertarget{task-3---regression-analysis}{%
-\subsection{Task 3 - Regression analysis}\label{task-3---regression-analysis}}
+\subsection{Task 3 - Regression analysis}\label{task-3---regression-analysis}
 
 Try running a linear regression for daily calorific intake and gross national product, store your model under the object name \texttt{daycal\_gnp\_lm\_1} revisit Chapter \ref{c6t3} if you're not sure how to do this.
 
@@ -3590,8 +3465,7 @@ Now use the same temporary exclusion method to re-run your regression model with
 
 Re-include Gabon into subsequent analyses.
 
-\hypertarget{c11t4}{%
-\subsection{Task 4 - Multivariate linear regression analysis}\label{c11t4}}
+\subsection{Task 4 - Multivariate linear regression analysis}\label{c11t4}
 
 We are now going to build a multivariate regression model using the Enter method, in which we begin by including all predictor variables in our regression. We then remove from our regression the variable that has the least (statistically non-significant) effect to produce a better model. We repeat this until we are left with a regression containing the best sub-set of predictors. At each stage it is important to consider the impact of removing that predictor on the model.
 First we will draw a matrix plot to compare all of the relationships between \texttt{daycal} and all four predictor variables (use your logged gnp variable to reduce difficulties with Gabon). Try using the following command;
@@ -3712,8 +3586,7 @@ You can also specify interactions to test using the \texttt{lm()} function by us
 \end{itemize}
 \end{quote}
 
-\hypertarget{data-set-2-chaffinch}{%
-\section{Data set 2: Chaffinch}\label{data-set-2-chaffinch}}
+\section{Data set 2: Chaffinch}\label{data-set-2-chaffinch}
 
 Now we will move onto a second data set. Food was presented in a feeder linked to a balance for measuring mass. Individual chaffinches that had been trapped, ringed, measured and sampled for parasite prevalence were recorded visiting the feeder and the mass of food each bird consumed was recorded. The night-time temperature was also recorded and presented as an anomaly from the mean for that season. The dataset therefore contains the following variables:
 
@@ -3739,8 +3612,7 @@ Now we will move onto a second data set. Food was presented in a feeder linked t
   temp: Temperature anomaly (relative to the mean night time temperature for the season (0.5 degrees), closer to 1 = colder)
 \end{itemize}
 
-\hypertarget{task-1---checking-the-data-1}{%
-\subsection{Task 1 - Checking the data}\label{task-1---checking-the-data-1}}
+\subsection{Task 1 - Checking the data}\label{task-1---checking-the-data-1}
 
 Load the dataset \texttt{chaffinch.csv} into your workspace under the object name \texttt{chaffinch} and try performing some routine checks to make sure R has interpreted the variables correctly and all expected data is present and accounted for. You can use some of the functions explored in Chapter \ref{checking-the-data} if you need some help with this.
 
@@ -3758,8 +3630,7 @@ Load the dataset \texttt{chaffinch.csv} into your workspace under the object nam
 \end{itemize}
 \end{quote}
 
-\hypertarget{task-2---exporing-potential-relationships}{%
-\subsection{Task 2 - Exporing potential relationships}\label{task-2---exporing-potential-relationships}}
+\subsection{Task 2 - Exporing potential relationships}\label{task-2---exporing-potential-relationships}
 
 As we did with the last data set, draw a matrix scatter plot of all the continuous variables
 
@@ -3777,8 +3648,7 @@ As we did with the last data set, draw a matrix scatter plot of all the continuo
 
 The relationship between parasite load and amount of food consumed is non-linear. Given the spread of the data, a logarithmic transformation of parasite load may help to linearise this relationship. Transform the parasite variable and redraw the matrix plot.
 
-\hypertarget{task-3---multiple-regression-analysis}{%
-\subsection{Task 3 - Multiple regression analysis}\label{task-3---multiple-regression-analysis}}
+\subsection{Task 3 - Multiple regression analysis}\label{task-3---multiple-regression-analysis}
 
 You can now build a series of models to explore specific hypotheses. Each time you should do the following:
 
@@ -3803,8 +3673,7 @@ You can now build a series of models to explore specific hypotheses. Each time y
   Consider what the slope, intercept, r\(^2\) and p-values are telling you
 \end{enumerate}
 
-\hypertarget{task-4---when-good-predictors-go-bad-multicollinearity}{%
-\subsection{Task 4 - When good predictors go bad (multicollinearity)}\label{task-4---when-good-predictors-go-bad-multicollinearity}}
+\subsection{Task 4 - When good predictors go bad (multicollinearity)}\label{task-4---when-good-predictors-go-bad-multicollinearity}
 
 An underlying assumption of mulivariate linear model is that your predictors are not correlated with each other. That is, you are assuming that each predictor brings in entirely new information to your model. If two predictors are correlated, then they are redundant. We call this multicollinear predictors, or multicollinearity. For example, if you wanted to predict the wood volume of a tree, and you had three predictors, height, diameter, and number of rings, it is very likely that diameter and number of rings will be highly correlated with each other.
 
@@ -3837,8 +3706,7 @@ So before you even start your regression modelling, you know that you are going 
 \end{itemize}
 \end{quote}
 
-\hypertarget{data-set-3-beetles}{%
-\section{Data set 3: Beetles}\label{data-set-3-beetles}}
+\section{Data set 3: Beetles}\label{data-set-3-beetles}
 
 Finally we will consider our third data set. These data are from a study of what causes variation in the density of beetles among different patches of tall vegetation. Beetle densities were sampled on 20 sites, along with a range of other variables:
 
@@ -3870,8 +3738,7 @@ Finally we will consider our third data set. These data are from a study of what
 
 You therefore have 10 predictor variables, three of which are categorical (landscape\_type, patch\_age and veg\_density) and the rest of which are continuous
 
-\hypertarget{c11t1}{%
-\subsection{Task 1 - Checking the data}\label{c11t1}}
+\subsection{Task 1 - Checking the data}\label{c11t1}
 
 Load the dataset \texttt{beetle.csv} into your workspace under the object name \texttt{beetle} and try performing some routine checks to make sure R has interpreted the variables correctly and all expected data is present and accounted for. You can use some of the functions explored in Chapter \ref{checking-the-data} if you need some help with this.
 
@@ -3886,8 +3753,7 @@ You should note that R has misidentified your categorical variables as continuou
 
 Try running the \texttt{as.factor()} function on your other categorical variables (\texttt{patch\_age} and \texttt{veg\_density}).
 
-\hypertarget{task-2---multiple-regression-analysis}{%
-\subsection{Task 2 - Multiple regression analysis}\label{task-2---multiple-regression-analysis}}
+\subsection{Task 2 - Multiple regression analysis}\label{task-2---multiple-regression-analysis}
 
 Construct a linear model with beetle\_density as your dependent variable and include all other variables as your independent variables.
 
@@ -4005,43 +3871,35 @@ From this point onwards, you have to use your knowledge of biology and your comm
 \end{itemize}
 \end{quote}
 
-\hypertarget{before-you-leave-7}{%
-\section{Before you leave!}\label{before-you-leave-7}}
+\section{Before you leave!}\label{before-you-leave-7}
 
 Make sure you save your script and download it if you would like to keep a local copy.
 
 Please log out of posit Cloud!
 
-\hypertarget{workshop-9---model-structure}{%
-\chapter{Workshop 9 - Model Structure}\label{workshop-9---model-structure}}
+\chapter{Workshop 9 - Model Structure}\label{workshop-9---model-structure}
 
-\hypertarget{introduction-7}{%
-\section{Introduction}\label{introduction-7}}
+\section{Introduction}\label{introduction-7}
 
 Linear models use analysis of variance (ANOVA) as the statistical technique to partition the variation in a dependent variable among predictors. In addition, the effect of interactions between predictors on a dependent variable can be quantified in the linear model. Linear models can be constructed with continuous and/or categorical variables but the design of the study must be considered when designing the right model structure to use.
 
-\hypertarget{fully-factorial-linear-model}{%
-\subsection{Fully Factorial Linear Model}\label{fully-factorial-linear-model}}
+\subsection{Fully Factorial Linear Model}\label{fully-factorial-linear-model}
 
 The simplest form of linear model is fully factorial, in which replicates are completely randomised. The potential disadvantage of this design is that random allocation of replicates can, by chance, result in a patchy distribution, e.g.~replicates of one treatment might all end up close to one another.
 
-\hypertarget{randomised-block-linear-model}{%
-\subsection{Randomised Block Linear Model}\label{randomised-block-linear-model}}
+\subsection{Randomised Block Linear Model}\label{randomised-block-linear-model}
 
 In this design, replicates are grouped into blocks but randomly distributed within blocks. Analysis of block designs is very similar to factorial designs except that you generally have to tell the computer that you are using a block design by customising the model. In a block design, the blocks are not replicated and so the interactions between block and the other treatments can't be assessed. Thus, the customised model has to restrict the interactions between treatments to those not including block.
 
-\hypertarget{options}{%
-\subsection{Options}\label{options}}
+\subsection{Options}\label{options}
 
 There are several options within linear models which will allow further assessment of the data. A key one is Homogeneity of Variance, which tests the assumption of equal variances across the treatments.
 
-\hypertarget{post-hoc}{%
-\subsection{Post-hoc}\label{post-hoc}}
+\subsection{Post-hoc}\label{post-hoc}
 
 Post-hoc tests are pairwise comparisons that compare all combinations of the treatment groups. There are many post-hoc tests which vary in exactly how they deal with Type I and Type II errors. The most commonly used is the Tukey test. Ideally, variances and sample sizes will be similar between treatments and most multiple comparison tests are fairly robust to deviations from these assumptions.
 
-\hypertarget{practical-9---exploring-model-structure}{%
-\section{Practical 9 - Exploring Model Structure}\label{practical-9---exploring-model-structure}}
+\section{Practical 9 - Exploring Model Structure}\label{practical-9---exploring-model-structure}
 
 In this weeks first workshop we will be analysing two separate data sets; Nepal and Tulips. These data are already in this weeks project space. Log into posit Cloud and return to the classroom work space, open the project called \textbf{Workshop\_9}.
 
@@ -4049,8 +3907,7 @@ As always, try to pay special attention to the data interpretation steps and mak
 
 Once you have logged into the Posit cloud classroom, spend some time setting up your workspace and script as covered in Chapter \ref{workspace-setup} and Chapter \ref{script-setup}. You will need to install and load the packages \texttt{tidyverse}, \texttt{GGally}, \texttt{lmerTest}, \texttt{car} and \texttt{PerformanceAnalytics} for this session.
 
-\hypertarget{data-set-1-nepal---linear-model-with-randomised-block-designs}{%
-\section{Data set 1: Nepal - Linear Model with Randomised Block designs}\label{data-set-1-nepal---linear-model-with-randomised-block-designs}}
+\section{Data set 1: Nepal - Linear Model with Randomised Block designs}\label{data-set-1-nepal---linear-model-with-randomised-block-designs}
 
 As an introduction to the analysis of more complex study designs, we are going to look at a randomised block design. This form of design is often used to control for natural variation across an experimental area.
 
@@ -4082,8 +3939,7 @@ These data are stored in the \texttt{nepal.csv} file, which contains the followi
 \textbf{Note}: although these data are percentages, they tend to be in the range 20-80\%, so there is no need to arcsine-transform the data as this would have little effect.
 \end{quote}
 
-\hypertarget{task-1---checking-the-data-2}{%
-\subsection{Task 1 - Checking the data}\label{task-1---checking-the-data-2}}
+\subsection{Task 1 - Checking the data}\label{task-1---checking-the-data-2}
 
 Load the dataset \texttt{nepal.csv} into your workspace under the object name \texttt{nepal} and try performing some routine checks to make sure R has interpreted the variables correctly and all expected data is present and accounted for. You can use some of the functions explored in Chapter \ref{checking-the-data} if you need some help with this.
 
@@ -4120,8 +3976,7 @@ Really it would be great if we could have \texttt{control} as the reference to c
 
 Rerun the \texttt{levels()} function, can you see what we have done here? This will be helpful for later analyses.
 
-\hypertarget{task-2---exploring-the-data-1}{%
-\subsection{Task 2 - Exploring the data}\label{task-2---exploring-the-data-1}}
+\subsection{Task 2 - Exploring the data}\label{task-2---exploring-the-data-1}
 
 Draw some histograms for each of the three dependent variables (\% cover), and explore the assumption of data normality. You may find it most efficient to manipulate the data to a long form format and then use \texttt{facet\_wrap()} to combine your plots, as below;
 
@@ -4164,8 +4019,7 @@ Now try to produce three box-plots for treatment against percentage cover. Use t
 \end{itemize}
 \end{quote}
 
-\hypertarget{c12t3}{%
-\subsection{Task 3 - Identifying experimental design}\label{c12t3}}
+\subsection{Task 3 - Identifying experimental design}\label{c12t3}
 
 Before starting the analysis, you need to be very clear about the study design.
 
@@ -4205,8 +4059,7 @@ As stressed above, this experiment cannot be analysed as if it were a fully fact
 
 Now, to do the analysis correctly, we need to customise a model that doesn't compare all interactions (as in fully factorial) but only those that are actually replicated. As \texttt{block} is not replicated, all interactions with this have to be removed. We will come back to this shortly but first we need to think about the different ways in which we could go analysing the treatments within our model.
 
-\hypertarget{task-4---approaches-to-our-model}{%
-\subsection{Task 4 - Approaches to our model}\label{task-4---approaches-to-our-model}}
+\subsection{Task 4 - Approaches to our model}\label{task-4---approaches-to-our-model}
 
 There are two ways we could approach this model. Use \texttt{glimpse()} to examine your initial \texttt{nepal} data frame again. You will notice we have three columns that define the different treatments each segment in each block was exposed to (i.e.~control, cut, burn and cut \& burn). These are described in two different ways, we have the \texttt{cut} and \texttt{burn} columns that have either a 0 (to signify that this treatment was not used on this segment) or a 1 (to signify that this treatment was used on this segment) and the combination of 0's and 1's indicated each of the four possible combinations. We then have our \texttt{treatment} column which summarises the \texttt{cut} and \texttt{burn} columns with characters (control = control, c = cut, b = burn and cb = cut \& burn). So how do these different notations effect our analysis?
 
@@ -4291,8 +4144,7 @@ The variation explained by each factor is captured by the Mean sq column of this
 \end{itemize}
 \end{quote}
 
-\hypertarget{exploring-the-model}{%
-\subsection{Exploring the model}\label{exploring-the-model}}
+\subsection{Exploring the model}\label{exploring-the-model}
 
 Lets unpack our \texttt{lm2} model a little bit more. The \texttt{GGally} package has a super useful function called \texttt{ggcoef\_model} that produces a plot of the estimated mean difference with estimated 95\% confidence intervals. Try running the following;
 
@@ -4352,8 +4204,7 @@ These plots allow you to plot the estimated means and examine the interaction be
 
 The design of a study determines the type of statistical analysis that is appropriate, and it is therefore very important to consider the type of model that you intend to use when you are designing the study.
 
-\hypertarget{data-set-2-tulip---linear-model-with-randomised-block-designs}{%
-\section{Data set 2: Tulip - Linear Model with Randomised Block designs}\label{data-set-2-tulip---linear-model-with-randomised-block-designs}}
+\section{Data set 2: Tulip - Linear Model with Randomised Block designs}\label{data-set-2-tulip---linear-model-with-randomised-block-designs}
 
 Lets look at another data set; \texttt{tulip.csv}. These data are from a study of the effects of different levels of shade and irrigation on the production of tulip flowers. There are three shade treatments and three water level treatments, giving a total of nine combinations. The entire experiment was replicated over three different flower beds.
 
@@ -4371,8 +4222,7 @@ The datafile therefore contains the following variables:
   blooms: number of tulip blooms produced per plant
 \end{itemize}
 
-\hypertarget{task-5---checking-the-data}{%
-\subsection{Task 5 - Checking the data}\label{task-5---checking-the-data}}
+\subsection{Task 5 - Checking the data}\label{task-5---checking-the-data}
 
 Load the dataset \texttt{tulip.csv} into your workspace under the object name \texttt{tulip} and try performing some routine checks to make sure R has interpreted the variables correctly and that all expected data is present and accounted for. You can use some of the functions explored in Chapter \ref{checking-the-data} if you need some help with this.
 
@@ -4382,8 +4232,7 @@ Look at each of your variables, are any of them categorical? Has R characterised
 Do some of these need to be changed? Remember you can use the \texttt{as.factor()} function to alter these (see Chapter \ref{c11t1}).
 \end{quote}
 
-\hypertarget{task-6---exploring-the-data}{%
-\subsection{Task 6 - Exploring the data}\label{task-6---exploring-the-data}}
+\subsection{Task 6 - Exploring the data}\label{task-6---exploring-the-data}
 
 You are going to need to construct a linear model to explore how tulip flower production varies among the shade and water treatments. But first it may be helpful to visualise our data using box\_plots. See if you can construct a box plot with \texttt{water} treatment on the x axis, \texttt{blooms} on the y axis and coloured by the \texttt{shade} treatment.
 
@@ -4401,8 +4250,7 @@ You are going to need to construct a linear model to explore how tulip flower pr
 
 Before we start modeling, we need to check that our data meets the assumptions of the linear model. Start by calculating some descriptive statistics for each treatment and consider what you think the effects of the predictor variables and whether the data meet the assumptions of the linear model. Build some histograms and run Levenes Test to check the assumptions of the linear model -- normality of the data for each treatment and equality of variance between treatments.
 
-\hypertarget{playing-with-some-models}{%
-\subsection{Playing with some models}\label{playing-with-some-models}}
+\subsection{Playing with some models}\label{playing-with-some-models}
 
 Construct the linear model with \texttt{bloom} as the dependent variable and \texttt{bed}, \texttt{water} and \texttt{shade} as fixed factors. As with the Nepal data, you have a randomized block experiment here, as the water and shade treatments are replicated across three flower beds (blocks). You therefore have to customize the model with an interactive term between \texttt{water} and \texttt{shade} and an additive term for \texttt{bed} (remember, this is to avoid the model trying to look for interactions with \texttt{bed}).
 
@@ -4424,8 +4272,7 @@ The interaction term of water:shade is significant (p = 0.005). You can see why 
 
 The effect of water therefore depends on shade level. Tulip bloom production increases strongly with increasing water levels at low shade 1, but less so at higher shades. However, overall there seems to be an overall positive effect on blooms going from 1 to 3 for any given shade level.
 
-\hypertarget{mixed-effects-linear-models}{%
-\section{Mixed effects linear models}\label{mixed-effects-linear-models}}
+\section{Mixed effects linear models}\label{mixed-effects-linear-models}
 
 In some cases, you may wish to include model predictors that may have an influence on your dependent variable but for which you only want to account for that effect, i.e.~not measure it directly -- these are known as \textbf{random} factors. For example, in both the Nepal and Tulip examples, the data were grouped together in space (\textbf{block} in Nepal and \textbf{bed} in Tulip). As an alternative to a customised model design, we could have included this grouping predictor as a random factor.
 
@@ -4462,37 +4309,31 @@ You might have noticed that the \texttt{summary()} output for your mixed effects
 
 The results of these two modelling approaches are, in this case, the same and either of these models would be an appropriate way to analyse these data. In this case, including bed as a fixed or random effect makes little difference to the model but if there had been many different beds and a less balanced design, it is likely that the mixed model would be more powerful (as fitting \texttt{bed} as a random effect leaves more degrees of freedom for the model, and thus there is more power to find any effects that exist).
 
-\hypertarget{conclusions}{%
-\section{Conclusions}\label{conclusions}}
+\section{Conclusions}\label{conclusions}
 
 Today we have explored how the way you conduct a study influences how you structure your model. We have examined the differences between additive and interactive effects and how to spot the hallmarks of each and we have dabbled with incorporating random effects into a mixed effects linear model.
 
 These sessions are very much introductions into the world of multivariate statistics and your knowledge will benefit from further reading. I highly recommend Getting Started with R; An Introduction for Biologists by Beckerman, Childs and Petchey for further reading.
 
-\hypertarget{before-you-leave-8}{%
-\section{Before you leave!}\label{before-you-leave-8}}
+\section{Before you leave!}\label{before-you-leave-8}
 
 Make sure you save your script and download it if you would like to keep a local copy.
 
 Please log out of posit Cloud!
 
-\hypertarget{workshop-10---repeated-measures-linear-models}{%
-\chapter{Workshop 10 - Repeated Measures Linear Models}\label{workshop-10---repeated-measures-linear-models}}
+\chapter{Workshop 10 - Repeated Measures Linear Models}\label{workshop-10---repeated-measures-linear-models}
 
-\hypertarget{introduction-8}{%
-\section{Introduction}\label{introduction-8}}
+\section{Introduction}\label{introduction-8}
 
 When we are exploring the effect of different treatments on a dependent variable, the most powerful method is to include the same individuals within each treatment. This method allows you to explore the effect of the treatment, having controlled for the inherent variation among individuals in their response to the treatments. This is called a Repeated Measures design. For example, if you were measuring how the growth of plants changed over time with the addition of a nutrient, you could either measure different plants from each treatment (nutrient versus control) at each time interval (e.g.~every week), or you could measure the same plants at each time interval -- the latter is much more powerful because individual variation in plant growth (independent of the treatment) can be controlled in the analysis.
 
-\hypertarget{practical-10---repeated-measures-linear-models}{%
-\section{Practical 10 - Repeated Measures Linear Models}\label{practical-10---repeated-measures-linear-models}}
+\section{Practical 10 - Repeated Measures Linear Models}\label{practical-10---repeated-measures-linear-models}
 
 In this session we will be working with two data sets. First of all we have \texttt{activity.csv} which measures sweat produced in 10 individuals during a bout of intense activity. We will then move onto \texttt{metabolism.csv} which measures metabolism in a migrant bird species under different conditions, so we will look at how we can implement repeated measures design in a two-way ANOVA.
 
 Log into posit Cloud and return to the classroom work space, open the project called \textbf{Workshop\_10}. Set up your script and install and load the following packages; \texttt{tidyverse}and \texttt{rstatix}.
 
-\hypertarget{data-set-1---activity}{%
-\section{Data set 1 - Activity}\label{data-set-1---activity}}
+\section{Data set 1 - Activity}\label{data-set-1---activity}
 
 This is an example of where repeated measured design was used to measure sweat produced in 10 individuals at three time points before, during and after a bout of intense physical activity.
 
@@ -4514,8 +4355,7 @@ This data file contains the following data;
   time2 - amount of sweat produced after activity
 \end{itemize}
 
-\hypertarget{task-1---checking-the-data-3}{%
-\subsection{Task 1 - Checking the data}\label{task-1---checking-the-data-3}}
+\subsection{Task 1 - Checking the data}\label{task-1---checking-the-data-3}
 
 Load the data set \texttt{activity.csv} into your workspace under the object name \texttt{activity} and try performing some routine checks to make sure R has interpreted the variables correctly and all expected data is present and accounted for. You can use some of the functions explored in Chapter \ref{checking-the-data} if you need some help with this.
 
@@ -4565,8 +4405,7 @@ Make sure your data is in a long format, try running the following to put your t
 \end{itemize}
 \end{quote}
 
-\hypertarget{task-2---exploring-the-data-2}{%
-\subsection{Task 2 - Exploring the data}\label{task-2---exploring-the-data-2}}
+\subsection{Task 2 - Exploring the data}\label{task-2---exploring-the-data-2}
 
 Now that we have our data in a sensible format we can start to do some data exploration.
 
@@ -4600,8 +4439,7 @@ Lets try to make a data visualisation to help with this last point
 \end{itemize}
 \end{quote}
 
-\hypertarget{task-3---playing-with-some-statistics}{%
-\subsection{Task 3 - Playing with some statistics}\label{task-3---playing-with-some-statistics}}
+\subsection{Task 3 - Playing with some statistics}\label{task-3---playing-with-some-statistics}
 
 You could explore the difference between the sweating rates of individuals before, during or after activity by running a one-way ANOVA (i.e.~a linear model with sweat production as the dependent variable and the three time periods as predictors). However, as the same 10 people took part in all three treatments, a more powerful analysis is a Repeated Measures ANOVA\ldots{}
 
@@ -4661,8 +4499,7 @@ A post-hoc test would be helpful here to add some direction to the differences w
 
 So we have played with some very basic repeated measures analysis, essentially a one-way repeated measures ANOVA. But often if you are using repeated measures designs you will want to incorporate more variables.
 
-\hypertarget{data-set-2---metabolism}{%
-\section{Data set 2 - Metabolism}\label{data-set-2---metabolism}}
+\section{Data set 2 - Metabolism}\label{data-set-2---metabolism}
 
 Now we can start to play with a slightly more complex data set and analysis.
 
@@ -4688,8 +4525,7 @@ The data in this file is as follows;
   met3 - metabolism at time point 3 (after four hours)
 \end{itemize}
 
-\hypertarget{task-4---checking-the-data}{%
-\subsection{Task 4 - Checking the data}\label{task-4---checking-the-data}}
+\subsection{Task 4 - Checking the data}\label{task-4---checking-the-data}
 
 Load the data set \texttt{metabolism.csv} into your workspace under the object name \texttt{metabolism} and try performing some routine checks to make sure R has interpreted the variables correctly and all expected data is present and accounted for. You can use some of the functions explored in Chapter \ref{checking-the-data} if you need some help with this.
 
@@ -4707,8 +4543,7 @@ Load the data set \texttt{metabolism.csv} into your workspace under the object n
 
 Both \texttt{temp} and \texttt{para} are categorical and need to be identified as factors and the columns \texttt{met1}, \texttt{met2}, \texttt{met3} need to be in a single column. Have a go at creating some code to complete both of these tasks. Look at earlier sections if you get stuck.
 
-\hypertarget{task-5---exploring-the-data}{%
-\subsection{Task 5 - Exploring the data}\label{task-5---exploring-the-data}}
+\subsection{Task 5 - Exploring the data}\label{task-5---exploring-the-data}
 
 Now that we have our data in a sensible format we can start to do some data exploration.
 
@@ -4742,8 +4577,7 @@ Lets try to make some data visualisation to help explore this data set.
 \end{itemize}
 \end{quote}
 
-\hypertarget{task-6---playing-with-some-statistics}{%
-\subsection{Task 6 - Playing with some statistics}\label{task-6---playing-with-some-statistics}}
+\subsection{Task 6 - Playing with some statistics}\label{task-6---playing-with-some-statistics}
 
 Now we are ready to start playing with some statistics.
 
@@ -4775,30 +4609,25 @@ Now we are ready to start playing with some statistics.
 \end{itemize}
 \end{quote}
 
-\hypertarget{conclusions-1}{%
-\section{Conclusions}\label{conclusions-1}}
+\section{Conclusions}\label{conclusions-1}
 
 This session we have explored how we can incorporate repeated measures designs into our analysis by using repeated measures ANOVAs.
 
-\hypertarget{before-you-leave-9}{%
-\section{Before you leave!}\label{before-you-leave-9}}
+\section{Before you leave!}\label{before-you-leave-9}
 
 Make sure you save your script and download it if you would like to keep a local copy.
 
 Please log out of posit Cloud!
 
-\hypertarget{workshop-1112-a-very-introductory-introduction-to-generalised-linear-models}{%
-\chapter{Workshop 11/12 A Very Introductory Introduction to Generalised Linear Models}\label{workshop-1112-a-very-introductory-introduction-to-generalised-linear-models}}
+\chapter{Workshop 11/12 A Very Introductory Introduction to Generalised Linear Models}\label{workshop-1112-a-very-introductory-introduction-to-generalised-linear-models}
 
 This chapter will run in Workshops 11 and 12 of Weeks 9 \& 10.
 
-\hypertarget{introduction-9}{%
-\section{Introduction}\label{introduction-9}}
+\section{Introduction}\label{introduction-9}
 
 In this chapter we will start to explore the world of generalised linear models (GLMs), not to be confused with general linear models (that have underpinned all of the statistical techniques we have studies so far).
 
-\hypertarget{what-is-a-generalised-linear-model-and-why-are-they-useful}{%
-\subsection{What is a Generalised Linear Model and why are they useful?}\label{what-is-a-generalised-linear-model-and-why-are-they-useful}}
+\subsection{What is a Generalised Linear Model and why are they useful?}\label{what-is-a-generalised-linear-model-and-why-are-they-useful}
 
 We have so far spent a lot of time thinking about the general linear model family (including regressions, ANOVAs and ANCOVAs). We have also spent some time dealing with assumptions. All of these models make certain assumptions about the data they are dealing with and some of these assumptions are held in common within the general linear model family.
 
@@ -4822,8 +4651,7 @@ However often in the biological sciences you will be collecting data that is not
 
 These workshops will be, in no way, a definitive guide to the minutia of GLMs, but we will cover a couple of common usages and have a think about what you need to look out for to ensure your model is an appropriate fit for your data. If you use this family of models on your own data (which, if you continue in the field of ecology or data science, you almost certainly will) you will need to do additional reading and also, probably, spend quite a lot of time playing with different model structures to become proficient.
 
-\hypertarget{key-parts-of-a-glm}{%
-\subsection{Key parts of a GLM}\label{key-parts-of-a-glm}}
+\subsection{Key parts of a GLM}\label{key-parts-of-a-glm}
 
 The implementation of GLMs in R is quite different to the other models we have previously constructed. There are three additional components to be aware of;
 
@@ -4845,8 +4673,7 @@ y = mx + c
   \textbf{Link Function} - this accompanies your family argument and provides a link between the linear predictor and the probability distribution.
 \end{itemize}
 
-\hypertarget{different-famlies-and-their-link-functions}{%
-\subsection{Different famlies and their link functions}\label{different-famlies-and-their-link-functions}}
+\subsection{Different famlies and their link functions}\label{different-famlies-and-their-link-functions}
 
 The family (or error structure) you select for your GLM will depend on how your data look, but the most common ones are listed below.
 
@@ -4857,7 +4684,7 @@ The family (or error structure) you select for your GLM will depend on how your 
   >{\centering\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
   >{\centering\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
   >{\centering\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}@{}}
-\toprule()
+\toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\centering
 Data Distribution
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
@@ -4870,19 +4697,19 @@ Link Function
 R code
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
 \end{minipage} \\
-\midrule()
+\midrule\noalign{}
 \endhead
+\bottomrule\noalign{}
+\endlastfoot
 Normal & Gaussian & Identity & \(gμ = μ\) & \texttt{gausian(link="identity")} & \\
 Poisson & Poisson & Log & \(g(μ) = log(μ)\) & \texttt{poisson(link="log")} & \\
 Binomial & Binomial & Logit & \(g(μ)= log(\frac{μ}{1-μ})\) & \texttt{binomial(link="logit")} & \\
 Gamma & Gamma & Inverse & \(g(μ)= \frac{1}{μ}\) & \texttt{gamma(link="inverse")} & \\
-\bottomrule()
 \end{longtable}
 
 These are just a few of the more commonly used GLM error structures and their default link functions that you are likely to come across. We will explore two of these in more depth over the course of the next two workshops.
 
-\hypertarget{glms-with-a-poisson-error-structure}{%
-\subsection{GLMs with a Poisson Error Structure}\label{glms-with-a-poisson-error-structure}}
+\subsection{GLMs with a Poisson Error Structure}\label{glms-with-a-poisson-error-structure}
 
 As ecologists you will frequently find that the data you are collecting is count data and as data scientists you will often be presented with count data that someone else has gathered. Count data is inherently tricky to analyse using general linear model approaches. For a start it breaks the assumption that the data are unbounded (it cant go below 0) and often it cannot form fractions (often we count in whole numbers only), so really its discrete data. These two factors mean that count data are unlikely to conform to a normal distribution, which works with continuous data and allows for negative values (neither of which are permitted by count data). In addition, normal distributions are symetrical, with half of the data points falling on either side of the mean. Count data (often but not always) has a greater number of data points towards the lower end of the x axis. So it will be positively skewed and follow a Poisson distribution.
 
@@ -4894,8 +4721,7 @@ So our model would look something like this;
 y = log_e^{mx+c}
 \]
 
-\hypertarget{glms-with-a-binomial-error-structure}{%
-\subsection{GLMs with a Binomial Error Structure}\label{glms-with-a-binomial-error-structure}}
+\subsection{GLMs with a Binomial Error Structure}\label{glms-with-a-binomial-error-structure}
 
 You may also end up designing your experiment in such a way that your response/dependent variable is categorical and/or binary. For example, commonly ecologists use binary data to measure the presence or absence of a species. When we have a categorical or binary response variable we will automatically be breaking several of the assumptions of the general linear models (i.e.~the response is not continuous, it is bounded and it wont conform to a normal distribution). This is where GLMs with a binomial error structure come in super handy (they essentially perform something akin to a logistic regression, you may see these refereed to in the literature).
 
@@ -4912,8 +4738,7 @@ log_e(\frac{P(Y)}{1-P(Y)}) = m_1x_1 + m_2x_2+m_3x_3 +... c
 \]
 So, this equation is the (natural logarithm of) the probability of being in one group (e.g.~present) divided by the probability of being in the other group (e.g.~absent). The predictor coefficients (slope (m) and intercept (c)) are used in the same way as in regression, but instead of predicting an actual value of Y, they predict the probability of Y being in one group or the other. Neat right???
 
-\hypertarget{practical-11---glms}{%
-\section{Practical 11 - GLMs}\label{practical-11---glms}}
+\section{Practical 11 - GLMs}\label{practical-11---glms}
 
 This week we will be working through three data sets;
 
@@ -4929,8 +4754,7 @@ This week we will be working through three data sets;
 
 Log into posit Cloud and return to the classroom work space, open the project called \textbf{Workshop\_11\_12}. Set up your script and install and load the following packages; \texttt{tidyverse}, \texttt{performance}, \texttt{pscl}, \texttt{lme4}, \texttt{Matrix} and \texttt{MASS}.
 
-\hypertarget{a-poisson-glm-on-some-beautifully-behaved-data}{%
-\section{A Poisson GLM on some beautifully behaved data}\label{a-poisson-glm-on-some-beautifully-behaved-data}}
+\section{A Poisson GLM on some beautifully behaved data}\label{a-poisson-glm-on-some-beautifully-behaved-data}
 
 Our first workshop mirrors an excellent workshop taken from Beckerman et al., 2017. The data were collected from the Soay sheep population on the island of Hirta (Scotland). Scientists wanted to know if lifetime reproductive success (number of live young produced over the course of a lifetime) increased with the average body mass of female sheep (ewes). This data set is very neat, quite simple and beautifully well behaved so makes for a great starting point with your first GLM. I also highly recommend this publication if you wish for further reading.
 
@@ -4950,13 +4774,11 @@ This data file contains the following data;
   body.size - the average body mass of each ewe
 \end{itemize}
 
-\hypertarget{task-1---check-the-data}{%
-\subsection{Task 1 - Check the data}\label{task-1---check-the-data}}
+\subsection{Task 1 - Check the data}\label{task-1---check-the-data}
 
 Load the data set \texttt{soay\_sheep\_fitness.csv} into your workspace under the object name \texttt{sheep} and try performing some routine checks to make sure R has interpreted the variables correctly and all expected data is present and accounted for. You can use some of the functions explored in Chapter \ref{checking-the-data} if you need some help with this.
 
-\hypertarget{task-2---exploring-the-data-3}{%
-\subsection{Task 2 - Exploring the data}\label{task-2---exploring-the-data-3}}
+\subsection{Task 2 - Exploring the data}\label{task-2---exploring-the-data-3}
 
 As always, its a really good idea to explore your data set before you start launching into more advanced analyses.
 
@@ -5014,8 +4836,7 @@ These kinds of patterns are classic for poisson distributions. We could try and 
 
 Instead lets try fitting a generalised linear model with a poisson error structure.
 
-\hypertarget{task-3---fitting-a-glm}{%
-\subsection{Task 3 - Fitting a GLM}\label{task-3---fitting-a-glm}}
+\subsection{Task 3 - Fitting a GLM}\label{task-3---fitting-a-glm}
 
 So our first GLM. There is a nice simple function for fitting this model, try running the following;
 
@@ -5102,8 +4923,7 @@ Now try running the above \texttt{anova()} function. Note this does not perform 
 
 The statistical theory that underpins all of this is related to likelihood tests which we wont be going into any more depth with here. You are welcome to read around these though if you want to further your understanding.
 
-\hypertarget{task-4---checking-the-model}{%
-\subsection{Task 4 - Checking the model}\label{task-4---checking-the-model}}
+\subsection{Task 4 - Checking the model}\label{task-4---checking-the-model}
 
 Really, if I was running this analysis for reals, I would do the model check before leaping into interp, but for teaching purposes its good for you to get familiar with model outputs first. But now we really can't put this off any further, its time to check out model and see if its any good. Thankfully, there is a nice function that does a lot of the work for us here (you can also use this on your linear models as well btw).
 
@@ -5154,8 +4974,7 @@ You can try it out if you like, try running the following;
 
 Note that when we call the \texttt{anova()} function, we have changed from \texttt{Chisq} to \texttt{F}, this is just telling R to run an F ratio test rather then a likelihood ratio test. Its just a nuance of using a different model structure.
 
-\hypertarget{task-5---plotting-our-model}{%
-\subsection{Task 5 - Plotting our model}\label{task-5---plotting-our-model}}
+\subsection{Task 5 - Plotting our model}\label{task-5---plotting-our-model}
 
 Right, that's an absolute tone of theory, lets do something fun and make a plot with a good regression line.
 
@@ -5171,8 +4990,7 @@ Try running the following;
 
 Doesn't that look better! Feel free to do some tinkering to see if you can make this plot as beautiful as it deserves to be!
 
-\hypertarget{a-binomial-glm}{%
-\section{A Binomial GLM}\label{a-binomial-glm}}
+\section{A Binomial GLM}\label{a-binomial-glm}
 
 In this data set were going to have a look at tackling another commonly occurring issue with biological data. Having a binary dependent variable.
 
@@ -5202,13 +5020,11 @@ This data file contains the following data;
 
 \textbf{Take note} - in this data set water depth, vegetation height and distance to paths are all continuous measurements, whereas planttype is categorical.
 
-\hypertarget{task-6---check-the-data}{%
-\subsection{Task 6 - Check the data}\label{task-6---check-the-data}}
+\subsection{Task 6 - Check the data}\label{task-6---check-the-data}
 
 Load the data set \texttt{frogs.csv} into your workspace under the object name \texttt{frogs} and try performing some routine checks to make sure R has interpreted the variables correctly and all expected data is present and accounted for. You can use some of the functions explored in Chapter \ref{checking-the-data} if you need some help with this.
 
-\hypertarget{task-7---explore-the-data}{%
-\subsection{Task 7 - Explore the data}\label{task-7---explore-the-data}}
+\subsection{Task 7 - Explore the data}\label{task-7---explore-the-data}
 
 As always its good to spend some time exploring the data, our dependent variable here is binary so that reduces the number of checks we can do at this stage. However we can make some plots, try running the following;
 
@@ -5238,8 +5054,7 @@ As always its good to spend some time exploring the data, our dependent variable
 \end{itemize}
 \end{quote}
 
-\hypertarget{task-8---fitting-a-glm}{%
-\subsection{Task 8 - Fitting a GLM}\label{task-8---fitting-a-glm}}
+\subsection{Task 8 - Fitting a GLM}\label{task-8---fitting-a-glm}
 
 Right so we are ready to start fitting some models. We will use the Enter method, as we did with our linear models in Chapter 9. We will begin by including all relevant variables and removing them one at a time. We know we have a binary dependent variable so we are going to need to run a GLM with a binomial error structure, the default link function for this family is logit. So we have all the basic elements for our first GLM. Try running the following;
 
@@ -5294,8 +5109,7 @@ You might have seen we have some evidence of collinearity in our data. This is n
 
 So now we have our minimal model, we can start thinking about what it all means in real terms.
 
-\hypertarget{task-9---interpretation-and-plotting}{%
-\subsection{Task 9 - Interpretation and plotting}\label{task-9---interpretation-and-plotting}}
+\subsection{Task 9 - Interpretation and plotting}\label{task-9---interpretation-and-plotting}
 
 Interpreting models that have a binomial error distribution can be a little bit of a brain teaser, binary data isn't something we have spent much time thinking about and the theory is a little bit different to that we have considered before.
 
@@ -5378,8 +5192,7 @@ Finally, it would be great to get some decent regression lines plotted on our fi
 \end{itemize}
 \end{quote}
 
-\hypertarget{a-poisson-mixed-effects-glm}{%
-\section{A Poisson Mixed Effects GLM}\label{a-poisson-mixed-effects-glm}}
+\section{A Poisson Mixed Effects GLM}\label{a-poisson-mixed-effects-glm}
 
 Finally we are going to see whats going on with our lovely kooki bird population. Your aim is to build a model to expore which factors influence kooki bird abundance within patches of forest. You have a data set that contains the following survey data from 50 forest patches;
 
@@ -5405,13 +5218,11 @@ This file contains the following data;
   canopy\_cover - canopy cover (\%)
 \end{itemize}
 
-\hypertarget{task-10---check-the-data}{%
-\subsection{Task 10 - Check the data}\label{task-10---check-the-data}}
+\subsection{Task 10 - Check the data}\label{task-10---check-the-data}
 
 Load the data set \texttt{kooki.csv} into your workspace under the object name \texttt{kooki} and try performing some routine checks to make sure R has interpreted the variables correctly and all expected data is present and accounted for. You can use some of the functions explored in Chapter \ref{checking-the-data} if you need some help with this.
 
-\hypertarget{task-11---explore-the-data}{%
-\subsection{Task 11 - Explore the data}\label{task-11---explore-the-data}}
+\subsection{Task 11 - Explore the data}\label{task-11---explore-the-data}
 
 Start by exploring the data, build some histograms and other exploratory plots. You may find it helpful to build a matrix scatter plot as well.
 
@@ -5437,8 +5248,7 @@ As you know, count data are very often left-skewed (i.e.~lots of small counts an
 \end{itemize}
 \end{quote}
 
-\hypertarget{task-12---fitting-a-glm}{%
-\subsection{Task 12 - Fitting a GLM}\label{task-12---fitting-a-glm}}
+\subsection{Task 12 - Fitting a GLM}\label{task-12---fitting-a-glm}
 
 Try running a GLM, with a Poisson distribution and log link function. Add \texttt{kooki\_count} as your response variable and add \texttt{fruit\_trees}, \texttt{distance\_river} and \texttt{canopy\_cover} as predictors. Follow the enter method until you have constructed a minimal model. Remember to keep using\texttt{performance::check\_model()} to check each model you produce.
 
@@ -5499,30 +5309,25 @@ If you think these data are highly overdispersed, congratulations buy yourself a
 
 If you answered, zero inflation, you are on a roll. Yes these data are full of zeros. Which is not uncommon in biology. There are several things you can try to do to improve model fit when you have zero inflation. You can try quasi Poisson or negative binomial error structures or even mixture and hurdle models. There are packages that can be used to fit all of these. You are welcome to try and improve the model fit for the kooki bird data set in class with our good old friend Google or we can leave it there if you have reached stats saturation point.
 
-\hypertarget{conclusions-2}{%
-\section{Conclusions}\label{conclusions-2}}
+\section{Conclusions}\label{conclusions-2}
 
 This concludes my teaching on this module. We have played with lots of types of linear models and a few different types of generalised linear models. Over the next two weeks Dr Richard Davies will be taking over and introducing you to principal components analysis (PCA) as well as multivariate community analysis.
 
 You can find the summative coursework for BIO-7056A in the next chapter. However, I would recommend completing Richards materials on PCA and multivariate community analysis before beginning the assignment.
 
-\hypertarget{before-you-leave-10}{%
-\section{Before you leave!}\label{before-you-leave-10}}
+\section{Before you leave!}\label{before-you-leave-10}
 
 Make sure you save your script and download it if you would like to keep a local copy.
 
 Please log out of posit Cloud!
 
-\hypertarget{references-7}{%
-\section{References}\label{references-7}}
+\section{References}\label{references-7}
 
 Beckerman, A.P., Childs, D. \& Petchey, O.L., 2017. Getting Started with R; an Introduction for Biologists. Oxford University Press. Oxford, UK.
 
-\hypertarget{coursework-2-the-black-tailed-godwit}{%
-\chapter{Coursework 2; the black tailed godwit}\label{coursework-2-the-black-tailed-godwit}}
+\chapter{Coursework 2; the black tailed godwit}\label{coursework-2-the-black-tailed-godwit}
 
-\hypertarget{patterns-of-habitat-selection-in-breeding-black-tailed-godwits-in-iceland}{%
-\section{Patterns of habitat selection in breeding Black-tailed Godwits in Iceland}\label{patterns-of-habitat-selection-in-breeding-black-tailed-godwits-in-iceland}}
+\section{Patterns of habitat selection in breeding Black-tailed Godwits in Iceland}\label{patterns-of-habitat-selection-in-breeding-black-tailed-godwits-in-iceland}
 
 The black-tailed godwit is a migratory shorebird that breeds all around the lowland areas of Iceland, but little is known about its habitat preferences. The potential impact on godwits of the large-scale land drainage and increases in horse grazing that have occurred in recent decades are therefore unknown. You have data from a large-scale survey of breeding godwits, at points all around lowland Iceland, the following parameters were recorded:
 

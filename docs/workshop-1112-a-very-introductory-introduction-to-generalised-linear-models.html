@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 12 Workshop 11/12 A Very Introductory Introduction to Generalised Linear Models | Statistics for Biologists</title>
   <meta name="description" content="This is the coursebook for BIO-7056A Statistics for Biologists" />
-  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 12 Workshop 11/12 A Very Introductory Introduction to Generalised Linear Models | Statistics for Biologists" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Dr Ellen Bell" />
 
 
-<meta name="date" content="2024-10-17" />
+<meta name="date" content="2024-10-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -56,7 +56,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -119,10 +119,6 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<style type="text/css">
-  
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -584,7 +580,7 @@ So, this equation is the (natural logarithm of) the probability of being in one 
 </ul>
 </blockquote>
 <p>Try adding the following line to the code for your scatter plot;</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb104-1" tabindex="-1"></a><span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <blockquote>
 <ul>
 <li><strong>Stop to think</strong></li>
@@ -592,7 +588,7 @@ So, this equation is the (natural logarithm of) the probability of being in one 
 </ul>
 </blockquote>
 <p>Spoilers, no not really, a curve would be a much better fit for these data. Try adding this additional line to your scatter plot code;</p>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_smooth</span>(<span class="at">span =</span> <span class="dv">1</span>, <span class="at">colour =</span> <span class="st">&quot;red&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb105-1" tabindex="-1"></a><span class="fu">geom_smooth</span>(<span class="at">span =</span> <span class="dv">1</span>, <span class="at">colour =</span> <span class="st">&quot;red&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <blockquote>
 <ul>
 <li><strong>Stop to think</strong></li>
@@ -605,14 +601,14 @@ So, this equation is the (natural logarithm of) the probability of being in one 
 <div id="task-3---fitting-a-glm" class="section level3 hasAnchor" number="12.3.3">
 <h3><span class="header-section-number">12.3.3</span> Task 3 - Fitting a GLM<a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#task-3---fitting-a-glm" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>So our first GLM. There is a nice simple function for fitting this model, try running the following;</p>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Running a GLM with poisson error structure and log link function</span></span>
-<span id="cb106-2"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb106-2" aria-hidden="true" tabindex="-1"></a>sheep_glm <span class="ot">&lt;-</span> <span class="fu">glm</span>(fitness <span class="sc">~</span> body.size, <span class="at">data =</span> sheep, <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link=</span>log))</span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb106-1" tabindex="-1"></a><span class="co"># Running a GLM with poisson error structure and log link function</span></span>
+<span id="cb106-2"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb106-2" tabindex="-1"></a>sheep_glm <span class="ot">&lt;-</span> <span class="fu">glm</span>(fitness <span class="sc">~</span> body.size, <span class="at">data =</span> sheep, <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link=</span>log))</span></code></pre></div>
 <p>Right lets have a look at this model. Try running the following;</p>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Summary for our sheep_glm </span></span>
-<span id="cb107-2"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb107-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(sheep_glm)</span>
-<span id="cb107-3"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb107-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb107-4"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb107-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Produce an analysis of deviance table for our sheep_glm</span></span>
-<span id="cb107-5"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb107-5" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(sheep_glm, <span class="at">test =</span> <span class="st">&quot;Chisq&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb107-1" tabindex="-1"></a><span class="co"># Summary for our sheep_glm </span></span>
+<span id="cb107-2"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb107-2" tabindex="-1"></a><span class="fu">summary</span>(sheep_glm)</span>
+<span id="cb107-3"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb107-3" tabindex="-1"></a></span>
+<span id="cb107-4"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb107-4" tabindex="-1"></a><span class="co"># Produce an analysis of deviance table for our sheep_glm</span></span>
+<span id="cb107-5"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb107-5" tabindex="-1"></a><span class="fu">anova</span>(sheep_glm, <span class="at">test =</span> <span class="st">&quot;Chisq&quot;</span>)</span></code></pre></div>
 <p>Take a look at the <code>summary()</code> function output. This output should look fairly familiar, it bares a fairly close resemblance to the <code>summary()</code> we produced for our <code>lm()</code> functions.</p>
 <ul>
 <li><strong>Call</strong> - This is just a reminder of the model that were looking at</li>
@@ -640,7 +636,7 @@ So, this equation is the (natural logarithm of) the probability of being in one 
 </blockquote>
 <p>Bingo - our model equation is log transformed. So we need to undo that if we want to get meaningful predictions out of our <code>summary()</code>.</p>
 <p>Try running the following;</p>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="dv">5</span> <span class="sc">*</span> <span class="fl">0.54087</span> <span class="sc">+</span> <span class="sc">-</span><span class="fl">2.4</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb108-1" tabindex="-1"></a><span class="fu">exp</span>(<span class="dv">5</span> <span class="sc">*</span> <span class="fl">0.54087</span> <span class="sc">+</span> <span class="sc">-</span><span class="fl">2.4</span>)</span></code></pre></div>
 <p>The <code>exp()</code> function is essentially undoing the effects of the <span class="math inline">\(log_e\)</span> transformation. So we can see that a 5kg ewe, would on average, be expected to produce 1.35 lambs over her lifetime.</p>
 <p>We can also see that both slope and intercept in this model are significantly different to zero.</p>
 <p>Now try running the above <code>anova()</code> function. Note this does not perform an ANOVA. In this context it is producing an analysis of deviance table. You will note that the term <strong>Deviance</strong> comes up a lot here, this is essentially a measure of the fitted GLM with respect to a perfect model. So here we have the total deviance in the data (fitness) = 85.081 and the deviance explained by body size = 37.041. So almost half of the deviance here is explained by body size. We then have a p-value, but you might have noticed that when you ran the <code>anova()</code> function you had to specify <code>Chisq</code>. When we run GLMs we have to specify which distribution table to use. We are <strong>NOT</strong> running a <span class="math inline">\(X^2\)</span> test here, but we are using the <span class="math inline">\(X^2\)</span> distribution table to find out p-value. So here our test statistic would be <span class="math inline">\(X^2\)</span> = 37.04, df = 1 and p &lt; 0.001.</p>
@@ -650,8 +646,8 @@ So, this equation is the (natural logarithm of) the probability of being in one 
 <h3><span class="header-section-number">12.3.4</span> Task 4 - Checking the model<a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#task-4---checking-the-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Really, if I was running this analysis for reals, I would do the model check before leaping into interp, but for teaching purposes its good for you to get familiar with model outputs first. But now we really can’t put this off any further, its time to check out model and see if its any good. Thankfully, there is a nice function that does a lot of the work for us here (you can also use this on your linear models as well btw).</p>
 <p>Try running the following;</p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking out models</span></span>
-<span id="cb109-2"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb109-2" aria-hidden="true" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">check_model</span>(sheep_glm)</span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb109-1" tabindex="-1"></a><span class="co"># Checking out models</span></span>
+<span id="cb109-2"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb109-2" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">check_model</span>(sheep_glm)</span></code></pre></div>
 <p>Hopefully R has built you a series of 5 plots. The nice thing about performance, is it gives you clues to what we are looking for in a good model fit and then also shows you where our model is on that scale. But lets break this down a little further;</p>
 <ol style="list-style-type: decimal">
 <li><strong>Posterior predictive check</strong> - this simply compares mean simulated replicated data under the fitted model (blue) with the observed data points (green).</li>
@@ -665,19 +661,19 @@ So, this equation is the (natural logarithm of) the probability of being in one 
 <p>Alongside our output from the <code>check_model()</code> function, we can also check for overdispersion ourselves by dividing the residual deviance by the residual degrees of freedom. In a perfect model, this would be 1 as indicated by our dispersion parameter. If the result of dividing residual deviance by residual degrees of freedom is much more then 1 (the rule of thumb is if its greater then 2) our data is overdispersed, and if its much less then our data are underdispersed.</p>
 <p>So what do we do if we have evidence of overdispersion? Well we tinker with the model, there are lots of variants of the GLM so it maybe a new error structure of link function will allow you to account for the overdispersion. A common alternative for the poisson error structure is the quasipoisson error structure. All the quasipoisson error structure does is estimates the dispersion index and then R adjusts your p-values accordingly (making them more conservative).</p>
 <p>You can try it out if you like, try running the following;</p>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fitting a GLM with a quasipoisson error structure</span></span>
-<span id="cb110-2"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb110-2" aria-hidden="true" tabindex="-1"></a>sheep_glm <span class="ot">&lt;-</span> <span class="fu">glm</span>(fitness <span class="sc">~</span> body.size, <span class="at">data =</span> sheep, <span class="at">family =</span> <span class="fu">quasipoisson</span>(<span class="at">link=</span>log))</span>
-<span id="cb110-3"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb110-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(sheep_glm)</span>
-<span id="cb110-4"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb110-4" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(sheep_glm, <span class="at">test =</span> <span class="st">&quot;F&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb110-1" tabindex="-1"></a><span class="co"># Fitting a GLM with a quasipoisson error structure</span></span>
+<span id="cb110-2"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb110-2" tabindex="-1"></a>sheep_glm <span class="ot">&lt;-</span> <span class="fu">glm</span>(fitness <span class="sc">~</span> body.size, <span class="at">data =</span> sheep, <span class="at">family =</span> <span class="fu">quasipoisson</span>(<span class="at">link=</span>log))</span>
+<span id="cb110-3"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb110-3" tabindex="-1"></a><span class="fu">summary</span>(sheep_glm)</span>
+<span id="cb110-4"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb110-4" tabindex="-1"></a><span class="fu">anova</span>(sheep_glm, <span class="at">test =</span> <span class="st">&quot;F&quot;</span>)</span></code></pre></div>
 <p>Note that when we call the <code>anova()</code> function, we have changed from <code>Chisq</code> to <code>F</code>, this is just telling R to run an F ratio test rather then a likelihood ratio test. Its just a nuance of using a different model structure.</p>
 </div>
 <div id="task-5---plotting-our-model" class="section level3 hasAnchor" number="12.3.5">
 <h3><span class="header-section-number">12.3.5</span> Task 5 - Plotting our model<a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#task-5---plotting-our-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Right, that’s an absolute tone of theory, lets do something fun and make a plot with a good regression line.</p>
 <p>Try running the following;</p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> sheep, <span class="fu">aes</span>(<span class="at">x=</span> body.size, <span class="at">y =</span> fitness)) <span class="sc">+</span></span>
-<span id="cb111-2"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb111-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb111-3"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb111-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;glm&quot;</span>, <span class="at">method.args =</span> <span class="fu">list</span>(<span class="at">family=</span>poisson), <span class="at">se =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb111-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> sheep, <span class="fu">aes</span>(<span class="at">x=</span> body.size, <span class="at">y =</span> fitness)) <span class="sc">+</span></span>
+<span id="cb111-2"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb111-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb111-3"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb111-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;glm&quot;</span>, <span class="at">method.args =</span> <span class="fu">list</span>(<span class="at">family=</span>poisson), <span class="at">se =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p>Doesn’t that look better! Feel free to do some tinkering to see if you can make this plot as beautiful as it deserves to be!</p>
 </div>
 </div>
@@ -704,9 +700,9 @@ So, this equation is the (natural logarithm of) the probability of being in one 
 <div id="task-7---explore-the-data" class="section level3 hasAnchor" number="12.4.2">
 <h3><span class="header-section-number">12.4.2</span> Task 7 - Explore the data<a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#task-7---explore-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>As always its good to spend some time exploring the data, our dependent variable here is binary so that reduces the number of checks we can do at this stage. However we can make some plots, try running the following;</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> frogs, <span class="fu">aes</span>(<span class="at">x=</span>water, <span class="at">y =</span> frogs)) <span class="sc">+</span></span>
-<span id="cb112-2"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb112-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb112-3"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb112-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb112-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> frogs, <span class="fu">aes</span>(<span class="at">x=</span>water, <span class="at">y =</span> frogs)) <span class="sc">+</span></span>
+<span id="cb112-2"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb112-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb112-3"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb112-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
 <blockquote>
 <ul>
 <li><strong>Stop to think</strong></li>
@@ -721,10 +717,10 @@ So, this equation is the (natural logarithm of) the probability of being in one 
 <div id="task-8---fitting-a-glm" class="section level3 hasAnchor" number="12.4.3">
 <h3><span class="header-section-number">12.4.3</span> Task 8 - Fitting a GLM<a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#task-8---fitting-a-glm" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Right so we are ready to start fitting some models. We will use the Enter method, as we did with our linear models in Chapter 9. We will begin by including all relevant variables and removing them one at a time. We know we have a binary dependent variable so we are going to need to run a GLM with a binomial error structure, the default link function for this family is logit. So we have all the basic elements for our first GLM. Try running the following;</p>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fitting a glm with binomial error structure</span></span>
-<span id="cb113-2"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb113-2" aria-hidden="true" tabindex="-1"></a>frog_glm1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(frogs <span class="sc">~</span> water <span class="sc">*</span> veght <span class="sc">*</span> distance <span class="sc">*</span> planttype,</span>
-<span id="cb113-3"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb113-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link=</span><span class="st">&quot;logit&quot;</span>),</span>
-<span id="cb113-4"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb113-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">data =</span> frogs)</span></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb113-1" tabindex="-1"></a><span class="co"># Fitting a glm with binomial error structure</span></span>
+<span id="cb113-2"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb113-2" tabindex="-1"></a>frog_glm1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(frogs <span class="sc">~</span> water <span class="sc">*</span> veght <span class="sc">*</span> distance <span class="sc">*</span> planttype,</span>
+<span id="cb113-3"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb113-3" tabindex="-1"></a>                 <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link=</span><span class="st">&quot;logit&quot;</span>),</span>
+<span id="cb113-4"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb113-4" tabindex="-1"></a>                 <span class="at">data =</span> frogs)</span></code></pre></div>
 <p>Notice we got a little warning message about convergence, so we know we might have a bit of an issue with this model. Try running; <code>performance::check_model()</code>, <code>summary()</code> and <code>anova()</code> for this GLM (remember for <code>anova()</code> you will need to specify <code>test = "Chisq"</code>).</p>
 <blockquote>
 <ul>
@@ -758,9 +754,9 @@ So, this equation is the (natural logarithm of) the probability of being in one 
 y = mx + c
 \]</span></p>
 <p>We have used this equation lots of times to work out how <span class="math inline">\(y\)</span> might be expected to change per unit change in <span class="math inline">\(x\)</span>. We can apply a similar logic here, essentially our GLM with a binomial error structure is trying to calculate the probability of detecting <span class="math inline">\(y\)</span> (our frogs) per unit change in <span class="math inline">\(x\)</span> (our water and vegetation height variables). Lets just look at these slopes, run;</p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb114-1" aria-hidden="true" tabindex="-1"></a>frog_glm4<span class="sc">$</span>coefficient[<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb114-1" tabindex="-1"></a>frog_glm4<span class="sc">$</span>coefficient[<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>]</span></code></pre></div>
 <p>Now these values doesn’t really make sense, negative water depth? What? Remember our model is running another one of those pesky <span class="math inline">\(log_e\)</span> transformations. Ok so try this;</p>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(frog_glm4<span class="sc">$</span>coefficient[<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb115-1" tabindex="-1"></a><span class="fu">exp</span>(frog_glm4<span class="sc">$</span>coefficient[<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>])</span></code></pre></div>
 <p>You should get an out put that looks something like this;</p>
 <pre><code>&gt; exp(frog_glm4$coefficient[2:3])
     water     veght 
@@ -779,10 +775,10 @@ y = mx + c
 </blockquote>
 <p>We wont go through the Analysis of Deviance table called by your <code>anova()</code> function here, the interpretation is much the same as before, when we were looking at GLMs with a poisson error structure.</p>
 <p>Finally, it would be great to get some decent regression lines plotted on our figures, again <code>ggolot()</code> does a lot of the leg work for you here. Try running the following;</p>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting binary data</span></span>
-<span id="cb118-2"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb118-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(frogs, <span class="fu">aes</span>(<span class="at">x =</span> veght, <span class="at">y =</span> frogs)) <span class="sc">+</span> </span>
-<span id="cb118-3"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb118-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb118-4"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb118-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;glm&quot;</span>, <span class="at">method.args =</span> <span class="fu">list</span>(<span class="at">family=</span>binomial), <span class="at">se =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb118-1" tabindex="-1"></a><span class="co"># Plotting binary data</span></span>
+<span id="cb118-2"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb118-2" tabindex="-1"></a><span class="fu">ggplot</span>(frogs, <span class="fu">aes</span>(<span class="at">x =</span> veght, <span class="at">y =</span> frogs)) <span class="sc">+</span> </span>
+<span id="cb118-3"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb118-3" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb118-4"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb118-4" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;glm&quot;</span>, <span class="at">method.args =</span> <span class="fu">list</span>(<span class="at">family=</span>binomial), <span class="at">se =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <blockquote>
 <ul>
 <li><strong>Stop to think</strong></li>
@@ -840,8 +836,8 @@ y = mx + c
 </ul>
 </blockquote>
 <p>The 50 survey locations for which you have data were spread across 5 sites, with between 6 and 14 survey locations per site. As survey locations from the same site are not independent of one another (and especially as the number of surveys per site is not equal), it is possible that some sites are contributing disproportionately to the model and influencing the results. You therefore need to include Site in the model, but including it as a fixed effect will use up a lot of the power in your model. You can, however, include Site as a random effect, if you build a Generalised Linear Mixed Model. For this we will need to use a new function. Try running the following code;</p>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Building a generalised mixed effects model</span></span>
-<span id="cb119-2"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb119-2" aria-hidden="true" tabindex="-1"></a>kooki_glmer <span class="ot">&lt;-</span> <span class="fu">glmer</span>(kooki_count<span class="sc">~</span> fruit_trees <span class="sc">+</span> canopy_cover <span class="sc">+</span> distance_river <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>site), <span class="at">family=</span><span class="fu">poisson</span>(<span class="at">link=</span>log), <span class="at">data=</span>kooki)</span></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb119-1" tabindex="-1"></a><span class="co"># Building a generalised mixed effects model</span></span>
+<span id="cb119-2"><a href="workshop-1112-a-very-introductory-introduction-to-generalised-linear-models.html#cb119-2" tabindex="-1"></a>kooki_glmer <span class="ot">&lt;-</span> <span class="fu">glmer</span>(kooki_count<span class="sc">~</span> fruit_trees <span class="sc">+</span> canopy_cover <span class="sc">+</span> distance_river <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>site), <span class="at">family=</span><span class="fu">poisson</span>(<span class="at">link=</span>log), <span class="at">data=</span>kooki)</span></code></pre></div>
 <p>Rather like our linear mixed effects models, here we have incorporated <code>site</code> as a random factor. Take a look at the model outputs and diagnostics.</p>
 <blockquote>
 <ul>
@@ -944,7 +940,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');
