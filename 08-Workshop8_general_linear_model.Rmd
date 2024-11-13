@@ -123,8 +123,8 @@ First we will draw a matrix plot to compare all of the relationships between `da
 
 ```{r}	
 # Scatter matrix
-pairs(africa[,c(3:7,8)])
-# Note the numbers c(3:7,9) refer to column numbers for daycal, femlit, under15, deforest and log10_gnp they may be different in your data set
+pairs(africa[,c(3:8)])
+# Note the numbers c(3:8) refer to column numbers for daycal, femlit, under15, deforest and log10_gnp they may be different in your data set
 ```
 
 > * __Stop to think__
