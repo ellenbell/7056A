@@ -181,7 +181,7 @@
 
 \title{Statistics for Biologists}
 \author{Dr Ellen Bell}
-\date{2024-10-23}
+\date{2024-11-13}
 
 \begin{document}
 \maketitle
@@ -3473,7 +3473,7 @@ First we will draw a matrix plot to compare all of the relationships between \te
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Scatter matrix}
-\FunctionTok{pairs}\NormalTok{(africa[,}\FunctionTok{c}\NormalTok{(}\DecValTok{3}\SpecialCharTok{:}\DecValTok{7}\NormalTok{,}\DecValTok{9}\NormalTok{)])}
+\FunctionTok{pairs}\NormalTok{(africa[,}\FunctionTok{c}\NormalTok{(}\DecValTok{3}\SpecialCharTok{:}\DecValTok{7}\NormalTok{,}\DecValTok{8}\NormalTok{)])}
 \CommentTok{\# Note the numbers c(3:7,9) refer to column numbers for daycal, femlit, under15, deforest and log10\_gnp they may be different in your data set}
 \end{Highlighting}
 \end{Shaded}
@@ -3495,7 +3495,7 @@ Now we can try fitting the full multiple regression by adding the other three pr
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# multiple regression}
-\NormalTok{daycal\_multi\_lm\_1 }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(daycal}\SpecialCharTok{\textasciitilde{}}\NormalTok{gnp}\SpecialCharTok{+}\NormalTok{deforest}\SpecialCharTok{+}\NormalTok{under15}\SpecialCharTok{+}\NormalTok{femlit, }\AttributeTok{data =}\NormalTok{ africa)}
+\NormalTok{daycal\_multi\_lm\_1 }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(daycal}\SpecialCharTok{\textasciitilde{}}\NormalTok{log10\_gnp}\SpecialCharTok{+}\NormalTok{deforest}\SpecialCharTok{+}\NormalTok{under15}\SpecialCharTok{+}\NormalTok{femlit, }\AttributeTok{data =}\NormalTok{ africa)}
 \FunctionTok{summary}\NormalTok{(daycal\_multi\_lm\_1)}
 \end{Highlighting}
 \end{Shaded}
@@ -3546,7 +3546,7 @@ R has a function called \texttt{predict()} which can be used to predict values o
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{new }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{gnp =}\DecValTok{975}\NormalTok{, }\AttributeTok{femlit =}\DecValTok{45}\NormalTok{, }\AttributeTok{deforest=} \SpecialCharTok{{-}}\DecValTok{2}\NormalTok{)}
+\NormalTok{new }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{gnp =} \DecValTok{975}\NormalTok{, }\AttributeTok{femlit =} \DecValTok{45}\NormalTok{, }\AttributeTok{deforest =} \SpecialCharTok{{-}}\DecValTok{2}\NormalTok{)}
 \CommentTok{\# Create a new data frame called \textasciigrave{}new\textasciigrave{} and specify your independent variable values}
 
 \FunctionTok{predict}\NormalTok{(enter\_your\_final\_model\_here, }\AttributeTok{newdata=}\NormalTok{new, }\AttributeTok{interval =} \StringTok{\textquotesingle{}confidence\textquotesingle{}}\NormalTok{)}
@@ -3690,9 +3690,7 @@ There are three issues with multicollinearity;
   Finally, the real lesson of multicollinearity is that you have redundant predictive information. Did you expect multicollinearity? Were you trying to measure the same predictor in different ways? If so, then have a good think about which predictor is more appropriate for your purpose (e.g., which one is cheaper to measure, or more scientifically appropriate, or more accurately measured, or all three). Did you not expect multicollinearity? Maybe the fact that two predictors are correlated tells you something new about your data or your system.
 \end{enumerate}
 
-How to detect multicollinearity? The simplest way is to run a matrix plot of your predictors, and to check correlation statistics.
-
-So before you even start your regression modelling, you know that you are going to run the risk of a regression where putting two or more will lead to both being non-significant. However, this is only a risk. It is not certain. In fact, sometimes, you need both predictors in the model for either one to be significant, as we saw above. There is no way to predict which will happen, so you just have to try out different models, choosing your final model based on logic and scientific knowledge.
+How to detect multicollinearity? The simplest way is to run a matrix plot of your predictors, and to check correlation statistics. So before you even start your regression modelling, you know that you are going to run the risk of a regression where putting two or more will lead to both being non-significant. However, this is only a risk. It is not certain. In fact, sometimes, you need both predictors in the model for either one to be significant. There is no way to predict which will happen, so you just have to try out different models, choosing your final model based on logic and scientific knowledge.
 
 \begin{quote}
 \begin{itemize}

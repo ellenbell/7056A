@@ -123,7 +123,7 @@ First we will draw a matrix plot to compare all of the relationships between `da
 
 ```{r}	
 # Scatter matrix
-pairs(africa[,c(3:7,9)])
+pairs(africa[,c(3:7,8)])
 # Note the numbers c(3:7,9) refer to column numbers for daycal, femlit, under15, deforest and log10_gnp they may be different in your data set
 ```
 
@@ -135,7 +135,7 @@ Now we can try fitting the full multiple regression by adding the other three pr
 
 ```{r}
 # multiple regression
-daycal_multi_lm_1 <- lm(daycal~gnp+deforest+under15+femlit, data = africa)
+daycal_multi_lm_1 <- lm(daycal~log10_gnp+deforest+under15+femlit, data = africa)
 summary(daycal_multi_lm_1)
 ```
 
@@ -159,7 +159,7 @@ By removing the least significant variable at each stage, you reduce the regress
 R has a function called `predict()` which can be used to predict values of y based on your model. Try runnign the following;
 
 ```{r}
-new <- data.frame(gnp =975, femlit =45, deforest= -2)
+new <- data.frame(gnp = 975, femlit = 45, deforest = -2)
 # Create a new data frame called `new` and specify your independent variable values
 
 predict(enter_your_final_model_here, newdata=new, interval = 'confidence')
@@ -237,9 +237,7 @@ There are three issues with multicollinearity;
 2) Secondly, the ‘cancelling out’ effect means that when you are simplifying a model by removing predictors, you should remove predictors one at a time instead of doing the tempting thing and removing all non-significant predictors at once.  And you should try alternative minimal models.  
 3) Finally, the real lesson of multicollinearity is that you have redundant predictive information.  Did you expect multicollinearity?  Were you trying to measure the same predictor in different ways?  If so, then have a good think about which predictor is more appropriate for your purpose (e.g., which one is cheaper to measure, or more scientifically appropriate, or more accurately measured, or all three).  Did you not expect multicollinearity?  Maybe the fact that two predictors are correlated tells you something new about your data or your system.  
 
-How to detect multicollinearity?  The simplest way is to run a matrix plot of your predictors, and to check correlation statistics.
-
-So before you even start your regression modelling, you know that you are going to run the risk of a regression where putting two or more will lead to both being non-significant.  However, this is only a risk.  It is not certain.  In fact, sometimes, you need both predictors in the model for either one to be significant, as we saw above.  There is no way to predict which will happen, so you just have to try out different models, choosing your final model based on logic and scientific knowledge.
+How to detect multicollinearity?  The simplest way is to run a matrix plot of your predictors, and to check correlation statistics. So before you even start your regression modelling, you know that you are going to run the risk of a regression where putting two or more will lead to both being non-significant.  However, this is only a risk.  It is not certain.  In fact, sometimes, you need both predictors in the model for either one to be significant.  There is no way to predict which will happen, so you just have to try out different models, choosing your final model based on logic and scientific knowledge.
 
 > * __Stop to think__
 > * Take a look at your final model, do you have collinear variables included? 
