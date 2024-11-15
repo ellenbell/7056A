@@ -181,7 +181,7 @@
 
 \title{Statistics for Biologists}
 \author{Dr Ellen Bell}
-\date{2024-11-13}
+\date{2024-11-15}
 
 \begin{document}
 \maketitle
@@ -3903,7 +3903,7 @@ In this weeks first workshop we will be analysing two separate data sets; Nepal 
 
 As always, try to pay special attention to the data interpretation steps and make sure you understand the logic behind each of the decisions made.
 
-Once you have logged into the Posit cloud classroom, spend some time setting up your workspace and script as covered in Chapter \ref{workspace-setup} and Chapter \ref{script-setup}. You will need to install and load the packages \texttt{tidyverse}, \texttt{GGally}, \texttt{lmerTest}, \texttt{car} and \texttt{PerformanceAnalytics} for this session.
+Once you have logged into the Posit cloud classroom, spend some time setting up your workspace and script as covered in Chapter \ref{workspace-setup} and Chapter \ref{script-setup}. You will need to install and load the packages \texttt{tidyverse}, \texttt{GGally}, \texttt{lmerTest}, \texttt{car}, \texttt{broom.helpers} and \texttt{PerformanceAnalytics} for this session.
 
 \section{Data set 1: Nepal - Linear Model with Randomised Block designs}\label{data-set-1-nepal---linear-model-with-randomised-block-designs}
 
@@ -4191,16 +4191,15 @@ These plots allow you to plot the estimated means and examine the interaction be
   What does the Post-Hoc Tukey test tell you about the differences between blocks?
 \item
   What does your overall analysis tell you about the effects of cutting and burning in each block?
-\item
-  Repeat the analysis for years 1995 and 1996
-\item
-  Are the effects consistent across years?
-\item
-  Describe what the analysis shows about the effects of cutting and burning in each year.
 \end{itemize}
 \end{quote}
 
 The design of a study determines the type of statistical analysis that is appropriate, and it is therefore very important to consider the type of model that you intend to use when you are designing the study.
+
+\begin{quote}
+When you have a moment, I recommend repeat the analysis for years 1995 and 1996 in your own time.
+Are the effects consistent across years? Describe what the analysis shows about the effects of cutting and burning in each year.
+\end{quote}
 
 \section{Data set 2: Tulip - Linear Model with Randomised Block designs}\label{data-set-2-tulip---linear-model-with-randomised-block-designs}
 
@@ -4268,7 +4267,7 @@ Construct the linear model with \texttt{bloom} as the dependent variable and \te
 
 The interaction term of water:shade is significant (p = 0.005). You can see why most easily by looking at our original box plot. At shade 1, there are big differences among the water treatments while, at shade levels 2 \& 3, there is only a slight increase in blooms at water level 3. Shade 1 is the lowest shade level, and water 3 is the highest water level, so this suggests that watering more is most helpful when there is little shade, an interpretation supported by the low bloom response at water level 1 and shade level 1.
 
-The effect of water therefore depends on shade level. Tulip bloom production increases strongly with increasing water levels at low shade 1, but less so at higher shades. However, overall there seems to be an overall positive effect on blooms going from 1 to 3 for any given shade level.
+The effect of water therefore depends on shade level. Tulip bloom production increases strongly with increasing water levels at low shade 1, but less so at higher shades. However, when water is low (water 1) there seems to be a positive effect on blooms with increased shade levels.
 
 \section{Mixed effects linear models}\label{mixed-effects-linear-models}
 

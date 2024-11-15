@@ -23,7 +23,7 @@
 <meta name="author" content="Dr Ellen Bell" />
 
 
-<meta name="date" content="2024-11-13" />
+<meta name="date" content="2024-11-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -452,7 +452,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">10.2</span> Practical 9 - Exploring Model Structure<a href="workshop-9---model-structure.html#practical-9---exploring-model-structure" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In this weeks first workshop we will be analysing two separate data sets; Nepal and Tulips. These data are already in this weeks project space. Log into posit Cloud and return to the classroom work space, open the project called <strong>Workshop_9</strong>.</p>
 <p>As always, try to pay special attention to the data interpretation steps and make sure you understand the logic behind each of the decisions made.</p>
-<p>Once you have logged into the Posit cloud classroom, spend some time setting up your workspace and script as covered in Chapter <a href="index.html#workspace-setup">1.2.9.3</a> and Chapter <a href="index.html#script-setup">1.2.9.4</a>. You will need to install and load the packages <code>tidyverse</code>, <code>GGally</code>, <code>lmerTest</code>, <code>car</code> and <code>PerformanceAnalytics</code> for this session.</p>
+<p>Once you have logged into the Posit cloud classroom, spend some time setting up your workspace and script as covered in Chapter <a href="index.html#workspace-setup">1.2.9.3</a> and Chapter <a href="index.html#script-setup">1.2.9.4</a>. You will need to install and load the packages <code>tidyverse</code>, <code>GGally</code>, <code>lmerTest</code>, <code>car</code>, <code>broom.helpers</code> and <code>PerformanceAnalytics</code> for this session.</p>
 </div>
 <div id="data-set-1-nepal---linear-model-with-randomised-block-designs" class="section level2 hasAnchor" number="10.3">
 <h2><span class="header-section-number">10.3</span> Data set 1: Nepal - Linear Model with Randomised Block designs<a href="workshop-9---model-structure.html#data-set-1-nepal---linear-model-with-randomised-block-designs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -617,12 +617,13 @@ Figure 10.1: Additive vs interactive effects, A; shows an additive effect where 
 <li><strong>Stop to think</strong></li>
 <li>What does the Post-Hoc Tukey test tell you about the differences between blocks?</li>
 <li>What does your overall analysis tell you about the effects of cutting and burning in each block?</li>
-<li>Repeat the analysis for years 1995 and 1996</li>
-<li>Are the effects consistent across years?</li>
-<li>Describe what the analysis shows about the effects of cutting and burning in each year.</li>
 </ul>
 </blockquote>
 <p>The design of a study determines the type of statistical analysis that is appropriate, and it is therefore very important to consider the type of model that you intend to use when you are designing the study.</p>
+<blockquote>
+<p>When you have a moment, I recommend repeat the analysis for years 1995 and 1996 in your own time.
+Are the effects consistent across years? Describe what the analysis shows about the effects of cutting and burning in each year.</p>
+</blockquote>
 </div>
 </div>
 <div id="data-set-2-tulip---linear-model-with-randomised-block-designs" class="section level2 hasAnchor" number="10.4">
@@ -669,7 +670,7 @@ Do some of these need to be changed? Remember you can use the <code>as.factor()<
 </ul>
 </blockquote>
 <p>The interaction term of water:shade is significant (p = 0.005). You can see why most easily by looking at our original box plot. At shade 1, there are big differences among the water treatments while, at shade levels 2 &amp; 3, there is only a slight increase in blooms at water level 3. Shade 1 is the lowest shade level, and water 3 is the highest water level, so this suggests that watering more is most helpful when there is little shade, an interpretation supported by the low bloom response at water level 1 and shade level 1.</p>
-<p>The effect of water therefore depends on shade level. Tulip bloom production increases strongly with increasing water levels at low shade 1, but less so at higher shades. However, overall there seems to be an overall positive effect on blooms going from 1 to 3 for any given shade level.</p>
+<p>The effect of water therefore depends on shade level. Tulip bloom production increases strongly with increasing water levels at low shade 1, but less so at higher shades. However, when water is low (water 1) there seems to be a positive effect on blooms with increased shade levels.</p>
 </div>
 </div>
 <div id="mixed-effects-linear-models" class="section level2 hasAnchor" number="10.5">

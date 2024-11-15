@@ -152,13 +152,13 @@
 \contentsline {subsection}{\numberline {10.3.3}Task 3 - Identifying experimental design}{112}{subsection.10.3.3}%
 \contentsline {subsection}{\numberline {10.3.4}Task 4 - Approaches to our model}{113}{subsection.10.3.4}%
 \contentsline {subsection}{\numberline {10.3.5}Exploring the model}{115}{subsection.10.3.5}%
-\contentsline {section}{\numberline {10.4}Data set 2: Tulip - Linear Model with Randomised Block designs}{116}{section.10.4}%
+\contentsline {section}{\numberline {10.4}Data set 2: Tulip - Linear Model with Randomised Block designs}{117}{section.10.4}%
 \contentsline {subsection}{\numberline {10.4.1}Task 5 - Checking the data}{117}{subsection.10.4.1}%
 \contentsline {subsection}{\numberline {10.4.2}Task 6 - Exploring the data}{117}{subsection.10.4.2}%
-\contentsline {subsection}{\numberline {10.4.3}Playing with some models}{117}{subsection.10.4.3}%
+\contentsline {subsection}{\numberline {10.4.3}Playing with some models}{118}{subsection.10.4.3}%
 \contentsline {section}{\numberline {10.5}Mixed effects linear models}{118}{section.10.5}%
 \contentsline {section}{\numberline {10.6}Conclusions}{119}{section.10.6}%
-\contentsline {section}{\numberline {10.7}Before you leave!}{119}{section.10.7}%
+\contentsline {section}{\numberline {10.7}Before you leave!}{120}{section.10.7}%
 \contentsline {chapter}{\numberline {11}Workshop 10 - Repeated Measures Linear Models}{121}{chapter.11}%
 \contentsline {section}{\numberline {11.1}Introduction}{121}{section.11.1}%
 \contentsline {section}{\numberline {11.2}Practical 10 - Repeated Measures Linear Models}{121}{section.11.2}%
